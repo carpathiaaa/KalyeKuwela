@@ -218,6 +218,7 @@ frame_progress = 0.167291
 shape = SubResource("CapsuleShape2D_eswg5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
 
 [node name="StatusLabel" type="Label" parent="."]
 offset_right = 40.0

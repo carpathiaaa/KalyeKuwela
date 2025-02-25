@@ -1,0 +1,128 @@
+[gd_scene load_steps=13 format=3 uid="uid://vskqvsc6imec"]
+
+[ext_resource type="Texture2D" uid="uid://8n17ruun0gug" path="res://icon.svg" id="1_0k8kj"]
+[ext_resource type="Texture2D" uid="uid://bbl2uq87474xf" path="res://Assets/Art/UI/UI_Left_Arrow.png" id="2_ygpto"]
+[ext_resource type="Texture2D" uid="uid://tgufg6myrmuv" path="res://Assets/Art/UI/UI_Right_Arrow.png" id="3_74lo6"]
+[ext_resource type="Texture2D" uid="uid://t2oc6ibgs0qx" path="res://Assets/Art/UI/UI_Settings_Button.png" id="4_yfkjy"]
+[ext_resource type="Texture2D" uid="uid://bha2i2j1dw7dy" path="res://Assets/Art/UI/UI_Inventory_Button.png" id="5_1765b"]
+[ext_resource type="Texture2D" uid="uid://bbh1ap3j6kj5v" path="res://Assets/Art/UI/UI_Shop-1_Button.png" id="6_uouwt"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="7_cfydy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0k7gg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7uis"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qetup"]
+bg_color = Color(0.0672571, 0.738141, 0.769152, 0.576471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsttf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em86d"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_cfydy")
+
+[node name="AvatarContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="AvatarContainer"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 88.0
+offset_right = 552.0
+offset_bottom = 608.0
+texture = ExtResource("1_0k8kj")
+
+[node name="LeftArrow" type="Button" parent="AvatarContainer"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 312.0
+offset_right = 200.0
+offset_bottom = 384.0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0k7gg")
+icon = ExtResource("2_ygpto")
+flat = true
+
+[node name="RightArrow" type="Button" parent="AvatarContainer"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 312.0
+offset_right = 632.0
+offset_bottom = 384.0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u7uis")
+icon = ExtResource("3_74lo6")
+flat = true
+
+[node name="LeftSideBar" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.049
+anchor_right = 0.09
+anchor_bottom = 0.395
+offset_left = 16.0
+offset_top = -15.752
+offset_right = -15.68
+offset_bottom = -15.96
+
+[node name="Settings" type="Button" parent="LeftSideBar"]
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qetup")
+icon = ExtResource("4_yfkjy")
+flat = true
+
+[node name="Inventory" type="Button" parent="LeftSideBar"]
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lsttf")
+icon = ExtResource("5_1765b")
+flat = true
+
+[node name="Shop" type="Button" parent="LeftSideBar"]
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_em86d")
+icon = ExtResource("6_uouwt")
+flat = true
+
+[node name="XPBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 16.0
+offset_right = 688.0
+offset_bottom = 43.0
+
+[node name="CurrencyDisplay" type="Label" parent="."]
+layout_mode = 0
+offset_left = 784.0
+offset_top = 16.0
+offset_right = 1104.0
+offset_bottom = 39.0
+text = "Currency"
+
+[node name="GameButtonsContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 120.0
+offset_right = 936.0
+offset_bottom = 280.0
+scale = Vector2(1.58986, 2.86938)
+alignment = 1
+
+[node name="Patintero" type="Button" parent="GameButtonsContainer"]
+layout_mode = 2
+text = "Patintero"
+
+[node name="TumbangPreso" type="Button" parent="GameButtonsContainer"]
+layout_mode = 2
+text = "Tumbang Preso"
+expand_icon = true
+
+[node name="BenteUno" type="Button" parent="GameButtonsContainer"]
+layout_mode = 2
+text = "Bente Uno"
