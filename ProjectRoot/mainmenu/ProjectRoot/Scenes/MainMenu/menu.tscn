@@ -1,0 +1,136 @@
+[gd_scene load_steps=12 format=3 uid="uid://vskqvsc6imec"]
+
+[ext_resource type="Texture2D" uid="uid://bl4ea72d3dwbr" path="res://icon.svg" id="1_0k8kj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0k7gg"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i2j01"]
+load_path = "res://.godot/imported/UI_Left_Arrow.png-e4274c3c9431084a004f5bc5b1b952ad.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7uis"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ms27"]
+load_path = "res://.godot/imported/UI_Right_Arrow.png-49de77486f8c81270019eec49d94c7a7.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qetup"]
+bg_color = Color(0.0672571, 0.738141, 0.769152, 0.576471)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vv3wc"]
+load_path = "res://.godot/imported/UI_Settings_Button.png-a7940ea936f201030f62be00788bfdf7.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsttf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4vbqh"]
+load_path = "res://.godot/imported/UI_Inventory_Button.png-91a1d8cc795f6373bb47478c9200560c.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em86d"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7u2b5"]
+load_path = "res://.godot/imported/UI_Shop-1_Button.png-f7b61d15668cb197f84f29ba8105666f.ctex"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AvatarContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="AvatarContainer"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 88.0
+offset_right = 552.0
+offset_bottom = 608.0
+texture = ExtResource("1_0k8kj")
+
+[node name="LeftArrow" type="Button" parent="AvatarContainer"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 312.0
+offset_right = 200.0
+offset_bottom = 384.0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0k7gg")
+icon = SubResource("CompressedTexture2D_i2j01")
+flat = true
+
+[node name="RightArrow" type="Button" parent="AvatarContainer"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 312.0
+offset_right = 632.0
+offset_bottom = 384.0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u7uis")
+icon = SubResource("CompressedTexture2D_7ms27")
+flat = true
+
+[node name="LeftSideBar" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.049
+anchor_right = 0.09
+anchor_bottom = 0.395
+offset_left = 16.0
+offset_top = -15.752
+offset_right = -15.68
+offset_bottom = -15.96
+
+[node name="Settings" type="Button" parent="LeftSideBar"]
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qetup")
+icon = SubResource("CompressedTexture2D_vv3wc")
+flat = true
+
+[node name="Inventory" type="Button" parent="LeftSideBar"]
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lsttf")
+icon = SubResource("CompressedTexture2D_4vbqh")
+flat = true
+
+[node name="Shop" type="Button" parent="LeftSideBar"]
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_em86d")
+icon = SubResource("CompressedTexture2D_7u2b5")
+flat = true
+
+[node name="XPBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 16.0
+offset_right = 688.0
+offset_bottom = 43.0
+
+[node name="CurrencyDisplay" type="Label" parent="."]
+layout_mode = 0
+offset_left = 784.0
+offset_top = 16.0
+offset_right = 1104.0
+offset_bottom = 39.0
+text = "Currency"
+
+[node name="GameButtonsContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 120.0
+offset_right = 960.0
+offset_bottom = 280.0
+scale = Vector2(1.58986, 2.86938)
+alignment = 1
+
+[node name="Patintero" type="Button" parent="GameButtonsContainer"]
+layout_mode = 2
+text = "Patintero"
+
+[node name="TumbangPreso" type="Button" parent="GameButtonsContainer"]
+layout_mode = 2
+text = "Tumbang Preso"
+expand_icon = true
+
+[node name="BenteUno" type="Button" parent="GameButtonsContainer"]
+layout_mode = 2
+text = "Bente Uno"
