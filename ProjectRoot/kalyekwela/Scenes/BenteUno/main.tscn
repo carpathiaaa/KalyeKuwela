@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://btigs8qepl0d1"]
+[gd_scene load_steps=23 format=4 uid="uid://btigs8qepl0d1"]
 
 [ext_resource type="Script" path="res://Scripts/BenteUno/main.gd" id="1_5daw8"]
 [ext_resource type="Texture2D" uid="uid://bsxuxx7c0jfwl" path="res://Assets/Art/Tilesets/Solaria Demo Tiles.png" id="1_xfjx1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/BenteUno/status_label.gd" id="4_ucocf"]
 [ext_resource type="FontFile" uid="uid://d2wgai6ruks4g" path="res://Assets/Art/Fonts/alanus.ttf" id="5_7h8mv"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="5_8i8h2"]
+[ext_resource type="Texture2D" uid="uid://bj1kex2dy14b1" path="res://Assets/Art/UI/UI_Temp_Pause.png" id="8_5w6v4"]
 [ext_resource type="PackedScene" uid="uid://cbpahr54gaur2" path="res://Scenes/BenteUno/touch_controls.tscn" id="8_mrcmj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4sjh7"]
@@ -1579,6 +1580,29 @@ texture = ExtResource("1_xfjx1")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_txy6r")
 
+[sub_resource type="GDScript" id="GDScript_rrhka"]
+script/source = "extends CanvasLayer
+
+@onready var pause_button = $PauseButton
+@onready var pause_menu = $PauseMenu
+
+var paused = false
+
+func _ready():
+	if Input.is_action_just_pressed('pause'):
+		pauseMenu()
+		
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+		
+	paused = !paused
+"
+
 [sub_resource type="LabelSettings" id="LabelSettings_p3lun"]
 font = ExtResource("5_7h8mv")
 font_size = 60
@@ -1605,6 +1629,8 @@ outline_size = 10
 outline_color = Color(1, 1, 0.392157, 1)
 shadow_size = 16
 shadow_color = Color(0.235294, 0, 0.352941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrn14"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5daw8")
@@ -1634,6 +1660,7 @@ position = Vector2(1, 0)
 [node name="NPCs" parent="." instance=ExtResource("3_tbbdd")]
 
 [node name="UI" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_rrhka")
 
 [node name="GameTimerLabel" type="Label" parent="UI"]
 texture_filter = 1
@@ -1652,6 +1679,8 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_hmxs6")
@@ -1660,13 +1689,17 @@ vertical_alignment = 1
 
 [node name="CountdownLabel" type="Label" parent="UI"]
 texture_filter = 1
-offset_right = 1.0
-offset_bottom = 61.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 0.54902, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.235294, 0, 0.352941, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 0.392157, 1)
 label_settings = SubResource("LabelSettings_ht14i")
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StatusLabels" type="Node2D" parent="UI"]
@@ -1681,6 +1714,62 @@ script = ExtResource("4_ucocf")
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="PauseButton" type="Button" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.0
+offset_right = 54.0
+offset_bottom = 108.0
+grow_horizontal = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yrn14")
+action_mode = 0
+icon = ExtResource("8_5w6v4")
+flat = true
+
+[node name="PauseMenu" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PausePanel" type="Panel" parent="UI/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseMenu/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -33.0
+offset_right = 35.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="UI/PauseMenu/PausePanel/VBoxContainer"]
+layout_mode = 2
+action_mode = 0
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="UI/PauseMenu/PausePanel/VBoxContainer"]
+layout_mode = 2
+action_mode = 0
+text = "Quit"
+
 [node name="GameTimer" type="Timer" parent="."]
 
 [node name="StartTimer" type="Timer" parent="."]
@@ -1692,3 +1781,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TouchControls" parent="Control" instance=ExtResource("8_mrcmj")]
+
+[connection signal="pressed" from="UI/PauseMenu/PausePanel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PausePanel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

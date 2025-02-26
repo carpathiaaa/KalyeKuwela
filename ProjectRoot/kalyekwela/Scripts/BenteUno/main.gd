@@ -8,14 +8,37 @@ extends Node2D
 @onready var player = $Player
 @onready var npcs = $NPCs.get_children()
 
+
+@onready var pause_button = $UI/PauseButton
+@onready var pause_menu = $UI/PauseMenu
+@onready var resume_button = $UI/PauseMenu/PausePanel/VBoxContainer/ResumeButton
+@onready var quit_button = $UI/PauseMenu/PausePanel/VBoxContainer/QuitButton
+
+var paused = false
+		
 var first_chaser_assigned = false  # Prevents multiple assignments
 var game_has_ended = false  # Prevents duplicate game-over calls
 
 func _ready():
-	# Ensure countdown label is centered
-	# Center the label using viewport size
-	var screen_size = get_viewport_rect().size
-	countdown_label.position = screen_size / 2 - countdown_label.size / 2
+	pause_menu.hide()
+	paused = false  # Reset pause state
+	first_chaser_assigned = false  # Ensure first chaser is re-selected
+	game_has_ended = false  # Allow game to end properly
+
+	game_timer.stop()  # Ensure timers reset
+	start_timer.stop()
+	
+	game_timer.wait_time = 90  # Reset game time
+	game_timer_label.text = "Time: 01:30"  # Reset label
+	countdown_label.text = "3"  # Reset countdown
+
+	pause_menu.hide()  # Ensure pause menu is hidden
+	Engine.time_scale = 1  # Unpause the game
+
+	# Reset player and NPC states
+	player.is_chaser = false  # Ensure player is a runner at the start
+	for npc in npcs:
+		npc.is_chaser = false  # Reset NPC chasers
 
 	countdown_label.visible = true
 	game_over_label.visible = false
@@ -31,6 +54,8 @@ func _ready():
 	game_timer.timeout.connect(_on_game_timer_timeout)
 
 func _process(delta):
+	if Input.is_action_just_pressed('pause'):
+		pauseMenu()
 	# Update game timer label
 	if game_timer.time_left > 0 and game_timer_label.visible:
 		update_game_timer_label()
@@ -39,6 +64,16 @@ func _process(delta):
 	if not game_has_ended and all_are_chasers():
 		game_over("Game Over. Chasers Won!")
 
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+		
+	paused = !paused
+	
 func countdown_sequence():
 	countdown_label.text = "3"
 	await get_tree().create_timer(1).timeout
@@ -125,4 +160,16 @@ func game_over(message):
 
 	# Wait a few seconds before quitting
 	await get_tree().create_timer(3).timeout
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://Scenes/MainMenu/menu.tscn")
+
+
+func _on_resume_button_pressed() -> void:
+	print("Resuming game")
+	pauseMenu()
+
+func _on_quit_button_pressed() -> void:
+	print("Quitting game")
+	get_tree().change_scene_to_file("res://Scenes/MainMenu/menu.tscn")
+
+func _exit_tree():
+	Engine.time_scale = 1  # Ensure time resumes properly
