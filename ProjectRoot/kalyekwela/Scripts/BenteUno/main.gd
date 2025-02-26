@@ -21,6 +21,8 @@ var game_has_ended = false  # Prevents duplicate game-over calls
 
 func _ready():
 	pause_menu.hide()
+	pause_button.pressed.connect(pauseMenu)
+
 	paused = false  # Reset pause state
 	first_chaser_assigned = false  # Ensure first chaser is re-selected
 	game_has_ended = false  # Allow game to end properly
@@ -157,7 +159,15 @@ func game_over(message):
 	game_over_label.text = message  # Set message
 	game_timer_label.visible = false  # Hide timer when game ends
 	print(message)  # Debug print
+	
+	# Give rewards based on outcome
+	if message == "Game Over. Chasers Won!":
+		GlobalData.add_rewards(10, 10)
+	elif message == "Game Over. Runners Won!":
+		GlobalData.add_rewards(50, 50)
 
+	print("Coins:", GlobalData.coins, "XP:", GlobalData.xp)  # Debugging
+	
 	# Wait a few seconds before quitting
 	await get_tree().create_timer(3).timeout
 	get_tree().change_scene_to_file("res://Scenes/MainMenu/menu.tscn")
@@ -173,3 +183,4 @@ func _on_quit_button_pressed() -> void:
 
 func _exit_tree():
 	Engine.time_scale = 1  # Ensure time resumes properly
+	

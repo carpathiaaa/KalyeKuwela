@@ -47,6 +47,8 @@ offset_left = 128.0
 offset_top = 312.0
 offset_right = 200.0
 offset_bottom = 384.0
+focus_mode = 0
+mouse_filter = 1
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0k7gg")
 icon = ExtResource("2_ygpto")
 flat = true
@@ -57,6 +59,8 @@ offset_left = 560.0
 offset_top = 312.0
 offset_right = 632.0
 offset_bottom = 384.0
+focus_mode = 0
+mouse_filter = 1
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u7uis")
 icon = ExtResource("3_74lo6")
 flat = true
@@ -71,21 +75,25 @@ offset_left = 16.0
 offset_top = -15.752
 offset_right = -15.68
 offset_bottom = -15.96
+mouse_filter = 2
 
 [node name="Settings" type="Button" parent="LeftSideBar"]
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qetup")
 icon = ExtResource("4_yfkjy")
 flat = true
 
 [node name="Inventory" type="Button" parent="LeftSideBar"]
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lsttf")
 icon = ExtResource("5_1765b")
 flat = true
 
 [node name="Shop" type="Button" parent="LeftSideBar"]
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/pressed = SubResource("StyleBoxFlat_em86d")
 icon = ExtResource("6_uouwt")
 flat = true
@@ -112,6 +120,7 @@ offset_top = 120.0
 offset_right = 936.0
 offset_bottom = 280.0
 scale = Vector2(1.58986, 2.86938)
+mouse_filter = 2
 alignment = 1
 
 [node name="Patintero" type="Button" parent="GameButtonsContainer"]
@@ -125,4 +134,5 @@ expand_icon = true
 
 [node name="BenteUno" type="Button" parent="GameButtonsContainer"]
 layout_mode = 2
+action_mode = 0
 text = "Bente Uno"
