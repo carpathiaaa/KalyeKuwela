@@ -43,7 +43,7 @@ func update_animation(direction):
 	elif direction.y > 0:
 		animated_sprite.play("WalkFront")
 	else:
-		animated_sprite.play("IdleBack")
+		animated_sprite.play("WalkBack")
 
 func _on_tag_area_body_entered(body):
 	# Ensure we're tagging an NPC that is a runner

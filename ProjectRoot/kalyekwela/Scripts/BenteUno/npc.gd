@@ -60,7 +60,7 @@ func update_animation(direction):
 	elif direction.y > 0:
 		animated_sprite.play("WalkFront")
 	else:
-		animated_sprite.play("IdleBack")
+		animated_sprite.play("WalkBack")
 
 func pick_new_direction():
 	target_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()

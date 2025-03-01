@@ -124,22 +124,31 @@ func _is_point_inside_base(point: Vector2) -> bool:
 
 func _update_joystick(touch_position: Vector2) -> void:
 	var _base_radius = _get_base_radius()
-	var center : Vector2 = _base.global_position + _base_radius
-	var vector : Vector2 = touch_position - center
+	var center: Vector2 = _base.global_position + _base_radius
+	var vector: Vector2 = touch_position - center
 	vector = vector.limit_length(clampzone_size)
-	
+
 	if joystick_mode == Joystick_mode.FOLLOWING and touch_position.distance_to(center) > clampzone_size:
 		_move_base(touch_position - vector)
-	
+
 	_move_tip(center + vector)
-	
+
 	if vector.length_squared() > deadzone_size * deadzone_size:
 		is_pressed = true
 		output = (vector - (vector.normalized() * deadzone_size)) / (clampzone_size - deadzone_size)
+
+		# ✅ Apply axis prioritization with a threshold
+		var threshold = 0.3  # Adjust this value for more/less forgiveness
+
+		if abs(output.x) > abs(output.y) and abs(output.y) < threshold:  
+			output.y = 0  # Snap to horizontal if vertical deviation is small
+		elif abs(output.y) > abs(output.x) and abs(output.x) < threshold:
+			output.x = 0  # Snap to vertical if horizontal deviation is small
+
 	else:
 		is_pressed = false
 		output = Vector2.ZERO
-	
+
 	if use_input_actions:
 		# Release actions
 		if output.x >= 0 and Input.is_action_pressed(action_left):
@@ -159,6 +168,7 @@ func _update_joystick(touch_position: Vector2) -> void:
 			Input.action_press(action_up, -output.y)
 		if output.y > 0:
 			Input.action_press(action_down, output.y)
+
 
 func _reset():
 	is_pressed = false
