@@ -5,8 +5,8 @@ var is_chaser: bool = false
 var target_direction: Vector2
 var target_runner: CharacterBody2D = null  # Chasers will chase this
 var nearby_chaser: CharacterBody2D = null  # Runners will flee from this
-var chase_speed: float = 20  # Speed boost when chasing
-var flee_speed: float = 160  # Speed boost when fleeing
+var chase_speed: float = 80  # Further reduced chaser speed
+var flee_speed: float = 200  # Increased flee speed to make runners harder to catch
 
 @onready var timer = $Timer
 @onready var status_label = $StatusLabel
@@ -29,19 +29,10 @@ func _ready():
 	flee_area.body_exited.connect(_on_flee_area_body_exited)
 
 func _physics_process(delta):
-	if is_chaser and target_runner and not target_runner.is_chaser:
-		# Chase the runner
-		target_direction = (target_runner.global_position - global_position).normalized()
-		velocity = target_direction * chase_speed
-	elif not is_chaser and nearby_chaser:
-		# Flee from chaser
-		target_direction = (global_position - nearby_chaser.global_position).normalized()
-		velocity = target_direction * flee_speed
+	if is_chaser:
+		update_chaser_behavior()
 	else:
-		# Default wandering movement
-		velocity = target_direction * speed
-
-	update_animation(target_direction)
+		update_runner_behavior()
 
 	# Check for collisions before moving
 	var collision = move_and_collide(velocity * delta)
@@ -52,6 +43,57 @@ func _physics_process(delta):
 		handle_collision()  # Change direction on collision
 
 	move_and_slide()
+	update_animation(target_direction)
+
+# --- CHASER BEHAVIOR ---
+func update_chaser_behavior():
+	if not target_runner or target_runner.is_chaser:
+		target_runner = find_closest_runner()
+	
+	if target_runner:
+		target_direction = (target_runner.global_position - global_position).normalized()
+		velocity = target_direction * chase_speed
+	else:
+		# No runner detected, move randomly
+		velocity = target_direction * speed
+
+# --- RUNNER BEHAVIOR ---
+func update_runner_behavior():
+	if nearby_chaser:
+		target_direction = (global_position - nearby_chaser.global_position).normalized()
+
+		# Predictive fleeing - adjust angle based on chaser's movement
+		var predicted_position = nearby_chaser.global_position + nearby_chaser.velocity * 0.5
+		target_direction = (global_position - predicted_position).normalized()
+
+		# Dodge randomly
+		target_direction = add_random_dodge(target_direction)
+
+		# Increase speed dynamically when a chaser is very close
+		var distance = global_position.distance_to(nearby_chaser.global_position)
+		var dynamic_speed = flee_speed + (200 - distance) * 0.3  # The closer the chaser, the faster the runner
+		velocity = target_direction * clamp(dynamic_speed, flee_speed, flee_speed + 40)
+	else:
+		# Default wandering movement
+		velocity = target_direction * speed
+
+func find_closest_runner():
+	var closest_runner = null
+	var min_distance = INF
+
+	for body in detection_area.get_overlapping_bodies():
+		if body is CharacterBody2D and not body.is_chaser:
+			var distance = global_position.distance_to(body.global_position)
+			if distance < min_distance:
+				min_distance = distance
+				closest_runner = body
+
+	return closest_runner
+
+func add_random_dodge(direction: Vector2) -> Vector2:
+	# Introduce slight randomness to the runner's fleeing movement
+	var dodge_angle = randf_range(-PI / 6, PI / 6)
+	return direction.rotated(dodge_angle).normalized()
 
 func update_animation(direction):
 	if abs(direction.x) > abs(direction.y):
@@ -87,7 +129,7 @@ func _on_body_entered(body):
 
 func _on_detection_area_body_entered(body):
 	if body is CharacterBody2D and not body.is_chaser and is_chaser:
-		target_runner = body  # Start chasing the runner
+		target_runner = find_closest_runner()  # Find the nearest runner
 		print(name, " detected ", body.name, " and is now chasing!")
 
 func _on_detection_area_body_exited(body):
@@ -108,7 +150,7 @@ func _on_flee_area_body_exited(body):
 func become_chaser():
 	if not is_chaser:
 		is_chaser = true
-		speed = 130  # Slight speed boost
+		speed = 100  # Slight speed boost
 		target_runner = null  # Stop chasing when turned into a chaser
 		nearby_chaser = null  # Stop fleeing when becoming a chaser
 		pick_new_direction()  # Resume random movement

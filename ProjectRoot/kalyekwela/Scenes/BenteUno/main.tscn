@@ -1,14 +1,15 @@
-[gd_scene load_steps=23 format=4 uid="uid://btigs8qepl0d1"]
+[gd_scene load_steps=26 format=4 uid="uid://btigs8qepl0d1"]
 
 [ext_resource type="Script" path="res://Scripts/BenteUno/main.gd" id="1_5daw8"]
 [ext_resource type="Texture2D" uid="uid://bsxuxx7c0jfwl" path="res://Assets/Art/Tilesets/Solaria Demo Tiles.png" id="1_xfjx1"]
 [ext_resource type="PackedScene" uid="uid://cq5xt52v2s0h1" path="res://Scenes/BenteUno/player.tscn" id="1_ydfnf"]
 [ext_resource type="PackedScene" uid="uid://dvsd26v8oyj3e" path="res://Scenes/BenteUno/npcs.tscn" id="3_tbbdd"]
 [ext_resource type="Script" path="res://Scripts/BenteUno/status_label.gd" id="4_ucocf"]
-[ext_resource type="FontFile" uid="uid://d2wgai6ruks4g" path="res://Assets/Art/Fonts/alanus.ttf" id="5_7h8mv"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="5_8i8h2"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="5_llm1q"]
 [ext_resource type="Texture2D" uid="uid://bj1kex2dy14b1" path="res://Assets/Art/UI/UI_Temp_Pause.png" id="8_5w6v4"]
 [ext_resource type="PackedScene" uid="uid://cbpahr54gaur2" path="res://Scenes/BenteUno/touch_controls.tscn" id="8_mrcmj"]
+[ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="9_eoh28"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4sjh7"]
 texture = ExtResource("1_xfjx1")
@@ -1603,14 +1604,14 @@ func pauseMenu():
 	paused = !paused
 "
 
-[sub_resource type="LabelSettings" id="LabelSettings_p3lun"]
-font = ExtResource("5_7h8mv")
-font_size = 60
+[sub_resource type="LabelSettings" id="LabelSettings_jfyph"]
+font = ExtResource("5_llm1q")
+font_size = 55
 font_color = Color(1, 0.647059, 0, 1)
-outline_size = 2
+outline_size = 10
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 4
-shadow_color = Color(0.545098, 0, 0, 0.921569)
+shadow_size = 12
+shadow_color = Color(0.545098, 0, 0, 0.796078)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hmxs6"]
 font = ExtResource("5_8i8h2")
@@ -1631,6 +1632,14 @@ shadow_size = 16
 shadow_color = Color(0.235294, 0, 0.352941, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrn14"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cnf0e"]
+texture = ExtResource("9_eoh28")
+region_rect = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_clvd3"]
+texture = ExtResource("9_eoh28")
+region_rect = Rect2(837, 132, 22, 24)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5daw8")
@@ -1671,7 +1680,7 @@ offset_left = 8.0
 offset_right = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-label_settings = SubResource("LabelSettings_p3lun")
+label_settings = SubResource("LabelSettings_jfyph")
 vertical_alignment = 3
 
 [node name="GameOverLabel" type="Label" parent="UI"]
@@ -1705,6 +1714,7 @@ vertical_alignment = 1
 [node name="StatusLabels" type="Node2D" parent="UI"]
 
 [node name="PlayerStatusLabel" type="Label" parent="UI/StatusLabels"]
+visible = false
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 23.0
@@ -1730,47 +1740,84 @@ flat = true
 
 [node name="PauseMenu" type="Control" parent="UI"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="PausePanel" type="Panel" parent="UI/PauseMenu"]
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(250, 200)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 556.0
-offset_top = 304.0
-offset_right = 556.0
-offset_bottom = 304.0
+offset_left = -125.0
+offset_top = -100.0
+offset_right = 125.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
+mouse_filter = 0
+texture = ExtResource("9_eoh28")
+region_rect = Rect2(107, 59, 26, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseMenu/PausePanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -60.0
-offset_right = 30.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ResumeButton" type="Button" parent="UI/PauseMenu/PausePanel/VBoxContainer"]
+[node name="ExitButtonContainer" type="VBoxContainer" parent="UI/PauseMenu/NinePatchRect"]
 layout_mode = 2
-action_mode = 0
+offset_right = 250.0
+offset_bottom = 200.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PauseMenu/NinePatchRect/ExitButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="ResumeButton" type="Button" parent="UI/PauseMenu/NinePatchRect/ExitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_cnf0e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cnf0e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_clvd3")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PauseMenu/NinePatchRect"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -10.0
+offset_right = 4.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseButtonContainer" type="VBoxContainer" parent="UI/PauseMenu/NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer"]
+layout_mode = 2
 text = "Resume"
 
-[node name="QuitButton" type="Button" parent="UI/PauseMenu/PausePanel/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer"]
 layout_mode = 2
-action_mode = 0
 text = "Quit"
 
 [node name="GameTimer" type="Timer" parent="."]
@@ -1785,5 +1832,4 @@ offset_bottom = 40.0
 
 [node name="TouchControls" parent="Control" instance=ExtResource("8_mrcmj")]
 
-[connection signal="pressed" from="UI/PauseMenu/PausePanel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PausePanel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/NinePatchRect/ExitButtonContainer/MarginContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

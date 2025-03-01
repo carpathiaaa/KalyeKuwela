@@ -1,16 +1,35 @@
-[gd_scene load_steps=13 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=22 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://8n17ruun0gug" path="res://icon.svg" id="1_0k8kj"]
 [ext_resource type="Texture2D" uid="uid://bbl2uq87474xf" path="res://Assets/Art/UI/UI_Left_Arrow.png" id="2_ygpto"]
 [ext_resource type="Texture2D" uid="uid://tgufg6myrmuv" path="res://Assets/Art/UI/UI_Right_Arrow.png" id="3_74lo6"]
 [ext_resource type="Texture2D" uid="uid://t2oc6ibgs0qx" path="res://Assets/Art/UI/UI_Settings_Button.png" id="4_yfkjy"]
 [ext_resource type="Texture2D" uid="uid://bha2i2j1dw7dy" path="res://Assets/Art/UI/UI_Inventory_Button.png" id="5_1765b"]
+[ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="5_shxnd"]
+[ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="6_20xsy"]
 [ext_resource type="Texture2D" uid="uid://bbh1ap3j6kj5v" path="res://Assets/Art/UI/UI_Shop-1_Button.png" id="6_uouwt"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="7_cfydy"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="10_mu1tv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0k7gg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7uis"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_47n2f"]
+texture = ExtResource("6_20xsy")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(11, 11, 26, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jil2v"]
+texture = ExtResource("6_20xsy")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(107, 155, 26, 26)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qetup"]
 bg_color = Color(0.0672571, 0.738141, 0.769152, 0.576471)
@@ -19,7 +38,23 @@ bg_color = Color(0.0672571, 0.738141, 0.769152, 0.576471)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em86d"]
 
-[node name="MainMenu" type="Control"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0bmn"]
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pw66n"]
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(837, 132, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_46m0x"]
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oqk48"]
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(837, 132, 22, 24)
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("settings_popup", "inventory_popup", "shop_popup")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +62,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_cfydy")
+settings_popup = NodePath("SettingsPopUp")
+inventory_popup = NodePath("InventoryPopUp")
+shop_popup = NodePath("ShopPopup")
 
 [node name="AvatarContainer" type="Control" parent="."]
 anchors_preset = 0
@@ -65,52 +103,28 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_u7uis")
 icon = ExtResource("3_74lo6")
 flat = true
 
-[node name="LeftSideBar" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.049
-anchor_right = 0.09
-anchor_bottom = 0.395
-offset_left = 16.0
-offset_top = -15.752
-offset_right = -15.68
-offset_bottom = -15.96
-mouse_filter = 2
-
-[node name="Settings" type="Button" parent="LeftSideBar"]
-layout_mode = 2
-focus_mode = 0
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qetup")
-icon = ExtResource("4_yfkjy")
-flat = true
-
-[node name="Inventory" type="Button" parent="LeftSideBar"]
-layout_mode = 2
-focus_mode = 0
-theme_override_styles/pressed = SubResource("StyleBoxFlat_lsttf")
-icon = ExtResource("5_1765b")
-flat = true
-
-[node name="Shop" type="Button" parent="LeftSideBar"]
-layout_mode = 2
-focus_mode = 0
-theme_override_styles/pressed = SubResource("StyleBoxFlat_em86d")
-icon = ExtResource("6_uouwt")
-flat = true
-
 [node name="XPBar" type="ProgressBar" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_left = 216.0
 offset_top = 16.0
 offset_right = 688.0
 offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.176471, 0.0745098, 0.0156863, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_fonts/font = ExtResource("5_shxnd")
+theme_override_styles/background = SubResource("StyleBoxTexture_47n2f")
+theme_override_styles/fill = SubResource("StyleBoxTexture_jil2v")
 
 [node name="CurrencyDisplay" type="Label" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_left = 784.0
 offset_top = 16.0
 offset_right = 1104.0
-offset_bottom = 39.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("5_shxnd")
+theme_override_font_sizes/font_size = 20
 text = "Currency"
 
 [node name="GameButtonsContainer" type="VBoxContainer" parent="."]
@@ -136,3 +150,255 @@ expand_icon = true
 layout_mode = 2
 action_mode = 0
 text = "Bente Uno"
+
+[node name="PopupMenu" type="MarginContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LeftSideBarContainer" type="MarginContainer" parent="PopupMenu"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="LeftSideBar" type="VBoxContainer" parent="PopupMenu/LeftSideBarContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="ToggleSettingsButton" type="Button" parent="PopupMenu/LeftSideBarContainer/LeftSideBar"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qetup")
+icon = ExtResource("4_yfkjy")
+flat = true
+
+[node name="ToggleInventoryButton" type="Button" parent="PopupMenu/LeftSideBarContainer/LeftSideBar"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lsttf")
+icon = ExtResource("5_1765b")
+flat = true
+
+[node name="ToggleShopButton" type="Button" parent="PopupMenu/LeftSideBarContainer/LeftSideBar"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_em86d")
+icon = ExtResource("6_uouwt")
+flat = true
+
+[node name="SettingsPopUp" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SettingsBackground" type="NinePatchRect" parent="SettingsPopUp"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(107, 155, 26, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="SettingsPopUp"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPopUp/ExitButtonContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+theme_override_constants/margin_bottom = 0
+
+[node name="ToggleSettingsButton" type="Button" parent="SettingsPopUp/ExitButtonContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+mouse_filter = 1
+theme_override_styles/hover = SubResource("StyleBoxTexture_r0bmn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_r0bmn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pw66n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPopUp"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 11
+
+[node name="Control" type="Control" parent="SettingsPopUp/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SettingsText" type="Label" parent="SettingsPopUp/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
+[node name="InventoryPopUp" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InventoryBackground" type="NinePatchRect" parent="InventoryPopUp"]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(293, 101, 38, 38)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPopUp"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryPopUp/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="InventoryPopUp/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="InventoryText" type="Label" parent="InventoryPopUp/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 30
+text = "INVENTORY"
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="InventoryPopUp"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPopUp/ExitButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="ToggleInventoryButton" type="Button" parent="InventoryPopUp/ExitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
+
+[node name="ShopPopup" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ShopBackground" type="NinePatchRect" parent="ShopPopup"]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(293, 101, 38, 38)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopPopup"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopPopup/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="ShopPopup/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ShopText" type="Label" parent="ShopPopup/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 30
+text = "SHOP"
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="ShopPopup"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopPopup/ExitButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="ToggleShopButton" type="Button" parent="ShopPopup/ExitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
+
+[connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleSettingsButton" to="." method="_on_toggle_settings_button_pressed"]
+[connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleInventoryButton" to="." method="_on_toggle_inventory_button_pressed"]
+[connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleShopButton" to="." method="_on_toggle_shop_button_pressed"]
+[connection signal="pressed" from="SettingsPopUp/ExitButtonContainer/MarginContainer/ToggleSettingsButton" to="." method="_on_toggle_settings_button_pressed"]
+[connection signal="pressed" from="InventoryPopUp/ExitButtonContainer/MarginContainer/ToggleInventoryButton" to="." method="_on_toggle_inventory_button_pressed"]
+[connection signal="pressed" from="ShopPopup/ExitButtonContainer/MarginContainer/ToggleShopButton" to="." method="_on_toggle_shop_button_pressed"]

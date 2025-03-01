@@ -11,8 +11,8 @@ extends Node2D
 
 @onready var pause_button = $UI/PauseButton
 @onready var pause_menu = $UI/PauseMenu
-@onready var resume_button = $UI/PauseMenu/PausePanel/VBoxContainer/ResumeButton
-@onready var quit_button = $UI/PauseMenu/PausePanel/VBoxContainer/QuitButton
+@onready var resume_button = $UI/PauseMenu/NinePatchRect/VBoxContainer/ResumeButton
+@onready var quit_button = $UI/PauseMenu/NinePatchRect/VBoxContainer/QuitButton
 
 var paused = false
 		
@@ -183,4 +183,5 @@ func _on_quit_button_pressed() -> void:
 
 func _exit_tree():
 	Engine.time_scale = 1  # Ensure time resumes properly
+	
 	
