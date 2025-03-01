@@ -14,6 +14,8 @@ extends Node2D
 @onready var resume_button = $UI/PauseMenu/NinePatchRect/VBoxContainer/ResumeButton
 @onready var quit_button = $UI/PauseMenu/NinePatchRect/VBoxContainer/QuitButton
 
+@export var settings_popup: MarginContainer
+
 var paused = false
 		
 var first_chaser_assigned = false  # Prevents multiple assignments
@@ -183,5 +185,10 @@ func _on_quit_button_pressed() -> void:
 
 func _exit_tree():
 	Engine.time_scale = 1  # Ensure time resumes properly
-	
-	
+
+
+func toggle_popup(SettingsPopUp : MarginContainer):
+	SettingsPopUp.visible = !SettingsPopUp.visible  
+
+func _on_settings_button_pressed() -> void:
+	toggle_popup(settings_popup)

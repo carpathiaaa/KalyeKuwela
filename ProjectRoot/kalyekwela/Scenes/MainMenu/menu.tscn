@@ -332,6 +332,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_46m0x")
 theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
 
 [node name="ShopPopup" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
