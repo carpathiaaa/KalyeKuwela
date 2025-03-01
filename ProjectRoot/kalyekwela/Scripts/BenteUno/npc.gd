@@ -60,19 +60,27 @@ func update_chaser_behavior():
 # --- RUNNER BEHAVIOR ---
 func update_runner_behavior():
 	if nearby_chaser:
-		target_direction = (global_position - nearby_chaser.global_position).normalized()
+		var flee_vector = global_position - nearby_chaser.global_position
+		
+		# Predictive fleeing: anticipate chaser's future position
+		var predicted_chaser_pos = nearby_chaser.global_position + nearby_chaser.velocity * 0.3
+		var predicted_flee_vector = global_position - predicted_chaser_pos
+		
+		# If the predicted position is closer, prioritize it
+		if predicted_flee_vector.length() < flee_vector.length():
+			flee_vector = predicted_flee_vector
 
-		# Predictive fleeing - adjust angle based on chaser's movement
-		var predicted_position = nearby_chaser.global_position + nearby_chaser.velocity * 0.5
-		target_direction = (global_position - predicted_position).normalized()
+		# Check for walls in the flee direction
+		if is_path_blocked(flee_vector.normalized()):
+			flee_vector = find_alternate_escape_route(flee_vector)
+		
+		# Apply smart dodging (slight random angle)
+		flee_vector = add_random_dodge(flee_vector)
 
-		# Dodge randomly
-		target_direction = add_random_dodge(target_direction)
-
-		# Increase speed dynamically when a chaser is very close
+		# Dynamic speed boost when very close to a chaser
 		var distance = global_position.distance_to(nearby_chaser.global_position)
-		var dynamic_speed = flee_speed + (200 - distance) * 0.3  # The closer the chaser, the faster the runner
-		velocity = target_direction * clamp(dynamic_speed, flee_speed, flee_speed + 40)
+		var dynamic_speed = flee_speed + (200 - distance) * 0.5  
+		velocity = flee_vector.normalized() * clamp(dynamic_speed, flee_speed, flee_speed + 50)
 	else:
 		# Default wandering movement
 		velocity = target_direction * speed
@@ -91,9 +99,26 @@ func find_closest_runner():
 	return closest_runner
 
 func add_random_dodge(direction: Vector2) -> Vector2:
-	# Introduce slight randomness to the runner's fleeing movement
-	var dodge_angle = randf_range(-PI / 6, PI / 6)
+	# Dodge intelligently instead of randomly
+	var dodge_angle = randf_range(-PI / 8, PI / 8)
 	return direction.rotated(dodge_angle).normalized()
+
+func is_path_blocked(direction: Vector2) -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(global_position, global_position + direction * 30, 1)
+	var result = space_state.intersect_ray(query)
+	return result.size() > 0
+
+func find_alternate_escape_route(original_flee_vector: Vector2) -> Vector2:
+	var left_flee = original_flee_vector.rotated(PI / 4)
+	var right_flee = original_flee_vector.rotated(-PI / 4)
+
+	if not is_path_blocked(left_flee):
+		return left_flee.normalized()
+	elif not is_path_blocked(right_flee):
+		return right_flee.normalized()
+	else:
+		return -original_flee_vector.normalized()  # As a last resort, move backwards
 
 func update_animation(direction):
 	if abs(direction.x) > abs(direction.y):

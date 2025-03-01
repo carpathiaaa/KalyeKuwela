@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=31 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://8n17ruun0gug" path="res://icon.svg" id="1_0k8kj"]
 [ext_resource type="Texture2D" uid="uid://bbl2uq87474xf" path="res://Assets/Art/UI/UI_Left_Arrow.png" id="2_ygpto"]
@@ -8,7 +8,10 @@
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="5_shxnd"]
 [ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="6_20xsy"]
 [ext_resource type="Texture2D" uid="uid://bbh1ap3j6kj5v" path="res://Assets/Art/UI/UI_Shop-1_Button.png" id="6_uouwt"]
+[ext_resource type="Texture2D" uid="uid://cptpm8ckka6vx" path="res://Assets/Art/UI/UI_Patintero_Button.png" id="7_bvt3d"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="7_cfydy"]
+[ext_resource type="Texture2D" uid="uid://cr3olt3nawu3m" path="res://Assets/Art/UI/UI_BenteUno_Button.png" id="8_4ar3s"]
+[ext_resource type="Texture2D" uid="uid://cn2lpmiiv104s" path="res://Assets/Art/UI/UI_TumbangPreso_Button.png" id="8_b25sv"]
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="10_mu1tv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0k7gg"]
@@ -30,6 +33,36 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 region_rect = Rect2(107, 155, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ywgya"]
+texture = ExtResource("7_bvt3d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rdmqm"]
+texture = ExtResource("7_bvt3d")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iya4e"]
+texture = ExtResource("8_b25sv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wx4e"]
+texture = ExtResource("8_b25sv")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_apg3e"]
+texture = ExtResource("8_4ar3s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q0kws"]
+texture = ExtResource("8_4ar3s")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qetup"]
 bg_color = Color(0.0672571, 0.738141, 0.769152, 0.576471)
@@ -127,29 +160,56 @@ theme_override_fonts/font = ExtResource("5_shxnd")
 theme_override_font_sizes/font_size = 20
 text = "Currency"
 
-[node name="GameButtonsContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 696.0
-offset_top = 120.0
-offset_right = 936.0
-offset_bottom = 280.0
-scale = Vector2(1.58986, 2.86938)
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(450, 400)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -200.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_right = 60
+
+[node name="GameButtonsContainer" type="VBoxContainer" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 9
 alignment = 1
 
-[node name="Patintero" type="Button" parent="GameButtonsContainer"]
+[node name="Patintero" type="Button" parent="MarginContainer/GameButtonsContainer"]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
-text = "Patintero"
+focus_mode = 0
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ywgya")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ywgya")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ywgya")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rdmqm")
 
-[node name="TumbangPreso" type="Button" parent="GameButtonsContainer"]
+[node name="TumbangPreso" type="Button" parent="MarginContainer/GameButtonsContainer"]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
-text = "Tumbang Preso"
+focus_mode = 0
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_iya4e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iya4e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iya4e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5wx4e")
 expand_icon = true
 
-[node name="BenteUno" type="Button" parent="GameButtonsContainer"]
+[node name="BenteUno" type="Button" parent="MarginContainer/GameButtonsContainer"]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_apg3e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_apg3e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_apg3e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_q0kws")
 action_mode = 0
-text = "Bente Uno"
 
 [node name="PopupMenu" type="MarginContainer" parent="."]
 texture_filter = 1

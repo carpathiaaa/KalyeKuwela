@@ -2,7 +2,7 @@ extends Control
 
 #@onready var patintero_button = $GameButtonsContainer/PatinteroButton
 #@onready var tumbang_preso_button = $GameButtonsContainer/TumbangPresoButton
-@onready var bente_uno_button = $GameButtonsContainer/BenteUno
+@onready var bente_uno_button = $MarginContainer/GameButtonsContainer/BenteUno
 
 @onready var currency_display = $CurrencyDisplay
 @onready var xp_bar = $XPBar

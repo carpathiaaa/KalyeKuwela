@@ -8,7 +8,7 @@ var is_chaser: bool = false
 @onready var animated_sprite = $AnimatedSprite2D  # Reference to AnimatedSprite2D
 
 func _ready():
-	status_label.show()
+	#status_label.show()
 	status_label.position.y = -20
 	update_status()
 
@@ -59,12 +59,12 @@ func become_chaser():
 		print(name, " has become a CHASER!")
 
 func update_status():
-	status_label.show()
+	#status_label.show()
 	if is_chaser:
 		modulate = Color.RED
-		status_label.text = "Chaser"
+		#status_label.text = "Chaser"
 		status_label.add_theme_color_override("font_color", Color.RED)
 	else:
 		modulate = Color.WHITE
-		status_label.text = "Runner"
+		#status_label.text = "Runner"
 		status_label.add_theme_color_override("font_color", Color.BLUE)
