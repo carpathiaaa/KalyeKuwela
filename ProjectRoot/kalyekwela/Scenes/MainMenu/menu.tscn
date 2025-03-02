@@ -1,12 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=33 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://8n17ruun0gug" path="res://icon.svg" id="1_0k8kj"]
-[ext_resource type="Texture2D" uid="uid://bbl2uq87474xf" path="res://Assets/Art/UI/UI_Left_Arrow.png" id="2_ygpto"]
-[ext_resource type="Texture2D" uid="uid://tgufg6myrmuv" path="res://Assets/Art/UI/UI_Right_Arrow.png" id="3_74lo6"]
+[ext_resource type="Texture2D" uid="uid://cj24rdfxxjaxj" path="res://Assets/Art/UI/UI_ChooseCharacter_Arrow.png" id="3_ttohg"]
 [ext_resource type="Texture2D" uid="uid://t2oc6ibgs0qx" path="res://Assets/Art/UI/UI_Settings_Button.png" id="4_yfkjy"]
 [ext_resource type="Texture2D" uid="uid://bha2i2j1dw7dy" path="res://Assets/Art/UI/UI_Inventory_Button.png" id="5_1765b"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="5_shxnd"]
 [ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="6_20xsy"]
+[ext_resource type="Texture2D" uid="uid://cm1gmryjcfhrw" path="res://Assets/Art/UI/UI_XP_Bar.png" id="6_hddgj"]
 [ext_resource type="Texture2D" uid="uid://bbh1ap3j6kj5v" path="res://Assets/Art/UI/UI_Shop-1_Button.png" id="6_uouwt"]
 [ext_resource type="Texture2D" uid="uid://cptpm8ckka6vx" path="res://Assets/Art/UI/UI_Patintero_Button.png" id="7_bvt3d"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="7_cfydy"]
@@ -14,25 +14,37 @@
 [ext_resource type="Texture2D" uid="uid://cn2lpmiiv104s" path="res://Assets/Art/UI/UI_TumbangPreso_Button.png" id="8_b25sv"]
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="10_mu1tv"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0k7gg"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ws4gy"]
+texture = ExtResource("3_ttohg")
+region_rect = Rect2(68, 10, 58, 44)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7uis"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qhoib"]
+texture = ExtResource("3_ttohg")
+region_rect = Rect2(3, 9, 59, 46)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb7er"]
+texture = ExtResource("3_ttohg")
+region_rect = Rect2(194, 10, 58, 44)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4iwnx"]
+texture = ExtResource("3_ttohg")
+region_rect = Rect2(131, 9, 58, 46)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_47n2f"]
-texture = ExtResource("6_20xsy")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-region_rect = Rect2(11, 11, 26, 28)
+texture = ExtResource("6_hddgj")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(264, 8, 178, 50)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jil2v"]
-texture = ExtResource("6_20xsy")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-region_rect = Rect2(107, 155, 26, 26)
+texture = ExtResource("6_hddgj")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(72, 8, 177, 50)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ywgya"]
 texture = ExtResource("7_bvt3d")
@@ -120,9 +132,10 @@ offset_right = 200.0
 offset_bottom = 384.0
 focus_mode = 0
 mouse_filter = 1
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0k7gg")
-icon = ExtResource("2_ygpto")
-flat = true
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ws4gy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ws4gy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ws4gy")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qhoib")
 
 [node name="RightArrow" type="Button" parent="AvatarContainer"]
 layout_mode = 0
@@ -132,9 +145,10 @@ offset_right = 632.0
 offset_bottom = 384.0
 focus_mode = 0
 mouse_filter = 1
-theme_override_styles/pressed = SubResource("StyleBoxFlat_u7uis")
-icon = ExtResource("3_74lo6")
-flat = true
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_eb7er")
+theme_override_styles/hover = SubResource("StyleBoxTexture_eb7er")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eb7er")
+theme_override_styles/normal = SubResource("StyleBoxTexture_4iwnx")
 
 [node name="XPBar" type="ProgressBar" parent="."]
 texture_filter = 1
@@ -456,6 +470,19 @@ focus_mode = 0
 theme_override_styles/hover = SubResource("StyleBoxTexture_46m0x")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_46m0x")
 theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
+
+[node name="XPBarIcon" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 10.0
+offset_right = 222.0
+offset_bottom = 50.0
+texture = ExtResource("6_hddgj")
+region_rect = Rect2(1, 1, 64, 64)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleSettingsButton" to="." method="_on_toggle_settings_button_pressed"]
 [connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleInventoryButton" to="." method="_on_toggle_inventory_button_pressed"]
