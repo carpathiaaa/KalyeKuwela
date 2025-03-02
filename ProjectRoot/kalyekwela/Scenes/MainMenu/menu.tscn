@@ -1,6 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=35 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://8n17ruun0gug" path="res://icon.svg" id="1_0k8kj"]
+[ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="2_nbuy7"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/parallax_background.gd" id="2_pemtm"]
 [ext_resource type="Texture2D" uid="uid://cj24rdfxxjaxj" path="res://Assets/Art/UI/UI_ChooseCharacter_Arrow.png" id="3_ttohg"]
 [ext_resource type="Texture2D" uid="uid://t2oc6ibgs0qx" path="res://Assets/Art/UI/UI_Settings_Button.png" id="4_yfkjy"]
 [ext_resource type="Texture2D" uid="uid://bha2i2j1dw7dy" path="res://Assets/Art/UI/UI_Inventory_Button.png" id="5_1765b"]
@@ -110,6 +112,24 @@ script = ExtResource("7_cfydy")
 settings_popup = NodePath("SettingsPopUp")
 inventory_popup = NodePath("InventoryPopUp")
 shop_popup = NodePath("ShopPopup")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_pemtm")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 648)
+
+[node name="Background" type="NinePatchRect" parent="ParallaxBackground/ParallaxLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nbuy7")
 
 [node name="AvatarContainer" type="Control" parent="."]
 anchors_preset = 0

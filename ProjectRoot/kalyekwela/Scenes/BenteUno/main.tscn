@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/BenteUno/status_label.gd" id="4_ucocf"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="5_8i8h2"]
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="5_llm1q"]
-[ext_resource type="Texture2D" uid="uid://bj1kex2dy14b1" path="res://Assets/Art/UI/UI_Temp_Pause.png" id="8_5w6v4"]
+[ext_resource type="Texture2D" uid="uid://psw4jh7jxdpg" path="res://Assets/Art/UI/UI_Pause_Button.png" id="8_ld64f"]
 [ext_resource type="PackedScene" uid="uid://cbpahr54gaur2" path="res://Scenes/BenteUno/touch_controls.tscn" id="8_mrcmj"]
 [ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="9_eoh28"]
 
@@ -1770,14 +1770,16 @@ offset_bottom = 23.0
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -54.0
-offset_right = 54.0
-offset_bottom = 108.0
+offset_left = -36.0
+offset_right = 36.0
+offset_bottom = 72.0
 grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_mode = 0
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yrn14")
 action_mode = 0
-icon = ExtResource("8_5w6v4")
+icon = ExtResource("8_ld64f")
 flat = true
 
 [node name="PauseMenu" type="Control" parent="UI"]
