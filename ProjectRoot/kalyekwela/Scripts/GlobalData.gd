@@ -111,3 +111,4 @@ func reset_data():
 	equipped_character = ""
 	equipped_accessory = ""
 	save_data()
+	

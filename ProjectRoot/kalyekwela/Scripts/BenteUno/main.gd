@@ -188,7 +188,11 @@ func _exit_tree():
 
 
 func toggle_popup(SettingsPopUp : MarginContainer):
-	SettingsPopUp.visible = !SettingsPopUp.visible  
+	SettingsPopUp.visible = !SettingsPopUp.visible
 
 func _on_settings_button_pressed() -> void:
+	toggle_popup(settings_popup)
+
+
+func _on_toggle_settings_button_pressed() -> void:
 	toggle_popup(settings_popup)

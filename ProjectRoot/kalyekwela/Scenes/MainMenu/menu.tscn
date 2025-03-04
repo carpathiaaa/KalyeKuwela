@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=66 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://8n17ruun0gug" path="res://icon.svg" id="1_0k8kj"]
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="2_nbuy7"]
@@ -20,8 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://b3p5twqw2j3w1" path="res://Assets/Art/UI/UI_AudioON_Icon.png" id="18_8bx3m"]
 [ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="19_ksjjr"]
 [ext_resource type="Texture2D" uid="uid://4ugxvi16ysu3" path="res://Assets/Art/UI/UI_BrightnessOn_Icon.png" id="20_48gs6"]
+[ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="21_h2p02"]
 [ext_resource type="AudioStream" uid="uid://d1ci46os0w5nh" path="res://Assets/Audio/Music/retro-game-arcade-236133.mp3" id="21_xk8gb"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/inventory_pop_up.gd" id="22_ldc7a"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/shop_popup.gd" id="22_stcao"]
+[ext_resource type="Texture2D" uid="uid://bsxuxx7c0jfwl" path="res://Assets/Art/Tilesets/Solaria Demo Tiles.png" id="23_kmq5h"]
+[ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="24_3mfu3"]
+[ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="24_gn6sn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ws4gy"]
 texture = ExtResource("3_ttohg")
@@ -112,6 +117,53 @@ texture = ExtResource("19_ksjjr")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q28in"]
 texture = ExtResource("20_48gs6")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qn5vo"]
+texture = ExtResource("21_h2p02")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(59, 13, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5gau"]
+texture = ExtResource("21_h2p02")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(11, 11, 26, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xn2py"]
+texture = ExtResource("24_3mfu3")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(59, 103, 26, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h7hxv"]
+texture = ExtResource("24_3mfu3")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(11, 102, 26, 19)
+
+[sub_resource type="Animation" id="Animation_wkt3w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(376, -300)]
+}
+
 [sub_resource type="Animation" id="Animation_hb5hc"]
 resource_name = "TransitionIn"
 length = 0.5
@@ -144,21 +196,6 @@ tracks/0/keys = {
 "values": [Vector2(376, 175), Vector2(376, 650)]
 }
 
-[sub_resource type="Animation" id="Animation_wkt3w"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(376, -300)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_42iq2"]
 _data = {
 "RESET": SubResource("Animation_wkt3w"),
@@ -173,6 +210,21 @@ region_rect = Rect2(869, 134, 22, 22)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oqk48"]
 texture = ExtResource("6_20xsy")
 region_rect = Rect2(837, 132, 22, 24)
+
+[sub_resource type="Animation" id="Animation_v6otd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(326, 124)]
+}
 
 [sub_resource type="Animation" id="Animation_cg4j6"]
 resource_name = "TransitionIn"
@@ -203,21 +255,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(326, 124), Vector2(326, 650)]
-}
-
-[sub_resource type="Animation" id="Animation_v6otd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(326, 124)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3skes"]
@@ -331,12 +368,17 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_jil2v")
 [node name="CurrencyDisplay" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 784.0
-offset_top = 16.0
-offset_right = 1104.0
-offset_bottom = 42.0
+offset_left = 753.0
+offset_top = 6.0
+offset_right = 1073.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(0.243452, 0.20382, 0.00965789, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_shxnd")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Currency"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -436,7 +478,6 @@ icon = ExtResource("6_uouwt")
 flat = true
 
 [node name="SettingsPopUp" type="MarginContainer" parent="." node_paths=PackedStringArray("brightness_overlay")]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -512,6 +553,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 90
 theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
 
 [node name="SettingsContents" type="VBoxContainer" parent="SettingsPopUp/SettingsFunctionContainer"]
 layout_mode = 2
@@ -560,6 +602,110 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_e5nwo")
 theme_override_styles/normal = SubResource("StyleBoxTexture_q28in")
 toggle_mode = true
 
+[node name="ResetDataMargin" type="MarginContainer" parent="SettingsPopUp/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 205
+theme_override_constants/margin_right = 70
+
+[node name="ResetGameDataButton" type="Button" parent="SettingsPopUp/SettingsFunctionContainer/ResetDataMargin"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(0.882353, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_qn5vo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qn5vo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_g5gau")
+text = "RESET GAME DATA"
+
+[node name="ConfirmationMargin" type="MarginContainer" parent="SettingsPopUp/SettingsFunctionContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_right = 70
+
+[node name="ConfirmationBackground" type="NinePatchRect" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("23_kmq5h")
+region_rect = Rect2(160, 192, 48, 48)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ConfirmationLabel" type="Label" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 13
+text = "Are you sure you want to reset all data? It cannot be recovered"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="YesButton" type="Button" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("24_gn6sn")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xn2py")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xn2py")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xn2py")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h7hxv")
+text = "yes
+"
+
+[node name="NoButton" type="Button" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("24_gn6sn")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xn2py")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xn2py")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xn2py")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h7hxv")
+text = "no
+"
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SettingsPopUp"]
 stream = ExtResource("21_xk8gb")
 autoplay = true
@@ -586,6 +732,7 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("22_ldc7a")
 
 [node name="InventoryBackground" type="NinePatchRect" parent="InventoryPopUp"]
 custom_minimum_size = Vector2(500, 400)
@@ -647,7 +794,76 @@ libraries = {
 }
 speed_scale = 4.0
 
+[node name="Category" type="MarginContainer" parent="InventoryPopUp"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_bottom = 310
+
+[node name="CategoryContainer" type="HBoxContainer" parent="InventoryPopUp/Category"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CharactersButton" type="Button" parent="InventoryPopUp/Category/CategoryContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_styles/focus = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nmp4r")
+text = "Characters"
+
+[node name="AccessoriesButton" type="Button" parent="InventoryPopUp/Category/CategoryContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_styles/focus = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nmp4r")
+text = "Accessories"
+
+[node name="MarginItems" type="MarginContainer" parent="InventoryPopUp"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ItemsContainer" type="GridContainer" parent="InventoryPopUp/MarginItems"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 4
+
+[node name="IconMargin" type="MarginContainer" parent="InventoryPopUp"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_top = -33
+theme_override_constants/margin_bottom = 33
+
+[node name="Control" type="Control" parent="InventoryPopUp/IconMargin"]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="InventoryPopUp/IconMargin"]
+layout_mode = 2
+
 [node name="ShopPopup" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -758,6 +974,7 @@ size_flags_vertical = 4
 columns = 4
 
 [node name="PurchasePopUp" type="MarginContainer" parent="ShopPopup"]
+visible = false
 custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -916,6 +1133,56 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_46m0x")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_46m0x")
 theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
 
+[node name="PurchaseNotifPopUp" type="MarginContainer" parent="ShopPopup"]
+layout_mode = 2
+
+[node name="PurchaseNotifBackground" type="NinePatchRect" parent="ShopPopup/PurchaseNotifPopUp"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("23_kmq5h")
+region_rect = Rect2(160, 192, 48, 48)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopPopup/PurchaseNotifPopUp"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="ShopPopup/PurchaseNotifPopUp/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NotEnoughCoinsLabel" type="Label" parent="ShopPopup/PurchaseNotifPopUp/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 13
+text = "Not enough coins!"
+
+[node name="OKButton" type="Button" parent="ShopPopup/PurchaseNotifPopUp/VBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("24_gn6sn")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xn2py")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xn2py")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xn2py")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h7hxv")
+text = "OK"
+
 [node name="XPBarIcon" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_left = 182.0
@@ -948,9 +1215,15 @@ color = Color(0, 0, 0, 0)
 [connection signal="value_changed" from="SettingsPopUp/SettingsFunctionContainer/SettingsContents/BrightnessSlider" to="SettingsPopUp" method="_on_brightness_slider_value_changed"]
 [connection signal="toggled" from="SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle" to="SettingsPopUp" method="_on_mute_toggle_toggled"]
 [connection signal="toggled" from="SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/BrightnessToggle" to="SettingsPopUp" method="_on_brightness_toggle_toggled"]
+[connection signal="pressed" from="SettingsPopUp/SettingsFunctionContainer/ResetDataMargin/ResetGameDataButton" to="SettingsPopUp" method="_on_reset_game_data_button_pressed"]
+[connection signal="pressed" from="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton" to="SettingsPopUp" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton" to="SettingsPopUp" method="_on_no_button_pressed"]
 [connection signal="pressed" from="InventoryPopUp/ExitButtonContainer/MarginContainer/ToggleInventoryButton" to="." method="_on_toggle_inventory_button_pressed"]
+[connection signal="pressed" from="InventoryPopUp/Category/CategoryContainer/CharactersButton" to="InventoryPopUp" method="_on_characters_button_pressed"]
+[connection signal="pressed" from="InventoryPopUp/Category/CategoryContainer/AccessoriesButton" to="InventoryPopUp" method="_on_accessories_button_pressed"]
 [connection signal="pressed" from="ShopPopup/Category/CategoryContainer/CharactersButton" to="ShopPopup" method="_on_characters_button_pressed"]
 [connection signal="pressed" from="ShopPopup/Category/CategoryContainer/AccessoriesButton" to="ShopPopup" method="_on_accessories_button_pressed"]
 [connection signal="pressed" from="ShopPopup/PurchasePopUp/ConfimationActionMargin/ConfirmationContainer/ConfirmButton" to="ShopPopup" method="_on_confirm_button_pressed"]
 [connection signal="pressed" from="ShopPopup/PurchasePopUp/ConfimationActionMargin/ConfirmationContainer/CancelButton" to="ShopPopup" method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="ShopPopup/ExitButtonContainer/MarginContainer/ToggleShopButton" to="." method="_on_toggle_shop_button_pressed"]
+[connection signal="pressed" from="ShopPopup/PurchaseNotifPopUp/VBoxContainer/OKButton" to="ShopPopup" method="_on_ok_button_pressed"]
