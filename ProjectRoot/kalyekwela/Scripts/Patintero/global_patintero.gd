@@ -12,6 +12,7 @@ func player_death() -> void:
 	patintero_interface.hide_interface()
 	touch_controls.visible = false
 	main_player.player_speed = 0
+	GlobalData.coins += _coins
 
 func add_points(points_gained : int) -> void:
 	_points += points_gained
