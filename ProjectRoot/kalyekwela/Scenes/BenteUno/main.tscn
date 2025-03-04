@@ -1,18 +1,28 @@
-[gd_scene load_steps=32 format=4 uid="uid://btigs8qepl0d1"]
+[gd_scene load_steps=49 format=4 uid="uid://btigs8qepl0d1"]
 
 [ext_resource type="Script" path="res://Scripts/BenteUno/main.gd" id="1_5daw8"]
-[ext_resource type="Texture2D" uid="uid://bsxuxx7c0jfwl" path="res://Assets/Art/Tilesets/Solaria Demo Tiles.png" id="1_xfjx1"]
 [ext_resource type="PackedScene" uid="uid://cq5xt52v2s0h1" path="res://Scenes/BenteUno/player.tscn" id="1_ydfnf"]
 [ext_resource type="PackedScene" uid="uid://dvsd26v8oyj3e" path="res://Scenes/BenteUno/npcs.tscn" id="3_tbbdd"]
 [ext_resource type="Script" path="res://Scripts/BenteUno/status_label.gd" id="4_ucocf"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="5_8i8h2"]
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="5_llm1q"]
-[ext_resource type="Texture2D" uid="uid://bj1kex2dy14b1" path="res://Assets/Art/UI/UI_Temp_Pause.png" id="8_5w6v4"]
+[ext_resource type="Texture2D" uid="uid://psw4jh7jxdpg" path="res://Assets/Art/UI/UI_Pause_Button.png" id="8_ld64f"]
 [ext_resource type="PackedScene" uid="uid://cbpahr54gaur2" path="res://Scenes/BenteUno/touch_controls.tscn" id="8_mrcmj"]
 [ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="9_eoh28"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/settings_pop_up.gd" id="10_63s56"]
+[ext_resource type="Texture2D" uid="uid://nf1rbka8apmk" path="res://Assets/Art/UI/UI_AudioOff_Icon.png" id="11_24ktb"]
+[ext_resource type="Texture2D" uid="uid://b3p5twqw2j3w1" path="res://Assets/Art/UI/UI_AudioON_Icon.png" id="12_7shxt"]
+[ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="13_cpphu"]
+[ext_resource type="Texture2D" uid="uid://4ugxvi16ysu3" path="res://Assets/Art/UI/UI_BrightnessOn_Icon.png" id="14_bbjku"]
+[ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="15_bx3ro"]
+[ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="16_asycb"]
+[ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="17_agl3i"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_keaca"]
+load_path = "res://.godot/imported/Solaria Demo Tiles.png-574d6cbd1daf0e340c174f80c741071e.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4sjh7"]
-texture = ExtResource("1_xfjx1")
+texture = SubResource("CompressedTexture2D_keaca")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -403,7 +413,7 @@ terrain_set_0/terrain_0/color = Color(0.497845, 0.0105208, 0.260775, 1)
 sources/0 = SubResource("TileSetAtlasSource_4sjh7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7a3v"]
-texture = ExtResource("1_xfjx1")
+texture = SubResource("CompressedTexture2D_keaca")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 1:0/0 = 0
@@ -815,7 +825,7 @@ terrain_set_0/terrain_0/color = Color(0.993375, 0.336583, 0.387025, 1)
 sources/0 = SubResource("TileSetAtlasSource_i7a3v")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2snqg"]
-texture = ExtResource("1_xfjx1")
+texture = SubResource("CompressedTexture2D_keaca")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1199,7 +1209,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_2snqg")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_txy6r"]
-texture = ExtResource("1_xfjx1")
+texture = SubResource("CompressedTexture2D_keaca")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1673,13 +1683,59 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 region_rect = Rect2(275, 178, 90, 27)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h1kyj"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h2xe5"]
 texture = ExtResource("9_eoh28")
 region_rect = Rect2(869, 134, 22, 22)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y37v0"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qlt2m"]
 texture = ExtResource("9_eoh28")
 region_rect = Rect2(837, 132, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ld1il"]
+texture = ExtResource("12_7shxt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vl8es"]
+texture = ExtResource("11_24ktb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p7pd7"]
+texture = ExtResource("14_bbjku")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdtrq"]
+texture = ExtResource("13_cpphu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vjjqo"]
+texture = ExtResource("15_bx3ro")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(59, 13, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mimlo"]
+texture = ExtResource("15_bx3ro")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(11, 11, 26, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekls6"]
+texture = ExtResource("17_agl3i")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(59, 103, 26, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_503dp"]
+texture = ExtResource("17_agl3i")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(11, 102, 26, 19)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tk5w4"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("settings_popup")]
 script = ExtResource("1_5daw8")
@@ -1695,7 +1751,7 @@ tile_set = SubResource("TileSet_c353t")
 
 [node name="Trees" type="TileMapLayer" parent="Ground"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD4/wMAAAAHAAAAAAD4/wQAAAAHAAEAAAD4/wUAAAAHAAIAAAD5/wMAAAAIAAAAAAD5/wQAAAAIAAEAAAD5/wUAAAAIAAIAAAD6/wMAAAAJAAAAAAD6/wQAAAAJAAEAAAD6/wUAAAAJAAIAAAAJAPf/AAAHAAAAAAAJAPj/AAAHAAEAAAAJAPn/AAAHAAIAAAAKAPf/AAAIAAAAAAAKAPj/AAAIAAEAAAAKAPn/AAAIAAIAAAALAPf/AAAJAAAAAAALAPj/AAAJAAEAAAALAPn/AAAJAAIAAADn/wYAAAAHAAAAAADn/wcAAAAHAAEAAADn/wgAAAAHAAIAAADo/wYAAAAIAAAAAADo/wcAAAAIAAEAAADo/wgAAAAIAAIAAADp/wYAAAAJAAAAAADp/wcAAAAJAAEAAADp/wgAAAAJAAIAAADz//P/AAAHAAAAAADz//T/AAAHAAEAAADz//X/AAAHAAIAAAD0//P/AAAIAAAAAAD0//T/AAAIAAEAAAD0//X/AAAIAAIAAAD1//P/AAAJAAAAAAD1//T/AAAJAAEAAAD1//X/AAAJAAIAAAASAP3/AAAHAAAAAAASAP7/AAAHAAEAAAASAP//AAAHAAIAAAATAP3/AAAIAAAAAAATAP7/AAAIAAEAAAATAP//AAAIAAIAAAAUAP3/AAAJAAAAAAAUAP7/AAAJAAEAAAAUAP//AAAJAAIAAAARAAsAAAAHAAAAAAARAAwAAAAHAAEAAAARAA0AAAAHAAIAAAASAAsAAAAIAAAAAAASAAwAAAAIAAEAAAASAA0AAAAIAAIAAAATAAsAAAAJAAAAAAATAAwAAAAJAAEAAAATAA0AAAAJAAIAAAA=")
+tile_map_data = PackedByteArray("AAD4/wMAAAAHAAAAAAD4/wQAAAAHAAEAAAD4/wUAAAAHAAIAAAD5/wMAAAAIAAAAAAD5/wQAAAAIAAEAAAD5/wUAAAAIAAIAAAD6/wMAAAAJAAAAAAD6/wQAAAAJAAEAAAD6/wUAAAAJAAIAAAAJAPf/AAAHAAAAAAAJAPj/AAAHAAEAAAAJAPn/AAAHAAIAAAAKAPf/AAAIAAAAAAAKAPj/AAAIAAEAAAAKAPn/AAAIAAIAAAALAPf/AAAJAAAAAAALAPj/AAAJAAEAAAALAPn/AAAJAAIAAADn/wYAAAAHAAAAAADn/wcAAAAHAAEAAADn/wgAAAAHAAIAAADo/wYAAAAIAAAAAADo/wcAAAAIAAEAAADo/wgAAAAIAAIAAADp/wYAAAAJAAAAAADp/wcAAAAJAAEAAADp/wgAAAAJAAIAAAASAP3/AAAHAAAAAAASAP7/AAAHAAEAAAASAP//AAAHAAIAAAATAP3/AAAIAAAAAAATAP7/AAAIAAEAAAATAP//AAAIAAIAAAAUAP3/AAAJAAAAAAAUAP7/AAAJAAEAAAAUAP//AAAJAAIAAAARAAsAAAAHAAAAAAARAAwAAAAHAAEAAAARAA0AAAAHAAIAAAASAAsAAAAIAAAAAAASAAwAAAAIAAEAAAASAA0AAAAIAAIAAAATAAsAAAAJAAAAAAATAAwAAAAJAAEAAAATAA0AAAAJAAIAAAD0//T/AAAIAAEAAAD0//X/AAAIAAIAAAD1//T/AAAJAAEAAAD1//X/AAAJAAIAAADz//P/AAAHAAAAAADz//T/AAAHAAEAAADz//X/AAAHAAIAAAD0//P/AAAIAAAAAAD1//P/AAAJAAAAAAA=")
 tile_set = SubResource("TileSet_fxv0u")
 
 [node name="Buildings" type="TileMapLayer" parent="Ground"]
@@ -1753,10 +1809,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StatusLabels" type="Node2D" parent="UI"]
-visible = false
 
 [node name="PlayerStatusLabel" type="Label" parent="UI/StatusLabels"]
-visible = false
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 23.0
@@ -1765,22 +1819,26 @@ script = ExtResource("4_ucocf")
 [node name="TimerLabel" type="Label" parent="UI"]
 offset_right = 40.0
 offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
 
 [node name="PauseButton" type="Button" parent="UI"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -54.0
-offset_right = 54.0
-offset_bottom = 108.0
+offset_left = -36.0
+offset_right = 36.0
+offset_bottom = 72.0
 grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_mode = 0
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yrn14")
 action_mode = 0
-icon = ExtResource("8_5w6v4")
+icon = ExtResource("8_ld64f")
 flat = true
 
 [node name="PauseMenu" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -1885,6 +1943,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_xpftk")
 text = "Resume"
 
 [node name="SettingsButton" type="Button" parent="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.341176, 0.160784, 0.247059, 1)
 theme_override_fonts/font = ExtResource("5_llm1q")
@@ -1902,20 +1961,21 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_o8kbq")
 theme_override_styles/normal = SubResource("StyleBoxTexture_pyaup")
 text = "Quit"
 
-[node name="SettingsPopUp" type="MarginContainer" parent="UI"]
+[node name="SettingsPopUp" type="MarginContainer" parent="UI" node_paths=PackedStringArray("brightness_overlay")]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -150.0
-offset_right = 200.0
-offset_bottom = 150.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+script = ExtResource("10_63s56")
+brightness_overlay = NodePath("../ColorRect")
 
 [node name="SettingsBackground" type="NinePatchRect" parent="UI/SettingsPopUp"]
 custom_minimum_size = Vector2(400, 300)
@@ -1948,9 +2008,9 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 focus_mode = 0
 mouse_filter = 1
-theme_override_styles/hover = SubResource("StyleBoxTexture_h1kyj")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_h1kyj")
-theme_override_styles/normal = SubResource("StyleBoxTexture_y37v0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h2xe5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_h2xe5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qlt2m")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/SettingsPopUp"]
 layout_mode = 2
@@ -1972,6 +2032,177 @@ theme_override_fonts/font = ExtResource("5_llm1q")
 theme_override_font_sizes/font_size = 30
 text = "SETTINGS"
 
+[node name="SettingsFunctionContainer" type="MarginContainer" parent="UI/SettingsPopUp"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="SettingsContents" type="VBoxContainer" parent="UI/SettingsPopUp/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="AudioSlider" type="HSlider" parent="UI/SettingsPopUp/SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+
+[node name="BrightnessSlider" type="HSlider" parent="UI/SettingsPopUp/SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="SettingsButtonsCanvas" type="MarginContainer" parent="UI/SettingsPopUp/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -50
+
+[node name="SettingsButtonsContainer" type="VBoxContainer" parent="UI/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MuteToggle" type="Button" parent="UI/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_ld1il")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vl8es")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ld1il")
+toggle_mode = true
+
+[node name="BrightnessToggle" type="Button" parent="UI/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_p7pd7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qdtrq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_p7pd7")
+toggle_mode = true
+
+[node name="ResetDataMargin" type="MarginContainer" parent="UI/SettingsPopUp/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 205
+theme_override_constants/margin_right = 70
+
+[node name="ResetGameDataButton" type="Button" parent="UI/SettingsPopUp/SettingsFunctionContainer/ResetDataMargin"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(0.882353, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_llm1q")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_vjjqo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vjjqo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_mimlo")
+text = "RESET GAME DATA"
+
+[node name="ConfirmationMargin" type="MarginContainer" parent="UI/SettingsPopUp/SettingsFunctionContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_right = 70
+
+[node name="ConfirmationBackground" type="NinePatchRect" parent="UI/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_keaca")
+region_rect = Rect2(160, 192, 48, 48)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="UI/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ConfirmationLabel" type="Label" parent="UI/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_llm1q")
+theme_override_font_sizes/font_size = 13
+text = "Are you sure you want to reset all data? It cannot be recovered"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="YesButton" type="Button" parent="UI/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("16_asycb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ekls6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ekls6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ekls6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_503dp")
+text = "yes
+"
+
+[node name="NoButton" type="Button" parent="UI/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("16_asycb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ekls6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ekls6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ekls6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_503dp")
+text = "no
+"
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+material = SubResource("CanvasItemMaterial_tk5w4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
 [node name="GameTimer" type="Timer" parent="."]
 
 [node name="StartTimer" type="Timer" parent="."]
@@ -1981,6 +2212,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="TouchControls" parent="Control" instance=ExtResource("8_mrcmj")]
 
@@ -1989,3 +2221,10 @@ offset_bottom = 40.0
 [connection signal="pressed" from="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="UI/SettingsPopUp/ExitButtonContainer/MarginContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="value_changed" from="UI/SettingsPopUp/SettingsFunctionContainer/SettingsContents/AudioSlider" to="UI/SettingsPopUp" method="_on_audio_slider_value_changed"]
+[connection signal="value_changed" from="UI/SettingsPopUp/SettingsFunctionContainer/SettingsContents/BrightnessSlider" to="UI/SettingsPopUp" method="_on_brightness_slider_value_changed"]
+[connection signal="toggled" from="UI/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle" to="UI/SettingsPopUp" method="_on_mute_toggle_toggled"]
+[connection signal="toggled" from="UI/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/BrightnessToggle" to="UI/SettingsPopUp" method="_on_brightness_toggle_toggled"]
+[connection signal="pressed" from="UI/SettingsPopUp/SettingsFunctionContainer/ResetDataMargin/ResetGameDataButton" to="UI/SettingsPopUp" method="_on_reset_game_data_button_pressed"]
+[connection signal="pressed" from="UI/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton" to="UI/SettingsPopUp" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="UI/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton" to="UI/SettingsPopUp" method="_on_no_button_pressed"]

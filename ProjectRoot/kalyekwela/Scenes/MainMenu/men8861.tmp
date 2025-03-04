@@ -1,0 +1,679 @@
+[gd_scene load_steps=50 format=3 uid="uid://vskqvsc6imec"]
+
+[ext_resource type="Texture2D" uid="uid://8n17ruun0gug" path="res://icon.svg" id="1_0k8kj"]
+[ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="2_nbuy7"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/parallax_background.gd" id="2_pemtm"]
+[ext_resource type="Texture2D" uid="uid://cj24rdfxxjaxj" path="res://Assets/Art/UI/UI_ChooseCharacter_Arrow.png" id="3_ttohg"]
+[ext_resource type="Texture2D" uid="uid://t2oc6ibgs0qx" path="res://Assets/Art/UI/UI_Settings_Button.png" id="4_yfkjy"]
+[ext_resource type="Texture2D" uid="uid://bha2i2j1dw7dy" path="res://Assets/Art/UI/UI_Inventory_Button.png" id="5_1765b"]
+[ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="5_shxnd"]
+[ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="6_20xsy"]
+[ext_resource type="Texture2D" uid="uid://cm1gmryjcfhrw" path="res://Assets/Art/UI/UI_XP_Bar.png" id="6_hddgj"]
+[ext_resource type="Texture2D" uid="uid://bbh1ap3j6kj5v" path="res://Assets/Art/UI/UI_Shop-1_Button.png" id="6_uouwt"]
+[ext_resource type="Texture2D" uid="uid://cptpm8ckka6vx" path="res://Assets/Art/UI/UI_Patintero_Button.png" id="7_bvt3d"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="7_cfydy"]
+[ext_resource type="Texture2D" uid="uid://cr3olt3nawu3m" path="res://Assets/Art/UI/UI_BenteUno_Button.png" id="8_4ar3s"]
+[ext_resource type="Texture2D" uid="uid://cn2lpmiiv104s" path="res://Assets/Art/UI/UI_TumbangPreso_Button.png" id="8_b25sv"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="10_mu1tv"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/settings_pop_up.gd" id="14_d1xcb"]
+[ext_resource type="Texture2D" uid="uid://nf1rbka8apmk" path="res://Assets/Art/UI/UI_AudioOff_Icon.png" id="17_3haoq"]
+[ext_resource type="Texture2D" uid="uid://b3p5twqw2j3w1" path="res://Assets/Art/UI/UI_AudioON_Icon.png" id="18_8bx3m"]
+[ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="19_ksjjr"]
+[ext_resource type="Texture2D" uid="uid://4ugxvi16ysu3" path="res://Assets/Art/UI/UI_BrightnessOn_Icon.png" id="20_48gs6"]
+[ext_resource type="AudioStream" uid="uid://d1ci46os0w5nh" path="res://Assets/Audio/Music/retro-game-arcade-236133.mp3" id="21_xk8gb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ws4gy"]
+texture = ExtResource("3_ttohg")
+region_rect = Rect2(68, 10, 58, 44)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qhoib"]
+texture = ExtResource("3_ttohg")
+region_rect = Rect2(3, 9, 59, 46)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb7er"]
+texture = ExtResource("3_ttohg")
+region_rect = Rect2(194, 10, 58, 44)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4iwnx"]
+texture = ExtResource("3_ttohg")
+region_rect = Rect2(131, 9, 58, 46)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_47n2f"]
+texture = ExtResource("6_hddgj")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(264, 8, 178, 50)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jil2v"]
+texture = ExtResource("6_hddgj")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(72, 8, 177, 50)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ywgya"]
+texture = ExtResource("7_bvt3d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rdmqm"]
+texture = ExtResource("7_bvt3d")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iya4e"]
+texture = ExtResource("8_b25sv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wx4e"]
+texture = ExtResource("8_b25sv")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_apg3e"]
+texture = ExtResource("8_4ar3s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q0kws"]
+texture = ExtResource("8_4ar3s")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qetup"]
+bg_color = Color(0.0672571, 0.738141, 0.769152, 0.576471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsttf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em86d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v0q02"]
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2vd56"]
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(837, 132, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6u6pg"]
+texture = ExtResource("17_3haoq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_54d62"]
+texture = ExtResource("18_8bx3m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e5nwo"]
+texture = ExtResource("19_ksjjr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q28in"]
+texture = ExtResource("20_48gs6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_46m0x"]
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oqk48"]
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(837, 132, 22, 24)
+
+[sub_resource type="Animation" id="Animation_cg4j6"]
+resource_name = "TransitionIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(326, -400), Vector2(326, 124)]
+}
+
+[sub_resource type="Animation" id="Animation_j4tmx"]
+resource_name = "TransitionOut"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(326, 124), Vector2(326, 650)]
+}
+
+[sub_resource type="Animation" id="Animation_v6otd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(326, 124)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3skes"]
+_data = {
+"RESET": SubResource("Animation_v6otd"),
+"TransitionIn": SubResource("Animation_cg4j6"),
+"TransitionOut": SubResource("Animation_j4tmx")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v32ii"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("settings_popup", "inventory_popup", "shop_popup")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_cfydy")
+settings_popup = NodePath("SettingsPopUp")
+inventory_popup = NodePath("InventoryPopUp")
+shop_popup = NodePath("ShopPopup")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_pemtm")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 648)
+
+[node name="Background" type="NinePatchRect" parent="ParallaxBackground/ParallaxLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nbuy7")
+
+[node name="AvatarContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="AvatarContainer"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 88.0
+offset_right = 552.0
+offset_bottom = 608.0
+texture = ExtResource("1_0k8kj")
+
+[node name="LeftArrow" type="Button" parent="AvatarContainer"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 312.0
+offset_right = 200.0
+offset_bottom = 384.0
+focus_mode = 0
+mouse_filter = 1
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ws4gy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ws4gy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ws4gy")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qhoib")
+
+[node name="RightArrow" type="Button" parent="AvatarContainer"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 312.0
+offset_right = 632.0
+offset_bottom = 384.0
+focus_mode = 0
+mouse_filter = 1
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_eb7er")
+theme_override_styles/hover = SubResource("StyleBoxTexture_eb7er")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eb7er")
+theme_override_styles/normal = SubResource("StyleBoxTexture_4iwnx")
+
+[node name="XPBar" type="ProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 216.0
+offset_top = 16.0
+offset_right = 688.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0.176471, 0.0745098, 0.0156863, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_fonts/font = ExtResource("5_shxnd")
+theme_override_styles/background = SubResource("StyleBoxTexture_47n2f")
+theme_override_styles/fill = SubResource("StyleBoxTexture_jil2v")
+
+[node name="CurrencyDisplay" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 784.0
+offset_top = 16.0
+offset_right = 1104.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("5_shxnd")
+theme_override_font_sizes/font_size = 20
+text = "Currency"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(450, 400)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -200.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_right = 60
+
+[node name="GameButtonsContainer" type="VBoxContainer" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 9
+alignment = 1
+
+[node name="Patintero" type="Button" parent="MarginContainer/GameButtonsContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ywgya")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ywgya")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ywgya")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rdmqm")
+
+[node name="TumbangPreso" type="Button" parent="MarginContainer/GameButtonsContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_iya4e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iya4e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iya4e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5wx4e")
+expand_icon = true
+
+[node name="BenteUno" type="Button" parent="MarginContainer/GameButtonsContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_apg3e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_apg3e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_apg3e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_q0kws")
+action_mode = 0
+
+[node name="PopupMenu" type="MarginContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 82.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LeftSideBarContainer" type="MarginContainer" parent="PopupMenu"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="LeftSideBar" type="VBoxContainer" parent="PopupMenu/LeftSideBarContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="ToggleSettingsButton" type="Button" parent="PopupMenu/LeftSideBarContainer/LeftSideBar"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qetup")
+icon = ExtResource("4_yfkjy")
+flat = true
+
+[node name="ToggleInventoryButton" type="Button" parent="PopupMenu/LeftSideBarContainer/LeftSideBar"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lsttf")
+icon = ExtResource("5_1765b")
+flat = true
+
+[node name="ToggleShopButton" type="Button" parent="PopupMenu/LeftSideBarContainer/LeftSideBar"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_em86d")
+icon = ExtResource("6_uouwt")
+flat = true
+
+[node name="SettingsPopUp" type="MarginContainer" parent="." node_paths=PackedStringArray("brightness_overlay")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_d1xcb")
+brightness_overlay = NodePath("../ColorRect")
+
+[node name="SettingsBackground" type="NinePatchRect" parent="SettingsPopUp"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(107, 155, 26, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="SettingsPopUp"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPopUp/ExitButtonContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+theme_override_constants/margin_bottom = 0
+
+[node name="ToggleSettingsButton" type="Button" parent="SettingsPopUp/ExitButtonContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+mouse_filter = 1
+theme_override_styles/hover = SubResource("StyleBoxTexture_v0q02")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v0q02")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2vd56")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPopUp"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 11
+
+[node name="Control" type="Control" parent="SettingsPopUp/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SettingsText" type="Label" parent="SettingsPopUp/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
+[node name="SettingsFunctionContainer" type="MarginContainer" parent="SettingsPopUp"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 40
+
+[node name="SettingsContents" type="VBoxContainer" parent="SettingsPopUp/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="AudioSlider" type="HSlider" parent="SettingsPopUp/SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+
+[node name="BrightnessSlider" type="HSlider" parent="SettingsPopUp/SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="SettingsButtonsCanvas" type="MarginContainer" parent="SettingsPopUp/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -50
+
+[node name="SettingsButtonsContainer" type="VBoxContainer" parent="SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MuteToggle" type="Button" parent="SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6u6pg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_54d62")
+toggle_mode = true
+
+[node name="BrightnessToggle" type="Button" parent="SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxTexture_e5nwo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_q28in")
+toggle_mode = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SettingsPopUp"]
+stream = ExtResource("21_xk8gb")
+autoplay = true
+
+[node name="InventoryPopUp" type="MarginContainer" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InventoryBackground" type="NinePatchRect" parent="InventoryPopUp"]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(293, 101, 38, 38)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPopUp"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryPopUp/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="InventoryPopUp/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="InventoryText" type="Label" parent="InventoryPopUp/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 30
+text = "INVENTORY"
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="InventoryPopUp"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPopUp/ExitButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="ToggleInventoryButton" type="Button" parent="InventoryPopUp/ExitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
+
+[node name="AnimationInOut" type="AnimationPlayer" parent="InventoryPopUp"]
+libraries = {
+"": SubResource("AnimationLibrary_3skes")
+}
+
+[node name="ShopPopup" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ShopBackground" type="NinePatchRect" parent="ShopPopup"]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(293, 101, 38, 38)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopPopup"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopPopup/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="ShopPopup/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ShopText" type="Label" parent="ShopPopup/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 30
+text = "SHOP"
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="ShopPopup"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopPopup/ExitButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="ToggleShopButton" type="Button" parent="ShopPopup/ExitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
+
+[node name="AnimationInOut" type="AnimationPlayer" parent="ShopPopup"]
+libraries = {
+"": SubResource("AnimationLibrary_3skes")
+}
+
+[node name="XPBarIcon" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 10.0
+offset_right = 222.0
+offset_bottom = 50.0
+texture = ExtResource("6_hddgj")
+region_rect = Rect2(1, 1, 64, 64)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_v32ii")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleSettingsButton" to="." method="_on_toggle_settings_button_pressed"]
+[connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleInventoryButton" to="." method="_on_toggle_inventory_button_pressed"]
+[connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleShopButton" to="." method="_on_toggle_shop_button_pressed"]
+[connection signal="pressed" from="SettingsPopUp/ExitButtonContainer/MarginContainer/ToggleSettingsButton" to="." method="_on_toggle_settings_button_pressed"]
+[connection signal="value_changed" from="SettingsPopUp/SettingsFunctionContainer/SettingsContents/AudioSlider" to="SettingsPopUp" method="_on_audio_slider_value_changed"]
+[connection signal="value_changed" from="SettingsPopUp/SettingsFunctionContainer/SettingsContents/BrightnessSlider" to="SettingsPopUp" method="_on_brightness_slider_value_changed"]
+[connection signal="toggled" from="SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle" to="SettingsPopUp" method="_on_mute_toggle_toggled"]
+[connection signal="toggled" from="SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/BrightnessToggle" to="SettingsPopUp" method="_on_brightness_toggle_toggled"]
+[connection signal="pressed" from="InventoryPopUp/ExitButtonContainer/MarginContainer/ToggleInventoryButton" to="." method="_on_toggle_inventory_button_pressed"]
+[connection signal="pressed" from="ShopPopup/ExitButtonContainer/MarginContainer/ToggleShopButton" to="." method="_on_toggle_shop_button_pressed"]
