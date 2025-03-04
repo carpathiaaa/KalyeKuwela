@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://da3ub7fbayier"]
+
+[ext_resource type="Script" path="res://Scripts/Patintero/score_line.gd" id="1_0qjlq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px834"]
+size = Vector2(15, 344)
+
+[node name="score_line" type="Area2D" groups=["score_line"]]
+disable_mode = 2
+script = ExtResource("1_0qjlq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["score_line"]]
+position = Vector2(7.5, -28)
+shape = SubResource("RectangleShape2D_px834")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
