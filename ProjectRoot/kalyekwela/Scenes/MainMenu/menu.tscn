@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=57 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://8n17ruun0gug" path="res://icon.svg" id="1_0k8kj"]
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="2_nbuy7"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="19_ksjjr"]
 [ext_resource type="Texture2D" uid="uid://4ugxvi16ysu3" path="res://Assets/Art/UI/UI_BrightnessOn_Icon.png" id="20_48gs6"]
 [ext_resource type="AudioStream" uid="uid://d1ci46os0w5nh" path="res://Assets/Audio/Music/retro-game-arcade-236133.mp3" id="21_xk8gb"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/shop_popup.gd" id="22_stcao"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ws4gy"]
 texture = ExtResource("3_ttohg")
@@ -659,7 +660,7 @@ offset_right = 250.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+script = ExtResource("22_stcao")
 
 [node name="ShopBackground" type="NinePatchRect" parent="ShopPopup"]
 custom_minimum_size = Vector2(500, 400)
@@ -697,24 +698,6 @@ theme_override_fonts/font = ExtResource("10_mu1tv")
 theme_override_font_sizes/font_size = 30
 text = "SHOP"
 
-[node name="ExitButtonContainer" type="VBoxContainer" parent="ShopPopup"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="ShopPopup/ExitButtonContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = -10
-theme_override_constants/margin_right = -10
-
-[node name="ToggleShopButton" type="Button" parent="ShopPopup/ExitButtonContainer/MarginContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-focus_mode = 0
-theme_override_styles/hover = SubResource("StyleBoxTexture_46m0x")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_46m0x")
-theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
-
 [node name="AnimationInOut" type="AnimationPlayer" parent="ShopPopup"]
 libraries = {
 "": SubResource("AnimationLibrary_3skes")
@@ -723,6 +706,7 @@ speed_scale = 4.0
 
 [node name="Category" type="MarginContainer" parent="ShopPopup"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 60
 theme_override_constants/margin_bottom = 310
@@ -765,6 +749,7 @@ text = "Accessories"
 
 [node name="MarginItems" type="MarginContainer" parent="ShopPopup"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ItemsContainer" type="GridContainer" parent="ShopPopup/MarginItems"]
 layout_mode = 2
@@ -777,6 +762,7 @@ custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="PurchaseBackground" type="NinePatchRect" parent="ShopPopup/PurchasePopUp"]
 layout_mode = 2
@@ -789,15 +775,18 @@ patch_margin_bottom = 6
 
 [node name="ConfirmationLabel" type="MarginContainer" parent="ShopPopup/PurchasePopUp"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = -2
 theme_override_constants/margin_top = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ShopPopup/PurchasePopUp/ConfirmationLabel"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 10
 
 [node name="Control" type="Control" parent="ShopPopup/PurchasePopUp/ConfirmationLabel/HBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ShopText" type="Label" parent="ShopPopup/PurchasePopUp/ConfirmationLabel/HBoxContainer"]
 texture_filter = 1
@@ -811,17 +800,19 @@ theme_override_fonts/font = ExtResource("10_mu1tv")
 theme_override_font_sizes/font_size = 15
 text = "purchase confirmation"
 
-[node name="ConfimationMargin" type="MarginContainer" parent="ShopPopup/PurchasePopUp"]
+[node name="ConfimationActionMargin" type="MarginContainer" parent="ShopPopup/PurchasePopUp"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 45
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_bottom = 20
 
-[node name="ConfirmationContainer" type="HBoxContainer" parent="ShopPopup/PurchasePopUp/ConfimationMargin"]
+[node name="ConfirmationContainer" type="HBoxContainer" parent="ShopPopup/PurchasePopUp/ConfimationActionMargin"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 15
 
-[node name="ConfirmButton" type="Button" parent="ShopPopup/PurchasePopUp/ConfimationMargin/ConfirmationContainer"]
+[node name="ConfirmButton" type="Button" parent="ShopPopup/PurchasePopUp/ConfimationActionMargin/ConfirmationContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
@@ -837,7 +828,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_lcy2y")
 theme_override_styles/normal = SubResource("StyleBoxTexture_nmp4r")
 text = "Confirm"
 
-[node name="CancelButton" type="Button" parent="ShopPopup/PurchasePopUp/ConfimationMargin/ConfirmationContainer"]
+[node name="CancelButton" type="Button" parent="ShopPopup/PurchasePopUp/ConfimationActionMargin/ConfirmationContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
@@ -852,6 +843,78 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_lcy2y")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_lcy2y")
 theme_override_styles/normal = SubResource("StyleBoxTexture_nmp4r")
 text = "Cancel"
+
+[node name="ItemLabelPriceMargin" type="MarginContainer" parent="ShopPopup/PurchasePopUp"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopPopup/PurchasePopUp/ItemLabelPriceMargin"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="ShopPopup/PurchasePopUp/ItemLabelPriceMargin/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ItemName" type="Label" parent="ShopPopup/PurchasePopUp/ItemLabelPriceMargin/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.192157, 0.203922, 0.25098, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 15
+text = "ItemName"
+
+[node name="ItemPrice" type="Label" parent="ShopPopup/PurchasePopUp/ItemLabelPriceMargin/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.192157, 0.203922, 0.25098, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 10
+text = "ItemPrice"
+
+[node name="IconMargin" type="MarginContainer" parent="ShopPopup/PurchasePopUp"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_top = -33
+theme_override_constants/margin_bottom = 33
+
+[node name="Control" type="Control" parent="ShopPopup/PurchasePopUp/IconMargin"]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="ShopPopup/PurchasePopUp/IconMargin"]
+layout_mode = 2
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="ShopPopup"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopPopup/ExitButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="ToggleShopButton" type="Button" parent="ShopPopup/ExitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
 
 [node name="XPBarIcon" type="NinePatchRect" parent="."]
 layout_mode = 0
@@ -886,4 +949,8 @@ color = Color(0, 0, 0, 0)
 [connection signal="toggled" from="SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle" to="SettingsPopUp" method="_on_mute_toggle_toggled"]
 [connection signal="toggled" from="SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/BrightnessToggle" to="SettingsPopUp" method="_on_brightness_toggle_toggled"]
 [connection signal="pressed" from="InventoryPopUp/ExitButtonContainer/MarginContainer/ToggleInventoryButton" to="." method="_on_toggle_inventory_button_pressed"]
+[connection signal="pressed" from="ShopPopup/Category/CategoryContainer/CharactersButton" to="ShopPopup" method="_on_characters_button_pressed"]
+[connection signal="pressed" from="ShopPopup/Category/CategoryContainer/AccessoriesButton" to="ShopPopup" method="_on_accessories_button_pressed"]
+[connection signal="pressed" from="ShopPopup/PurchasePopUp/ConfimationActionMargin/ConfirmationContainer/ConfirmButton" to="ShopPopup" method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="ShopPopup/PurchasePopUp/ConfimationActionMargin/ConfirmationContainer/CancelButton" to="ShopPopup" method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="ShopPopup/ExitButtonContainer/MarginContainer/ToggleShopButton" to="." method="_on_toggle_shop_button_pressed"]

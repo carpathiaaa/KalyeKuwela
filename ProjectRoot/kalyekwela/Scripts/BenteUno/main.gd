@@ -11,8 +11,8 @@ extends Node2D
 
 @onready var pause_button = $UI/PauseButton
 @onready var pause_menu = $UI/PauseMenu
-@onready var resume_button = $UI/PauseMenu/NinePatchRect/VBoxContainer/ResumeButton
-@onready var quit_button = $UI/PauseMenu/NinePatchRect/VBoxContainer/QuitButton
+#@onready var resume_button = $UI/PauseMenu/NinePatchRect/VBoxContainer/ResumeButton
+#@onready var quit_button = $UI/PauseMenu/NinePatchRect/VBoxContainer/QuitButton
 
 @export var settings_popup: MarginContainer
 

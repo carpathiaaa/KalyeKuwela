@@ -13,10 +13,10 @@ func _ready():
 	update_status()
 
 	# Ensure the tag_area exists and properly connects the signal
-	if tag_area:
-		tag_area.body_entered.connect(_on_tag_area_body_entered)
-	else:
-		print("Error: TagArea not found in Player!")
+	#if tag_area:
+		#tag_area.body_entered.connect(_on_tag_area_body_entered)
+	#else:
+		#print("Error: TagArea not found in Player!")
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
