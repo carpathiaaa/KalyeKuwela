@@ -9,14 +9,10 @@ var is_chaser: bool = false
 
 func _ready():
 	#status_label.show()
+	animated_sprite = $AnimatedSprite2D  # Ensure it is properly referenced
 	status_label.position.y = -20
 	update_status()
 
-	# Ensure the tag_area exists and properly connects the signal
-	#if tag_area:
-		#tag_area.body_entered.connect(_on_tag_area_body_entered)
-	#else:
-		#print("Error: TagArea not found in Player!")
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -59,12 +55,8 @@ func become_chaser():
 		print(name, " has become a CHASER!")
 
 func update_status():
-	#status_label.show()
 	if is_chaser:
 		modulate = Color.RED
-		#status_label.text = "Chaser"
 		status_label.add_theme_color_override("font_color", Color.RED)
 	else:
 		modulate = Color.WHITE
-		#status_label.text = "Runner"
-		status_label.add_theme_color_override("font_color", Color.BLUE)

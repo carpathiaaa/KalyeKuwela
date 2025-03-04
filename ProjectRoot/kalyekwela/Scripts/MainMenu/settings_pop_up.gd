@@ -22,11 +22,6 @@ func _ready() -> void:
 	brightness_slider.value = 1.0  
 	_update_brightness()
 
-	# Connect Reset Button Signals
-	reset_button.pressed.connect(_on_reset_game_data_button_pressed)
-	confirm_reset_button.pressed.connect(_on_yes_button_pressed)
-	cancel_reset_button.pressed.connect(_on_no_button_pressed)
-
 func _on_audio_slider_value_changed(value: float) -> void:
 	if is_muted and value > 0.0:
 		is_muted = false

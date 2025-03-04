@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsdojj5cyu3o3"]
+[gd_scene load_steps=15 format=3 uid="uid://byl8sg3vohlap"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/settings_pop_up.gd" id="1_re85f"]
 [ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_mfbnm"]

@@ -27,8 +27,6 @@ var selected_item = null  # Stores selected item for purchase
 func _ready():
 	not_enough_coins_popup.visible = false  # Hide "Not Enough Coins" popup initially
 	populate_shop()  # Load default category
-	confirm_button.pressed.connect(_on_confirm_button_pressed)  # Connect confirm button
-	ok_button.pressed.connect(_on_ok_button_pressed)  # Connect OK button in popup
 
 func populate_shop():
 	# Remove all existing items

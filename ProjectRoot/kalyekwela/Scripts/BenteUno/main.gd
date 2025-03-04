@@ -11,8 +11,6 @@ extends Node2D
 
 @onready var pause_button = $UI/PauseButton
 @onready var pause_menu = $UI/PauseMenu
-#@onready var resume_button = $UI/PauseMenu/NinePatchRect/VBoxContainer/ResumeButton
-#@onready var quit_button = $UI/PauseMenu/NinePatchRect/VBoxContainer/QuitButton
 
 @export var settings_popup: MarginContainer
 
@@ -191,8 +189,4 @@ func toggle_popup(SettingsPopUp : MarginContainer):
 	SettingsPopUp.visible = !SettingsPopUp.visible
 
 func _on_settings_button_pressed() -> void:
-	toggle_popup(settings_popup)
-
-
-func _on_toggle_settings_button_pressed() -> void:
 	toggle_popup(settings_popup)

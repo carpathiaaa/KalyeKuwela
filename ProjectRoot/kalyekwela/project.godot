@@ -22,7 +22,6 @@ GlobalData="*res://Scripts/GlobalData.gd"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 
 [input]
 

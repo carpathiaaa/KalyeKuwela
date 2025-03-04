@@ -24,7 +24,6 @@
 [ext_resource type="AudioStream" uid="uid://d1ci46os0w5nh" path="res://Assets/Audio/Music/retro-game-arcade-236133.mp3" id="21_xk8gb"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/inventory_pop_up.gd" id="22_ldc7a"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/shop_popup.gd" id="22_stcao"]
-[ext_resource type="Texture2D" uid="uid://bsxuxx7c0jfwl" path="res://Assets/Art/Tilesets/Solaria Demo Tiles.png" id="23_kmq5h"]
 [ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="24_3mfu3"]
 [ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="24_gn6sn"]
 
@@ -105,17 +104,17 @@ region_rect = Rect2(869, 134, 22, 22)
 texture = ExtResource("6_20xsy")
 region_rect = Rect2(837, 132, 22, 24)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6u6pg"]
-texture = ExtResource("17_3haoq")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_54d62"]
 texture = ExtResource("18_8bx3m")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e5nwo"]
-texture = ExtResource("19_ksjjr")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6u6pg"]
+texture = ExtResource("17_3haoq")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q28in"]
 texture = ExtResource("20_48gs6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e5nwo"]
+texture = ExtResource("19_ksjjr")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qn5vo"]
 texture = ExtResource("21_h2p02")
@@ -132,6 +131,9 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 6.0
 region_rect = Rect2(11, 11, 26, 28)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_keaca"]
+load_path = "res://.godot/imported/Solaria Demo Tiles.png-574d6cbd1daf0e340c174f80c741071e.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xn2py"]
 texture = ExtResource("24_3mfu3")
@@ -478,6 +480,7 @@ icon = ExtResource("6_uouwt")
 flat = true
 
 [node name="SettingsPopUp" type="MarginContainer" parent="." node_paths=PackedStringArray("brightness_overlay")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -590,6 +593,8 @@ alignment = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_54d62")
+theme_override_styles/hover = SubResource("StyleBoxTexture_54d62")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_6u6pg")
 theme_override_styles/normal = SubResource("StyleBoxTexture_54d62")
 toggle_mode = true
@@ -598,6 +603,8 @@ toggle_mode = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_q28in")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q28in")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_e5nwo")
 theme_override_styles/normal = SubResource("StyleBoxTexture_q28in")
 toggle_mode = true
@@ -634,7 +641,7 @@ theme_override_constants/margin_right = 70
 [node name="ConfirmationBackground" type="NinePatchRect" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-texture = ExtResource("23_kmq5h")
+texture = SubResource("CompressedTexture2D_keaca")
 region_rect = Rect2(160, 192, 48, 48)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin"]
@@ -1141,7 +1148,7 @@ custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("23_kmq5h")
+texture = SubResource("CompressedTexture2D_keaca")
 region_rect = Rect2(160, 192, 48, 48)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ShopPopup/PurchaseNotifPopUp"]
