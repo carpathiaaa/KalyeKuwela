@@ -1,0 +1,162 @@
+[gd_scene load_steps=15 format=3 uid="uid://dsdojj5cyu3o3"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu/settings_pop_up.gd" id="1_re85f"]
+[ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_mfbnm"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="3_stexy"]
+[ext_resource type="Texture2D" uid="uid://nf1rbka8apmk" path="res://Assets/Art/UI/UI_AudioOff_Icon.png" id="4_kcbvf"]
+[ext_resource type="Texture2D" uid="uid://b3p5twqw2j3w1" path="res://Assets/Art/UI/UI_AudioON_Icon.png" id="5_kyxh4"]
+[ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="6_7tl8p"]
+[ext_resource type="Texture2D" uid="uid://4ugxvi16ysu3" path="res://Assets/Art/UI/UI_BrightnessOn_Icon.png" id="7_3raoc"]
+[ext_resource type="AudioStream" uid="uid://d1ci46os0w5nh" path="res://Assets/Audio/Music/retro-game-arcade-236133.mp3" id="8_ooumg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0bmn"]
+texture = ExtResource("2_mfbnm")
+region_rect = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pw66n"]
+texture = ExtResource("2_mfbnm")
+region_rect = Rect2(837, 132, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gu6w5"]
+texture = ExtResource("4_kcbvf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kt5rs"]
+texture = ExtResource("5_kyxh4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7p58e"]
+texture = ExtResource("6_7tl8p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ux6gq"]
+texture = ExtResource("7_3raoc")
+
+[node name="SettingsPopUp" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_re85f")
+
+[node name="SettingsBackground" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_mfbnm")
+region_rect = Rect2(107, 155, 26, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ExitButtonContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+theme_override_constants/margin_bottom = 0
+
+[node name="ToggleSettingsButton" type="Button" parent="ExitButtonContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+mouse_filter = 1
+theme_override_styles/hover = SubResource("StyleBoxTexture_r0bmn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_r0bmn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pw66n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 11
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SettingsText" type="Label" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_stexy")
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
+[node name="SettingsFunctionContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 40
+
+[node name="SettingsContents" type="VBoxContainer" parent="SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="AudioSlider" type="HSlider" parent="SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+
+[node name="BrightnessSlider" type="HSlider" parent="SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="SettingsButtonsCanvas" type="MarginContainer" parent="SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -50
+
+[node name="SettingsButtonsContainer" type="VBoxContainer" parent="SettingsFunctionContainer/SettingsButtonsCanvas"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MuteToggle" type="Button" parent="SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gu6w5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kt5rs")
+toggle_mode = true
+
+[node name="BrightnessToggle" type="Button" parent="SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7p58e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ux6gq")
+toggle_mode = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ooumg")
+autoplay = true
+
+[connection signal="value_changed" from="SettingsFunctionContainer/SettingsContents/AudioSlider" to="." method="_on_audio_slider_value_changed"]
+[connection signal="value_changed" from="SettingsFunctionContainer/SettingsContents/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
+[connection signal="toggled" from="SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle" to="." method="_on_mute_toggle_toggled"]
+[connection signal="toggled" from="SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/BrightnessToggle" to="." method="_on_brightness_toggle_toggled"]
