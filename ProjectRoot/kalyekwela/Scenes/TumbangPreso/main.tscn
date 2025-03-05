@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ckefjser7jvb7" path="res://Scenes/TumbangPreso/tumbang_preso_map.tscn" id="1_k8mwa"]
 [ext_resource type="Script" path="res://Scripts/TumbangPreso/main.gd" id="1_yq35f"]
 [ext_resource type="PackedScene" uid="uid://cw387hdddxg0p" path="res://Scenes/TumbangPreso/main_player.tscn" id="2_55kvt"]
-[ext_resource type="PackedScene" uid="uid://7c8kvjqkkbhe" path="res://addons/timed_click_bar (Lars Kokemohr)/TimedClickBar2/TimedClickBar.tscn" id="4_hrsde"]
+[ext_resource type="PackedScene" uid="uid://56rclc6ifi31" path="res://Scenes/TumbangPreso/time_bar.tscn" id="4_ymwcc"]
 
 [node name="main" type="Node2D"]
 position = Vector2(-2, -6)
@@ -22,8 +22,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TimedClickBar" parent="user_interface" instance=ExtResource("4_hrsde")]
-layout_mode = 0
+[node name="time_bar" parent="user_interface" instance=ExtResource("4_ymwcc")]
+z_index = 1
+position = Vector2(-160, 200)
 
 [node name="game_labels" type="CanvasLayer" parent="."]
 
