@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://7c8kvjqkkbhe"]
+
+[ext_resource type="Texture2D" uid="uid://col40xok3anag" path="res://addons/timed_click_bar (Lars Kokemohr)/TimedClickBar2/background.png" id="1"]
+[ext_resource type="Script" path="res://addons/timed_click_bar (Lars Kokemohr)/TimedClickBar2/timed_click_bar.gd" id="1_rtda2"]
+[ext_resource type="Texture2D" uid="uid://bhgriwb8g1rm3" path="res://addons/timed_click_bar (Lars Kokemohr)/TimedClickBar2/pointer.png" id="3"]
+
+[sub_resource type="Animation" id="2"]
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureFrame:transform/pos")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-11, 141), Vector2(334, 141), Vector2(-11, 141)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:pointer_is_over_target")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0m4rm"]
+_data = {
+"move_pointer": SubResource("2")
+}
+
+[node name="TimedClickBar" type="TextureButton"]
+offset_right = 416.0
+offset_bottom = 130.0
+script = ExtResource("1_rtda2")
+
+[node name="TextureFrame" type="Sprite2D" parent="."]
+texture = ExtResource("3")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0m4rm")
+}
+autoplay = "move_pointer"
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(212, 62)
+texture = ExtResource("1")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

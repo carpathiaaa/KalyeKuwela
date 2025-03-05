@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://cw387hdddxg0p"]
+
+[ext_resource type="Texture2D" uid="uid://x5jmekxxhami" path="res://Assets/Art/Characters/Character_Juan_Idle-Back.png" id="1_pj711"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bc2g"]
+atlas = ExtResource("1_pj711")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbhco"]
+atlas = ExtResource("1_pj711")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d661"]
+atlas = ExtResource("1_pj711")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psxqd"]
+atlas = ExtResource("1_pj711")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxs3t"]
+atlas = ExtResource("1_pj711")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikmjx"]
+atlas = ExtResource("1_pj711")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ntrn3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bc2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbhco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d661")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psxqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxs3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikmjx")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}]
+
+[node name="main_player" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_ntrn3")
+animation = &"back"
+autoplay = "back"

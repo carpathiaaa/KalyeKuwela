@@ -1,7 +1,7 @@
 extends Control
 
 @onready var patintero_button = $MarginContainer/GameButtonsContainer/Patintero
-#@onready var tumbang_preso_button = $GameButtonsContainer/TumbangPresoButton
+@onready var tumbang_preso_button = $MarginContainer/GameButtonsContainer/TumbangPreso
 @onready var bente_uno_button = $MarginContainer/GameButtonsContainer/BenteUno
 @onready var currency_display = $CurrencyDisplay
 @onready var xp_bar = $XPBar
@@ -22,16 +22,17 @@ func _ready():
 	GlobalData.load_data()  # Load saved data
 	update_ui()  # Ensure UI reflects loaded data
 	patintero_button.pressed.connect(start_patintero)
-	#tumbang_preso_button.pressed.connect(start_tumbang_preso)
-	GlobalData.load_data()  
-	update_ui()  
+	tumbang_preso_button.pressed.connect(start_tumbang_preso)
 	bente_uno_button.pressed.connect(start_bente_uno)
+
+func start_patintero():
+	get_tree().change_scene_to_file("res://Scenes/Patintero/main.tscn")
+
+func start_tumbang_preso():
+	get_tree().change_scene_to_file("res://Scenes/TumbangPreso/main.tscn")
 
 func start_bente_uno():
 	get_tree().change_scene_to_file("res://Scenes/BenteUno/main.tscn")
-
-func start_patintero():
-	get_tree().change_scene_to_file("res://Scenes/Patintero/Patintero.tscn")
 
 # Function to manage popups (ensuring only one is open at a time)
 #func toggle_popup(popup: Control):

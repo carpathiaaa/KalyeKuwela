@@ -1,23 +1,20 @@
-[gd_scene load_steps=19 format=3 uid="uid://bkqnu14r0ml5"]
+[gd_scene load_steps=22 format=3 uid="uid://bkqnu14r0ml5"]
 
 [ext_resource type="Script" path="res://Scripts/Patintero/patintero_labels.gd" id="1_k3565"]
 [ext_resource type="Texture2D" uid="uid://bfsuh3ugmc8ue" path="res://Scenes/Patintero/Assets/Art/Props/coin4_16x16.png" id="1_qjnct"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="2_5dk1x"]
+[ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="2_fbej5"]
 
-[sub_resource type="FontFile" id="FontFile_ji2a3"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_pwjog"]
+[sub_resource type="FontVariation" id="FontVariation_le3pe"]
+base_font = ExtResource("2_fbej5")
 
 [sub_resource type="Theme" id="Theme_8bvun"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbh4f"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_kei8d"]
+
+[sub_resource type="Theme" id="Theme_7vi0p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n7xfb"]
 
@@ -98,49 +95,59 @@ animations = [{
 follow_viewport_enabled = true
 script = ExtResource("1_k3565")
 
-[node name="points_label" type="Label" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="points_label" type="Label" parent="Control"]
 z_index = 3
 texture_filter = 1
 offset_left = 861.0
-offset_top = -7.0
+offset_top = -8.0
 offset_right = 1275.0
-offset_bottom = 189.0
+offset_bottom = 188.0
 scale = Vector2(4, 4)
-theme_override_fonts/font = SubResource("FontFile_ji2a3")
-theme_override_font_sizes/font_size = 15
+theme_override_fonts/font = SubResource("FontVariation_le3pe")
 text = "Points: 0"
-label_settings = SubResource("LabelSettings_pwjog")
 
-[node name="level_label" type="Label" parent="."]
+[node name="level_label" type="Label" parent="Control"]
 z_index = 3
-offset_left = 31.0
-offset_top = 12.0
-offset_right = 126.0
-offset_bottom = 35.0
+offset_left = 42.0
+offset_top = 18.0
+offset_right = 137.0
+offset_bottom = 41.0
 scale = Vector2(4.5, 4.5)
 theme = SubResource("Theme_8bvun")
 theme_type_variation = &"HeaderSmall"
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_5dk1x")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jbh4f")
 text = "level: 1"
 label_settings = SubResource("LabelSettings_kei8d")
 
-[node name="coins_label" type="Label" parent="."]
+[node name="coins_label" type="Label" parent="Control"]
 z_index = 3
-offset_left = 134.0
-offset_top = 98.0
-offset_right = 231.0
-offset_bottom = 121.0
+offset_left = 132.0
+offset_top = 99.0
+offset_right = 229.0
+offset_bottom = 122.0
 scale = Vector2(4, 4)
+theme = SubResource("Theme_7vi0p")
+theme_type_variation = &"HeaderLarge"
 text = "0"
 label_settings = SubResource("LabelSettings_n7xfb")
+justification_flags = 160
 
-[node name="coin_image" type="AnimatedSprite2D" parent="."]
+[node name="coin_image" type="AnimatedSprite2D" parent="Control"]
 z_index = 3
 position = Vector2(76, 149)
 scale = Vector2(5.4, 5.4)
 sprite_frames = SubResource("SpriteFrames_gk5vm")
 autoplay = "default"
 
-[node name="game_over_label" type="Label" parent="."]
+[node name="game_over_label" type="Label" parent="Control"]
 visible = false
 z_index = 1
 offset_left = 14.0
@@ -151,7 +158,7 @@ scale = Vector2(12, 12)
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_422t1")
 
-[node name="game_over_bg" type="ColorRect" parent="."]
+[node name="game_over_bg" type="ColorRect" parent="Control"]
 visible = false
 offset_left = -42.0
 offset_top = -141.0
@@ -160,7 +167,7 @@ offset_bottom = -101.0
 scale = Vector2(60, 40)
 color = Color(0.0321724, 0.0336415, 0.0399086, 0.615686)
 
-[node name="return_button" type="Button" parent="."]
+[node name="return_button" type="Button" parent="Control"]
 visible = false
 offset_left = 506.0
 offset_top = 403.0
@@ -169,4 +176,4 @@ offset_bottom = 509.0
 action_mode = 0
 text = "Main Menu"
 
-[connection signal="pressed" from="return_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/return_button" to="." method="_on_button_pressed"]

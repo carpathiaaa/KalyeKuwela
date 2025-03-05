@@ -1,13 +1,13 @@
 extends CanvasLayer
 
 @onready var main_script = $"../"
-@onready var points_label = $points_label
-@onready var level_label = $level_label
-@onready var coins_label = $coins_label
-@onready var coin_image = $coin_image
-@onready var game_over_label = $game_over_label
-@onready var game_over_bg = $game_over_bg
-@onready var return_button = $return_button
+@onready var points_label = $Control/points_label
+@onready var level_label = $Control/level_label
+@onready var coins_label = $Control/coins_label
+@onready var coin_image = $Control/coin_image
+@onready var game_over_label = $Control/game_over_label
+@onready var game_over_bg = $Control/game_over_bg
+@onready var return_button = $Control/return_button
 # Called when the node enters the scene tree for the first time.
 
 func show_points(points : int) -> void:

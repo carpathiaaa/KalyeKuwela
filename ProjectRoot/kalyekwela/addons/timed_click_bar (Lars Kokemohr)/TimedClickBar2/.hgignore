@@ -1,0 +1,4 @@
+syntax: glob
+addons/*
+LICSENSE
+README.md

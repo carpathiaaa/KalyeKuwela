@@ -12,12 +12,11 @@ var _level = 0
 func return_to_main_menu() -> void:
 	get_tree().change_scene_to_file("res://Scenes/MainMenu/menu.tscn")
 
-
 func player_death() -> void:
 	patintero_interface.hide_interface()
 	touch_controls.visible = false
 	main_player.player_speed = 0
-	GlobalData.coins += _coins
+	GlobalData.add_rewards(_coins, _points)
 
 func add_points(points_gained : int) -> void:
 	_points += points_gained
