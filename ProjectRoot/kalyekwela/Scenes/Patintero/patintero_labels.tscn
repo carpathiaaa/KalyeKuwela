@@ -159,3 +159,14 @@ offset_right = -2.00001
 offset_bottom = -101.0
 scale = Vector2(60, 40)
 color = Color(0.0321724, 0.0336415, 0.0399086, 0.615686)
+
+[node name="return_button" type="Button" parent="."]
+visible = false
+offset_left = 506.0
+offset_top = 403.0
+offset_right = 679.0
+offset_bottom = 509.0
+action_mode = 0
+text = "Main Menu"
+
+[connection signal="pressed" from="return_button" to="." method="_on_button_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ccj5fi8xp7xsd"]
 
-[ext_resource type="Script" path="res://Scripts/Patintero/global_patintero.gd" id="1_q6fdc"]
+[ext_resource type="Script" path="res://Scripts/Patintero/patintero_main.gd" id="1_q6fdc"]
 [ext_resource type="PackedScene" uid="uid://bkqnu14r0ml5" path="res://Scenes/Patintero/patintero_labels.tscn" id="2_5mkn0"]
 [ext_resource type="PackedScene" uid="uid://dja4w5pgnhm58" path="res://Scenes/Patintero/main_player.tscn" id="3_p53ya"]
 [ext_resource type="PackedScene" uid="uid://sax21ek8fo7m" path="res://Scenes/Patintero/patintero_map.tscn" id="4_ji7og"]

@@ -4,9 +4,14 @@ extends Node2D
 @onready var main_player = $main_player/body
 @onready var touch_controls = $Control/touch_controls
 @onready var coin_sfx = $sound_effects/coin_sfx
+
 var _coins = 0
 var _points = 0
 var _level = 0
+
+func return_to_main_menu() -> void:
+	get_tree().change_scene_to_file("res://Scenes/MainMenu/menu.tscn")
+
 
 func player_death() -> void:
 	patintero_interface.hide_interface()
