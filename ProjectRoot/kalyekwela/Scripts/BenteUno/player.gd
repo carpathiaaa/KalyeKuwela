@@ -8,11 +8,8 @@ var is_chaser: bool = false
 @onready var animated_sprite = $AnimatedSprite2D  # Reference to AnimatedSprite2D
 
 func _ready():
-	#status_label.show()
-	animated_sprite = $AnimatedSprite2D  # Ensure it is properly referenced
 	status_label.position.y = -20
 	update_status()
-
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -32,6 +29,9 @@ func _physics_process(delta):
 	velocity = direction * speed
 	move_and_slide()
 
+
+
+# 🔄 Update animation based on movement direction
 func update_animation(direction):
 	if abs(direction.x) > abs(direction.y):
 		animated_sprite.play("IdleSide")
@@ -41,12 +41,13 @@ func update_animation(direction):
 	else:
 		animated_sprite.play("WalkBack")
 
+# 🏃 Handles tagging in the tag game
 func _on_tag_area_body_entered(body):
-	# Ensure we're tagging an NPC that is a runner
 	if body is CharacterBody2D and not body.is_chaser and is_chaser:
 		print(name, " tagged ", body.name, " - They are now a chaser!")
 		body.become_chaser()
 
+# 👹 Convert to a chaser
 func become_chaser():
 	if not is_chaser:
 		is_chaser = true
@@ -54,6 +55,7 @@ func become_chaser():
 		update_status()
 		print(name, " has become a CHASER!")
 
+# 🔴 Updates player status (Runner/Chaser)
 func update_status():
 	if is_chaser:
 		modulate = Color.RED

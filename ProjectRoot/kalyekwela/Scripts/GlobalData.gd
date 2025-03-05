@@ -14,6 +14,8 @@ var owned_accessories = []  # List of accessory IDs owned
 var equipped_character = ""  # Currently equipped character
 var equipped_accessory = ""  # Currently equipped accessory
 
+var PlayerSelect = 0
+
 func get_xp_required(level) -> int:
 	return int(base_xp * pow(level, growth_rate))
 
