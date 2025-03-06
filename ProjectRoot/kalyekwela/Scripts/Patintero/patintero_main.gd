@@ -1,8 +1,7 @@
 extends Node2D
 
-@onready var patintero_interface = $"../Patintero/patintero_labels"
+@onready var patintero_interface = $"../Patintero/UI"
 @onready var main_player = $main_player/body
-@onready var touch_controls = $Control/touch_controls
 @onready var coin_sfx = $sound_effects/coin_sfx
 
 var _coins = 0
@@ -14,7 +13,6 @@ func return_to_main_menu() -> void:
 
 func player_death() -> void:
 	patintero_interface.hide_interface()
-	touch_controls.visible = false
 	main_player.player_speed = 0
 	GlobalData.add_rewards(_coins, _points)
 
