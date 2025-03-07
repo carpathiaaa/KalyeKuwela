@@ -7,7 +7,7 @@ extends Node2D
 @onready var game_timer_label = $UI/GameTimerLabel  # Label for game countdown
 @onready var player = $Player
 @onready var npcs = $NPCs.get_children()
-
+@onready var game_over_music = $GameOverMusic  # 🎵 Game Over Music
 
 @onready var pause_button = $UI/PauseButton
 @onready var pause_menu = $UI/PauseMenu
@@ -15,7 +15,6 @@ extends Node2D
 @export var settings_popup: MarginContainer
 
 var paused = false
-		
 var first_chaser_assigned = false  # Prevents multiple assignments
 var game_has_ended = false  # Prevents duplicate game-over calls
 
@@ -160,6 +159,15 @@ func game_over(message):
 	game_timer_label.visible = false  # Hide timer when game ends
 	print(message)  # Debug print
 	
+	# 🎵 Stop existing background/chase music
+	if player.background_music and player.background_music.playing:
+		player.background_music.stop()
+	if player.chase_sfx and player.chase_sfx.playing:
+		player.chase_sfx.stop()
+
+	# 🎵 Play Game Over Music
+	game_over_music.play()
+
 	# Give rewards based on outcome
 	if message == "Game Over. Chasers Won!":
 		GlobalData.add_rewards(10, 10)
@@ -172,7 +180,6 @@ func game_over(message):
 	await get_tree().create_timer(3).timeout
 	get_tree().change_scene_to_file("res://Scenes/MainMenu/menu.tscn")
 
-
 func _on_resume_button_pressed() -> void:
 	print("Resuming game")
 	pauseMenu()
@@ -183,7 +190,6 @@ func _on_quit_button_pressed() -> void:
 
 func _exit_tree():
 	Engine.time_scale = 1  # Ensure time resumes properly
-
 
 func toggle_popup(SettingsPopUp : MarginContainer):
 	SettingsPopUp.visible = !SettingsPopUp.visible

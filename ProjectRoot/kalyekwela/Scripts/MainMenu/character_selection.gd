@@ -1,26 +1,29 @@
 extends Control
 
+var all_characters = ["Juan", "Maria", "Antonio", "Carlo", "Reyna", "Tala"]
+var default_characters = ["Juan", "Maria"]  # Default unlocked characters
+
 func _process(delta) -> void:
-	match GlobalData.PlayerSelect:
-		0:
-			get_node('AvatarIcon').play('Juan')
-		1:
-			get_node('AvatarIcon').play('Maria')
-		2:
-			get_node('AvatarIcon').play('Antonio')
-		3:
-			get_node('AvatarIcon').play('Carlo')
-		4:
-			get_node('AvatarIcon').play('Reyna')
-		5:
-			get_node('AvatarIcon').play('Tala')	
-		
+	if GlobalData.PlayerSelect < all_characters.size():
+		get_node("AvatarIcon").play(all_characters[GlobalData.PlayerSelect])
 
 func _on_right_arrow_pressed() -> void:
-	if GlobalData.PlayerSelect < 6:
-		GlobalData.PlayerSelect += 1
+	var new_index = (GlobalData.PlayerSelect + 1) % all_characters.size()
 
+	# Find the next unlocked character, looping if necessary
+	while not is_character_unlocked(all_characters[new_index]):
+		new_index = (new_index + 1) % all_characters.size()
+	
+	GlobalData.PlayerSelect = new_index
 
 func _on_left_arrow_pressed() -> void:
-	if GlobalData.PlayerSelect > 0:
-		GlobalData.PlayerSelect -= 1
+	var new_index = (GlobalData.PlayerSelect - 1 + all_characters.size()) % all_characters.size()
+
+	# Find the previous unlocked character, looping if necessary
+	while not is_character_unlocked(all_characters[new_index]):
+		new_index = (new_index - 1 + all_characters.size()) % all_characters.size()
+	
+	GlobalData.PlayerSelect = new_index
+
+func is_character_unlocked(character_name: String) -> bool:
+	return character_name in default_characters or character_name in GlobalData.owned_characters

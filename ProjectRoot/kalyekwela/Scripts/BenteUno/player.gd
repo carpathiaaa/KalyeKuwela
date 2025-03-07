@@ -2,10 +2,16 @@ extends CharacterBody2D
 
 @export var speed: float = 200
 var is_chaser: bool = false
+var chasers_nearby: int = 0  # Keep track of nearby chasers
 
 @onready var status_label = $StatusLabel
 @onready var tag_area = $TagArea  # Reference to Area2D
 @onready var animated_sprite = $AnimatedSprite2D  # Reference to AnimatedSprite2D
+@onready var chase_sfx = $ChaseSFX  # Sound when being chased
+@onready var tag_sfx = $TagSFX  # Sound for tagging or being tagged
+@onready var chase_detection_area = $ChaseDetectionArea  # New detection area
+@onready var background_music = $BackgroundMusic  # 🌟 Reference to background music
+@onready var tween = get_tree().create_tween()  # ✅ Properly create Tween
 
 func _ready():
 	status_label.position.y = -20
@@ -29,8 +35,6 @@ func _physics_process(delta):
 	velocity = direction * speed
 	move_and_slide()
 
-
-
 # 🔄 Update animation based on movement direction
 func update_animation(direction):
 	if abs(direction.x) > abs(direction.y):
@@ -46,6 +50,7 @@ func _on_tag_area_body_entered(body):
 	if body is CharacterBody2D and not body.is_chaser and is_chaser:
 		print(name, " tagged ", body.name, " - They are now a chaser!")
 		body.become_chaser()
+		tag_sfx.play()  # 🔊 Play tagging sound
 
 # 👹 Convert to a chaser
 func become_chaser():
@@ -53,6 +58,7 @@ func become_chaser():
 		is_chaser = true
 		speed = 220  # Slight boost for chasers
 		update_status()
+		tag_sfx.play()  # 🔊 Play sound for getting tagged
 		print(name, " has become a CHASER!")
 
 # 🔴 Updates player status (Runner/Chaser)
@@ -62,3 +68,34 @@ func update_status():
 		status_label.add_theme_color_override("font_color", Color.RED)
 	else:
 		modulate = Color.WHITE
+	
+	update_chase_sfx()  # 🔊 Ensure chase music updates properly
+
+# 🎵 Handles music fading based on chase state
+func update_chase_sfx():
+	if not is_chaser and chasers_nearby > 0:
+		fade_music(background_music, -30.0, 0.5)  # 🌟 Fade out background music
+		fade_music(chase_sfx, 0.0, 0.5)  # 🔊 Fade in chase music
+		if not chase_sfx.playing:
+			chase_sfx.play()
+	else:
+		fade_music(background_music, -20, 0.5)  # 🌟 Fade in background music
+		fade_music(chase_sfx, -30.0, 0.5)  # 🚫 Fade out chase music
+
+# 🚀 Smoothly fades audio using a Tween
+func fade_music(audio: AudioStreamPlayer2D, target_db: float, duration: float):
+	if tween.is_valid():
+		tween.kill()  # ✅ Only kill if necessary
+	tween = get_tree().create_tween()  # ✅ Correctly create a new Tween
+	tween.tween_property(audio, "volume_db", target_db, duration)
+
+# 📡 Detect chasers nearby
+func _on_chase_detection_area_body_entered(body):
+	if body is CharacterBody2D and body.is_chaser:
+		chasers_nearby += 1
+		update_chase_sfx()  # 🔊 Update chase sound based on conditions
+
+func _on_chase_detection_area_body_exited(body):
+	if body is CharacterBody2D and body.is_chaser:
+		chasers_nearby -= 1
+		update_chase_sfx()  # 🔊 Update chase sound based on conditions

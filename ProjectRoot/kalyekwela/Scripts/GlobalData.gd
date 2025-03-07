@@ -14,7 +14,9 @@ var owned_accessories = []  # List of accessory IDs owned
 var equipped_character = ""  # Currently equipped character
 var equipped_accessory = ""  # Currently equipped accessory
 
+
 var PlayerSelect = 0
+
 
 func get_xp_required(level) -> int:
 	return int(base_xp * pow(level, growth_rate))
@@ -85,8 +87,15 @@ func load_data():
 		var content = file.get_as_text()
 		file.close()
 
+		if content.is_empty():
+			print("⚠️ Save file exists but is empty. Resetting data.")
+			reset_data()
+			return
+
 		var data = JSON.parse_string(content)
+		
 		if data is Dictionary:
+			# ✅ Use get() with defaults to prevent null values
 			coins = data.get("coins", 0)
 			xp = data.get("xp", 0)
 			level = data.get("level", 1)
@@ -94,18 +103,20 @@ func load_data():
 			owned_accessories = data.get("owned_accessories", [])
 			equipped_character = data.get("equipped_character", "")
 			equipped_accessory = data.get("equipped_accessory", "")
+
 			check_level_up()
-			print("Game loaded:", data)
+			print("✅ Game loaded successfully:", data)
 		else:
-			print("Error loading save data, resetting to defaults.")
+			print("❌ Error: Invalid save data. Resetting to defaults.")
 			reset_data()
 	else:
-		print("No save file found, initializing defaults.")
+		print("📂 No save file found. Initializing new save.")
 		reset_data()
+
 
 # Reset data if save file is corrupted or missing
 func reset_data():
-	coins = 0
+	coins = 1000000
 	xp = 0
 	level = 1
 	owned_characters = []

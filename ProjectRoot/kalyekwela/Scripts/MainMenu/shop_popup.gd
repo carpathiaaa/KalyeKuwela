@@ -8,12 +8,15 @@ extends Control
 @onready var characters_button = $Category/CategoryContainer/CharactersButton
 @onready var accessories_button = $Category/CategoryContainer/AccessoriesButton
 @onready var confirm_button = $PurchasePopUp/ConfimationActionMargin/ConfirmationContainer/ConfirmButton
-@onready var not_enough_coins_popup = $PurchaseNotifPopUp # Small popup for "Not Enough Coins"
-@onready var ok_button = $PurchaseNotifPopUp/VBoxContainer/OKButton  # OK button inside popup
+@onready var not_enough_coins_popup = $PurchaseNotifPopUp
+@onready var ok_button = $PurchaseNotifPopUp/VBoxContainer/OKButton
+@onready var coin_label = $"../CurrencyDisplay"
 
 var characters = [
 	{"name": "Antonio", "price": 100, "icon": preload("res://Assets/Art/CharacterIcons/Character_Antonio_Icon.png")},
-	{"name": "Carlo", "price": 200, "icon": preload("res://Assets/Art/CharacterIcons/Character_Carlo_Icon.png")},
+	{"name": "Carlo", "price": 150, "icon": preload("res://Assets/Art/CharacterIcons/Character_Carlo_Icon.png")},
+	{"name": "Reyna", "price": 300, "icon": preload("res://Assets/Art/CharacterIcons/Character_Reyna_Icon.png")},
+	{"name": "Tala", "price": 350, "icon": preload("res://Assets/Art/CharacterIcons/Character_Tala_Icon.png")},
 ]
 
 var accessories = [
@@ -22,16 +25,24 @@ var accessories = [
 ]
 
 var current_category = characters  # Default to Characters
-var selected_item = null  # Stores selected item for purchase
+var selected_item = null
+
+@onready var shop_slot_template = $MarginItems/ItemsContainer/ShopSlot  # Template reference
 
 func _ready():
-	not_enough_coins_popup.visible = false  # Hide "Not Enough Coins" popup initially
-	populate_shop()  # Load default category
+	not_enough_coins_popup.visible = false
+	shop_slot_template.visible = false  # Ensure template is hidden initially
+	populate_shop()
 
 func populate_shop():
-	# Remove all existing items
+	if not shop_slot_template:
+		print("Error: ShopSlot template not found!")
+		return
+	
+	# Remove previous items but keep the template
 	for child in items_container.get_children():
-		child.queue_free()
+		if child != shop_slot_template:
+			child.queue_free()
 
 	# Filter out purchased items
 	var filtered_items = []
@@ -40,13 +51,23 @@ func populate_shop():
 	else:
 		filtered_items = accessories.filter(func(item): return item["name"] not in GlobalData.owned_accessories)
 
-	# Add new items
+	# Populate shop
 	for item in filtered_items:
-		var item_button = Button.new()
-		item_button.text = item["name"]
-		item_button.icon = item["icon"]
-		item_button.pressed.connect(func(): _on_item_selected(item))
-		items_container.add_child(item_button)
+		var shop_slot = shop_slot_template.duplicate()
+		shop_slot.visible = true
+
+		# Assign values
+		var clickable_button = shop_slot.get_node("ClickableSlot")
+		var item_name_label = shop_slot.get_node("MarginContainer/ItemName")
+		var character_icon = shop_slot.get_node("MarginContainer2/CharacterIcon")
+
+		item_name_label.text = item["name"]
+		clickable_button.pressed.connect(func(): _on_item_selected(item))
+
+		if item.has("icon"):
+			character_icon.texture = item["icon"]
+
+		items_container.add_child(shop_slot)
 
 func _on_item_selected(item):
 	if not item:
@@ -57,10 +78,10 @@ func _on_item_selected(item):
 	item_name_label.text = item["name"]
 	item_price_label.text = "Price: " + str(item["price"])
 	item_icon.texture = item["icon"]
-	purchase_popup.visible = true  # Show purchase popup
+	purchase_popup.visible = true
 
 func _on_confirm_button_pressed():
-	if not selected_item:  # Prevents errors if no item is selected
+	if not selected_item:
 		print("No item selected!")
 		return
 
@@ -69,7 +90,7 @@ func _on_confirm_button_pressed():
 		print("Item already owned!")
 		return
 
-	# Check if the player has enough coins
+	# Check coins
 	if GlobalData.coins >= selected_item["price"]:
 		GlobalData.coins -= selected_item["price"]
 
@@ -79,13 +100,14 @@ func _on_confirm_button_pressed():
 			GlobalData.owned_accessories.append(selected_item["name"])
 
 		GlobalData.save_data()
-		purchase_popup.visible = false  # Close purchase popup
-		populate_shop()  # Refresh shop to remove purchased item
+		_update_coin_display()
+		purchase_popup.hide()
+		populate_shop()  # ✅ Refresh the shop to remove purchased item
 	else:
-		_show_not_enough_coins_popup()  # Show "Not Enough Coins" popup
+		_show_not_enough_coins_popup()
 
 func _on_cancel_button_pressed():
-	purchase_popup.visible = false  # Close without buying
+	purchase_popup.visible = false
 
 func _on_characters_button_pressed():
 	current_category = characters
@@ -95,10 +117,12 @@ func _on_accessories_button_pressed():
 	current_category = accessories
 	populate_shop()
 
-# 🔔 Show "Not Enough Coins" popup
 func _show_not_enough_coins_popup():
-	not_enough_coins_popup.visible = true  # Show the popup
+	not_enough_coins_popup.visible = true
 
-# ❌ Hide "Not Enough Coins" popup when clicking "OK"
 func _on_ok_button_pressed():
-	not_enough_coins_popup.visible = false  # Hide the popup
+	not_enough_coins_popup.visible = false
+
+func _update_coin_display():
+	if coin_label:
+		coin_label.text = "Coins: " + str(GlobalData.coins)

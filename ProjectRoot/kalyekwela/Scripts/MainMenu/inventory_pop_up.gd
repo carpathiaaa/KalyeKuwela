@@ -3,6 +3,8 @@ extends Control
 @onready var items_container = $MarginItems/ItemsContainer
 @onready var characters_button = $Category/CategoryContainer/CharactersButton
 @onready var accessories_button = $Category/CategoryContainer/AccessoriesButton
+@onready var inventory_slot_template = $MarginItems/ItemsContainer/InventorySlot
+
 
 var current_category = "character"  # Default to Characters
 
@@ -10,25 +12,39 @@ func _ready():
 	populate_inventory()
 
 func populate_inventory():
-	# Clear previous items
+	if not inventory_slot_template:
+		print("Error: Inventory slot template not found!")
+		return
+
+	# Remove previous items but keep the template
 	for child in items_container.get_children():
-		child.queue_free()
+		if child != inventory_slot_template:
+			child.queue_free()
 
-	var items = []
+	# Get the owned items based on category
+	var owned_items = []
 	if current_category == "character":
-		items = GlobalData.owned_characters
+		owned_items = GlobalData.owned_characters
 	elif current_category == "accessory":
-		items = GlobalData.owned_accessories
+		owned_items = GlobalData.owned_accessories
 
-	# Add owned items to the grid
-	for item in items:
-		var item_button = Button.new()
-		item_button.text = item
-		item_button.icon = load(get_item_icon_path(item, current_category))
-		item_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		item_button.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		item_button.connect("pressed", Callable(self, "equip_item").bind(item, current_category))
-		items_container.add_child(item_button)
+	# Populate inventory
+	for item in owned_items:
+		var inventory_slot = inventory_slot_template.duplicate()
+		inventory_slot.visible = true
+
+		# Assign values
+		var item_name_label = inventory_slot.get_node("MarginContainer/ItemName")
+		var character_icon = inventory_slot.get_node("MarginContainer2/CharacterIcon")
+
+		item_name_label.text = item
+		# Load item icon
+		var item_icon = load(get_item_icon_path(item, current_category))
+		if item_icon:
+			character_icon.texture = item_icon
+
+		items_container.add_child(inventory_slot)
+
 
 # 🎭 Equip selected character or accessory
 func equip_item(item_name: String, item_type: String):
@@ -44,7 +60,11 @@ func get_item_icon_path(name: String, item_type: String) -> String:
 	var icons = {
 		"character": {
 			"Antonio": "res://Assets/Art/CharacterIcons/Character_Antonio_Icon.png",
-			"Carlo": "res://Assets/Art/CharacterIcons/Character_Carlo_Icon.png"
+			"Carlo": "res://Assets/Art/CharacterIcons/Character_Carlo_Icon.png",
+			"Juan": "res://Assets/Art/CharacterIcons/Character_Juan_Icon.png",
+			"Maria": "res://Assets/Art/CharacterIcons/Character_Maria_Icon.png",
+			"Reyna": "res://Assets/Art/CharacterIcons/Character_Reyna_Icon.png",
+			"Tala": "res://Assets/Art/CharacterIcons/Character_Tala_Icon.png",
 		},
 		"accessory": {
 			"Cool Hat": "res://Assets/Art/CharacterIcons/Character_Reyna_Icon.png",

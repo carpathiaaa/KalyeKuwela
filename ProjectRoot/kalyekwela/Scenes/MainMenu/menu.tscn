@@ -1,8 +1,9 @@
-[gd_scene load_steps=79 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=81 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="2_nbuy7"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/parallax_background.gd" id="2_pemtm"]
 [ext_resource type="Texture2D" uid="uid://cj24rdfxxjaxj" path="res://Assets/Art/UI/UI_ChooseCharacter_Arrow.png" id="3_ttohg"]
+[ext_resource type="Texture2D" uid="uid://ca3vw7mq0njkd" path="res://Assets/Art/UI/UI_Houses_Background.png" id="4_3vppp"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/character_selection.gd" id="4_8xus2"]
 [ext_resource type="Texture2D" uid="uid://t2oc6ibgs0qx" path="res://Assets/Art/UI/UI_Settings_Button.png" id="4_yfkjy"]
 [ext_resource type="Texture2D" uid="uid://bha2i2j1dw7dy" path="res://Assets/Art/UI/UI_Inventory_Button.png" id="5_1765b"]
@@ -27,11 +28,11 @@
 [ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="19_ksjjr"]
 [ext_resource type="Texture2D" uid="uid://4ugxvi16ysu3" path="res://Assets/Art/UI/UI_BrightnessOn_Icon.png" id="20_48gs6"]
 [ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="21_h2p02"]
-[ext_resource type="AudioStream" uid="uid://d1ci46os0w5nh" path="res://Assets/Audio/Music/retro-game-arcade-236133.mp3" id="21_xk8gb"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/inventory_pop_up.gd" id="22_ldc7a"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/shop_popup.gd" id="22_stcao"]
 [ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="24_3mfu3"]
 [ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="24_gn6sn"]
+[ext_resource type="AudioStream" uid="uid://bt65j5uayi503" path="res://Assets/Audio/Music/Audio_MainTheme.mp3" id="34_16qih"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ws4gy"]
 texture = ExtResource("3_ttohg")
@@ -363,6 +364,13 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 region_rect = Rect2(275, 178, 90, 27)
 
+[sub_resource type="LabelSettings" id="LabelSettings_407dx"]
+font = ExtResource("10_mu1tv")
+font_size = 14
+font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+outline_size = 3
+outline_color = Color(0.780392, 0.886275, 0.929412, 1)
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v32ii"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("settings_popup", "inventory_popup", "shop_popup")]
@@ -394,6 +402,18 @@ offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_nbuy7")
+
+[node name="Houses" type="NinePatchRect" parent="ParallaxBackground/ParallaxLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3vppp")
 
 [node name="CharacterSelect" type="Control" parent="."]
 layout_mode = 3
@@ -793,10 +813,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_h7hxv")
 text = "no
 "
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SettingsPopUp"]
-stream = ExtResource("21_xk8gb")
-autoplay = true
-
 [node name="AnimationInOut" type="AnimationPlayer" parent="SettingsPopUp"]
 libraries = {
 "": SubResource("AnimationLibrary_42iq2")
@@ -934,6 +950,51 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 4
 
+[node name="InventorySlot" type="NinePatchRect" parent="InventoryPopUp/MarginItems/ItemsContainer"]
+visible = false
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(85, 253, 22, 23)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPopUp/MarginItems/ItemsContainer/InventorySlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 85
+
+[node name="ItemName" type="Label" parent="InventoryPopUp/MarginItems/ItemsContainer/InventorySlot/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Name"
+label_settings = SubResource("LabelSettings_407dx")
+
+[node name="MarginContainer2" type="MarginContainer" parent="InventoryPopUp/MarginItems/ItemsContainer/InventorySlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CharacterIcon" type="NinePatchRect" parent="InventoryPopUp/MarginItems/ItemsContainer/InventorySlot/MarginContainer2"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+texture = ExtResource("6_2mgwq")
+
 [node name="IconMargin" type="MarginContainer" parent="InventoryPopUp"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
@@ -1053,12 +1114,71 @@ text = "Accessories"
 [node name="MarginItems" type="MarginContainer" parent="ShopPopup"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 5
 
 [node name="ItemsContainer" type="GridContainer" parent="ShopPopup/MarginItems"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
 columns = 4
+
+[node name="ShopSlot" type="NinePatchRect" parent="ShopPopup/MarginItems/ItemsContainer"]
+visible = false
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(85, 253, 22, 23)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 6
+
+[node name="ClickableSlot" type="Button" parent="ShopPopup/MarginItems/ItemsContainer/ShopSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopPopup/MarginItems/ItemsContainer/ShopSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 85
+
+[node name="ItemName" type="Label" parent="ShopPopup/MarginItems/ItemsContainer/ShopSlot/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Name"
+label_settings = SubResource("LabelSettings_407dx")
+
+[node name="MarginContainer2" type="MarginContainer" parent="ShopPopup/MarginItems/ItemsContainer/ShopSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CharacterIcon" type="NinePatchRect" parent="ShopPopup/MarginItems/ItemsContainer/ShopSlot/MarginContainer2"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+texture = ExtResource("6_2mgwq")
 
 [node name="PurchasePopUp" type="MarginContainer" parent="ShopPopup"]
 visible = false
@@ -1221,6 +1341,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_46m0x")
 theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
 
 [node name="PurchaseNotifPopUp" type="MarginContainer" parent="ShopPopup"]
+visible = false
 layout_mode = 2
 
 [node name="PurchaseNotifBackground" type="NinePatchRect" parent="ShopPopup/PurchaseNotifPopUp"]
@@ -1293,6 +1414,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(551, 316)
+stream = ExtResource("34_16qih")
+autoplay = true
+parameters/looping = false
 
 [connection signal="pressed" from="CharacterSelect/LeftArrow" to="CharacterSelect" method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="CharacterSelect/RightArrow" to="CharacterSelect" method="_on_right_arrow_pressed"]

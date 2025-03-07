@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://btigs8qepl0d1"]
+[gd_scene load_steps=50 format=4 uid="uid://btigs8qepl0d1"]
 
 [ext_resource type="Script" path="res://Scripts/BenteUno/main.gd" id="1_5daw8"]
 [ext_resource type="PackedScene" uid="uid://cq5xt52v2s0h1" path="res://Scenes/BenteUno/player.tscn" id="1_ydfnf"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="15_bx3ro"]
 [ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="16_asycb"]
 [ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="17_agl3i"]
+[ext_resource type="AudioStream" uid="uid://d4eiggkyybd43" path="res://Assets/Audio/SFX/Audio_GameOver.mp3" id="18_raa6b"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_keaca"]
 load_path = "res://.godot/imported/Solaria Demo Tiles.png-574d6cbd1daf0e340c174f80c741071e.ctex"
@@ -2217,6 +2218,10 @@ offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
 [node name="TouchControls" parent="Control" instance=ExtResource("8_mrcmj")]
+
+[node name="GameOverMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_raa6b")
+volume_db = 4.875
 
 [connection signal="pressed" from="UI/PauseMenu/NinePatchRect/ExitButtonContainer/MarginContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

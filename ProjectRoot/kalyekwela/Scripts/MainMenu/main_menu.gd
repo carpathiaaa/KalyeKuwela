@@ -13,6 +13,9 @@ extends Control
 var current_open_popup: Control = null  # Tracks the currently open sidebar
 var is_animating: bool = false  # Prevent multiple fast clicks
 
+func _init():
+	GlobalData.load_data()  # ✅ Load data early to avoid null values
+
 func update_ui():
 	currency_display.text = "Coins: " + str(GlobalData.coins)
 	var xp_required = GlobalData.get_xp_required(GlobalData.level)
