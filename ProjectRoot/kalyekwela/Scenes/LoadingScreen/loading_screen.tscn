@@ -1,0 +1,139 @@
+[gd_scene load_steps=11 format=3 uid="uid://u6lfn4o21wax"]
+
+[ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_fq5ng"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreen/loading_screen.gd" id="1_sagvb"]
+[ext_resource type="Texture2D" uid="uid://cm1gmryjcfhrw" path="res://Assets/Art/UI/UI_XP_Bar.png" id="2_51gkw"]
+[ext_resource type="FontFile" uid="uid://50bj2mdrqj4k" path="res://Assets/Art/Fonts/toybox_font/ToyBox Italic.ttf" id="2_pnuiw"]
+[ext_resource type="FontFile" uid="uid://d2wgai6ruks4g" path="res://Assets/Art/Fonts/alanus.ttf" id="3_xxfvu"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="5_riiq0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oclw5"]
+font_size = 25
+font_color = Color(1, 0.878431, 0.741176, 1)
+outline_size = 10
+outline_color = Color(0.176471, 0.0745098, 0.0156863, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.858824)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7rt27"]
+font_size = 20
+outline_size = 5
+outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gdswo"]
+texture = ExtResource("2_51gkw")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(264, 7, 178, 52)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jxknb"]
+texture = ExtResource("2_51gkw")
+texture_margin_left = 10.0
+texture_margin_top = 4.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(72, 8, 178, 50)
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sagvb")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fq5ng")
+region_rect = Rect2(275, 178, 90, 27)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 6
+
+[node name="OverlayMargin" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundOverlay" type="NinePatchRect" parent="NinePatchRect/OverlayMargin"]
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("1_fq5ng")
+region_rect = Rect2(293, 101, 38, 38)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="LabelMargin" type="MarginContainer" parent="NinePatchRect/OverlayMargin/BackgroundOverlay"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 18
+
+[node name="DidYouKnowLabel" type="Label" parent="NinePatchRect/OverlayMargin/BackgroundOverlay/LabelMargin"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pnuiw")
+text = "DID YOU KNOW?"
+label_settings = SubResource("LabelSettings_oclw5")
+
+[node name="FactMargin" type="MarginContainer" parent="NinePatchRect/OverlayMargin/BackgroundOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -397.5
+offset_top = -11.5
+offset_right = 397.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="FactLabel" type="Label" parent="NinePatchRect/OverlayMargin/BackgroundOverlay/FactMargin"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xxfvu")
+text = "Patintero has been played for generations in the Philippines, with its name coming from the Spanish word \"tinte,\" referring to the lines drawn on the ground."
+label_settings = SubResource("LabelSettings_7rt27")
+
+[node name="ProgressBarMargin" type="MarginContainer" parent="NinePatchRect"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ProgressBar" type="ProgressBar" parent="NinePatchRect/ProgressBarMargin"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_riiq0")
+theme_override_styles/background = SubResource("StyleBoxTexture_gdswo")
+theme_override_styles/fill = SubResource("StyleBoxTexture_jxknb")

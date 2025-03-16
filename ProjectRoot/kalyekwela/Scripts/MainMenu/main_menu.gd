@@ -6,6 +6,8 @@ extends Control
 @onready var currency_display = $CurrencyDisplay
 @onready var xp_bar = $XPBar
 
+const LOADING_SCREEN = preload("res://Scenes/LoadingScreen/loading_screen.tscn")
+
 @export var settings_popup: MarginContainer
 @export var inventory_popup: MarginContainer
 @export var shop_popup: MarginContainer
@@ -35,7 +37,9 @@ func start_tumbang_preso():
 	get_tree().change_scene_to_file("res://Scenes/TumbangPreso/main.tscn")
 
 func start_bente_uno():
-	get_tree().change_scene_to_file("res://Scenes/BenteUno/main.tscn")
+	var loading_scene = LOADING_SCREEN.instantiate()
+	loading_scene.next_scene = "res://Scenes/BenteUno/main.tscn"  # ✅ Pass the correct next scene
+	add_child(loading_scene)
 
 # Function to manage popups (ensuring only one is open at a time)
 #func toggle_popup(popup: Control):
