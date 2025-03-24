@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://dja4w5pgnhm58"]
+[gd_scene load_steps=28 format=3 uid="uid://dja4w5pgnhm58"]
 
-[ext_resource type="Script" path="res://Scripts/Patintero/main_player.gd" id="1_41ri7"]
+[ext_resource type="Script" uid="uid://bavr6lbofkx4w" path="res://Scripts/Patintero/main_player.gd" id="1_41ri7"]
 [ext_resource type="Texture2D" uid="uid://cvqh1xhd5de3h" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Front.png" id="2_ywd02"]
 [ext_resource type="Texture2D" uid="uid://do8wj7h5iwikx" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Side.png" id="3_31e64"]
 [ext_resource type="Texture2D" uid="uid://chvdhipqjndsg" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Back.png" id="4_bmw06"]
+[ext_resource type="Script" uid="uid://dywksu7v0s606" path="res://Scripts/Patintero/player_sprite_2d.gd" id="5_k37kf"]
 [ext_resource type="AudioStream" uid="uid://bnpf1b4egv74g" path="res://Assets/Audio/Music/Fishball Fight.mp3" id="6_fveog"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vagi"]
@@ -170,6 +171,7 @@ texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_xs4j3")
 animation = &"up_animation"
 autoplay = "down_animation"
+script = ExtResource("5_k37kf")
 
 [node name="Area2D" type="Area2D" parent="body" groups=["main_player"]]
 

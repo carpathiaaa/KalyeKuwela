@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://bkqnu14r0ml5"]
 
-[ext_resource type="Script" path="res://Scripts/Patintero/patintero_labels.gd" id="1_k3565"]
+[ext_resource type="Script" uid="uid://bhe4lcqyk6hqg" path="res://Scripts/Patintero/patintero_labels.gd" id="1_k3565"]
 [ext_resource type="Texture2D" uid="uid://bfsuh3ugmc8ue" path="res://Assets/Art/Props/coin4_16x16.png" id="1_qjnct"]
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="2_5dk1x"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="2_fbej5"]

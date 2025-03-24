@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbpahr54gaur2"]
 
-[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://Scenes/Patintero/addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_yuct6"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_yuct6"]
 
 [node name="TouchControls" type="CanvasLayer"]
 
