@@ -16,6 +16,7 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.858824)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7rt27"]
+font = ExtResource("3_xxfvu")
 font_size = 20
 outline_size = 5
 outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
@@ -112,9 +113,9 @@ theme_override_constants/margin_bottom = 20
 
 [node name="FactLabel" type="Label" parent="NinePatchRect/OverlayMargin/BackgroundOverlay/FactMargin"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_xxfvu")
-text = "Patintero has been played for generations in the Philippines, with its name coming from the Spanish word \"tinte,\" referring to the lines drawn on the ground."
 label_settings = SubResource("LabelSettings_7rt27")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ProgressBarMargin" type="MarginContainer" parent="NinePatchRect"]
 texture_filter = 1

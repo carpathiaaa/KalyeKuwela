@@ -168,7 +168,7 @@ z_index = 2
 texture_filter = 1
 texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_xs4j3")
-animation = &"side_animation"
+animation = &"up_animation"
 autoplay = "down_animation"
 
 [node name="Area2D" type="Area2D" parent="body" groups=["main_player"]]
