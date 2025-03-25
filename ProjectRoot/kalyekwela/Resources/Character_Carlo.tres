@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://53hwj4dxo8k6"]
 
 [ext_resource type="Texture2D" uid="uid://cwm2g8wbxok52" path="res://Assets/Art/CharacterIcons/Character_Carlo_Icon.png" id="1_681rm"]
-[ext_resource type="Script" path="res://Scripts/CharacterData.gd" id="1_mt0mn"]
+[ext_resource type="Script" uid="uid://bp0fli5bm77iv" path="res://Scripts/CharacterData.gd" id="1_mt0mn"]
 
 [resource]
 script = ExtResource("1_mt0mn")

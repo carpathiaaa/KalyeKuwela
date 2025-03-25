@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://56rclc6ifi31"]
 
-[ext_resource type="Script" path="res://Scripts/TumbangPreso/time_bar.gd" id="1_l6pe8"]
-[ext_resource type="Script" path="res://Scripts/TumbangPreso/pointer.gd" id="2_otqeo"]
+[ext_resource type="Script" uid="uid://7fgydsh0rt7n" path="res://Scripts/TumbangPreso/time_bar.gd" id="1_l6pe8"]
+[ext_resource type="Script" uid="uid://8f6l8gtfy5wu" path="res://Scripts/TumbangPreso/pointer.gd" id="2_otqeo"]
 [ext_resource type="Texture2D" uid="uid://bfsuh3ugmc8ue" path="res://Assets/Art/Props/coin4_16x16.png" id="3_ycl1n"]
-[ext_resource type="Script" path="res://Scenes/TumbangPreso/success_region.gd" id="4_c5if7"]
+[ext_resource type="Script" uid="uid://brip45p6numnh" path="res://Scenes/TumbangPreso/success_region.gd" id="4_c5if7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpmpd"]
 atlas = ExtResource("3_ycl1n")

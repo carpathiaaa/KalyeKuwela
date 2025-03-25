@@ -9,6 +9,7 @@ var _points = 0
 var _level = 0
 
 func return_to_main_menu() -> void:
+	Engine.time_scale = 1 # Ensure engine processes are not paused after quitting.
 	get_tree().change_scene_to_file("res://Scenes/MainMenu/menu.tscn")
 
 func player_death() -> void:

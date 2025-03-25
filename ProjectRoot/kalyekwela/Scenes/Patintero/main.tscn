@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccj5fi8xp7xsd"]
 
-[ext_resource type="Script" path="res://Scripts/Patintero/patintero_main.gd" id="1_q6fdc"]
+[ext_resource type="Script" uid="uid://q5pqc80n1t5r" path="res://Scripts/Patintero/patintero_main.gd" id="1_q6fdc"]
 [ext_resource type="PackedScene" uid="uid://bkqnu14r0ml5" path="res://Scenes/Patintero/UI.tscn" id="2_5mkn0"]
 [ext_resource type="PackedScene" uid="uid://dja4w5pgnhm58" path="res://Scenes/Patintero/main_player.tscn" id="3_p53ya"]
 [ext_resource type="PackedScene" uid="uid://sax21ek8fo7m" path="res://Scenes/Patintero/patintero_map.tscn" id="4_ji7og"]
-[ext_resource type="Script" path="res://Scripts/Patintero/horizontal_bot.gd" id="5_4vtit"]
+[ext_resource type="Script" uid="uid://dm1deb07aaw8c" path="res://Scripts/Patintero/horizontal_bot.gd" id="5_4vtit"]
 [ext_resource type="PackedScene" uid="uid://cgdw6spo4ei61" path="res://Scenes/Patintero/vertical_bot.tscn" id="5_qoqof"]
 [ext_resource type="PackedScene" uid="uid://xkqx2pgpsex8" path="res://Scenes/Patintero/touch_controls.tscn" id="7_komke"]
 [ext_resource type="AudioStream" uid="uid://cqm5jjuipufnm" path="res://Assets/Audio/SFX/coin_sfx.mp3" id="7_r7t3u"]

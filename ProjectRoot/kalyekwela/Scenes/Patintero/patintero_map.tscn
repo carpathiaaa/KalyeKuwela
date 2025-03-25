@@ -1,7 +1,7 @@
 [gd_scene load_steps=63 format=4 uid="uid://sax21ek8fo7m"]
 
 [ext_resource type="Texture2D" uid="uid://bsxcw8e6kni60" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Hana Caraka - Topdown Tileset [sample]/Tileset/Dirt - simplified.png" id="1_2c4g5"]
-[ext_resource type="Script" path="res://Scripts/Patintero/patintero_map.gd" id="1_opr08"]
+[ext_resource type="Script" uid="uid://cbf8gqf8nbphw" path="res://Scripts/Patintero/patintero_map.gd" id="1_opr08"]
 [ext_resource type="Texture2D" uid="uid://dmpaajh8kfr5m" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Hana Caraka - Topdown Tileset [sample]/Tileset/Fall - simplified.png" id="2_dn73j"]
 [ext_resource type="Texture2D" uid="uid://dpffjoilrunv2" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Hana Caraka - Topdown Tileset [sample]/Tileset/Spring - simplified.png" id="3_c3kak"]
 [ext_resource type="Texture2D" uid="uid://dj6vobfl4t5xa" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Hana Caraka - Topdown Tileset [sample]/Tileset/Summer - simplified.png" id="4_qpwyc"]

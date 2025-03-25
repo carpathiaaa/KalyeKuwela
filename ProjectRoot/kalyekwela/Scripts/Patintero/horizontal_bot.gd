@@ -7,7 +7,6 @@ var enemy_speed = 75# base speed of horizontal enemy (scales with game level)
 func _ready() -> void:
 	position.y = clamp(position.y, -30, -30)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	var enemy_direction = (target_player.position - position ).normalized() 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://2x231ogj5bfp"]
 
 [ext_resource type="PackedScene" uid="uid://ckefjser7jvb7" path="res://Scenes/TumbangPreso/tumbang_preso_map.tscn" id="1_k8mwa"]
-[ext_resource type="Script" path="res://Scripts/TumbangPreso/main.gd" id="1_yq35f"]
+[ext_resource type="Script" uid="uid://b1otebmnan3go" path="res://Scripts/TumbangPreso/main.gd" id="1_yq35f"]
 [ext_resource type="PackedScene" uid="uid://cw387hdddxg0p" path="res://Scenes/TumbangPreso/main_player.tscn" id="2_55kvt"]
 [ext_resource type="PackedScene" uid="uid://56rclc6ifi31" path="res://Scenes/TumbangPreso/time_bar.tscn" id="4_ymwcc"]
 

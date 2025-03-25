@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cgdw6spo4ei61"]
 
-[ext_resource type="Script" path="res://Scripts/Patintero/horizontal_bot.gd" id="1_pov8o"]
+[ext_resource type="Script" uid="uid://dm1deb07aaw8c" path="res://Scripts/Patintero/horizontal_bot.gd" id="1_pov8o"]
 [ext_resource type="Texture2D" uid="uid://q8q0iv8rf2tk" path="res://Scenes/Patintero/Assets/Art/Characters/16x16-RPG-characters/sprites/new-style/chibi-layered.png" id="1_wckoi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4lsh"]

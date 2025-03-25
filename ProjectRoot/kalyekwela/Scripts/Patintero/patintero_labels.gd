@@ -56,6 +56,7 @@ func hide_interface() -> void:
 	level_label.visible = false
 	coins_label.visible = false
 	coin_image.visible = false
+	pause_button.visible = false
 	game_over_label.visible = true
 	black_background.visible = true
 	return_button.visible = true

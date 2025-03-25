@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d1i2ospouqkku" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Tileset/spr_tileset_sunnysideworld_16px.png" id="3_0076a"]
 [ext_resource type="Texture2D" uid="uid://dj6vobfl4t5xa" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Hana Caraka - Topdown Tileset [sample]/Tileset/Summer - simplified.png" id="4_7w7mj"]
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="5_hlj5a"]
-[ext_resource type="Script" path="res://Scenes/TumbangPreso/parallax_background.gd" id="5_xnwto"]
+[ext_resource type="Script" uid="uid://b564cwy4kigwy" path="res://Scenes/TumbangPreso/parallax_background.gd" id="5_xnwto"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wdpoe"]
 texture = ExtResource("1_y4r1l")

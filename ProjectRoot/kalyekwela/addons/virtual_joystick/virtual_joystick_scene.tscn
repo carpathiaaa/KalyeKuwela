@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmr0fcamx7t56"]
 
-[ext_resource type="Script" path="res://addons/virtual_joystick/virtual_joystick.gd" id="1_8x4dy"]
+[ext_resource type="Script" uid="uid://dnp4c20jqhdsq" path="res://addons/virtual_joystick/virtual_joystick.gd" id="1_8x4dy"]
 [ext_resource type="Texture2D" uid="uid://w05vcj1sswup" path="res://Assets/Art/UI/UI_Joystick.png" id="4_chlbl"]
 
 [node name="Virtual Joystick" type="Control"]

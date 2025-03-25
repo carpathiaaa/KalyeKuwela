@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://da3ub7fbayier"]
 
-[ext_resource type="Script" path="res://Scripts/Patintero/score_line.gd" id="1_0qjlq"]
+[ext_resource type="Script" uid="uid://dlgirl5dbyfq0" path="res://Scripts/Patintero/score_line.gd" id="1_0qjlq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px834"]
 size = Vector2(15, 344)

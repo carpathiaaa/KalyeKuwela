@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cgdw6spo4ei61"]
 
-[ext_resource type="Script" path="res://Scripts/Patintero/vertical_bot.gd" id="1_jheod"]
+[ext_resource type="Script" uid="uid://c8ul622narqs1" path="res://Scripts/Patintero/vertical_bot.gd" id="1_jheod"]
 [ext_resource type="Texture2D" uid="uid://hc6yvljkxjl8" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Maria_Idle-Side.png" id="2_tdcso"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jguav"]

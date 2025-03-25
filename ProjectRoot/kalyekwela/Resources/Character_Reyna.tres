@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://co2m81w3lqtmc"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterData.gd" id="1_rr8om"]
+[ext_resource type="Script" uid="uid://bp0fli5bm77iv" path="res://Scripts/CharacterData.gd" id="1_rr8om"]
 [ext_resource type="Texture2D" uid="uid://bjyojuhy3pcfc" path="res://Assets/Art/CharacterIcons/Character_Reyna_Icon.png" id="1_xsy1w"]
 
 [resource]
