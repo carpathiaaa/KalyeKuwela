@@ -402,6 +402,7 @@ offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_nbuy7")
+metadata/_edit_use_anchors_ = true
 
 [node name="Houses" type="NinePatchRect" parent="ParallaxBackground/ParallaxLayer"]
 anchors_preset = 8
@@ -414,6 +415,7 @@ offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_3vppp")
+metadata/_edit_use_anchors_ = true
 
 [node name="CharacterSelect" type="Control" parent="."]
 layout_mode = 3

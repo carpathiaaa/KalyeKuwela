@@ -1,8 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsk12w3h340b6"]
+[gd_scene load_steps=11 format=3 uid="uid://dsk12w3h340b6"]
 
-[ext_resource type="Texture2D" uid="uid://cndqxrq0ib5vn" path="res://addons/TimedClickBar2/background.png" id="1"]
 [ext_resource type="Script" uid="uid://b10t38x7cwg6" path="res://addons/TimedClickBar2/TimedClickBar.gd" id="2"]
+[ext_resource type="Script" uid="uid://8f6l8gtfy5wu" path="res://Scripts/TumbangPreso/pointer.gd" id="2_aly46"]
 [ext_resource type="Texture2D" uid="uid://dld4riyl33ce5" path="res://addons/TimedClickBar2/pointer.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://8hgnmufovfx2" path="res://addons/progress_bar/most rounded/progress bar most rounded progress red.png" id="3_vdhmb"]
+[ext_resource type="Texture2D" uid="uid://bv6p4ldwsdoj2" path="res://addons/progress_bar/least rounded/progress bar least rounded progress green.png" id="4_c6gpa"]
+
+[sub_resource type="Animation" id="Animation_vdhmb"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pointer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-4.98, 0), Vector2(365, 0), Vector2(-4.98, 0)]
+}
 
 [sub_resource type="Animation" id="2"]
 loop_mode = 1
@@ -22,7 +39,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TextureFrame:position")
+tracks/1/path = NodePath("pointer/pointer_sprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -32,72 +49,88 @@ tracks/1/keys = {
 "values": [Vector2(0, 120), Vector2(345, 120), Vector2(0, 120)]
 }
 
-[sub_resource type="Animation" id="Animation_vdhmb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureFrame:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 120)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:pointer_is_over_target")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fy8kt"]
 _data = {
 &"RESET": SubResource("Animation_vdhmb"),
 &"move_pointer": SubResource("2")
 }
 
-[node name="TimedClickBar" type="Control"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hny3"]
+size = Vector2(2, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh8pc"]
+size = Vector2(109, 61)
+
+[node name="timed_click_bar" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 416.0
-offset_bottom = 130.0
 script = ExtResource("2")
 pointer_is_over_target = true
 
-[node name="TextureFrame" type="Sprite2D" parent="."]
-z_index = 1
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fy8kt")
+}
+autoplay = "RESET"
+
+[node name="bar_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.163
+anchor_right = 0.163
+offset_left = 5.0
+offset_top = -15.0
+offset_right = 400.0
+offset_bottom = 159.0
+
+[node name="pointer" type="AnimatableBody2D" parent="."]
+position = Vector2(-4.98, 0)
+script = ExtResource("2_aly46")
+
+[node name="pointer_sprite" type="Sprite2D" parent="pointer"]
+z_index = 3
 position = Vector2(0, 120)
 rotation = -1.5708
 scale = Vector2(2.74547, 2.74547)
 texture = ExtResource("3")
 centered = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_fy8kt")
-}
-autoplay = "move_pointer"
-speed_scale = 0.6
+[node name="pointer_area" type="Area2D" parent="pointer" groups=["pointer"]]
+z_index = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(211, 65)
-texture = ExtResource("1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pointer/pointer_area" groups=["pointer"]]
+position = Vector2(24.98, 70)
+shape = SubResource("RectangleShape2D_6hny3")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.163
-anchor_right = 0.163
-offset_left = -630.808
-offset_top = -138.0
-offset_right = -70.808
-offset_bottom = 166.0
+[node name="acceptance_region" type="Node2D" parent="."]
+
+[node name="acceptance_sprite" type="Sprite2D" parent="acceptance_region"]
+z_index = 2
+position = Vector2(211.172, 64)
+scale = Vector2(3.05176, 10.3125)
+texture = ExtResource("4_c6gpa")
+
+[node name="acceptance_area" type="Area2D" parent="acceptance_region" groups=["acceptance_region"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="acceptance_region/acceptance_area" groups=["acceptance_region"]]
+z_index = 2
+position = Vector2(210.5, 63.5)
+shape = SubResource("RectangleShape2D_fh8pc")
+
+[node name="bar_body" type="Node2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="bar_body"]
+z_index = 1
+position = Vector2(202.5, 64)
+scale = Vector2(12.4688, 10.125)
+texture = ExtResource("3_vdhmb")
+
+[node name="blackBorder" type="Sprite2D" parent="bar_body"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(202.5, 64)
+scale = Vector2(12.869, 11.968)
+texture = ExtResource("3_vdhmb")
+
+[connection signal="button_down" from="bar_button" to="." method="_on_bar_button_button_down"]
+[connection signal="area_entered" from="pointer/pointer_area" to="pointer" method="_on_pointer_area_area_entered"]
+[connection signal="area_exited" from="pointer/pointer_area" to="pointer" method="_on_pointer_area_area_exited"]
