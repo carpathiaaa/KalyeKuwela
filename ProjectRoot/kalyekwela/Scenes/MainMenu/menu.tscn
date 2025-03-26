@@ -1,10 +1,10 @@
 [gd_scene load_steps=81 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="2_nbuy7"]
-[ext_resource type="Script" uid="uid://bjxoxd7hu3w3v" path="res://Scripts/MainMenu/parallax_background.gd" id="2_pemtm"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/parallax_background.gd" id="2_pemtm"]
 [ext_resource type="Texture2D" uid="uid://cj24rdfxxjaxj" path="res://Assets/Art/UI/UI_ChooseCharacter_Arrow.png" id="3_ttohg"]
 [ext_resource type="Texture2D" uid="uid://ca3vw7mq0njkd" path="res://Assets/Art/UI/UI_Houses_Background.png" id="4_3vppp"]
-[ext_resource type="Script" uid="uid://m4v1ttc3m7pb" path="res://Scripts/MainMenu/character_selection.gd" id="4_8xus2"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/character_selection.gd" id="4_8xus2"]
 [ext_resource type="Texture2D" uid="uid://t2oc6ibgs0qx" path="res://Assets/Art/UI/UI_Settings_Button.png" id="4_yfkjy"]
 [ext_resource type="Texture2D" uid="uid://bha2i2j1dw7dy" path="res://Assets/Art/UI/UI_Inventory_Button.png" id="5_1765b"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="5_shxnd"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cm1gmryjcfhrw" path="res://Assets/Art/UI/UI_XP_Bar.png" id="6_hddgj"]
 [ext_resource type="Texture2D" uid="uid://bbh1ap3j6kj5v" path="res://Assets/Art/UI/UI_Shop-1_Button.png" id="6_uouwt"]
 [ext_resource type="Texture2D" uid="uid://cptpm8ckka6vx" path="res://Assets/Art/UI/UI_Patintero_Button.png" id="7_bvt3d"]
-[ext_resource type="Script" uid="uid://cle5wwqrs30bl" path="res://Scripts/MainMenu/main_menu.gd" id="7_cfydy"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="7_cfydy"]
 [ext_resource type="Texture2D" uid="uid://cwm2g8wbxok52" path="res://Assets/Art/CharacterIcons/Character_Carlo_Icon.png" id="7_lk4q3"]
 [ext_resource type="Texture2D" uid="uid://cr3olt3nawu3m" path="res://Assets/Art/UI/UI_BenteUno_Button.png" id="8_4ar3s"]
 [ext_resource type="Texture2D" uid="uid://cn2lpmiiv104s" path="res://Assets/Art/UI/UI_TumbangPreso_Button.png" id="8_b25sv"]
@@ -22,14 +22,14 @@
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="10_mu1tv"]
 [ext_resource type="Texture2D" uid="uid://bjyojuhy3pcfc" path="res://Assets/Art/CharacterIcons/Character_Reyna_Icon.png" id="10_vdku4"]
 [ext_resource type="Texture2D" uid="uid://mubq3qc5lsdy" path="res://Assets/Art/CharacterIcons/Character_Tala_Icon.png" id="11_r1rvp"]
-[ext_resource type="Script" uid="uid://bo0065m700j0r" path="res://Scripts/MainMenu/settings_pop_up.gd" id="14_d1xcb"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/settings_pop_up.gd" id="14_d1xcb"]
 [ext_resource type="Texture2D" uid="uid://nf1rbka8apmk" path="res://Assets/Art/UI/UI_AudioOff_Icon.png" id="17_3haoq"]
 [ext_resource type="Texture2D" uid="uid://b3p5twqw2j3w1" path="res://Assets/Art/UI/UI_AudioON_Icon.png" id="18_8bx3m"]
 [ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="19_ksjjr"]
 [ext_resource type="Texture2D" uid="uid://4ugxvi16ysu3" path="res://Assets/Art/UI/UI_BrightnessOn_Icon.png" id="20_48gs6"]
 [ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="21_h2p02"]
-[ext_resource type="Script" uid="uid://c6yy11g3icwbr" path="res://Scripts/MainMenu/inventory_pop_up.gd" id="22_ldc7a"]
-[ext_resource type="Script" uid="uid://puapd4gdn5xs" path="res://Scripts/MainMenu/shop_popup.gd" id="22_stcao"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/inventory_pop_up.gd" id="22_ldc7a"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/shop_popup.gd" id="22_stcao"]
 [ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="24_3mfu3"]
 [ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="24_gn6sn"]
 [ext_resource type="AudioStream" uid="uid://bt65j5uayi503" path="res://Assets/Audio/Music/Audio_MainTheme.mp3" id="34_16qih"]
@@ -282,9 +282,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_42iq2"]
 _data = {
-&"RESET": SubResource("Animation_wkt3w"),
-&"TransitionIn": SubResource("Animation_hb5hc"),
-&"TransitionOut": SubResource("Animation_klp8m")
+"RESET": SubResource("Animation_wkt3w"),
+"TransitionIn": SubResource("Animation_hb5hc"),
+"TransitionOut": SubResource("Animation_klp8m")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_46m0x"]
@@ -343,9 +343,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3skes"]
 _data = {
-&"RESET": SubResource("Animation_v6otd"),
-&"TransitionIn": SubResource("Animation_cg4j6"),
-&"TransitionOut": SubResource("Animation_j4tmx")
+"RESET": SubResource("Animation_v6otd"),
+"TransitionIn": SubResource("Animation_cg4j6"),
+"TransitionOut": SubResource("Animation_j4tmx")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lcy2y"]
@@ -723,9 +723,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.882353, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.882353, 0, 0, 1)
-theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
 theme_override_colors/font_pressed_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(0.882353, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_mu1tv")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxTexture_qn5vo")
@@ -785,9 +785,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
-theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
-theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
 theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("24_gn6sn")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xn2py")
@@ -803,9 +803,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
-theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
-theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
 theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("24_gn6sn")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xn2py")
@@ -817,7 +817,7 @@ text = "no
 
 [node name="AnimationInOut" type="AnimationPlayer" parent="SettingsPopUp"]
 libraries = {
-&"": SubResource("AnimationLibrary_42iq2")
+"": SubResource("AnimationLibrary_42iq2")
 }
 speed_scale = 4.0
 
@@ -895,7 +895,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
 
 [node name="AnimationInOut" type="AnimationPlayer" parent="InventoryPopUp"]
 libraries = {
-&"": SubResource("AnimationLibrary_3skes")
+"": SubResource("AnimationLibrary_3skes")
 }
 speed_scale = 4.0
 
@@ -914,10 +914,10 @@ theme_override_constants/separation = 5
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
-theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
-theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
-theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_mu1tv")
 theme_override_styles/focus = SubResource("StyleBoxTexture_lcy2y")
@@ -930,10 +930,10 @@ text = "Characters"
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
-theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
-theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
-theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_mu1tv")
 theme_override_styles/focus = SubResource("StyleBoxTexture_lcy2y")
@@ -1066,7 +1066,7 @@ text = "SHOP"
 
 [node name="AnimationInOut" type="AnimationPlayer" parent="ShopPopup"]
 libraries = {
-&"": SubResource("AnimationLibrary_3skes")
+"": SubResource("AnimationLibrary_3skes")
 }
 speed_scale = 4.0
 
@@ -1085,10 +1085,10 @@ theme_override_constants/separation = 5
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
-theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
-theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
-theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_mu1tv")
 theme_override_styles/focus = SubResource("StyleBoxTexture_lcy2y")
@@ -1101,10 +1101,10 @@ text = "Characters"
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
-theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
-theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
-theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_mu1tv")
 theme_override_styles/focus = SubResource("StyleBoxTexture_lcy2y")
@@ -1242,10 +1242,10 @@ theme_override_constants/separation = 15
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(0.133333, 0.694118, 0.298039, 1)
-theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_color = Color(0.133333, 0.694118, 0.298039, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_mu1tv")
 theme_override_styles/focus = SubResource("StyleBoxTexture_lcy2y")
@@ -1258,10 +1258,10 @@ text = "Confirm"
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
-theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
 theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_mu1tv")
 theme_override_styles/focus = SubResource("StyleBoxTexture_lcy2y")
@@ -1382,9 +1382,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
-theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
-theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
 theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("24_gn6sn")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xn2py")
