@@ -1,16 +1,16 @@
 [gd_scene load_steps=57 format=4 uid="uid://btigs8qepl0d1"]
 
-[ext_resource type="Script" path="res://Scripts/BenteUno/main.gd" id="1_5daw8"]
+[ext_resource type="Script" uid="uid://c4bwpihgbaf1t" path="res://Scripts/BenteUno/main.gd" id="1_5daw8"]
 [ext_resource type="PackedScene" uid="uid://cq5xt52v2s0h1" path="res://Scenes/BenteUno/player.tscn" id="1_ydfnf"]
 [ext_resource type="Texture2D" uid="uid://bsxuxx7c0jfwl" path="res://Assets/Art/Tilesets/Solaria Demo Tiles.png" id="2_cbr78"]
 [ext_resource type="PackedScene" uid="uid://dvsd26v8oyj3e" path="res://Scenes/BenteUno/npcs.tscn" id="3_tbbdd"]
-[ext_resource type="Script" path="res://Scripts/BenteUno/status_label.gd" id="4_ucocf"]
+[ext_resource type="Script" uid="uid://6uwb21jbpi6m" path="res://Scripts/BenteUno/status_label.gd" id="4_ucocf"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="5_8i8h2"]
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="5_llm1q"]
 [ext_resource type="Texture2D" uid="uid://psw4jh7jxdpg" path="res://Assets/Art/UI/UI_Pause_Button.png" id="8_ld64f"]
 [ext_resource type="PackedScene" uid="uid://cbpahr54gaur2" path="res://Scenes/BenteUno/touch_controls.tscn" id="8_mrcmj"]
 [ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="9_eoh28"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/settings_pop_up.gd" id="10_63s56"]
+[ext_resource type="Script" uid="uid://bo0065m700j0r" path="res://Scripts/MainMenu/settings_pop_up.gd" id="10_63s56"]
 [ext_resource type="Texture2D" uid="uid://nf1rbka8apmk" path="res://Assets/Art/UI/UI_AudioOff_Icon.png" id="11_24ktb"]
 [ext_resource type="Texture2D" uid="uid://b3p5twqw2j3w1" path="res://Assets/Art/UI/UI_AudioON_Icon.png" id="12_7shxt"]
 [ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="13_cpphu"]
@@ -3131,9 +3131,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.882353, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.882353, 0, 0, 1)
-theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
 theme_override_colors/font_outline_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_pressed_color = Color(0.882353, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_llm1q")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxTexture_vjjqo")
@@ -3193,9 +3193,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
-theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
-theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
 theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("16_asycb")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ekls6")
@@ -3211,9 +3211,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
-theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
-theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
 theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("16_asycb")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ekls6")
