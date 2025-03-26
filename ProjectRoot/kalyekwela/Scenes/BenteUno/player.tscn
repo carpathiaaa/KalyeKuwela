@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cq5xt52v2s0h1"]
 
-[ext_resource type="Script" uid="uid://b8a7dsw2ecmfc" path="res://Scripts/BenteUno/player.gd" id="1_h7xuc"]
+[ext_resource type="Script" path="res://Scripts/BenteUno/player.gd" id="1_h7xuc"]
 [ext_resource type="SpriteFrames" uid="uid://bxod2wchcr2g1" path="res://Assets/Art/Characters/Frames/Antionio_Frames.tres" id="2_2gme5"]
 [ext_resource type="AudioStream" uid="uid://bfr8jiffbnf4p" path="res://Assets/Audio/SFX/Audio_BenteUno_Chase.mp3" id="3_jye4o"]
 [ext_resource type="AudioStream" uid="uid://cjq3fmqtne8r2" path="res://Assets/Audio/SFX/Audio_BenteUno_Tagged.mp3" id="4_uoj3y"]
@@ -29,7 +29,8 @@ func update_character(selected_index: int):
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eswg5"]
-height = 32.0
+radius = 6.0
+height = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c5rc0"]
 radius = 12.0
@@ -39,17 +40,18 @@ height = 36.0
 radius = 87.0057
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_mask = 3
 script = ExtResource("1_h7xuc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("2_2gme5")
-animation = &"WalkFront"
+animation = &"IdleBack"
+offset = Vector2(0, -7)
 script = SubResource("GDScript_vdoqg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_eswg5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -79,6 +81,7 @@ stream = ExtResource("4_uoj3y")
 volume_db = -0.18
 
 [node name="ChaseDetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 3
 
