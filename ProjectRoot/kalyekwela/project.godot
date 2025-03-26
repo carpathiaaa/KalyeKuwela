@@ -21,7 +21,6 @@ GlobalData="*res://Scripts/GlobalData.gd"
 
 [display]
 
-window/size/mode=4
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 

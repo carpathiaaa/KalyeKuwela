@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsk12w3h340b6"]
+[gd_scene load_steps=15 format=3 uid="uid://dsk12w3h340b6"]
 
 [ext_resource type="Script" uid="uid://b10t38x7cwg6" path="res://addons/TimedClickBar2/TimedClickBar.gd" id="2"]
 [ext_resource type="Script" uid="uid://8f6l8gtfy5wu" path="res://Scripts/TumbangPreso/pointer.gd" id="2_aly46"]
+[ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="2_c6gpa"]
 [ext_resource type="Texture2D" uid="uid://dld4riyl33ce5" path="res://addons/TimedClickBar2/pointer.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://8hgnmufovfx2" path="res://addons/progress_bar/most rounded/progress bar most rounded progress red.png" id="3_vdhmb"]
 [ext_resource type="Texture2D" uid="uid://bv6p4ldwsdoj2" path="res://addons/progress_bar/least rounded/progress bar least rounded progress green.png" id="4_c6gpa"]
@@ -55,6 +56,28 @@ _data = {
 &"move_pointer": SubResource("2")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6gpa"]
+atlas = ExtResource("2_c6gpa")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hny3"]
+atlas = ExtResource("2_c6gpa")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fh8pc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6gpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hny3")
+}],
+"loop": true,
+"name": &"brown_animation",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hny3"]
 size = Vector2(2, 14)
 
@@ -78,10 +101,20 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.163
 anchor_right = 0.163
-offset_left = 5.0
-offset_top = -15.0
-offset_right = 400.0
-offset_bottom = 159.0
+offset_left = -186.0
+offset_top = 9.0
+offset_right = -71.0
+offset_bottom = 132.0
+scale = Vector2(0.9, 0.9)
+
+[node name="SmallSquareButtons" type="AnimatedSprite2D" parent="bar_button"]
+position = Vector2(58, 56)
+scale = Vector2(4.36458, 4.36458)
+sprite_frames = SubResource("SpriteFrames_fh8pc")
+animation = &"brown_animation"
+
+[node name="button_timer" type="Timer" parent="bar_button"]
+wait_time = 0.16
 
 [node name="pointer" type="AnimatableBody2D" parent="."]
 position = Vector2(-4.98, 0)
@@ -132,5 +165,6 @@ scale = Vector2(12.869, 11.968)
 texture = ExtResource("3_vdhmb")
 
 [connection signal="button_down" from="bar_button" to="." method="_on_bar_button_button_down"]
+[connection signal="timeout" from="bar_button/button_timer" to="." method="_on_button_timer_timeout"]
 [connection signal="area_entered" from="pointer/pointer_area" to="pointer" method="_on_pointer_area_area_entered"]
 [connection signal="area_exited" from="pointer/pointer_area" to="pointer" method="_on_pointer_area_area_exited"]

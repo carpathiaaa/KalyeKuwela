@@ -7,7 +7,7 @@ extends Control
 @onready var reset_confirmation_popup = $SettingsFunctionContainer/ConfirmationMargin
 @onready var confirm_reset_button = $SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton
 @onready var cancel_reset_button = $SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton
-@export var brightness_overlay: ColorRect
+@onready var brightness_overlay = $"../ColorRect"
 
 var previous_volume_db: float = 0.0  
 var is_muted: bool = false  
