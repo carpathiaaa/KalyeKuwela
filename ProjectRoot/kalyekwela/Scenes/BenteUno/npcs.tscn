@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dvsd26v8oyj3e"]
 
-[ext_resource type="Script" path="res://Scripts/BenteUno/npc.gd" id="1_f4j7u"]
+[ext_resource type="Script" uid="uid://dfwksbp3g71ho" path="res://Scripts/BenteUno/npc.gd" id="1_f4j7u"]
 [ext_resource type="SpriteFrames" uid="uid://dp5ol0c0hg8og" path="res://Assets/Art/Characters/Frames/Juan_Frames.tres" id="2_mowhh"]
 [ext_resource type="SpriteFrames" uid="uid://cr6onwakxrxau" path="res://Assets/Art/Characters/Frames/Maria_Frames.tres" id="3_c7i4g"]
 [ext_resource type="SpriteFrames" uid="uid://be4gj5kt2lcs7" path="res://Assets/Art/Characters/Frames/Reyna_Frames.tres" id="4_12w4l"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cq5xt52v2s0h1"]
 
-[ext_resource type="Script" path="res://Scripts/BenteUno/player.gd" id="1_h7xuc"]
+[ext_resource type="Script" uid="uid://b8a7dsw2ecmfc" path="res://Scripts/BenteUno/player.gd" id="1_h7xuc"]
 [ext_resource type="SpriteFrames" uid="uid://bxod2wchcr2g1" path="res://Assets/Art/Characters/Frames/Antionio_Frames.tres" id="2_2gme5"]
 [ext_resource type="AudioStream" uid="uid://bfr8jiffbnf4p" path="res://Assets/Audio/SFX/Audio_BenteUno_Chase.mp3" id="3_jye4o"]
 [ext_resource type="AudioStream" uid="uid://cjq3fmqtne8r2" path="res://Assets/Audio/SFX/Audio_BenteUno_Tagged.mp3" id="4_uoj3y"]
