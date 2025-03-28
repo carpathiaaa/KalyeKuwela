@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccj5fi8xp7xsd"]
+[gd_scene load_steps=8 format=3 uid="uid://ccj5fi8xp7xsd"]
 
 [ext_resource type="Script" uid="uid://q5pqc80n1t5r" path="res://Scripts/Patintero/patintero_main.gd" id="1_q6fdc"]
 [ext_resource type="PackedScene" uid="uid://bkqnu14r0ml5" path="res://Scenes/Patintero/UI.tscn" id="2_5mkn0"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://sax21ek8fo7m" path="res://Scenes/Patintero/patintero_map.tscn" id="4_ji7og"]
 [ext_resource type="Script" uid="uid://dm1deb07aaw8c" path="res://Scripts/Patintero/horizontal_bot.gd" id="5_4vtit"]
 [ext_resource type="PackedScene" uid="uid://cgdw6spo4ei61" path="res://Scenes/Patintero/vertical_bot.tscn" id="5_qoqof"]
-[ext_resource type="PackedScene" uid="uid://xkqx2pgpsex8" path="res://Scenes/Patintero/touch_controls.tscn" id="7_komke"]
 [ext_resource type="AudioStream" uid="uid://cqm5jjuipufnm" path="res://Assets/Audio/SFX/coin_sfx.mp3" id="7_r7t3u"]
 
 [node name="Patintero" type="Node2D"]
@@ -16,7 +15,7 @@ script = ExtResource("1_q6fdc")
 [node name="main_player" parent="." instance=ExtResource("3_p53ya")]
 z_as_relative = false
 
-[node name="Map" parent="." instance=ExtResource("4_ji7og")]
+[node name="mao" parent="." instance=ExtResource("4_ji7og")]
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 position = Vector2(-550, 65)
@@ -25,14 +24,6 @@ position = Vector2(-550, 65)
 z_index = 7
 position = Vector2(-37, -30)
 script = ExtResource("5_4vtit")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="touch_controls" parent="Control" instance=ExtResource("7_komke")]
 
 [node name="UI" parent="." instance=ExtResource("2_5mkn0")]
 follow_viewport_enabled = false

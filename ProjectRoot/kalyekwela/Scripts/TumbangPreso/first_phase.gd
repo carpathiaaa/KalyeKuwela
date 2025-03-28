@@ -7,39 +7,50 @@ extends Node2D
 @onready var sandal_scale = $sandal/sandal_scale
 @onready var pointer_button = $click_bar/bar_button
 
-var _level : int = 1
-var _coins : int = 0
-var _points : int = 0
+const initial_countdown_time = 3
+const main_stage_time = 15
 
-var scene_time = 15
+var difficulty = 0
 
 func _ready() -> void:
-	countdown_timer.timeout.connect(first_countdown_timeout)
-	stop_controls() # stop controls while waiting for initial countdown timeout
+	# Event sequence
+	countdown_timer.start(initial_countdown_time)
+	initial_stage()
+	await countdown_timer.timeout
+	main_stage()
+	countdown_timer.start(main_stage_time)
+	await countdown_timer.timeout
+	get_parent().end_first_phase()
 
-func first_countdown_timeout() -> void:
-	print("start of first phase")
+
+func initialize(level : int) -> void:
+	difficulty = level
+
+func initial_stage() -> void:
+	sandal.visible = false
+	stop_controls() # stop controls while waiting for initial countdown timeout
+	self.show()
+
+func main_stage() -> void:
+	print("first countdown")
 	play_sandal_animations()
 	resume_controls() # resume controls after initial countdown
-	# connect countdown timer to second timeout function
-	countdown_timer.timeout.disconnect(first_countdown_timeout)
-	countdown_timer.timeout.connect(second_countdown_timeout)
-	countdown_timer.start(scene_time)
+
+func resume_controls() -> void:
+	pointer_animation.play()
+	pointer_button.disabled = false
 
 func stop_controls() -> void:
 	pointer_animation.stop() # pause pointer movement before countdown timer expires
 	pointer_button.disabled = true # disable button before countdown timer expires
 
-func resume_controls() -> void:
-	pointer_animation.play()
-	pointer_button.disabled = false
 
 func play_sandal_animations() -> void:
 	sandal.visible = true
 	sandal_spin.play("sandal_spin")
 	sandal_scale.play("sandal_scale")
 
-func second_countdown_timeout() -> void:
-	print("end of first phase")
-	countdown_timer.timeout.disconnect(second_countdown_timeout)
-	
+func stop_sandal_animations() -> void:
+	sandal.visible = false
+	sandal_spin.stop()
+	sandal_scale.stop()

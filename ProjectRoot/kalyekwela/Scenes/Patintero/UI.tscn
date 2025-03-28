@@ -145,6 +145,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="points_label" type="Label" parent="Control"]
 z_index = 3
@@ -157,6 +158,7 @@ offset_bottom = 183.0
 scale = Vector2(4, 4)
 theme_override_fonts/font = SubResource("FontVariation_le3pe")
 text = "Points: 0"
+metadata/_edit_use_anchors_ = true
 
 [node name="level_label" type="Label" parent="Control"]
 z_index = 3
@@ -173,6 +175,7 @@ theme_override_fonts/font = ExtResource("2_5dk1x")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_jbh4f")
 text = "level: 1"
 label_settings = SubResource("LabelSettings_kei8d")
+metadata/_edit_use_anchors_ = true
 
 [node name="coins_label" type="Label" parent="Control"]
 z_index = 3
@@ -187,6 +190,7 @@ theme_type_variation = &"HeaderLarge"
 text = "0"
 label_settings = SubResource("LabelSettings_n7xfb")
 justification_flags = 160
+metadata/_edit_use_anchors_ = true
 
 [node name="coin_image" type="AnimatedSprite2D" parent="Control"]
 z_index = 3
@@ -244,6 +248,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_uam42")
 action_mode = 0
 icon = ExtResource("5_va68y")
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" type="Control" parent="Control"]
 visible = false

@@ -1,11 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://2x231ogj5bfp"]
+[gd_scene load_steps=35 format=3 uid="uid://2x231ogj5bfp"]
 
 [ext_resource type="Script" uid="uid://b1otebmnan3go" path="res://Scripts/TumbangPreso/first_phase.gd" id="1_yq35f"]
 [ext_resource type="PackedScene" uid="uid://dsk12w3h340b6" path="res://Scenes/TumbangPreso/click_bar.tscn" id="2_hylh8"]
-[ext_resource type="Script" uid="uid://mqa1gbehoo48" path="res://Scripts/TumbangPreso/background.gd" id="3_847p7"]
-[ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="4_nnk0y"]
+[ext_resource type="Texture2D" uid="uid://dbnpoqg0knc5k" path="res://Assets/Art/Maps/Tilesets/kylefeliciano/volcano.png" id="4_5om84"]
+[ext_resource type="Texture2D" uid="uid://ca3vw7mq0njkd" path="res://Assets/Art/UI/UI_Houses_Background.png" id="5_fqyx3"]
 [ext_resource type="Texture2D" uid="uid://cogow715ntm2v" path="res://Assets/Art/Props/sandal by adityasusant938.png" id="5_nnk0y"]
-[ext_resource type="PackedScene" uid="uid://c7ciqtdnh2c3c" path="res://Scenes/TumbangPreso/interface.tscn" id="5_rt06c"]
+[ext_resource type="Texture2D" uid="uid://cvqh1xhd5de3h" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Front.png" id="6_rlrgm"]
+[ext_resource type="Texture2D" uid="uid://do8wj7h5iwikx" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Side.png" id="7_ix5ae"]
+[ext_resource type="Texture2D" uid="uid://chvdhipqjndsg" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Back.png" id="8_4uhm8"]
+[ext_resource type="Script" uid="uid://dywksu7v0s606" path="res://Scripts/Patintero/player_sprite_2d.gd" id="9_nx0gl"]
 
 [sub_resource type="Animation" id="Animation_igl2y"]
 
@@ -31,6 +34,21 @@ _data = {
 &"sandal_spin": SubResource("Animation_rt06c")
 }
 
+[sub_resource type="Animation" id="Animation_5mtbt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SandalByAdityasusant938:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+
 [sub_resource type="Animation" id="Animation_c1arp"]
 resource_name = "sandal_scale"
 length = 15.0
@@ -44,22 +62,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1.5, 1.5), Vector2(0.1, 0.1)]
-}
-
-[sub_resource type="Animation" id="Animation_5mtbt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SandalByAdityasusant938:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(4, 4), Vector2(0.1, 0.1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_84ali"]
@@ -68,16 +71,162 @@ _data = {
 &"sandal_scale": SubResource("Animation_c1arp")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vagi"]
+atlas = ExtResource("6_rlrgm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tvw1"]
+atlas = ExtResource("6_rlrgm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j0h4"]
+atlas = ExtResource("6_rlrgm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s1tg"]
+atlas = ExtResource("6_rlrgm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjmw1"]
+atlas = ExtResource("6_rlrgm")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmf5d"]
+atlas = ExtResource("6_rlrgm")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1x3u"]
+atlas = ExtResource("7_ix5ae")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks2nq"]
+atlas = ExtResource("7_ix5ae")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vdm1"]
+atlas = ExtResource("7_ix5ae")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyh27"]
+atlas = ExtResource("7_ix5ae")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5ehp"]
+atlas = ExtResource("7_ix5ae")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbwti"]
+atlas = ExtResource("7_ix5ae")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buxqc"]
+atlas = ExtResource("8_4uhm8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ybxv"]
+atlas = ExtResource("8_4uhm8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6iyq"]
+atlas = ExtResource("8_4uhm8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr51t"]
+atlas = ExtResource("8_4uhm8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77wyf"]
+atlas = ExtResource("8_4uhm8")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0qqp"]
+atlas = ExtResource("8_4uhm8")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3lfcj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vagi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tvw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j0h4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s1tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjmw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmf5d")
+}],
+"loop": true,
+"name": &"down_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1x3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks2nq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vdm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyh27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5ehp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbwti")
+}],
+"loop": true,
+"name": &"side_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buxqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ybxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6iyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr51t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77wyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0qqp")
+}],
+"loop": true,
+"name": &"up_animation",
+"speed": 5.0
+}]
+
 [node name="first_phase" type="Node2D"]
 position = Vector2(498, 310)
 script = ExtResource("1_yq35f")
 
 [node name="sandal" type="Node2D" parent="."]
-visible = false
-position = Vector2(-13, -96)
-scale = Vector2(0.263235, 0.263235)
+z_index = 1
+position = Vector2(-216, 211)
+scale = Vector2(0.09, 0.09)
 
 [node name="SandalByAdityasusant938" type="Sprite2D" parent="sandal"]
+position = Vector2(3733.33, -2544.44)
+scale = Vector2(3, 3)
 texture = ExtResource("5_nnk0y")
 
 [node name="sandal_spin" type="AnimationPlayer" parent="sandal"]
@@ -91,6 +240,7 @@ libraries = {
 }
 
 [node name="click_bar" parent="." instance=ExtResource("2_hylh8")]
+z_index = 1
 offset_left = 116.0
 offset_top = 166.0
 offset_right = 532.0
@@ -98,25 +248,31 @@ offset_bottom = 315.0
 scale = Vector2(1.3, 1.3)
 metadata/_edit_use_anchors_ = true
 
-[node name="background" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
-script = ExtResource("3_847p7")
-scroll_speed = 15.0
-
-[node name="Parallax2D" type="ParallaxLayer" parent="background"]
-position = Vector2(749, 459)
-motion_mirroring = Vector2(1852, 648)
-
-[node name="UiSkyBackground" type="Sprite2D" parent="background/Parallax2D"]
-texture_repeat = 2
-position = Vector2(-608, -537)
-scale = Vector2(3, 3)
-texture = ExtResource("4_nnk0y")
-centered = false
-offset = Vector2(-3.075, 0)
-
-[node name="interface" parent="." instance=ExtResource("5_rt06c")]
-
 [node name="countdown_timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="Volcano" type="Sprite2D" parent="background"]
+position = Vector2(203, -26)
+scale = Vector2(0.447164, 0.496296)
+texture = ExtResource("4_5om84")
+
+[node name="UiHousesBackground" type="Sprite2D" parent="background"]
+position = Vector2(82.4999, 56.25)
+scale = Vector2(1.80781, 1.5625)
+texture = ExtResource("5_fqyx3")
+
+[node name="player" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+z_index = 2
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-288, 218)
+scale = Vector2(6.84375, 6.84375)
+sprite_frames = SubResource("SpriteFrames_3lfcj")
+animation = &"up_animation"
+autoplay = "down_animation"
+script = ExtResource("9_nx0gl")

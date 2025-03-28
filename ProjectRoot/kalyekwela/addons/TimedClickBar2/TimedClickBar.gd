@@ -5,6 +5,9 @@ extends Control
 @onready var pointer_animation = $pointer_animation
 @onready var button_timer = $bar_button/button_timer
 @onready var button_sprite = $bar_button/SmallSquareButtons
+@onready var button_icon = $bar_button/button_icon
+@onready var sandal_sprite = $"../sandal/SandalByAdityasusant938"
+
 @export var pointer_is_over_target : bool
 
 var random_number = RandomNumberGenerator.new() # create a random number generator
@@ -14,8 +17,10 @@ func _on_bar_button_button_down() -> void:
 	button_sprite.frame = 1 # change buttons sprite to pressed state
 	if pointer_is_over_target:
 		print("hit")
+		button_icon.modulate = Color(0.75, 1.6, 0.75) # Greenish tint if hit
 	else:
 		print("miss")
+		button_icon.modulate = Color(1.6, 0.75, 0.75) # Reddish tint if miss
 	randomize_bar() # reset acceptance region length and position
 	pointer_animation.speed_scale = random_number.randf_range(0.2, 0.7) # increase pointer speed after every button click
 
