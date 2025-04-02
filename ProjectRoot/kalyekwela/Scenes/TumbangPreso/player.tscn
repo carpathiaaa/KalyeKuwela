@@ -195,5 +195,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="body"]
 
+[node name="Camera2D" type="Camera2D" parent="body"]
+
 [connection signal="area_entered" from="body/Area2D" to="body" method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="body/Timer" to="body" method="_on_timer_timeout"]
