@@ -186,13 +186,6 @@ limit_bottom = 200
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="Control" type="Control" parent="body/Camera2D"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="body"]
 shape = SubResource("CircleShape2D_ch51q")
 

@@ -1,4 +1,4 @@
-extends Node2D
+extends base_game
 
 @onready var main_timer = $main_timer
 
@@ -50,7 +50,3 @@ func end_second_phase() -> void:
 	emit_signal("second_phase_ended")
 	second_phase_instance.queue_free()
 	
-
-func end_game() -> void:
-	print("Game ended")
-	Engine.time_scale = 0;

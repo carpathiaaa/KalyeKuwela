@@ -1,0 +1,307 @@
+[gd_scene load_steps=22 format=3 uid="uid://cykxo48fhk4nw"]
+
+[ext_resource type="Script" uid="uid://bo0065m700j0r" path="res://Scripts/MainMenu/settings_pop_up.gd" id="1_gn81r"]
+[ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_6uggy"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="3_khgfx"]
+[ext_resource type="Texture2D" uid="uid://b3p5twqw2j3w1" path="res://Assets/Art/UI/UI_AudioON_Icon.png" id="4_x3jmy"]
+[ext_resource type="Texture2D" uid="uid://nf1rbka8apmk" path="res://Assets/Art/UI/UI_AudioOff_Icon.png" id="5_sroy2"]
+[ext_resource type="Texture2D" uid="uid://4ugxvi16ysu3" path="res://Assets/Art/UI/UI_BrightnessOn_Icon.png" id="6_fht5u"]
+[ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="7_cgf7n"]
+[ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="8_44jmt"]
+[ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="9_pshj0"]
+[ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="10_tptto"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f7hmy"]
+texture = ExtResource("2_6uggy")
+region_rect = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6c3wq"]
+texture = ExtResource("2_6uggy")
+region_rect = Rect2(837, 132, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l2utu"]
+texture = ExtResource("4_x3jmy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vr7iv"]
+texture = ExtResource("5_sroy2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4l1mn"]
+texture = ExtResource("6_fht5u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6yhvu"]
+texture = ExtResource("7_cgf7n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qb80n"]
+texture = ExtResource("8_44jmt")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(59, 13, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxht2"]
+texture = ExtResource("8_44jmt")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(11, 11, 26, 28)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_51s11"]
+load_path = "res://.godot/imported/Solaria Demo Tiles.png-574d6cbd1daf0e340c174f80c741071e.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2a2x"]
+texture = ExtResource("10_tptto")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(59, 103, 26, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ailh"]
+texture = ExtResource("10_tptto")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(11, 102, 26, 19)
+
+[node name="SettingsPopUp" type="MarginContainer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gn81r")
+
+[node name="SettingsBackground" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_6uggy")
+region_rect = Rect2(107, 155, 26, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ExitButtonContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+theme_override_constants/margin_bottom = 0
+
+[node name="SettingsButton" type="Button" parent="ExitButtonContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+mouse_filter = 1
+theme_override_styles/hover = SubResource("StyleBoxTexture_f7hmy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_f7hmy")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6c3wq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 11
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SettingsText" type="Label" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_khgfx")
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
+[node name="SettingsFunctionContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="SettingsContents" type="VBoxContainer" parent="SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="AudioSlider" type="HSlider" parent="SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+
+[node name="BrightnessSlider" type="HSlider" parent="SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="SettingsButtonsCanvas" type="MarginContainer" parent="SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -50
+
+[node name="SettingsButtonsContainer" type="VBoxContainer" parent="SettingsFunctionContainer/SettingsButtonsCanvas"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MuteToggle" type="Button" parent="SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_l2utu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l2utu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vr7iv")
+theme_override_styles/normal = SubResource("StyleBoxTexture_l2utu")
+toggle_mode = true
+
+[node name="BrightnessToggle" type="Button" parent="SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_4l1mn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4l1mn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6yhvu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_4l1mn")
+toggle_mode = true
+
+[node name="ResetDataMargin" type="MarginContainer" parent="SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 205
+theme_override_constants/margin_right = 70
+
+[node name="ResetGameDataButton" type="Button" parent="SettingsFunctionContainer/ResetDataMargin"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_pressed_color = Color(0.882353, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_khgfx")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_qb80n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qb80n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wxht2")
+text = "RESET GAME DATA"
+
+[node name="ConfirmationMargin" type="MarginContainer" parent="SettingsFunctionContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_right = 70
+
+[node name="ConfirmationBackground" type="NinePatchRect" parent="SettingsFunctionContainer/ConfirmationMargin"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_51s11")
+region_rect = Rect2(160, 192, 48, 48)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsFunctionContainer/ConfirmationMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ConfirmationLabel" type="Label" parent="SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_khgfx")
+theme_override_font_sizes/font_size = 13
+text = "Are you sure you want to reset all data? It cannot be recovered"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="YesButton" type="Button" parent="SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_pshj0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_t2a2x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t2a2x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_t2a2x")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3ailh")
+text = "yes
+"
+
+[node name="NoButton" type="Button" parent="SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_pshj0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_t2a2x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t2a2x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_t2a2x")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3ailh")
+text = "no
+"
+
+[connection signal="value_changed" from="SettingsFunctionContainer/SettingsContents/AudioSlider" to="." method="_on_audio_slider_value_changed"]
+[connection signal="value_changed" from="SettingsFunctionContainer/SettingsContents/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
+[connection signal="toggled" from="SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle" to="." method="_on_mute_toggle_toggled"]
+[connection signal="toggled" from="SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/BrightnessToggle" to="." method="_on_brightness_toggle_toggled"]
+[connection signal="pressed" from="SettingsFunctionContainer/ResetDataMargin/ResetGameDataButton" to="." method="_on_reset_game_data_button_pressed"]
+[connection signal="pressed" from="SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

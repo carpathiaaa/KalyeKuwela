@@ -1,60 +1,36 @@
-[gd_scene load_steps=9 format=3 uid="uid://vrd65x3lj01l"]
+[gd_scene load_steps=8 format=3 uid="uid://vrd65x3lj01l"]
 
 [ext_resource type="Script" uid="uid://d30wg5123n5cp" path="res://Scripts/TumbangPreso/second_phase.gd" id="1_44lcm"]
-[ext_resource type="PackedScene" uid="uid://bse1br1rjxegp" path="res://Scenes/TumbangPreso/player.tscn" id="2_5p6kb"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_bogkp"]
 [ext_resource type="PackedScene" uid="uid://rpf4bbeq8kcm" path="res://Scenes/TumbangPreso/second_scene_map.tscn" id="4_bogkp"]
-[ext_resource type="Script" uid="uid://cux4gglx3ud0p" path="res://Scripts/TumbangPreso/enemy_bot.gd" id="5_l3f0v"]
-[ext_resource type="Texture2D" uid="uid://bjsv2ijkxidd7" path="res://Assets/Art/CharacterIcons/Character_Juan_Icon.png" id="6_wkaxu"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j6iba"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ev8sn"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_wkaxu")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Script" uid="uid://dplrvj0l5n4oy" path="res://Scripts/TumbangPreso/TEMPORARY_enemy.gd" id="5_tl8jk"]
+[ext_resource type="PackedScene" uid="uid://bf1kla43smhyi" path="res://Gameplay/BaseClasses/Scenes/enemy_body.tscn" id="6_l3f0v"]
+[ext_resource type="PackedScene" uid="uid://d0t1cy3pmeqp3" path="res://Gameplay/TumbangPreso/player.tscn" id="6_wkaxu"]
+[ext_resource type="Texture2D" uid="uid://b0qk7y5g5k0hg" path="res://Assets/Art/CharacterIcons/Character_Antonio_Icon.png" id="7_wkaxu"]
 
 [node name="second_phase" type="Node2D"]
 script = ExtResource("1_44lcm")
 
-[node name="player" parent="." instance=ExtResource("2_5p6kb")]
-position = Vector2(1268, 569)
-scale = Vector2(2.5, 2.5)
+[node name="user_interface" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Virtual Joystick" parent="Control" instance=ExtResource("3_bogkp")]
+[node name="Virtual Joystick" parent="user_interface" instance=ExtResource("3_bogkp")]
 z_index = 3
-layout_mode = 1
-offset_left = 3.0
-offset_top = 313.0
-offset_right = 303.0
-offset_bottom = 613.0
+offset_left = -3.0
+offset_top = -293.0
+offset_right = 297.0
+offset_bottom = 7.0
 
 [node name="countdown_timer" type="Timer" parent="."]
 
 [node name="map" parent="." instance=ExtResource("4_bogkp")]
+position = Vector2(0, 18)
 
-[node name="enemy_bot" type="Node2D" parent="."]
-position = Vector2(461, 166)
-script = ExtResource("5_l3f0v")
+[node name="player" parent="." instance=ExtResource("6_wkaxu")]
+position = Vector2(452, 437)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="enemy_bot"]
+[node name="enemy_body" parent="." instance=ExtResource("6_l3f0v")]
+position = Vector2(463, 168)
+script = ExtResource("5_tl8jk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_bot/CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_j6iba")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy_bot/CharacterBody2D"]
-position = Vector2(0, 4)
-scale = Vector2(1, 0.5)
-sprite_frames = SubResource("SpriteFrames_ev8sn")
+[node name="Sprite2D" type="Sprite2D" parent="enemy_body"]
+texture = ExtResource("7_wkaxu")
