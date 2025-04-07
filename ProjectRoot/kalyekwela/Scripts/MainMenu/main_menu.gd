@@ -5,6 +5,10 @@ extends Control
 @onready var bente_uno_button = $MarginContainer/GameButtonsContainer/BenteUno
 @onready var currency_display = $CurrencyDisplay
 @onready var xp_bar = $XPBar
+@onready var modal_overlay = $ModalOverlay
+@onready var brightness_overlay = $ColorRect
+@onready var click_sound = $ClickSound
+
 
 const LOADING_SCREEN = preload("res://Scenes/LoadingScreen/loading_screen.tscn")
 
@@ -105,20 +109,22 @@ func start_bente_uno():
 
 # Function to toggle popups properly
 func toggle_popup(new_popup: Control):
-	# Prevent clicking while animation is running
 	if is_animating:
 		return
 
-	# If clicking the already open popup, play the exit animation and close it
 	if new_popup == current_open_popup:
 		close_popup(new_popup)
 		return
 
-	# If another popup is open, close it immediately without animation
 	if current_open_popup:
 		current_open_popup.visible = false  
 
-	# Open the new popup and play the open animation
+	# Show the dark background and ensure it's behind the popup
+	modal_overlay.visible = true
+	move_child(modal_overlay, get_child_count() - 2)  # Just below the popup
+	move_child(new_popup, get_child_count() - 1)      # Popup on top
+	move_child(brightness_overlay, get_child_count() - 1)
+
 	new_popup.visible = true
 	var anim_player = new_popup.get_node_or_null("AnimationInOut") as AnimationPlayer
 	if anim_player:
@@ -127,7 +133,8 @@ func toggle_popup(new_popup: Control):
 		await anim_player.animation_finished  
 		is_animating = false  
 
-	current_open_popup = new_popup  # Track the open popup
+	current_open_popup = new_popup
+
 
 # Function to close a popup with exit animation
 func close_popup(popup: Control):
@@ -142,15 +149,23 @@ func close_popup(popup: Control):
 		is_animating = false  
 	
 	popup.visible = false  
-	current_open_popup = null  # Reset tracking
+	modal_overlay.visible = false  # Hide the dim background
+	current_open_popup = null
+
+func play_click_sound():
+	if click_sound:
+		click_sound.play()
 
 func _on_toggle_settings_button_pressed():
+	play_click_sound()
 	toggle_popup(settings_popup)
 
 func _on_toggle_inventory_button_pressed():
+	play_click_sound()
 	toggle_popup(inventory_popup)
 
 func _on_toggle_shop_button_pressed():
+	play_click_sound()
 	toggle_popup(shop_popup)
 
 # Connect this function to the exit button inside each popup
