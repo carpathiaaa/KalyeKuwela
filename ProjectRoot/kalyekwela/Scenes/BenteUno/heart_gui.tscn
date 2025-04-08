@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://r54uixr6unh8"]
+
+[ext_resource type="Texture2D" uid="uid://d3whgcj8jovgl" path="res://Assets/Art/UI/UI_Heart.png" id="1_1hud0"]
+[ext_resource type="Script" uid="uid://v8g3uxdityvv" path="res://Scripts/BenteUno/heart_gui.gd" id="1_vamxy"]
+
+[node name="HeartGUI" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+script = ExtResource("1_vamxy")
+
+[node name="Heart" type="Sprite2D" parent="."]
+position = Vector2(-1, -2)
+texture = ExtResource("1_1hud0")
+centered = false
+hframes = 2

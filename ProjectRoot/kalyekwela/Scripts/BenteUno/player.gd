@@ -13,6 +13,15 @@ var chasers_nearby: int = 0  # Keep track of nearby chasers
 @onready var background_music = $BackgroundMusic  # 🌟 Reference to background music
 @onready var tween = get_tree().create_tween()  # ✅ Properly create Tween
 
+signal health_changed
+
+@export var max_health: int = 3
+@onready var current_health: int = max_health
+var invincible = false
+
+func is_player():
+	return true
+	
 func _ready():
 	status_label.position.y = -20
 	update_status()
@@ -44,13 +53,6 @@ func update_animation(direction):
 		animated_sprite.play("WalkFront")
 	else:
 		animated_sprite.play("WalkBack")
-
-# 🏃 Handles tagging in the tag game
-func _on_tag_area_body_entered(body):
-	if body is CharacterBody2D and not body.is_chaser and is_chaser:
-		print(name, " tagged ", body.name, " - They are now a chaser!")
-		body.become_chaser()
-		tag_sfx.play()  # 🔊 Play tagging sound
 
 # 👹 Convert to a chaser
 func become_chaser():
@@ -99,3 +101,28 @@ func _on_chase_detection_area_body_exited(body):
 	if body is CharacterBody2D and body.is_chaser:
 		chasers_nearby -= 1
 		update_chase_sfx()  # 🔊 Update chase sound based on conditions
+
+func _on_player_tagged_area_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D and body.is_chaser and not is_chaser and not invincible:
+		print("Player was tagged! Health decreased!")
+		current_health -= 1
+		print("Player health now: ", current_health)
+		
+		health_changed.emit(current_health)
+		# Check health immediately
+		if current_health <= 0:
+			become_chaser()
+			tag_sfx.play()
+			return  # Exit early since becoming a chaser handles everything else
+		
+		# Only add invincibility if we didn't become a chaser
+		invincible = true
+		modulate = Color(1, 1, 1, 0.5)  # Semi-transparent to show invincibility
+		
+		await get_tree().create_timer(1.5).timeout
+		
+		invincible = false
+		if not is_chaser:  # Only reset color if not turned into chaser
+			modulate = Color.WHITE
+		
+		tag_sfx.play()

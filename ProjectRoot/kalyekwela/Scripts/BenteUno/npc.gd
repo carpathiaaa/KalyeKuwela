@@ -148,29 +148,37 @@ func _on_body_entered(body):
 		print(body.name, " tagged ", name, " - Now a chaser!")
 		become_chaser()
 	elif body is CharacterBody2D and is_chaser and not body.is_chaser:
-		print(name, " tagged ", body.name, " - They are now a chaser!")
-		body.become_chaser()
+		# Check if this is the player before converting to chaser
+		if body.has_method("is_player") and body.is_player():
+			# Let the player handle its own health
+			print(name, " tagged player!")
+			
+		else:
+			# This is another NPC, so convert directly
+			print(name, " tagged ", body.name, " - They are now a chaser!")
+			body.become_chaser()
+			
 		target_runner = null  # Stop chasing after tagging
 
 func _on_detection_area_body_entered(body):
 	if body is CharacterBody2D and not body.is_chaser and is_chaser:
 		target_runner = find_closest_runner()  # Find the nearest runner
-		print(name, " detected ", body.name, " and is now chasing!")
+		#print(name, " detected ", body.name, " and is now chasing!")
 
 func _on_detection_area_body_exited(body):
 	if body == target_runner:
 		target_runner = null  # Stop chasing if runner leaves radius
-		print(name, " lost sight of ", body.name)
+		#print(name, " lost sight of ", body.name)
 
 func _on_flee_area_body_entered(body):
 	if body is CharacterBody2D and body.is_chaser and not is_chaser:
 		nearby_chaser = body  # Start fleeing
-		print(name, " noticed ", body.name, " and is fleeing!")
+		#print(name, " noticed ", body.name, " and is fleeing!")
 
 func _on_flee_area_body_exited(body):
 	if body == nearby_chaser:
 		nearby_chaser = null  # Stop fleeing if chaser leaves radius
-		print(name, " is safe now.")
+		#print(name, " is safe now.")
 
 func become_chaser():
 	if not is_chaser:
