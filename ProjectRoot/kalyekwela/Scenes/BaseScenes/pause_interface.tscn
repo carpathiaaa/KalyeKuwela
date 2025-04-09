@@ -1,0 +1,652 @@
+[gd_scene load_steps=34 format=3 uid="uid://cxw31vtfsc65e"]
+
+[ext_resource type="Texture2D" uid="uid://cye62mcciymtr" path="res://Assets/Art/UI/UI_Resume_Button.png" id="1_jlbr2"]
+[ext_resource type="Texture2D" uid="uid://psw4jh7jxdpg" path="res://Assets/Art/UI/UI_Pause_Button.png" id="2_qsgcq"]
+[ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="3_ywdou"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="4_fgipj"]
+[ext_resource type="Texture2D" uid="uid://b3p5twqw2j3w1" path="res://Assets/Art/UI/UI_AudioON_Icon.png" id="6_b3mg6"]
+[ext_resource type="Texture2D" uid="uid://nf1rbka8apmk" path="res://Assets/Art/UI/UI_AudioOff_Icon.png" id="7_o7kxy"]
+[ext_resource type="Texture2D" uid="uid://4ugxvi16ysu3" path="res://Assets/Art/UI/UI_BrightnessOn_Icon.png" id="8_xby1b"]
+[ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="9_pors6"]
+[ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="10_im4et"]
+[ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="11_ecmk3"]
+[ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="12_p2htw"]
+
+[sub_resource type="GDScript" id="GDScript_egltt"]
+resource_name = "pause_interface"
+script/source = "extends Control
+
+@onready var pause_menu = $PauseMenu
+@onready var settings_menu = $PauseMenu/SettingsPopUp
+
+signal pause_state_changed(paused)
+
+var is_paused : bool = false
+var settings_visible : bool = false
+
+func set_pause_state(pause_state: bool) -> void:
+	is_paused = pause_state
+	if not is_paused:
+		settings_menu.visible = false
+	update_pause_menu()
+
+func update_pause_menu() -> void:
+	if is_paused:
+		pause_menu.show()
+		Engine.time_scale = 0
+	else:
+		pause_menu.hide()
+		Engine.time_scale = 1
+
+func update_settings_menu() -> void:
+	if is_paused && settings_visible:
+		settings_menu.show()
+	else:
+		settings_menu.hide()
+
+func _on_pause_button_pressed(pause_request: bool) -> void:
+	set_pause_state(pause_request)
+
+func _on_resume_button_pressed(pause_request: bool) -> void:
+	set_pause_state(pause_request)
+
+func _on_settings_button_pressed(settings_request: bool) -> void:
+	if is_paused:
+		settings_visible = settings_request
+		update_settings_menu()
+
+func _on_quit_settings_pressed(settings_request: bool) -> void:
+	settings_visible = settings_request
+	update_settings_menu()
+"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_givwi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ff4lt"]
+texture = ExtResource("1_jlbr2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7kykt"]
+texture = ExtResource("2_qsgcq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c2xua"]
+texture = ExtResource("3_ywdou")
+region_rect = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3n8ah"]
+texture = ExtResource("3_ywdou")
+region_rect = Rect2(837, 132, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpw4p"]
+texture = ExtResource("3_ywdou")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_44be7"]
+texture = ExtResource("3_ywdou")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 178, 90, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n181t"]
+texture = ExtResource("3_ywdou")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_thrvg"]
+texture = ExtResource("3_ywdou")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 178, 90, 27)
+
+[sub_resource type="GDScript" id="GDScript_pqojb"]
+resource_name = "SettingsMenui"
+script/source = "extends Control
+
+@onready var audio_slider = $SettingsFunctionContainer/SettingsContents/AudioSlider
+@onready var brightness_slider = $SettingsFunctionContainer/SettingsContents/BrightnessSlider
+@onready var mute_button = $SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle
+@onready var reset_button = $SettingsFunctionContainer/ResetDataMargin/ResetGameDataButton
+@onready var reset_confirmation_popup = $SettingsFunctionContainer/ConfirmationMargin
+@onready var confirm_reset_button = $SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton
+@onready var cancel_reset_button = $SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton
+@onready var brightness_overlay = $\"../../ColorRect\"
+
+var previous_volume_db: float = 0.0  
+var is_muted: bool = false  
+
+func _ready() -> void:
+	# Initialize Audio Slider
+	var current_db = AudioServer.get_bus_volume_db(0)
+	audio_slider.value = db_to_linear(current_db)
+	previous_volume_db = current_db  
+
+	# Initialize Brightness Slider to Maximum (1.0)
+	brightness_slider.value = 1.0  
+	_update_brightness()
+
+func _on_audio_slider_value_changed(value: float) -> void:
+	if is_muted and value > 0.0:
+		is_muted = false
+		AudioServer.set_bus_volume_db(0, linear_to_db(value))
+		previous_volume_db = linear_to_db(value)
+		mute_button.button_pressed = false  
+	else:
+		var db_value = linear_to_db(value)
+		AudioServer.set_bus_volume_db(0, db_value)
+		previous_volume_db = db_value  
+
+func _on_brightness_slider_value_changed(value: float) -> void:
+	_update_brightness()
+
+func _on_mute_toggle_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		previous_volume_db = AudioServer.get_bus_volume_db(0)  
+		AudioServer.set_bus_volume_db(0, -80)  
+		audio_slider.value = 0.0  
+		is_muted = true
+	else:
+		AudioServer.set_bus_volume_db(0, previous_volume_db)
+		audio_slider.value = db_to_linear(previous_volume_db)  
+		is_muted = false
+
+func _on_brightness_toggle_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		brightness_slider.value = 0.0  
+	else:
+		brightness_slider.value = 1.0  
+	_update_brightness()
+
+func _update_brightness() -> void:
+	var brightness = clamp(brightness_slider.value, 0.0, 1.0)
+	var alpha_value = 0.5 - (brightness * 0.5)  
+	brightness_overlay.color.a = alpha_value
+
+# ---- RESET DATA FUNCTIONS ----
+func _on_reset_game_data_button_pressed() -> void:
+	reset_confirmation_popup.visible = true  
+
+func _on_yes_button_pressed() -> void:
+	GlobalData.reset_data()  # Clears all saved data
+	reset_confirmation_popup.visible = false  
+	print(\"Game data reset successfully!\")
+	
+	# Restart the game by reloading the current scene
+	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/menu.tscn\")
+
+func _on_no_button_pressed() -> void:
+	reset_confirmation_popup.visible = false  
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b8t4u"]
+texture = ExtResource("3_ywdou")
+region_rect = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpeci"]
+texture = ExtResource("3_ywdou")
+region_rect = Rect2(837, 132, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0nk2o"]
+texture = ExtResource("6_b3mg6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpc5n"]
+texture = ExtResource("7_o7kxy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tg1nm"]
+texture = ExtResource("8_xby1b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dc5fr"]
+texture = ExtResource("9_pors6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v8mtf"]
+texture = ExtResource("10_im4et")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(59, 13, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c4ybe"]
+texture = ExtResource("10_im4et")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(11, 11, 26, 28)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3cm2r"]
+load_path = "res://.godot/imported/Solaria Demo Tiles.png-574d6cbd1daf0e340c174f80c741071e.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_noju4"]
+texture = ExtResource("12_p2htw")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(59, 103, 26, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j6hlw"]
+texture = ExtResource("12_p2htw")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(11, 102, 26, 19)
+
+[node name="PauseInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_egltt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 2
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_givwi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_top = 13.0
+offset_right = 54.0
+offset_bottom = 103.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_ff4lt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ff4lt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ff4lt")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7kykt")
+action_mode = 0
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PauseMenu"]
+custom_minimum_size = Vector2(350, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -150.0
+offset_right = 175.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("3_ywdou")
+region_rect = Rect2(107, 59, 26, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PauseMenu/NinePatchRect"]
+custom_minimum_size = Vector2(330, 280)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -90.0
+offset_right = 115.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ywdou")
+region_rect = Rect2(107, 155, 26, 26)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="PauseMenu/NinePatchRect"]
+layout_mode = 2
+offset_right = 350.0
+offset_bottom = 300.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/NinePatchRect/ExitButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -20
+theme_override_constants/margin_right = -20
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/NinePatchRect/ExitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_c2xua")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_c2xua")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3n8ah")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/NinePatchRect"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -10.0
+offset_right = 4.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseButtonContainer" type="VBoxContainer" parent="PauseMenu/NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.341176, 0.160784, 0.247059, 1)
+theme_override_fonts/font = ExtResource("4_fgipj")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxTexture_tpw4p")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tpw4p")
+theme_override_styles/normal = SubResource("StyleBoxTexture_44be7")
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.341176, 0.160784, 0.247059, 1)
+theme_override_fonts/font = ExtResource("4_fgipj")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxTexture_n181t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_n181t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_thrvg")
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.341176, 0.160784, 0.247059, 1)
+theme_override_fonts/font = ExtResource("4_fgipj")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxTexture_n181t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_n181t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_thrvg")
+text = "Quit"
+
+[node name="SettingsPopUp" type="MarginContainer" parent="PauseMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_pqojb")
+
+[node name="SettingsBackground" type="NinePatchRect" parent="PauseMenu/SettingsPopUp"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_ywdou")
+region_rect = Rect2(107, 155, 26, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="PauseMenu/SettingsPopUp"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/SettingsPopUp/ExitButtonContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+theme_override_constants/margin_bottom = 0
+
+[node name="QuitSettings" type="Button" parent="PauseMenu/SettingsPopUp/ExitButtonContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+mouse_filter = 1
+theme_override_styles/hover = SubResource("StyleBoxTexture_b8t4u")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b8t4u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tpeci")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/SettingsPopUp"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 11
+
+[node name="Control" type="Control" parent="PauseMenu/SettingsPopUp/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SettingsText" type="Label" parent="PauseMenu/SettingsPopUp/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_fgipj")
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
+[node name="SettingsFunctionContainer" type="MarginContainer" parent="PauseMenu/SettingsPopUp"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="SettingsContents" type="VBoxContainer" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="AudioSlider" type="HSlider" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+
+[node name="BrightnessSlider" type="HSlider" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="SettingsButtonsCanvas" type="MarginContainer" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -50
+
+[node name="SettingsButtonsContainer" type="VBoxContainer" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MuteToggle" type="Button" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_0nk2o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0nk2o")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tpc5n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0nk2o")
+toggle_mode = true
+
+[node name="BrightnessToggle" type="Button" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_tg1nm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tg1nm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dc5fr")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tg1nm")
+toggle_mode = true
+
+[node name="ResetDataMargin" type="MarginContainer" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 205
+theme_override_constants/margin_right = 70
+
+[node name="ResetGameDataButton" type="Button" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ResetDataMargin"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_pressed_color = Color(0.882353, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_fgipj")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_v8mtf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v8mtf")
+theme_override_styles/normal = SubResource("StyleBoxTexture_c4ybe")
+text = "RESET GAME DATA"
+
+[node name="ConfirmationMargin" type="MarginContainer" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_right = 70
+
+[node name="ConfirmationBackground" type="NinePatchRect" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_3cm2r")
+region_rect = Rect2(160, 192, 48, 48)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ConfirmationLabel" type="Label" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_fgipj")
+theme_override_font_sizes/font_size = 13
+text = "Are you sure you want to reset all data? It cannot be recovered"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="YesButton" type="Button" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("11_ecmk3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_j6hlw")
+text = "yes
+"
+
+[node name="NoButton" type="Button" parent="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("11_ecmk3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_j6hlw")
+text = "no
+"
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed" binds= [true]]
+[connection signal="pressed" from="PauseMenu/NinePatchRect/ExitButtonContainer/MarginContainer/ResumeButton" to="." method="_on_resume_button_pressed" binds= [false]]
+[connection signal="pressed" from="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/ResumeButton" to="." method="_on_resume_button_pressed" binds= [false]]
+[connection signal="pressed" from="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed" binds= [true]]
+[connection signal="pressed" from="PauseMenu/SettingsPopUp/ExitButtonContainer/MarginContainer/QuitSettings" to="." method="_on_quit_settings_pressed" binds= [false]]
+[connection signal="value_changed" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/SettingsContents/AudioSlider" to="PauseMenu/SettingsPopUp" method="_on_audio_slider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/SettingsContents/BrightnessSlider" to="PauseMenu/SettingsPopUp" method="_on_brightness_slider_value_changed"]
+[connection signal="toggled" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle" to="PauseMenu/SettingsPopUp" method="_on_mute_toggle_toggled"]
+[connection signal="toggled" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/BrightnessToggle" to="PauseMenu/SettingsPopUp" method="_on_brightness_toggle_toggled"]
+[connection signal="pressed" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ResetDataMargin/ResetGameDataButton" to="PauseMenu/SettingsPopUp" method="_on_reset_game_data_button_pressed"]
+[connection signal="pressed" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton" to="PauseMenu/SettingsPopUp" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton" to="PauseMenu/SettingsPopUp" method="_on_no_button_pressed"]

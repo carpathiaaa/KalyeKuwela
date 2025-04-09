@@ -92,7 +92,7 @@ func start_patintero():
 
 func start_tumbang_preso():
 	var loading_scene = LOADING_SCREEN.instantiate()
-	loading_scene.next_scene = "res://Scenes/TumbangPreso/first_phase.tscn" # TEMPORARY
+	loading_scene.next_scene = "res://Scenes/TumbangPreso/main.tscn" # TEMPORARY
 	add_child(loading_scene)
 	loading_scene.set_trivia_text(get_random_fact(tumbang_preso_facts))  # ✅ Set random fact
 

@@ -13,6 +13,9 @@ const main_stage_time = 15
 var difficulty = 0
 
 func _ready() -> void:
+	start_event_sequence()
+
+func start_event_sequence() -> void:
 	# Event sequence
 	countdown_timer.start(initial_countdown_time)
 	initial_stage()
@@ -21,7 +24,6 @@ func _ready() -> void:
 	countdown_timer.start(main_stage_time)
 	await countdown_timer.timeout
 	get_parent().end_first_phase()
-
 
 func initialize(level : int) -> void:
 	difficulty = level

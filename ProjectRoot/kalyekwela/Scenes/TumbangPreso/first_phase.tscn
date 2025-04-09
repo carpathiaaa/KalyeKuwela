@@ -240,7 +240,8 @@ libraries = {
 }
 
 [node name="click_bar" parent="." instance=ExtResource("2_hylh8")]
-z_index = 1
+z_index = 5
+z_as_relative = false
 offset_left = 116.0
 offset_top = 166.0
 offset_right = 532.0
