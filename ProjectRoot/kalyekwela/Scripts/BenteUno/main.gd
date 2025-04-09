@@ -14,6 +14,9 @@ extends Node2D
 
 @export var settings_popup: MarginContainer
 
+@onready var hearts_container = $UI/HeartsContainer
+
+
 var paused = false
 var first_chaser_assigned = false  # Prevents multiple assignments
 var game_has_ended = false  # Prevents duplicate game-over calls
@@ -21,6 +24,10 @@ var game_has_ended = false  # Prevents duplicate game-over calls
 func _ready():
 	pause_menu.hide()
 	pause_button.pressed.connect(pauseMenu)
+
+	hearts_container.setMaxHearts(player.max_health)
+	hearts_container.update_hearts(player.current_health)
+	player.health_changed.connect(hearts_container.update_hearts)
 
 	paused = false  # Reset pause state
 	first_chaser_assigned = false  # Ensure first chaser is re-selected
