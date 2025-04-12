@@ -1,10 +1,11 @@
-[gd_resource type="SpriteFrames" load_steps=36 format=3 uid="uid://s82bxwoyvakj"]
+[gd_resource type="SpriteFrames" load_steps=43 format=3 uid="uid://s82bxwoyvakj"]
 
 [ext_resource type="Texture2D" uid="uid://bdise25il1t0h" path="res://Assets/Art/Characters/Character_Carlo_Idle-Back.png" id="1_a6lse"]
 [ext_resource type="Texture2D" uid="uid://c0q0laqs35ffb" path="res://Assets/Art/Characters/Character_Carlo_Idle-Front.png" id="2_76en7"]
 [ext_resource type="Texture2D" uid="uid://djwumf2urv4da" path="res://Assets/Art/Characters/Character_Carlo_Idle-Side.png" id="3_6djit"]
 [ext_resource type="Texture2D" uid="uid://cbwndsw01jkma" path="res://Assets/Art/Characters/Character_Carlo_Walk-Back.png" id="4_1w3po"]
 [ext_resource type="Texture2D" uid="uid://cvfaiw1jm5w8x" path="res://Assets/Art/Characters/Character_Carlo_Walk-Front.png" id="5_sr6t4"]
+[ext_resource type="Texture2D" uid="uid://datxam62276du" path="res://Assets/Art/Characters/Character_Carlo_Walk-Side.png" id="6_leivs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vqgfs"]
 atlas = ExtResource("1_a6lse")
@@ -126,6 +127,30 @@ region = Rect2(128, 0, 32, 32)
 atlas = ExtResource("5_sr6t4")
 region = Rect2(160, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx6ll"]
+atlas = ExtResource("6_leivs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ab16"]
+atlas = ExtResource("6_leivs")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev61t"]
+atlas = ExtResource("6_leivs")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1yq4"]
+atlas = ExtResource("6_leivs")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8q44"]
+atlas = ExtResource("6_leivs")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_316up"]
+atlas = ExtResource("6_leivs")
+region = Rect2(160, 0, 32, 32)
+
 [resource]
 animations = [{
 "frames": [{
@@ -241,5 +266,28 @@ animations = [{
 }],
 "loop": true,
 "name": &"WalkFront",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx6ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ab16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev61t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1yq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8q44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_316up")
+}],
+"loop": true,
+"name": &"WalkSide",
 "speed": 10.0
 }]

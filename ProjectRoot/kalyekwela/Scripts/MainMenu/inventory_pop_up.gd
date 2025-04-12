@@ -5,6 +5,9 @@ extends Control
 @onready var accessories_button = $Category/CategoryContainer/AccessoriesButton
 @onready var inventory_slot_template = $MarginItems/ItemsContainer/InventorySlot
 
+@onready var click_sound = $ClickSound
+@onready var click_sound_2 = $ClickSound2
+
 
 var current_category = "character"  # Default to Characters
 

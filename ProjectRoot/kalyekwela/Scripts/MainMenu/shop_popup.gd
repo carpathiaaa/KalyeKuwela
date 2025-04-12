@@ -12,6 +12,10 @@ extends Control
 @onready var ok_button = $PurchaseNotifPopUp/VBoxContainer/OKButton
 @onready var coin_label = $"../CurrencyDisplay"
 
+@onready var click_sound = $"../ClickSound"
+@onready var click_sound_2 = $"../ClickSound2"
+@onready var purchase_sound = $"../PurchaseSound"
+
 var characters = [
 	{"name": "Antonio", "price": 100, "icon": preload("res://Assets/Art/CharacterIcons/Character_Antonio_Icon.png")},
 	{"name": "Carlo", "price": 150, "icon": preload("res://Assets/Art/CharacterIcons/Character_Carlo_Icon.png")},
@@ -98,7 +102,7 @@ func _on_confirm_button_pressed():
 			GlobalData.owned_characters.append(selected_item["name"])
 		else:
 			GlobalData.owned_accessories.append(selected_item["name"])
-
+		play_purchase_sound()
 		GlobalData.save_data()
 		_update_coin_display()
 		purchase_popup.hide()
@@ -106,21 +110,38 @@ func _on_confirm_button_pressed():
 	else:
 		_show_not_enough_coins_popup()
 
+func play_click_sound():
+	if click_sound:
+		click_sound.play()
+		
+func play_click_sound_2():
+	if click_sound_2:
+		click_sound_2.play()
+		
+func play_purchase_sound():
+	if purchase_sound:
+		purchase_sound.play()
+
 func _on_cancel_button_pressed():
+	play_click_sound_2()
 	purchase_popup.visible = false
 
 func _on_characters_button_pressed():
+	play_click_sound()
 	current_category = characters
 	populate_shop()
 
 func _on_accessories_button_pressed():
+	play_click_sound_2()
 	current_category = accessories
 	populate_shop()
 
 func _show_not_enough_coins_popup():
+	play_click_sound_2()
 	not_enough_coins_popup.visible = true
 
 func _on_ok_button_pressed():
+	play_click_sound()
 	not_enough_coins_popup.visible = false
 
 func _update_coin_display():

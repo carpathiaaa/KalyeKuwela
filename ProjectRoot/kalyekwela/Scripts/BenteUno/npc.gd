@@ -122,7 +122,7 @@ func find_alternate_escape_route(original_flee_vector: Vector2) -> Vector2:
 
 func update_animation(direction):
 	if abs(direction.x) > abs(direction.y):
-		animated_sprite.play("IdleSide")
+		animated_sprite.play("WalkSide")
 		animated_sprite.flip_h = direction.x < 0  # Flip sprite if moving left
 	elif direction.y > 0:
 		animated_sprite.play("WalkFront")

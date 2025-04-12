@@ -12,6 +12,10 @@ extends Node2D
 @onready var pause_button = $UI/PauseButton
 @onready var pause_menu = $UI/PauseMenu
 
+@onready var pause_sound = $PauseSound
+@onready var click_sound = $ClickSound
+@onready var click_sound_2 = $ClickSound2
+
 @export var settings_popup: MarginContainer
 
 @onready var hearts_container = $UI/HeartsContainer
@@ -63,6 +67,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed('pause'):
+		play_pause_sound()
 		pauseMenu()
 	# Update game timer label
 	if game_timer.time_left > 0 and game_timer_label.visible:
@@ -72,7 +77,20 @@ func _process(delta):
 	if not game_has_ended and all_are_chasers():
 		game_over("Game Over. Chasers Won!")
 
+func play_pause_sound():
+	if pause_sound:
+		pause_sound.play()
+		
+func play_click_sound():
+	if click_sound:
+		click_sound.play()
+		
+func play_click_sound_2():
+	if click_sound_2:
+		click_sound_2.play()
+
 func pauseMenu():
+	play_pause_sound()
 	if paused:
 		pause_menu.hide()
 		Engine.time_scale = 1
@@ -192,6 +210,8 @@ func _on_resume_button_pressed() -> void:
 	pauseMenu()
 
 func _on_quit_button_pressed() -> void:
+	play_click_sound_2()
+	await click_sound_2.finished
 	print("Quitting game")
 	get_tree().change_scene_to_file("res://Scenes/MainMenu/menu.tscn")
 
@@ -202,4 +222,5 @@ func toggle_popup(SettingsPopUp : MarginContainer):
 	SettingsPopUp.visible = !SettingsPopUp.visible
 
 func _on_settings_button_pressed() -> void:
+	play_click_sound()
 	toggle_popup(settings_popup)

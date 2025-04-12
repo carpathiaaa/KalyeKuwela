@@ -23,6 +23,10 @@ func set_trivia_text(text: String):
 		print("Trivia Set Immediately: ", text)
 	# Otherwise it will be set in _ready()
 	
+func play_audio(stream: AudioStream):
+	$AudioPlayer.stream = stream
+	$AudioPlayer.play()
+
 func _ready():
 	ResourceLoader.load_threaded_request(next_scene, "")
 		# Set the trivia text that might have been set before _ready()

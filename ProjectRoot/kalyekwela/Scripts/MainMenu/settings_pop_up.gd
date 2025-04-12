@@ -9,6 +9,10 @@ extends Control
 @onready var cancel_reset_button = $SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton
 @onready var brightness_overlay = $"../ColorRect"
 
+@onready var click_sound = $"../ClickSound"
+@onready var click_sound_2 = $"../ClickSound2"
+
+
 var previous_volume_db: float = 0.0  
 var is_muted: bool = false  
 
@@ -38,6 +42,8 @@ func _on_brightness_slider_value_changed(value: float) -> void:
 
 func _on_mute_toggle_toggled(toggled_on: bool) -> void:
 	if toggled_on:
+		play_click_sound_2()
+		#await click_sound_2.finished
 		previous_volume_db = AudioServer.get_bus_volume_db(0)  
 		AudioServer.set_bus_volume_db(0, -80)  
 		audio_slider.value = 0.0  
@@ -49,6 +55,7 @@ func _on_mute_toggle_toggled(toggled_on: bool) -> void:
 
 func _on_brightness_toggle_toggled(toggled_on: bool) -> void:
 	if toggled_on:
+		play_click_sound_2()
 		brightness_slider.value = 0.0  
 	else:
 		brightness_slider.value = 1.0  
@@ -59,11 +66,21 @@ func _update_brightness() -> void:
 	var alpha_value = 0.5 - (brightness * 0.5)  
 	brightness_overlay.color.a = alpha_value
 
+func play_click_sound():
+	if click_sound:
+		click_sound.play()
+		
+func play_click_sound_2():
+	if click_sound_2:
+		click_sound_2.play()
+
 # ---- RESET DATA FUNCTIONS ----
 func _on_reset_game_data_button_pressed() -> void:
+	play_click_sound()
 	reset_confirmation_popup.visible = true  
 
 func _on_yes_button_pressed() -> void:
+	play_click_sound()
 	GlobalData.reset_data()  # Clears all saved data
 	reset_confirmation_popup.visible = false  
 	print("Game data reset successfully!")
@@ -72,4 +89,5 @@ func _on_yes_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/MainMenu/menu.tscn")
 
 func _on_no_button_pressed() -> void:
+	play_click_sound()
 	reset_confirmation_popup.visible = false  

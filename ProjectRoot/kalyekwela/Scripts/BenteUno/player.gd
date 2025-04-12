@@ -47,7 +47,7 @@ func _physics_process(delta):
 # 🔄 Update animation based on movement direction
 func update_animation(direction):
 	if abs(direction.x) > abs(direction.y):
-		animated_sprite.play("IdleSide")
+		animated_sprite.play("WalkSide")
 		animated_sprite.flip_h = direction.x < 0  # Flip if moving left
 	elif direction.y > 0:
 		animated_sprite.play("WalkFront")

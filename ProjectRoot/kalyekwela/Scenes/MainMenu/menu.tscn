@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=84 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="2_nbuy7"]
 [ext_resource type="Script" uid="uid://bjxoxd7hu3w3v" path="res://Scripts/MainMenu/parallax_background.gd" id="2_pemtm"]
@@ -34,6 +34,8 @@
 [ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="24_gn6sn"]
 [ext_resource type="AudioStream" uid="uid://bt65j5uayi503" path="res://Assets/Audio/Music/Audio_MainTheme.mp3" id="34_16qih"]
 [ext_resource type="AudioStream" uid="uid://x3o7x3mq3olm" path="res://Assets/Audio/SFX/Audio_Click.mp3" id="34_v5hh6"]
+[ext_resource type="AudioStream" uid="uid://h1f2kc4xthum" path="res://Assets/Audio/SFX/Audio_Click_2.mp3" id="35_ev0fa"]
+[ext_resource type="AudioStream" uid="uid://bjjnloek5jg22" path="res://Assets/Audio/SFX/Audio_Purchase.mp3" id="36_3bae7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ws4gy"]
 texture = ExtResource("3_ttohg")
@@ -950,6 +952,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_nmp4r")
 text = "Characters"
 
 [node name="AccessoriesButton" type="Button" parent="InventoryPopUp/Category/CategoryContainer"]
+visible = false
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
@@ -1121,6 +1124,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_nmp4r")
 text = "Characters"
 
 [node name="AccessoriesButton" type="Button" parent="ShopPopup/Category/CategoryContainer"]
+visible = false
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
@@ -1436,6 +1440,12 @@ parameters/looping = false
 
 [node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("34_v5hh6")
+
+[node name="ClickSound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("35_ev0fa")
+
+[node name="PurchaseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("36_3bae7")
 
 [connection signal="pressed" from="CharacterSelect/LeftArrow" to="CharacterSelect" method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="CharacterSelect/RightArrow" to="CharacterSelect" method="_on_right_arrow_pressed"]

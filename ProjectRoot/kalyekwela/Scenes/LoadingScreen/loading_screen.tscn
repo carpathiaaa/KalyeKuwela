@@ -138,3 +138,5 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_riiq0")
 theme_override_styles/background = SubResource("StyleBoxTexture_gdswo")
 theme_override_styles/fill = SubResource("StyleBoxTexture_jxknb")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
