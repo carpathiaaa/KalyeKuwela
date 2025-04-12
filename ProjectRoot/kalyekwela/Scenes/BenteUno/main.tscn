@@ -2857,6 +2857,7 @@ texture_filter = 1
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("4_ucocf")
+metadata/_edit_use_anchors_ = true
 
 [node name="TimerLabel" type="Label" parent="UI"]
 offset_right = 40.0

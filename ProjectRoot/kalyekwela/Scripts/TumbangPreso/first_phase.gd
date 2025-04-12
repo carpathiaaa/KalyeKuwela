@@ -25,7 +25,8 @@ func start_event_sequence() -> void:
 	await countdown_timer.timeout
 	get_parent().end_first_phase()
 
-func initialize(level : int) -> void:
+func update_difficulty(level : int) -> void:
+	print("Updated irst phase difficulty : " + str(level))
 	difficulty = level
 
 func initial_stage() -> void:

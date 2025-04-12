@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmuj44ohj7w0h"]
-
-[ext_resource type="PackedScene" uid="uid://bf1kla43smhyi" path="res://Gameplay/BaseClasses/Scenes/enemy_body.tscn" id="1_hulcu"]
-[ext_resource type="Script" uid="uid://c77mgfvsma2ic" path="res://Gameplay/BaseClasses/Scripts/floating_enemy.gd" id="2_gyrfi"]
-
-[node name="floating_enemy" type="Node2D"]
-
-[node name="enemy_body" parent="." instance=ExtResource("1_hulcu")]
-script = ExtResource("2_gyrfi")

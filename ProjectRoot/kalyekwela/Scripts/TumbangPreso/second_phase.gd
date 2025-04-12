@@ -1,19 +1,25 @@
 extends Node2D
 
 @onready var countdown_timer = $countdown_timer
-@onready var floating_enemy = $"res://Gameplay/BaseClasses/Scenes/floating_enemy.tscn"
+@onready var floating_enemy = $enemy_body
 @onready var player = $player
+@onready var game_scene : = get_parent()
 
 const phase_time : int = 15
 
-func _ready() -> void:
-	countdown_timer.start(phase_time)
-#	spawn_enemy()
-	await countdown_timer.timeout
-	get_parent().end_second_phase()
+var difficulty : int = 1 # Default difficulty
 
-#func spawn_enemy() -> void:
-#	var new_floating_enemy = floating_enemy.instantiate()
-#	new_floating_enemy.target_player = player
-#	new_floating_enemy.speed = 100
-#	add_child(new_floating_enemy)
+func _ready() -> void:
+	print("started")
+	countdown_timer.start(phase_time)
+	await countdown_timer.timeout
+	game_scene.end_second_phase()
+
+func update_difficulty(level : int) -> void:
+	print("Updated irst phase difficulty : " + str(level))
+	difficulty = level
+
+func _on_player_touched_enemy() -> void:
+	print("touched ")
+	get_parent().finished = true
+	game_scene.end_game()

@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="1_0o2al"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="2_wu2on"]
 [ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="4_y5hry"]
-[ext_resource type="PackedScene" uid="uid://cykxo48fhk4nw" path="res://Gameplay/UI/Scenes/settings_menu.tscn" id="4_yb5aw"]
+[ext_resource type="PackedScene" uid="uid://cykxo48fhk4nw" path="res://Scenes/BaseScenes/UI/settings_menu.tscn" id="4_yb5aw"]
 [ext_resource type="Texture2D" uid="uid://cye62mcciymtr" path="res://Assets/Art/UI/UI_Resume_Button.png" id="13_2imnn"]
 [ext_resource type="Texture2D" uid="uid://psw4jh7jxdpg" path="res://Assets/Art/UI/UI_Pause_Button.png" id="14_3jlbm"]
 

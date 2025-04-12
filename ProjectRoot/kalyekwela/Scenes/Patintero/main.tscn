@@ -15,7 +15,7 @@ script = ExtResource("1_q6fdc")
 [node name="main_player" parent="." instance=ExtResource("3_p53ya")]
 z_as_relative = false
 
-[node name="mao" parent="." instance=ExtResource("4_ji7og")]
+[node name="map" parent="." instance=ExtResource("4_ji7og")]
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 position = Vector2(-550, 65)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ddesi7jsl6qfb" path="res://Scripts/TumbangPreso/main.gd" id="1_rt06c"]
 [ext_resource type="Script" uid="uid://mqa1gbehoo48" path="res://Scripts/TumbangPreso/background.gd" id="2_847p7"]
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="3_nnk0y"]
-[ext_resource type="PackedScene" uid="uid://cxw31vtfsc65e" path="res://Scenes/BaseScenes/pause_interface.tscn" id="4_847p7"]
+[ext_resource type="PackedScene" uid="uid://cxw31vtfsc65e" path="res://Scenes/BaseScenes/UI/pause_interface.tscn" id="4_847p7"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_rt06c")
@@ -35,15 +35,3 @@ offset_right = 50.0
 offset_bottom = -28.0
 
 [node name="main_timer" type="Timer" parent="."]
-
-[node name="UI" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null

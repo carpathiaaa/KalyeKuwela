@@ -169,22 +169,22 @@ animation = &"up_animation"
 autoplay = "down_animation"
 script = ExtResource("5_x2sky")
 
-[node name="Area2D" type="Area2D" parent="." groups=["main_player"]]
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["main_player"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
 texture_filter = 2
 shape = SubResource("CapsuleShape2D_oee2c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 shape = SubResource("CircleShape2D_4pldg")
 
 [node name="player_name" type="Label" parent="."]
 z_index = 5
 texture_filter = 1
-offset_left = -19.0
-offset_top = -27.0
-offset_right = 61.0
-offset_bottom = -10.0
+offset_left = -11.0
+offset_top = -28.0
+offset_right = 69.0
+offset_bottom = -11.0
 theme_override_font_sizes/font_size = 8
 text = "Player"
 metadata/_edit_use_anchors_ = true

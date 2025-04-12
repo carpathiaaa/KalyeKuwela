@@ -287,6 +287,10 @@ action_mode = 0
 [node name="PauseMenu" type="Control" parent="."]
 visible = false
 anchors_preset = 0
+offset_left = 581.0
+offset_top = 335.0
+offset_right = 581.0
+offset_bottom = 335.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="PauseMenu"]
 custom_minimum_size = Vector2(350, 300)
