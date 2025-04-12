@@ -36,7 +36,7 @@ func _process(delta):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("enemy"): 	# detect if player collided with enemy bot
-		game_scene.end_game()
+		game_scene.end_sequence() # trigger end sequence
 	
 	if area.is_in_group("score_line"): # add coin if player passed a vertical line
 		game_scene.add_points(1)

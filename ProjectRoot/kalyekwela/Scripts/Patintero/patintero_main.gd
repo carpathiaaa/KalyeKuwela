@@ -1,4 +1,4 @@
-extends Node2D
+extends BaseGame
 
 @onready var patintero_interface = $"../Patintero/UI"
 @onready var main_player = $main_player/body

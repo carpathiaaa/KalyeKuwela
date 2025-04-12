@@ -69,7 +69,7 @@ autoplay = "left"
 frame_progress = 0.986826
 flip_h = true
 
-[node name="Area2D" type="Area2D" parent="." groups=["enemy_bot"]]
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 1)
