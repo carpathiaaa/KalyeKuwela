@@ -7,13 +7,14 @@ extends Node2D
 @onready var sandal_scale = $sandal/sandal_scale
 @onready var pointer_button = $click_bar/bar_button
 
-const initial_countdown_time = 3
-const main_stage_time = 15
+var initial_countdown_time : int = 3
+var phase_time :int = 15
 
-var difficulty = 0
+var difficulty :int = 0
 
 func _ready() -> void:
 	start_event_sequence()
+
 
 func start_event_sequence() -> void:
 	# Event sequence
@@ -21,13 +22,16 @@ func start_event_sequence() -> void:
 	initial_stage()
 	await countdown_timer.timeout
 	main_stage()
-	countdown_timer.start(main_stage_time)
+	countdown_timer.start(phase_time)
 	await countdown_timer.timeout
 	get_parent().end_first_phase()
 
-func update_difficulty(level : int) -> void:
-	print("Updated irst phase difficulty : " + str(level))
+func update_phase(level : int, new_phase_time :int, new_countdown_time: int) -> void:
+	print("Updated first phase difficulty : " + str(level))
 	difficulty = level
+	print("Updated irst phase timer : " + str(new_phase_time))
+	phase_time = new_phase_time
+	initial_countdown_time = new_countdown_time
 
 func initial_stage() -> void:
 	sandal.visible = false

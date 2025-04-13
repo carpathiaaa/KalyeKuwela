@@ -35,10 +35,11 @@ offset_top = -3.0
 offset_right = 6.0
 offset_bottom = -3.0
 
-[node name="InfoBoard" parent="user_interface" instance=ExtResource("5_nnk0y")]
-offset_left = 11.0
-offset_top = -1.0
-offset_right = 11.0
-offset_bottom = -1.0
+[node name="InfoOverlay" parent="user_interface" instance=ExtResource("5_nnk0y")]
+custom_minimum_size = Vector2(1000, 1000)
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 1002.0
 
 [node name="main_timer" type="Timer" parent="."]

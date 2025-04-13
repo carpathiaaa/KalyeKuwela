@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccj5fi8xp7xsd"]
+[gd_scene load_steps=10 format=3 uid="uid://ccj5fi8xp7xsd"]
 
 [ext_resource type="Script" uid="uid://q5pqc80n1t5r" path="res://Scripts/Patintero/patintero_main.gd" id="1_q6fdc"]
 [ext_resource type="PackedScene" uid="uid://bkqnu14r0ml5" path="res://Scenes/Patintero/UI.tscn" id="2_5mkn0"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://dm1deb07aaw8c" path="res://Scripts/Patintero/horizontal_bot.gd" id="5_4vtit"]
 [ext_resource type="PackedScene" uid="uid://cgdw6spo4ei61" path="res://Scenes/Patintero/vertical_bot.tscn" id="5_qoqof"]
 [ext_resource type="AudioStream" uid="uid://cqm5jjuipufnm" path="res://Assets/Audio/SFX/coin_sfx.mp3" id="7_r7t3u"]
+[ext_resource type="PackedScene" uid="uid://cbk1ghm6qyjns" path="res://Scenes/BaseScenes/UI/info_overlay.tscn" id="8_2avav"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="9_i0cr5"]
 
 [node name="Patintero" type="Node2D"]
 position = Vector2(1, 0)
@@ -26,6 +28,7 @@ position = Vector2(-37, -30)
 script = ExtResource("5_4vtit")
 
 [node name="UI" parent="." instance=ExtResource("2_5mkn0")]
+visible = false
 follow_viewport_enabled = false
 
 [node name="sound_effects" type="Node2D" parent="."]
@@ -33,3 +36,10 @@ follow_viewport_enabled = false
 [node name="coin_sfx" type="AudioStreamPlayer2D" parent="sound_effects"]
 stream = ExtResource("7_r7t3u")
 volume_db = 7.0
+
+[node name="BetterUI" type="CanvasLayer" parent="."]
+
+[node name="InfoBoard" parent="BetterUI" instance=ExtResource("8_2avav")]
+
+[node name="Virtual Joystick" parent="BetterUI" instance=ExtResource("9_i0cr5")]
+z_index = 3

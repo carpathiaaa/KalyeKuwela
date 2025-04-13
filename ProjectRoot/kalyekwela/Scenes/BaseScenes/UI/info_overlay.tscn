@@ -1,26 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://cbk1ghm6qyjns"]
 
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="1_cwk0t"]
+[ext_resource type="Script" uid="uid://cg6qyd2fofot2" path="res://Scripts/BaseClasses/info_overlay.gd" id="1_m3d6f"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="2_m3d6f"]
-[ext_resource type="Script" uid="uid://6uwb21jbpi6m" path="res://Scripts/BenteUno/status_label.gd" id="3_pefkk"]
 [ext_resource type="Texture2D" uid="uid://bfsuh3ugmc8ue" path="res://Assets/Art/Props/coin4_16x16.png" id="4_m3d6f"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_pefkk"]
-font = ExtResource("1_cwk0t")
-font_size = 49
-font_color = Color(1, 0.768627, 0.368627, 1)
-outline_size = 21
-outline_color = Color(0.641664, 0.239669, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_pxmb6"]
-line_spacing = 4.0
-font = ExtResource("2_m3d6f")
-font_size = 59
-font_color = Color(0.779767, 0, 0.19888, 1)
-outline_size = 15
-outline_color = Color(0.545098, 0, 0, 1)
-shadow_size = 10
-shadow_color = Color(0.396078, 0.262745, 0.129412, 0.878431)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6ig2"]
 atlas = ExtResource("4_m3d6f")
@@ -93,55 +76,77 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_pefkk"]
+font = ExtResource("1_cwk0t")
+font_size = 59
+font_color = Color(1, 0.768627, 0.368627, 1)
+outline_size = 21
+outline_color = Color(0.641664, 0.239669, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pxmb6"]
+line_spacing = 0.0
+font = ExtResource("2_m3d6f")
+font_size = 65
+font_color = Color(0.779767, 0, 0.19888, 1)
+outline_size = 15
+outline_color = Color(0.545098, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0.396078, 0.262745, 0.129412, 0.878431)
+
 [node name="InfoBoard" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_m3d6f")
 
-[node name="GameTimerLabel" type="Label" parent="."]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 812.0
-offset_top = 7.0
-offset_right = 1146.0
-offset_bottom = 70.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Timer label"
-label_settings = SubResource("LabelSettings_pefkk")
-vertical_alignment = 3
-
-[node name="GameOverLabel" type="Label" parent="."]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 709.0
-offset_top = 39.0
-offset_right = 1098.0
-offset_bottom = 154.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Score:"
-label_settings = SubResource("LabelSettings_pxmb6")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StatusLabels" type="Node2D" parent="."]
-
-[node name="PlayerStatusLabel" type="Label" parent="StatusLabels"]
-texture_filter = 1
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("3_pefkk")
-metadata/_edit_use_anchors_ = true
+[node name="LabelTimer" type="Timer" parent="."]
 
 [node name="coin_image" type="AnimatedSprite2D" parent="."]
 z_index = 3
-position = Vector2(60, 57)
-scale = Vector2(5.4, 5.4)
+position = Vector2(39.9, 105.9)
+scale = Vector2(4.2625, 4.2625)
 sprite_frames = SubResource("SpriteFrames_8823b")
 autoplay = "default"
+
+[node name="Container" type="Container" parent="."]
+layout_mode = 0
+offset_right = 1149.0
+offset_bottom = 588.0
+
+[node name="LeftContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="Container/LeftContainer"]
+texture_filter = 1
+layout_mode = 2
+text = " Level "
+label_settings = SubResource("LabelSettings_pefkk")
+vertical_alignment = 3
+
+[node name="CoinsLabel" type="Label" parent="Container/LeftContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "    0"
+label_settings = SubResource("LabelSettings_pxmb6")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="RightContainer" type="VBoxContainer" parent="Container"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="Container/RightContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "0 "
+label_settings = SubResource("LabelSettings_pefkk")
+
+[node name="ScoreLabel" type="Label" parent="Container/RightContainer"]
+texture_filter = 1
+layout_direction = 1
+layout_mode = 2
+text = "Score "
+label_settings = SubResource("LabelSettings_pxmb6")
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[connection signal="timeout" from="LabelTimer" to="." method="_on_label_timer_timeout"]

@@ -1,10 +1,19 @@
 class_name BaseGame
 extends Node2D
 
-var coins = 0
-var exp = 0
+var level : int = 1
+var coins : int = 0
+var exp : int = 0
 
 # End event sequence
+
+func add_coins(new_coins: int) -> void:
+	print("Added " + str(new_coins) + " coins")
+	coins += new_coins
+
+func add_exp(new_exp: int) -> void:
+	print("Added " + str(new_exp) + " new exp")
+	exp += new_exp
 
 func end_sequence() -> void:
 	print("starting end sequence")

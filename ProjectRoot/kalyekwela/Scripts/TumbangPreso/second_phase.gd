@@ -5,7 +5,7 @@ extends Node2D
 @onready var player = $player
 @onready var game_scene : = get_parent()
 
-const phase_time : int = 15
+var phase_time : int = 15
 
 var difficulty : int = 1 # Default difficulty
 
@@ -15,9 +15,11 @@ func _ready() -> void:
 	await countdown_timer.timeout
 	game_scene.end_second_phase()
 
-func update_difficulty(level : int) -> void:
-	print("Updated irst phase difficulty : " + str(level))
+func update_phase(level : int, new_phase_time :int, countdown_time :int) -> void:
+	print("Updated second phase difficulty : " + str(level))
 	difficulty = level
+	print("Updated second phase timer : " + str(new_phase_time))
+	phase_time = new_phase_time
 
 func _on_player_touched_enemy() -> void:
 	print("touched ")
