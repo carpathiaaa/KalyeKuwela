@@ -1,12 +1,17 @@
 extends Node2D
 
 @onready var countdown_timer = $countdown_timer
+@onready var movement_joystick = $"user_interface/Virtual Joystick"
 @onready var floating_enemy = $enemy_body
 @onready var player = $player
 @onready var game_scene : = get_parent()
+@onready var sandal = $Sandal
+
+signal sandal_touched
+
+var retrieved_sandal : bool = false 
 
 var phase_time : int = 15
-
 var difficulty : int = 1 # Default difficulty
 
 func _ready() -> void:
@@ -22,6 +27,18 @@ func update_phase(level : int, new_phase_time :int, countdown_time :int) -> void
 	phase_time = new_phase_time
 
 func _on_player_touched_enemy() -> void:
-	print("touched ")
-	get_parent().finished = true
-	game_scene.end_game()
+	print("Player touched an enemy")
+	movement_joystick.queue_free()
+	get_parent().player_loses()
+
+func _on_sandal_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		print("Player touched a sandal")
+		sandal.queue_free()
+		player.modulate = Color(0.75, 1, 0.75)  # Light green using normalized values (0-1)
+		retrieved_sandal = true
+
+func _on_safe_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player") and retrieved_sandal:
+		emit_signal('sandal_touched')
+		self.queue_free()

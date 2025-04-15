@@ -6,15 +6,16 @@ extends Node2D
 @onready var sandal_spin = $sandal/sandal_spin
 @onready var sandal_scale = $sandal/sandal_scale
 @onready var pointer_button = $click_bar/bar_button
+@onready var click_bar = $click_bar
 
 var initial_countdown_time : int = 3
-var phase_time :int = 15
+var phase_time : int = 15
 
-var difficulty :int = 0
+var difficulty : int = 0
 
 func _ready() -> void:
+	click_bar.gain_rewards.connect(add_rewards)
 	start_event_sequence()
-
 
 func start_event_sequence() -> void:
 	# Event sequence
@@ -51,7 +52,6 @@ func stop_controls() -> void:
 	pointer_animation.stop() # pause pointer movement before countdown timer expires
 	pointer_button.disabled = true # disable button before countdown timer expires
 
-
 func play_sandal_animations() -> void:
 	sandal.visible = true
 	sandal_spin.play("sandal_spin")
@@ -61,3 +61,12 @@ func stop_sandal_animations() -> void:
 	sandal.visible = false
 	sandal_spin.stop()
 	sandal_scale.stop()
+
+func add_rewards(new_points, new_coins) -> void:
+	print("first phase rewards added")
+	var new_exp : int = 0
+	if new_points >= 0:
+		new_exp = new_points / 10
+	else:
+		new_exp = 0
+	get_parent().add_rewards(new_coins, new_exp)

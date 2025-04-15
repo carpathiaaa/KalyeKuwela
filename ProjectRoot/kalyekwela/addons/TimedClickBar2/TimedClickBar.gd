@@ -12,14 +12,24 @@ extends Control
 
 var random_number = RandomNumberGenerator.new() # create a random number generator
 
+var new_points = 0
+var new_coins = 5
+signal gain_rewards(new_points, new_coins)
+
 func _on_bar_button_button_down() -> void:
 	button_timer.start() # start timer for button sprite animation
 	button_sprite.frame = 1 # change buttons sprite to pressed state
 	if pointer_is_over_target:
 		print("hit")
+		new_points = 150
+		new_coins = 5
+		emit_signal("gain_rewards")
 		button_icon.modulate = Color(0.7, 1.8, 0.7) # Greenish tint if hit
 	else:
 		print("miss")
+		new_points = -100
+		new_coins = 0
+		emit_signal("gain_rewards")
 		button_icon.modulate = Color(1.8, 0.7, 0.7) # Reddish tint if miss
 	randomize_bar() # reset acceptance region length and position
 	pointer_animation.speed_scale = random_number.randf_range(0.2, 0.7) # increase pointer speed after every button click

@@ -9,6 +9,9 @@ extends BaseGame
 var first_phase_instance : Node = null
 var second_phase_instance : Node = null
 
+var threshold_score : int = 1000 
+var current_score : int  = 0
+
 var first_phase_time : int = 7
 var second_phase_time : int = 15
 const countdown_time : int = 3
@@ -16,19 +19,38 @@ const countdown_time : int = 3
 signal first_phase_ended 
 signal second_phase_ended
 
-var finished : bool = false
-
 func _ready() -> void:
-	# event sequence
-	while not finished:
-		start_first_phase()
-		info_overlay.set_timer(first_phase_time + countdown_time)
-		await first_phase_ended
-		if not finished:
-			info_overlay.set_timer(second_phase_time)
-			start_second_phase()
-			await second_phase_ended
-		level += 1
+	# Start event sequence
+	start_events()
+
+func start_events() -> void:
+	print("Starting event sequence")
+	start_first_phase()
+	info_overlay.set_timer(first_phase_time + countdown_time)
+	await first_phase_ended
+	info_overlay.set_timer(second_phase_time)
+	start_second_phase()
+	await second_phase_ended
+	level += 1
+	if (current_score >= threshold_score):
+		player_wins()
+	else:
+		next_level()
+
+func player_wins() -> void:
+	print("Player wins")
+	add_rewards(coins, exp)
+
+func player_loses() -> void:
+	print("Player loses")
+	add_rewards(coins, exp)
+	end_sequence()
+
+func next_level() -> void:
+	print("Game not finished")
+	threshold_score += 400
+	level += 1
+	start_events() # restart event sequence
 
 func start_first_phase() -> void:
 	print("Starting first phase")
@@ -45,16 +67,22 @@ func end_first_phase() -> void:
 func start_second_phase() -> void:
 	print("Starting second phase")
 	second_phase_instance = second_phase.instantiate()
-	secon d_phase_instance.update_phase(level, second_phase_time, countdown_time)
+	second_phase_instance.update_phase(level, second_phase_time, countdown_time)
+	second_phase_instance.sandal_touched.connect(end_second_phase)
 	add_child(second_phase_instance)
 
 func end_second_phase() -> void:
 	print("Ending second phase")
+	second_phase_instance.queue_free() 
 	emit_signal("second_phase_ended")
-	second_phase_instance.queue_free()
 
 func add_rewards(new_coins, new_exp) -> void:
+	print("rewards received")
 	add_coins(new_coins)
 	info_overlay.update_coins_label(coins)
 	add_exp(new_exp)
 	info_overlay.update_score_label(exp)
+
+func add_score(new_score: int) -> void:
+	current_score += new_score
+	info_overlay.update_score_label(current_score)
