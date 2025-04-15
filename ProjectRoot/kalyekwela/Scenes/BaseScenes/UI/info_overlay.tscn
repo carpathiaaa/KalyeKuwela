@@ -108,6 +108,7 @@ sprite_frames = SubResource("SpriteFrames_8823b")
 autoplay = "default"
 
 [node name="Container" type="Container" parent="."]
+z_as_relative = false
 layout_mode = 0
 offset_right = 1149.0
 offset_bottom = 588.0

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwt51bujv2mhx"]
+
+[ext_resource type="PackedScene" uid="uid://cxw31vtfsc65e" path="res://Scenes/BaseScenes/UI/pause_interface.tscn" id="1_w2wft"]
+[ext_resource type="PackedScene" uid="uid://cbk1ghm6qyjns" path="res://Scenes/BaseScenes/UI/info_overlay.tscn" id="2_146tn"]
+
+[node name="user_interface" type="CanvasLayer"]
+layer = 0
+
+[node name="InfoOverlay" parent="." instance=ExtResource("2_146tn")]
+show_behind_parent = true
+custom_minimum_size = Vector2(1000, 1000)
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 1149.0
+offset_bottom = 1002.0
+
+[node name="PauseInterface" parent="." instance=ExtResource("1_w2wft")]
+top_level = true
+z_index = 2
+offset_left = 5.0
+offset_top = -3.0
+offset_right = 5.0
+offset_bottom = -3.0

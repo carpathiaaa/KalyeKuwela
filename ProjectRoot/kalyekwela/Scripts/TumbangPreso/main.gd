@@ -20,6 +20,7 @@ signal first_phase_ended
 signal second_phase_ended
 
 func _ready() -> void:
+	info_overlay.mouse_filter = Control.MOUSE_FILTER_PASS # Info overlay ignores touch controls
 	# Start event sequence
 	start_events()
 

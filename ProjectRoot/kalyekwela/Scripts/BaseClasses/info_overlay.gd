@@ -6,14 +6,9 @@ extends Control
 @onready var score_label = $Container/RightContainer/ScoreLabel
 
 @onready var label_timer = $LabelTimer # optional timer 
-@onready var game_scene : BaseGame = get_parent().get_parent()
 
 var remaining_seconds : float = 15 # Store elpased time in seconds
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	if game_scene is not BaseGame:
-		push_error("Invalid game scene (info overlay)")
 
 func update_level_label(new_level : int) -> void:
 	level_label.text = " Level " + str(new_level)
