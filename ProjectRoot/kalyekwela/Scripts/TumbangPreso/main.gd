@@ -9,7 +9,7 @@ extends BaseGame
 var first_phase_instance : Node = null
 var second_phase_instance : Node = null
 
-var threshold_score : int = 1000 
+var threshold_score : int = 10000
 var current_score : int  = 0
 
 var first_phase_time : int = 7
@@ -28,18 +28,17 @@ func start_events() -> void:
 	start_first_phase()
 	info_overlay.set_timer(first_phase_time + countdown_time)
 	await first_phase_ended
+	if (current_score >= threshold_score):
+		player_wins()
 	info_overlay.set_timer(second_phase_time)
 	start_second_phase()
 	await second_phase_ended
-	level += 1
-	if (current_score >= threshold_score):
-		player_wins()
-	else:
-		next_level()
+	next_level()
 
 func player_wins() -> void:
 	print("Player wins")
 	add_rewards(coins, exp)
+	
 
 func player_loses() -> void:
 	print("Player loses")
@@ -56,6 +55,7 @@ func start_first_phase() -> void:
 	print("Starting first phase")
 	first_phase_instance = first_phase.instantiate()
 	first_phase_instance.update_phase(level, first_phase_time, countdown_time)
+	first_phase_instance.add_phase_rewards.connect(add_rewards, CONNECT_ONE_SHOT)
 	info_overlay.update_level_label(level)
 	add_child(first_phase_instance)
 
@@ -68,6 +68,7 @@ func start_second_phase() -> void:
 	print("Starting second phase")
 	second_phase_instance = second_phase.instantiate()
 	second_phase_instance.update_phase(level, second_phase_time, countdown_time)
+	second_phase_instance.add_phase_rewards.connect(add_rewards, CONNECT_ONE_SHOT)
 	second_phase_instance.sandal_touched.connect(end_second_phase)
 	add_child(second_phase_instance)
 
@@ -76,13 +77,13 @@ func end_second_phase() -> void:
 	second_phase_instance.queue_free() 
 	emit_signal("second_phase_ended")
 
-func add_rewards(new_coins, new_exp) -> void:
+func add_rewards(new_coins : int, new_exp : int) -> void:
 	print("rewards received")
 	add_coins(new_coins)
 	info_overlay.update_coins_label(coins)
 	add_exp(new_exp)
-	info_overlay.update_score_label(exp)
+	update_score(exp * 10)
 
-func add_score(new_score: int) -> void:
+func update_score(new_score: int) -> void:
 	current_score += new_score
 	info_overlay.update_score_label(current_score)

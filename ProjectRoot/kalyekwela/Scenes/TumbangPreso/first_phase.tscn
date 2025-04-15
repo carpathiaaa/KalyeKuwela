@@ -216,6 +216,7 @@ animations = [{
 }]
 
 [node name="first_phase" type="Node2D"]
+visible = false
 position = Vector2(498, 310)
 script = ExtResource("1_yq35f")
 

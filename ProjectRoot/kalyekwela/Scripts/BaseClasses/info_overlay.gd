@@ -19,7 +19,7 @@ func update_level_label(new_level : int) -> void:
 	level_label.text = " Level " + str(new_level)
 
 func update_coins_label(new_coins : int) -> void:
-	coins_label.text = "    " + str(new_coins)
+	coins_label.text = "           " + str(new_coins)
 
 func update_score_label(new_score : int) ->void:
 	score_label.text = str(new_score) + " "

@@ -1,4 +1,4 @@
-extends Node2D
+extends TumbangPresoPhase
 
 @onready var countdown_timer = $countdown_timer
 @onready var movement_joystick = $"user_interface/Virtual Joystick"
@@ -8,6 +8,7 @@ extends Node2D
 @onready var sandal = $Sandal
 
 signal sandal_touched
+
 
 var retrieved_sandal : bool = false 
 

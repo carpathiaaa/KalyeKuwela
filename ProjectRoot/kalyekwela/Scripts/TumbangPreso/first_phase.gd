@@ -1,4 +1,4 @@
-extends Node2D
+extends TumbangPresoPhase
 
 @onready var countdown_timer = $countdown_timer
 @onready var pointer_animation = $click_bar/pointer_animation
@@ -14,7 +14,6 @@ var phase_time : int = 15
 var difficulty : int = 0
 
 func _ready() -> void:
-	click_bar.gain_rewards.connect(add_rewards)
 	start_event_sequence()
 
 func start_event_sequence() -> void:
@@ -33,6 +32,9 @@ func update_phase(level : int, new_phase_time :int, new_countdown_time: int) -> 
 	print("Updated irst phase timer : " + str(new_phase_time))
 	phase_time = new_phase_time
 	initial_countdown_time = new_countdown_time
+
+func update_phase_rewards(new_coins, new_exp) -> void:
+	get_parent().add_rewards(new_coins, new_exp)
 
 func initial_stage() -> void:
 	sandal.visible = false
@@ -61,12 +63,3 @@ func stop_sandal_animations() -> void:
 	sandal.visible = false
 	sandal_spin.stop()
 	sandal_scale.stop()
-
-func add_rewards(new_points, new_coins) -> void:
-	print("first phase rewards added")
-	var new_exp : int = 0
-	if new_points >= 0:
-		new_exp = new_points / 10
-	else:
-		new_exp = 0
-	get_parent().add_rewards(new_coins, new_exp)
