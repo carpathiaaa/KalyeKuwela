@@ -22,7 +22,7 @@ var coin_instances = []
 # array of rocks per level
 var rock_instances = []
 
-func prepare_level() -> void:
+func preparelevel() -> void:
 	# remove enemies before next level starts
 	for enemy in enemy_instances:
 		if enemy and enemy.is_inside_tree():
@@ -41,13 +41,13 @@ func prepare_level() -> void:
 			coin.queue_free()
 	coin_instances.clear()
 	
-	extend_map(Vector2(470 * main_patintero._level, 0))
-	end_tile.position = (Vector2(470 * main_patintero._level, 0))
-	for i in range(-1, (2 * main_patintero._level) + 2):
+	extend_map(Vector2(470 * main_patintero.level, 0))
+	end_tile.position = (Vector2(470 * main_patintero.level, 0))
+	for i in range(-1, (2 * main_patintero.level) + 2):
 		add_coin(140 * i, 250 * i)
 		add_rock(140 * i, 250 * i)
 		add_score_line(Vector2(235 * i, 0))
-		add_vertical_bot(Vector2(235* i, 0))
+		#add_vertical_bot(Vector2(235* i, 0))
 
 
 
@@ -90,8 +90,8 @@ func add_coin(min_position, max_position) -> void:
 func _on_start_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("main_player"):
 		start_area.position.x = -500  
-		main_patintero.add_level()
-		prepare_level()
+		main_patintero.next_level()
+		preparelevel()
 
 
 func _on_end_area_area_exited(area: Area2D) -> void:

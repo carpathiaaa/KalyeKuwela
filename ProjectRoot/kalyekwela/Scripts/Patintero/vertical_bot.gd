@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var target_player = get_node("/root/Patintero/main_player/body")
+@onready var target_player = get_node("/root/Patintero/main_player")
 
 var enemy_speed = 50 # base speed of horizontal enemy
 var random_number = RandomNumberGenerator.new()

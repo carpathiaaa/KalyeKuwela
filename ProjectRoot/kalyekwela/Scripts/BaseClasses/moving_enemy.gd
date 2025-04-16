@@ -13,7 +13,7 @@ func set_target(new_target : Player, new_speed : float) -> void:
 		speed = new_speed
 	else:
 		push_error("Invalid target type")
-
+W
 func update_velocity(direction : Vector2, delta: float) -> void:
 	var current_velocity = direction * speed 
 	velocity = current_velocity  # float towards the target
@@ -25,5 +25,5 @@ func simple_float() -> Vector2:
 func horizontal_float() -> Vector2:
 	return Vector2(tracker.find_target_position().x, self.position.y)
 
-func vertical_float() -> void:
+func vertical_float() -> Vector2:
 	return Vector2(self.position.x, tracker.find_target_position().y)

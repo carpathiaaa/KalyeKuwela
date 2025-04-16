@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cxw31vtfsc65e" path="res://Scenes/BaseScenes/UI/pause_interface.tscn" id="1_w2wft"]
 [ext_resource type="PackedScene" uid="uid://cbk1ghm6qyjns" path="res://Scenes/BaseScenes/UI/info_overlay.tscn" id="2_146tn"]
 
-[node name="user_interface" type="CanvasLayer"]
+[node name="UserInterface" type="CanvasLayer"]
 layer = 0
 
 [node name="InfoOverlay" parent="." instance=ExtResource("2_146tn")]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://bohju6vkffk62"]
+[gd_scene load_steps=4 format=3 uid="uid://bohju6vkffk62"]
 
-[ext_resource type="Script" uid="uid://cux4gglx3ud0p" path="res://Scripts/TumbangPreso/enemy_bot.gd" id="1_j6iba"]
 [ext_resource type="Texture2D" uid="uid://bjsv2ijkxidd7" path="res://Assets/Art/CharacterIcons/Character_Juan_Icon.png" id="1_yd6pm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j6iba"]
@@ -17,7 +16,6 @@ animations = [{
 }]
 
 [node name="enemy_bot" type="Node2D"]
-script = ExtResource("1_j6iba")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 

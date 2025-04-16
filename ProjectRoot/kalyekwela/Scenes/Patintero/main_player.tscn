@@ -154,16 +154,14 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ch51q"]
 
-[node name="main_player" type="Node2D"]
-
-[node name="body" type="CharacterBody2D" parent="."]
+[node name="player" type="CharacterBody2D"]
 texture_filter = 2
 position = Vector2(-309, -37)
 collision_layer = 5
 motion_mode = 1
 script = ExtResource("1_41ri7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="body"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 texture_filter = 1
 texture_repeat = 1
@@ -172,13 +170,13 @@ animation = &"up_animation"
 autoplay = "down_animation"
 script = ExtResource("5_k37kf")
 
-[node name="Area2D" type="Area2D" parent="body" groups=["main_player"]]
+[node name="Area2D" type="Area2D" parent="." groups=["main_player"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="body/Area2D" groups=["main_player"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["main_player"]]
 texture_filter = 2
 shape = SubResource("CapsuleShape2D_e4uur")
 
-[node name="Camera2D" type="Camera2D" parent="body"]
+[node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.3, 3.3)
 limit_left = -450
 limit_top = -250
@@ -186,10 +184,10 @@ limit_bottom = 200
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ch51q")
 
-[node name="player_name" type="Label" parent="body"]
+[node name="player_name" type="Label" parent="."]
 z_index = 5
 texture_filter = 1
 offset_left = -19.0
@@ -200,7 +198,7 @@ theme_override_font_sizes/font_size = 8
 text = "Player"
 metadata/_edit_use_anchors_ = true
 
-[node name="Timer" type="Timer" parent="body"]
+[node name="Timer" type="Timer" parent="."]
 
-[connection signal="area_entered" from="body/Area2D" to="body" method="_on_area_2d_area_entered"]
-[connection signal="timeout" from="body/Timer" to="body" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

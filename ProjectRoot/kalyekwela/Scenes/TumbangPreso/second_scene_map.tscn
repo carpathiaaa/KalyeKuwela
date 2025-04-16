@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=4 uid="uid://rpf4bbeq8kcm"]
 
 [ext_resource type="Texture2D" uid="uid://baxyf4dq1ut1n" path="res://Assets/Art/Maps/Tilesets/pixel_village/tileset.png" id="1_e3lxa"]
-[ext_resource type="Texture2D" uid="uid://chyjptqjd3gsw" path="res://Assets/Art/Maps/Tilesets/SERENE_VILLAGE_REVAMPED/RPG_MAKER_MV/Outside_Stuff_TILESET_B-C-D-E.png" id="2_hl0b2"]
+[ext_resource type="Texture2D" uid="uid://chyjptqjd3gsw" path="res://Assets/Art/Maps/Tilesets/Outside_Stuff_TILESET_B-C-D-E.png" id="2_hl0b2"]
 [ext_resource type="Texture2D" uid="uid://bsxuxx7c0jfwl" path="res://Assets/Art/Tilesets/Solaria Demo Tiles.png" id="3_w1is3"]
 [ext_resource type="Texture2D" uid="uid://45vo3w6h05ky" path="res://Assets/Art/Maps/Tilesets/SERENE_VILLAGE_REVAMPED/Serene_Village_48x48.png" id="4_ypoi3"]
 [ext_resource type="Texture2D" uid="uid://bsn5b83ftpid7" path="res://Assets/Art/Maps/Tilesets/SERENE_VILLAGE_REVAMPED/RPG_MAKER_MV/Terrains_TILESET_B-C-D-E.png" id="5_naa5k"]

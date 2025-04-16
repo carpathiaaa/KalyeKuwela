@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://ccj5fi8xp7xsd"]
 
 [ext_resource type="Script" uid="uid://q5pqc80n1t5r" path="res://Scripts/Patintero/patintero_main.gd" id="1_q6fdc"]
-[ext_resource type="PackedScene" uid="uid://bkqnu14r0ml5" path="res://Scenes/Patintero/UI.tscn" id="2_5mkn0"]
 [ext_resource type="PackedScene" uid="uid://dja4w5pgnhm58" path="res://Scenes/Patintero/main_player.tscn" id="3_p53ya"]
 [ext_resource type="PackedScene" uid="uid://sax21ek8fo7m" path="res://Scenes/Patintero/patintero_map.tscn" id="4_ji7og"]
 [ext_resource type="Script" uid="uid://dm1deb07aaw8c" path="res://Scripts/Patintero/horizontal_bot.gd" id="5_4vtit"]
 [ext_resource type="PackedScene" uid="uid://cgdw6spo4ei61" path="res://Scenes/Patintero/vertical_bot.tscn" id="5_qoqof"]
 [ext_resource type="AudioStream" uid="uid://cqm5jjuipufnm" path="res://Assets/Audio/SFX/coin_sfx.mp3" id="7_r7t3u"]
-[ext_resource type="PackedScene" uid="uid://cbk1ghm6qyjns" path="res://Scenes/BaseScenes/UI/info_overlay.tscn" id="8_2avav"]
-[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="9_i0cr5"]
+[ext_resource type="AudioStream" uid="uid://bnpf1b4egv74g" path="res://Assets/Audio/Music/Fishball Fight.mp3" id="9_a0e8k"]
+[ext_resource type="PackedScene" uid="uid://dwt51bujv2mhx" path="res://Scenes/BaseScenes/UI/user_interface.tscn" id="9_i0cr5"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="9_jqj7b"]
 
 [node name="Patintero" type="Node2D"]
 position = Vector2(1, 0)
@@ -16,20 +16,15 @@ script = ExtResource("1_q6fdc")
 
 [node name="main_player" parent="." instance=ExtResource("3_p53ya")]
 z_as_relative = false
+position = Vector2(-288, -34)
 
 [node name="map" parent="." instance=ExtResource("4_ji7og")]
-
-[node name="enemy_spawner" type="Node2D" parent="."]
-position = Vector2(-550, 65)
+position = Vector2(11, -3)
 
 [node name="horizontal_enemy" parent="." instance=ExtResource("5_qoqof")]
 z_index = 7
 position = Vector2(-37, -30)
 script = ExtResource("5_4vtit")
-
-[node name="UI" parent="." instance=ExtResource("2_5mkn0")]
-visible = false
-follow_viewport_enabled = false
 
 [node name="sound_effects" type="Node2D" parent="."]
 
@@ -37,9 +32,17 @@ follow_viewport_enabled = false
 stream = ExtResource("7_r7t3u")
 volume_db = 7.0
 
-[node name="BetterUI" type="CanvasLayer" parent="."]
+[node name="UserInterface" parent="." instance=ExtResource("9_i0cr5")]
 
-[node name="InfoBoard" parent="BetterUI" instance=ExtResource("8_2avav")]
+[node name="Virtual Joystick" parent="UserInterface" instance=ExtResource("9_jqj7b")]
+offset_left = 7.0
+offset_top = -309.0
+offset_right = 307.0
+offset_bottom = -9.0
 
-[node name="Virtual Joystick" parent="BetterUI" instance=ExtResource("9_i0cr5")]
-z_index = 3
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_a0e8k")
+autoplay = true
+parameters/looping = true
+
+[connection signal="touched_enemy" from="main_player" to="." method="_on_main_player_touched_enemy"]
