@@ -4,9 +4,10 @@ extends BaseEnemy
 @onready var animation = $AnimationPlayer
 
 var min_y = -190
-var max_y = 210
+var max_y = 130
 
 var moving_up : bool = false
+var moving_speed = log(pow(PI, 2))
 
 func _physics_process(delta: float) -> void:
 	if self.position.y >= max_y:
@@ -14,6 +15,6 @@ func _physics_process(delta: float) -> void:
 	elif self.position.y <= min_y:
 		moving_up = true
 	if moving_up:
-		self.position.y += log(PI)
+		self.position.y += moving_speed
 	else:
-		self.position.y -= log(PI)
+		self.position.y -= moving_speed

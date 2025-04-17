@@ -32,16 +32,16 @@ func random_vertical_float() -> Vector2:
 	var noise_offset = 0.0
 	var to_top : bool = false
 	# Use noise for smoother randomness
-	noise_offset += randf_range(-10, 10)
+	noise_offset += randf_range(1, 10)
 	var random_offset = sin(noise_offset) * 10  # Smooth wave pattern
 	if to_top:
 		random_offset *= -1
-	if position.y > 130:
+	if position.y < 130:
 		to_top = false
-		random_offset -= 10
-	elif position.y < -130:
+		random_offset -= 1
+	elif position.y > -130:
 		to_top = true
-		random_offset += 10
+		random_offset += 1
 	return Vector2(0, random_offset) * speed
 
 

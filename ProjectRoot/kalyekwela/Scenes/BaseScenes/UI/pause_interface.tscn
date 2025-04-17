@@ -58,6 +58,10 @@ func _on_settings_button_pressed(settings_request: bool) -> void:
 func _on_quit_settings_pressed(settings_request: bool) -> void:
 	settings_visible = settings_request
 	update_settings_menu()
+
+func _on_quit_button_pressed() -> void:
+	Engine.time_scale = 1 # Ensure time scale value before returning to main menu
+	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/menu.tscn\")
 "
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_givwi"]
@@ -646,6 +650,7 @@ text = "no
 [connection signal="pressed" from="PauseMenu/NinePatchRect/ExitButtonContainer/MarginContainer/ResumeButton" to="." method="_on_resume_button_pressed" binds= [false]]
 [connection signal="pressed" from="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/ResumeButton" to="." method="_on_resume_button_pressed" binds= [false]]
 [connection signal="pressed" from="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed" binds= [true]]
+[connection signal="pressed" from="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="PauseMenu/SettingsPopUp/ExitButtonContainer/MarginContainer/QuitSettings" to="." method="_on_quit_settings_pressed" binds= [false]]
 [connection signal="value_changed" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/SettingsContents/AudioSlider" to="PauseMenu/SettingsPopUp" method="_on_audio_slider_value_changed"]
 [connection signal="value_changed" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/SettingsContents/BrightnessSlider" to="PauseMenu/SettingsPopUp" method="_on_brightness_slider_value_changed"]
