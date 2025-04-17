@@ -6,17 +6,19 @@ extends TumbangPresoPhase
 @onready var player = $player
 @onready var game_scene : = get_parent()
 @onready var sandal = $Sandal
+@onready var sandal_body = $Sandal/SandalSprite
 
-signal sandal_touched
-
-
+var random_number = RandomNumberGenerator.new()
 var retrieved_sandal : bool = false 
 
 var phase_time : int = 15
 var difficulty : int = 1 # Default difficulty
 
+signal sandal_touched
+
 func _ready() -> void:
 	print("started")
+	randomize_sandal_position() # randomize sandal location 
 	countdown_timer.start(phase_time)
 	await countdown_timer.timeout
 	game_scene.end_second_phase()
@@ -43,3 +45,9 @@ func _on_safe_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player") and retrieved_sandal:
 		emit_signal('sandal_touched')
 		self.queue_free()
+
+func randomize_sandal_position() -> void:
+	var random_x = random_number.randf_range(-300, 300)
+	var random_y = random_number.randf_range(-300, 300)
+	sandal_body.position = Vector2(random_x, random_y)
+	print("Sandal position: " + str(sandal.position))

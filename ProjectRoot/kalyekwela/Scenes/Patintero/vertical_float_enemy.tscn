@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtumfdjsikakl"]
+
+[ext_resource type="Script" uid="uid://n67d54djyru0" path="res://Scripts/Patintero/vertical_float_enemy.gd" id="1_86n65"]
+[ext_resource type="SpriteFrames" uid="uid://dp5ol0c0hg8og" path="res://Assets/Art/Characters/Frames/Juan_Frames.tres" id="2_tlica"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n5alp"]
+height = 34.0
+
+[node name="VerticalFloatEnemy" type="CharacterBody2D"]
+script = ExtResource("1_86n65")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+sprite_frames = ExtResource("2_tlica")
+animation = &"IdleBack"
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemy"]]
+shape = SubResource("CapsuleShape2D_n5alp")

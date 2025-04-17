@@ -1,16 +1,16 @@
 extends MovingEnemy
 
-@onready var player = $"../player"
+
 var new_speed : float = 100.0
 
 var movement_pattern : Vector2 = Vector2.ZERO
 
 func _ready() ->void:
-	set_target(player, new_speed)
+	print("Enemy spawned at " + str(self.position))
 
 func set_movement_pattern(new_movement_pattern : Vector2) -> void:
 	print("Updating movement pattern")
 	movement_pattern = new_movement_pattern
 
 func _physics_process(delta: float) -> void:
-	update_velocity(simple_float(), delta)
+	update_velocity(movement_pattern, delta)

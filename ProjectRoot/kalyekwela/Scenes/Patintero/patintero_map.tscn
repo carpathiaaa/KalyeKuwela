@@ -1812,6 +1812,9 @@ shape = SubResource("RectangleShape2D_dhpex")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jo1xi")
 
+[node name="enemy_tile" type="Node2D" parent="."]
+z_index = 4
+
 [connection signal="area_entered" from="start_tile/start_area" to="." method="_on_start_area_area_entered"]
 [connection signal="area_entered" from="end_tile/end_area" to="." method="_on_end_area_area_entered"]
 [connection signal="area_exited" from="end_tile/end_area" to="." method="_on_end_area_area_exited"]

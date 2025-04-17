@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bjsv2ijkxidd7" path="res://Assets/Art/CharacterIcons/Character_Juan_Icon.png" id="1_yd6pm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j6iba"]
+radius = 8.0
+height = 16.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ev8sn"]
 animations = [{
@@ -16,13 +18,15 @@ animations = [{
 }]
 
 [node name="enemy_bot" type="Node2D"]
+scale = Vector2(1, 2)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1, 3.5)
 shape = SubResource("CapsuleShape2D_j6iba")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(0, 4)
+position = Vector2(-1, 3)
 scale = Vector2(1, 0.5)
 sprite_frames = SubResource("SpriteFrames_ev8sn")

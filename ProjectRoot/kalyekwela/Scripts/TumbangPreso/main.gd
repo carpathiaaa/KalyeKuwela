@@ -18,6 +18,7 @@ const countdown_time : int = 3
 
 signal first_phase_ended 
 signal second_phase_ended
+var pass_to_next : bool = false
 
 func _ready() -> void:
 	info_overlay.mouse_filter = Control.MOUSE_FILTER_PASS # Info overlay ignores touch controls
@@ -34,7 +35,10 @@ func start_events() -> void:
 	info_overlay.set_timer(second_phase_time)
 	start_second_phase()
 	await second_phase_ended
-	next_level()
+	if pass_to_next:
+		next_level()
+	else:
+		player_loses()
 
 func player_wins() -> void:
 	print("Player wins")
@@ -70,12 +74,19 @@ func start_second_phase() -> void:
 	second_phase_instance = second_phase.instantiate()
 	second_phase_instance.update_phase(level, second_phase_time, countdown_time)
 	second_phase_instance.add_phase_rewards.connect(add_rewards, CONNECT_ONE_SHOT)
-	second_phase_instance.sandal_touched.connect(end_second_phase)
+	second_phase_instance.sandal_touched.connect(success_second_phase)
 	add_child(second_phase_instance)
+
+func success_second_phase() -> void:
+	print("Ending second phase")
+	second_phase_instance.queue_free() 
+	pass_to_next = true
+	emit_signal("second_phase_ended")
 
 func end_second_phase() -> void:
 	print("Ending second phase")
 	second_phase_instance.queue_free() 
+	pass_to_next = false
 	emit_signal("second_phase_ended")
 
 func add_rewards(new_coins : int, new_exp : int) -> void:

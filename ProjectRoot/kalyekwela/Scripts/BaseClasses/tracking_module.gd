@@ -1,4 +1,4 @@
-class_name TrackingComponent
+class_name TrackingModule
 extends RefCounted
 
 @export var target_player = null # Default target value

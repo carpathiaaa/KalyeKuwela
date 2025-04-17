@@ -3,7 +3,6 @@ extends Player
 @onready var player_animation = $AnimatedSprite2D
 @onready var player_name_label = $player_name
 @onready var timer = $Timer
-@onready var game_scene : BaseGame = get_parent().get_parent()
 
 var time = 0
 @export var player_speed = 200 # Default speed of player
@@ -14,9 +13,7 @@ signal touched_sandal
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player_name_label.text = "Player"
-	if game_scene is not BaseGame:
-		print("game scene error")
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 	move_and_slide()
@@ -42,10 +39,3 @@ func _on_area_2d_area_entered(area):
 		emit_signal("touched_enemy")
 	if area.is_in_group("safe_area"):
 		emit_signal("in_safe_area")
-
-
-
-func _on_timer_timeout() -> void:
-	timer.stop()
-	player_animation.modulate = Color(1, 1, 1, 1) # add a red tint to player sprite
-	player_speed += 30 * game_scene._level 
