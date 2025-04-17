@@ -646,6 +646,239 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_j6hlw")
 text = "no
 "
 
+[node name="SettingsPopUp2" type="MarginContainer" parent="PauseMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_pqojb")
+
+[node name="SettingsBackground" type="NinePatchRect" parent="PauseMenu/SettingsPopUp2"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_ywdou")
+region_rect = Rect2(107, 155, 26, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="PauseMenu/SettingsPopUp2"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/SettingsPopUp2/ExitButtonContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+theme_override_constants/margin_bottom = 0
+
+[node name="QuitSettings" type="Button" parent="PauseMenu/SettingsPopUp2/ExitButtonContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+mouse_filter = 1
+theme_override_styles/hover = SubResource("StyleBoxTexture_b8t4u")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b8t4u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tpeci")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/SettingsPopUp2"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 11
+
+[node name="Control" type="Control" parent="PauseMenu/SettingsPopUp2/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SettingsText" type="Label" parent="PauseMenu/SettingsPopUp2/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_fgipj")
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
+[node name="SettingsFunctionContainer" type="MarginContainer" parent="PauseMenu/SettingsPopUp2"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="SettingsContents" type="VBoxContainer" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="AudioSlider" type="HSlider" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+
+[node name="BrightnessSlider" type="HSlider" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/SettingsContents"]
+layout_mode = 2
+size_flags_horizontal = 5
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="SettingsButtonsCanvas" type="MarginContainer" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -50
+
+[node name="SettingsButtonsContainer" type="VBoxContainer" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/SettingsButtonsCanvas"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MuteToggle" type="Button" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_0nk2o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0nk2o")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tpc5n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0nk2o")
+toggle_mode = true
+
+[node name="BrightnessToggle" type="Button" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_tg1nm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tg1nm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dc5fr")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tg1nm")
+toggle_mode = true
+
+[node name="ResetDataMargin" type="MarginContainer" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 205
+theme_override_constants/margin_right = 70
+
+[node name="ResetGameDataButton" type="Button" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/ResetDataMargin"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_pressed_color = Color(0.882353, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_fgipj")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_v8mtf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v8mtf")
+theme_override_styles/normal = SubResource("StyleBoxTexture_c4ybe")
+text = "RESET GAME DATA"
+
+[node name="ConfirmationMargin" type="MarginContainer" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_right = 70
+
+[node name="ConfirmationBackground" type="NinePatchRect" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/ConfirmationMargin"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_3cm2r")
+region_rect = Rect2(160, 192, 48, 48)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/ConfirmationMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ConfirmationLabel" type="Label" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_fgipj")
+theme_override_font_sizes/font_size = 13
+text = "Are you sure you want to reset all data? It cannot be recovered"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="YesButton" type="Button" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("11_ecmk3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_j6hlw")
+text = "yes
+"
+
+[node name="NoButton" type="Button" parent="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.886275, 0.623529, 0.443137, 1)
+theme_override_colors/font_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_colors/font_pressed_color = Color(0.529412, 0.266667, 0.352941, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("11_ecmk3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_noju4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_j6hlw")
+text = "no
+"
+
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed" binds= [true]]
 [connection signal="pressed" from="PauseMenu/NinePatchRect/ExitButtonContainer/MarginContainer/ResumeButton" to="." method="_on_resume_button_pressed" binds= [false]]
 [connection signal="pressed" from="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/ResumeButton" to="." method="_on_resume_button_pressed" binds= [false]]
@@ -659,3 +892,11 @@ text = "no
 [connection signal="pressed" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ResetDataMargin/ResetGameDataButton" to="PauseMenu/SettingsPopUp" method="_on_reset_game_data_button_pressed"]
 [connection signal="pressed" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton" to="PauseMenu/SettingsPopUp" method="_on_yes_button_pressed"]
 [connection signal="pressed" from="PauseMenu/SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton" to="PauseMenu/SettingsPopUp" method="_on_no_button_pressed"]
+[connection signal="pressed" from="PauseMenu/SettingsPopUp2/ExitButtonContainer/MarginContainer/QuitSettings" to="." method="_on_quit_settings_pressed" binds= [false]]
+[connection signal="value_changed" from="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/SettingsContents/AudioSlider" to="PauseMenu/SettingsPopUp2" method="_on_audio_slider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/SettingsContents/BrightnessSlider" to="PauseMenu/SettingsPopUp2" method="_on_brightness_slider_value_changed"]
+[connection signal="toggled" from="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle" to="PauseMenu/SettingsPopUp2" method="_on_mute_toggle_toggled"]
+[connection signal="toggled" from="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/BrightnessToggle" to="PauseMenu/SettingsPopUp2" method="_on_brightness_toggle_toggled"]
+[connection signal="pressed" from="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/ResetDataMargin/ResetGameDataButton" to="PauseMenu/SettingsPopUp2" method="_on_reset_game_data_button_pressed"]
+[connection signal="pressed" from="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton" to="PauseMenu/SettingsPopUp2" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="PauseMenu/SettingsPopUp2/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton" to="PauseMenu/SettingsPopUp2" method="_on_no_button_pressed"]

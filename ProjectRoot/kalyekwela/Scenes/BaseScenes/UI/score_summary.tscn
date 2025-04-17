@@ -1,0 +1,301 @@
+[gd_scene load_steps=27 format=3 uid="uid://gxrbfnvdbmay"]
+
+[ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="1_k1wj4"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="1_x3061"]
+[ext_resource type="Script" uid="uid://b564cwy4kigwy" path="res://Scenes/TumbangPreso/parallax_background.gd" id="1_y6i0e"]
+[ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_e6yun"]
+[ext_resource type="Texture2D" uid="uid://bfsuh3ugmc8ue" path="res://Assets/Art/Props/coin4_16x16.png" id="4_hv3uj"]
+[ext_resource type="Texture2D" uid="uid://cm1gmryjcfhrw" path="res://Assets/Art/UI/UI_XP_Bar.png" id="5_hv3uj"]
+[ext_resource type="Texture2D" uid="uid://dbnpoqg0knc5k" path="res://Assets/Art/Maps/Tilesets/kylefeliciano/volcano.png" id="6_y6i0e"]
+[ext_resource type="Texture2D" uid="uid://ca3vw7mq0njkd" path="res://Assets/Art/UI/UI_Houses_Background.png" id="7_w15uv"]
+[ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="9_3ltbs"]
+
+[sub_resource type="GDScript" id="GDScript_j7p4j"]
+script/source = "extends Node2D
+
+@onready var coins_label = $VBoxContainer/coins_label
+@onready var exp_label = $VBoxContainer/exp_label
+
+var added_coins = GlobalData.coins
+var added_exp = GlobalData.base_xp
+
+func _ready() -> void:
+	print(\"Starting summary\")
+	var str_coins : String = add_comma(added_coins)
+	var str_exp : String = add_comma(added_exp)
+	update_coins_label(str_coins)
+	update_exp_label(str_exp)
+
+func format_number(value: int) -> String:
+	var str_value = str(value)
+	var formatted = \"\"
+	var count = 0
+
+	for i in range(str_value.length() - 1, -1, -1):
+		formatted = str_value[i] + formatted
+		count += 1
+		if count % 3 == 0 and i != 0:
+			formatted = \",\" + formatted
+
+	return formatted
+
+func update_coins_label(new_coins : String) -> void:
+	coins_label.text = format_number(added_coins)
+
+func update_exp_label(new_exp : String) -> void:
+	exp_label.text = format_number(added_exp)
+
+func add_comma(num : int) -> String:
+	var input_string = str(num).reverse()
+	var output_string : String
+	var last_index = len(input_string) - 1
+	for i in range(0, last_index):
+		if (i) % 3 == 0:
+			output_string += \",\"
+		output_string += input_string[i]
+	return output_string.reverse()
+
+func _on_play_again_button_pressed() -> void:
+	Engine.time_scale = 1
+	pass # Replace with function body.
+
+func _on_quit_button_pressed() -> void:
+	Engine.time_scale = 1
+	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/menu.tscn\")
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_j7p4j"]
+font = ExtResource("1_k1wj4")
+font_size = 169
+font_color = Color(1, 1, 0.329412, 1)
+outline_size = 25
+outline_color = Color(0.596385, 0, 0.086836, 1)
+shadow_size = 29
+shadow_color = Color(0, 0, 0, 0.772549)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1wj4"]
+texture = ExtResource("2_e6yun")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hv3uj"]
+texture = ExtResource("2_e6yun")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 178, 90, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j7p4j"]
+texture = ExtResource("2_e6yun")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_06ib7"]
+texture = ExtResource("2_e6yun")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 178, 90, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6ig2"]
+atlas = ExtResource("4_hv3uj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji7ev"]
+atlas = ExtResource("4_hv3uj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v01qj"]
+atlas = ExtResource("4_hv3uj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmte0"]
+atlas = ExtResource("4_hv3uj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v42v6"]
+atlas = ExtResource("4_hv3uj")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7aoud"]
+atlas = ExtResource("4_hv3uj")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qprs2"]
+atlas = ExtResource("4_hv3uj")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq1n3"]
+atlas = ExtResource("4_hv3uj")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2q1u"]
+atlas = ExtResource("4_hv3uj")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cpgi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6ig2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji7ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v01qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmte0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v42v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7aoud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qprs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq1n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2q1u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_06ib7"]
+font = ExtResource("1_x3061")
+font_size = 70
+font_color = Color(0.830149, 1, 0.853077, 1)
+outline_size = 24
+outline_color = Color(0.403054, 0.810686, 0, 1)
+
+[node name="ScoreSummary" type="Node2D"]
+script = SubResource("GDScript_j7p4j")
+
+[node name="NiceTry" type="Label" parent="."]
+offset_left = 202.0
+offset_top = 44.0
+offset_right = 1015.0
+offset_bottom = 216.0
+text = "Nice  Try!"
+label_settings = SubResource("LabelSettings_j7p4j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 194.0
+offset_top = 437.0
+offset_right = 1102.0
+offset_bottom = 637.0
+scale = Vector2(0.8, 0.8)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+
+[node name="PlayAgainButton" type="Button" parent="HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.341176, 0.160784, 0.247059, 1)
+theme_override_fonts/font = ExtResource("1_x3061")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxTexture_k1wj4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k1wj4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hv3uj")
+text = "Play
+Again"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="HBoxContainer/MarginContainer3"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.341176, 0.160784, 0.247059, 1)
+theme_override_fonts/font = ExtResource("1_x3061")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxTexture_j7p4j")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_j7p4j")
+theme_override_styles/normal = SubResource("StyleBoxTexture_06ib7")
+text = "Quit"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 395.0
+offset_top = 205.0
+offset_right = 1208.0
+offset_bottom = 377.0
+
+[node name="coin_image" type="AnimatedSprite2D" parent="VBoxContainer"]
+z_index = 3
+position = Vector2(-54, 46)
+scale = Vector2(4.2625, 4.2625)
+sprite_frames = SubResource("SpriteFrames_3cpgi")
+autoplay = "default"
+
+[node name="coins_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_06ib7")
+
+[node name="XPBarIcon2" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(-54, 131)
+texture = ExtResource("5_hv3uj")
+hframes = 7
+region_rect = Rect2(1, 1, 64, 64)
+
+[node name="exp_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_06ib7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="background" type="Node2D" parent="."]
+z_index = -1
+position = Vector2(493, 309)
+
+[node name="Volcano" type="Sprite2D" parent="background"]
+position = Vector2(203, -26)
+scale = Vector2(0.447164, 0.496296)
+texture = ExtResource("6_y6i0e")
+
+[node name="UiHousesBackground" type="Sprite2D" parent="background"]
+position = Vector2(82.4999, 56.25)
+scale = Vector2(1.80781, 1.5625)
+texture = ExtResource("7_w15uv")
+
+[node name="Sky" type="ParallaxBackground" parent="background"]
+scroll_ignore_camera_zoom = true
+script = ExtResource("1_y6i0e")
+
+[node name="Parallax2D" type="ParallaxLayer" parent="background/Sky"]
+position = Vector2(749, 459)
+motion_mirroring = Vector2(1852, 648)
+
+[node name="UiSkyBackground" type="Sprite2D" parent="background/Sky/Parallax2D"]
+texture_repeat = 2
+position = Vector2(-758, -475)
+scale = Vector2(3, 3)
+texture = ExtResource("9_3ltbs")
+centered = false
+offset = Vector2(-3.075, 0)
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer3/QuitButton" to="." method="_on_quit_button_pressed"]
