@@ -25,7 +25,7 @@ autoplay = true
 parameters/looping = true
 
 [node name="map" parent="." instance=ExtResource("4_ji7og")]
-position = Vector2(-25, 4)
+position = Vector2(8, 3)
 
 [node name="horizontal_enemy" parent="." instance=ExtResource("5_qoqof")]
 z_index = 7

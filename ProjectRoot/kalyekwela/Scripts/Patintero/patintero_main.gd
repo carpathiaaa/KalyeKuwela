@@ -20,7 +20,7 @@ var object_spawner = null
 var enemy_spawner = null
 
 var max_x = 140
-var max_y = 240
+var max_y = 190
 var object_z_index = 3
 
 var fences = [short_fence, long_fence]
@@ -79,15 +79,16 @@ func spawn_enemy(current_level : int) -> void:
 	enemy_spawner.set_enemy_spawner(main_player, map, 3)
 	for i in (current_level * 2) + 2:
 		random_y = random_generator.randi_range(-max_y, max_y)
-		match randi_range(0, 2):
+		match randi_range(0, 1):
 			0:
 				enemy_spawner.spawn_enemy(vertical_float_enemy, Vector2(235 * i, random_y), 50 * level)
 			1:
-				enemy_spawner.spawn_enemy(random_float_enemy, Vector2(235 * i, random_y), 50 * level)
-			2:
 				object_spawner.set_spawner(loop_float_enemy, map)
 				object_spawner.spawn_object(Vector2(235 * i, random_y), 4)
-
+			2:
+				object_spawner.set_spawner(random_float_enemy, map)
+				object_spawner.spawn_object(Vector2(235 * i, random_y), 4)				
+				
 
 func player_death() -> void:
 	info_overlay.hide()
@@ -95,7 +96,7 @@ func player_death() -> void:
 	end_sequence()
 
 func add_points(points_gained : int) -> void:
-	exp += points_gained / 10
+	exp += points_gained 
 	info_overlay.update_score_label(points_gained)
 
 func add_level_coins(coins_gained : int) -> void:

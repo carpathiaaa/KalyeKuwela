@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5gvnbmj57acb"]
+[gd_scene load_steps=6 format=3 uid="uid://b5gvnbmj57acb"]
 
 [ext_resource type="Script" uid="uid://dh013a75h2343" path="res://Scripts/Patintero/loop_float_enemy.gd" id="1_wvpo7"]
 [ext_resource type="SpriteFrames" uid="uid://dp5ol0c0hg8og" path="res://Assets/Art/Characters/Frames/Juan_Frames.tres" id="2_q1ivq"]
+
+[sub_resource type="GDScript" id="GDScript_wvpo7"]
+script/source = "extends SpriteSelection
+
+func _ready() -> void:
+	update_side_character(GlobalData.PlayerSelect)
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3bvl"]
 height = 34.0
@@ -18,6 +25,7 @@ script = ExtResource("1_wvpo7")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_q1ivq")
 animation = &"IdleFront"
+script = SubResource("GDScript_wvpo7")
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 

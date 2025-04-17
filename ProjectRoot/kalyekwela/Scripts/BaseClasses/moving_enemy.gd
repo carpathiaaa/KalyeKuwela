@@ -11,7 +11,7 @@ func set_target(new_target : Player, new_speed : float) -> void:
 	if new_target is Player:
 		target_player = new_target
 		tracker.track_target(target_player)
-		speed = new_speed
+		speed = new_speed * log(2)
 	else:
 		push_error("Invalid target node")
 
@@ -26,13 +26,13 @@ func horizontal_float() -> Vector2:
 	return Vector2(tracker.find_target_position().x, self.position.y) * speed
 
 func vertical_float() -> Vector2:
-	return Vector2(self.position.x, tracker.find_target_position().y) * speed
+	return Vector2(self.position.x, tracker.find_target_position().y) * speed * 0.6
 
 func random_vertical_float() -> Vector2:
 	var noise_offset = 0.0
 	var to_top : bool = false
 	# Use noise for smoother randomness
-	noise_offset += randf_range(1, 10)
+	noise_offset += randf_range(0.5, 10)
 	var random_offset = sin(noise_offset) * 10  # Smooth wave pattern
 	if to_top:
 		random_offset *= -1

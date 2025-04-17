@@ -6,8 +6,7 @@ extends Player
 @onready var game_scene : BaseGame = get_parent()
 
 var time = 0
-var speed = 50
-@export var player_speed = 200 # Default speed of player
+@export var player_speed = 130# Default speed of player
 # Indicate if player is still alive
 
 
@@ -34,7 +33,7 @@ func _physics_process(delta):
 		direction = direction.normalized()
 		update_animation(direction)
 
-	velocity = direction * speed 
+	velocity = direction * player_speed
 	move_and_slide()
 
 # 🔄 Update animation based on movement direction
@@ -47,6 +46,8 @@ func update_animation(direction):
 	else:
 		player_animation.play("WalkBack")
 
+func update_speed() -> void:
+	player_speed = player_speed * game_scene.level * 0.5
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("enemy"): 	# detect if player collided with enemy bot

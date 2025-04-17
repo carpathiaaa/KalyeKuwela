@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://rpf4bbeq8kcm"]
+[gd_scene load_steps=27 format=4 uid="uid://rpf4bbeq8kcm"]
 
 [ext_resource type="Texture2D" uid="uid://baxyf4dq1ut1n" path="res://Assets/Art/Maps/Tilesets/pixel_village/tileset.png" id="1_e3lxa"]
 [ext_resource type="Texture2D" uid="uid://chyjptqjd3gsw" path="res://Assets/Art/Maps/Tilesets/Outside_Stuff_TILESET_B-C-D-E.png" id="2_hl0b2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bv0sptekx1i0x" path="res://Assets/Art/Maps/Tilesets/pixel_village/trees/all.png" id="7_3jm40"]
 [ext_resource type="Texture2D" uid="uid://txpkiiskg8ae" path="res://Assets/Art/Maps/Tilesets/SERENE_VILLAGE_REVAMPED/Serene_Village_16x16.png" id="8_xatpd"]
 [ext_resource type="Texture2D" uid="uid://ca3vw7mq0njkd" path="res://Assets/Art/UI/UI_Houses_Background.png" id="9_hl0b2"]
+[ext_resource type="Texture2D" uid="uid://dbnpoqg0knc5k" path="res://Assets/Art/Maps/Tilesets/kylefeliciano/volcano.png" id="10_w1is3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqhor"]
 texture = ExtResource("1_e3lxa")
@@ -18496,6 +18497,9 @@ sources/1 = SubResource("TileSetAtlasSource_dim5a")
 sources/2 = SubResource("TileSetAtlasSource_v7d8o")
 sources/3 = SubResource("TileSetAtlasSource_labmd")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypoi3"]
+size = Vector2(26.25, 1086.25)
+
 [node name="map" type="Node2D"]
 scale = Vector2(0.8, 0.8)
 
@@ -18521,22 +18525,31 @@ tile_set = SubResource("TileSet_hg33l")
 
 [node name="background" type="Node2D" parent="."]
 
-[node name="UiHousesBackground" type="Sprite2D" parent="background"]
-position = Vector2(-82.5, -178.75)
-texture = ExtResource("9_hl0b2")
-
 [node name="UiHousesBackground2" type="Sprite2D" parent="background"]
 position = Vector2(542.5, -170)
 texture = ExtResource("9_hl0b2")
 
-[node name="UiHousesBackground3" type="Sprite2D" parent="background"]
-position = Vector2(1173.75, -161.25)
-texture = ExtResource("9_hl0b2")
+[node name="Volcano" type="Sprite2D" parent="background"]
+z_index = -1
+position = Vector2(667.5, -245)
+scale = Vector2(1, 1)
+texture = ExtResource("10_w1is3")
 
-[node name="UiHousesBackground4" type="Sprite2D" parent="background"]
-position = Vector2(1813.75, -151.25)
-texture = ExtResource("9_hl0b2")
+[node name="boundary" type="Node2D" parent="."]
+z_index = 3
 
-[node name="UiHousesBackground5" type="Sprite2D" parent="background"]
-position = Vector2(-703.75, -185)
-texture = ExtResource("9_hl0b2")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary"]
+position = Vector2(169.375, 518.125)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ypoi3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="boundary"]
+position = Vector2(987.5, 518.75)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ypoi3")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="boundary"]
+position = Vector2(630, -12.5)
+rotation = 1.5708
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ypoi3")
