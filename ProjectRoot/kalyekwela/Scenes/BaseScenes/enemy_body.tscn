@@ -1,20 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://bf1kla43smhyi"]
 
-[ext_resource type="Texture2D" uid="uid://b0qk7y5g5k0hg" path="res://Assets/Art/CharacterIcons/Character_Antonio_Icon.png" id="2_amktu"]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8gxx0"]
 height = 34.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5bqp6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_amktu")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+animations = []
+
+[sub_resource type="GDScript" id="GDScript_f8qca"]
+script/source = "extends SpriteSelection
+
+
+func _ready() -> void:
+	# Ensure the selected character is reflected in-game
+	update_side_character(GlobalData.PlayerSelect)
+"
 
 [node name="enemy_body" type="CharacterBody2D"]
 motion_mode = 1
@@ -28,3 +27,5 @@ shape = SubResource("CapsuleShape2D_8gxx0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_5bqp6")
+animation = &""
+script = SubResource("GDScript_f8qca")

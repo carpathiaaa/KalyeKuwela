@@ -5,6 +5,7 @@ extends Player
 @onready var timer = $Timer
 
 var time = 0
+var speed = 200
 @export var player_speed = 200 # Default speed of player
 # Indicate if player is still alive
 
@@ -16,22 +17,33 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	var direction = Vector2.ZERO
+	if Input.is_action_pressed("ui_up"):
+		direction.y -= 1
+	if Input.is_action_pressed("ui_down"):
+		direction.y += 1
+	if Input.is_action_pressed("ui_left"):
+		direction.x -= 1
+	if Input.is_action_pressed("ui_right"):
+		direction.x += 1
+	
+	if direction.length() > 0:
+		direction = direction.normalized()
+		update_animation(direction)
+
+	velocity = direction * speed 
 	move_and_slide()
-func _process(delta):
-	# determine player movement based on player_speed and direction
-	velocity = player_speed * Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if (velocity.y > 0):
-		player_animation.play("down_animation")
-	elif (velocity.y < 0):
-		player_animation.play("up_animation") 
-	if (velocity.x > 0):
-		player_animation.scale.x = 1
-		player_animation.play("side_animation")
-	elif (velocity.x < 0):
-		player_animation.scale.x = -1
-		player_animation.play("side_animation")
-	# enable diagonal movement
-	move_and_slide()
+
+# 🔄 Update animation based on movement direction
+func update_animation(direction):
+	if abs(direction.x) > abs(direction.y):
+		player_animation.play("WalkSide")
+		player_animation.flip_h = direction.x < 0  # Flip if moving left
+	elif direction.y > 0:
+		player_animation.play("WalkFront")
+	else:
+		player_animation.play("WalkBack")
 
 
 func _on_area_2d_area_entered(area):
@@ -39,3 +51,4 @@ func _on_area_2d_area_entered(area):
 		emit_signal("touched_enemy")
 	if area.is_in_group("safe_area"):
 		emit_signal("in_safe_area")
+		

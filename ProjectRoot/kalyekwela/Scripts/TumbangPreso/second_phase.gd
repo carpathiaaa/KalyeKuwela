@@ -32,7 +32,7 @@ func update_phase(level : int, new_phase_time :int, countdown_time :int) -> void
 func _on_player_touched_enemy() -> void:
 	print("Player touched an enemy")
 	movement_joystick.queue_free()
-	get_parent().player_loses()
+	game_scene.end_sequence()
 
 func _on_sandal_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
