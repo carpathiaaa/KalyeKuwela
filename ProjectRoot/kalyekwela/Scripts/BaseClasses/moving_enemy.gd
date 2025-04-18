@@ -11,7 +11,7 @@ func set_target(new_target : Player, new_speed : float) -> void:
 	if new_target is Player:
 		target_player = new_target
 		tracker.track_target(target_player)
-		speed = new_speed * log(2)
+		speed = new_speed / 5
 	else:
 		push_error("Invalid target node")
 

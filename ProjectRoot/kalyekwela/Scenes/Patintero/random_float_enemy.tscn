@@ -20,7 +20,7 @@ script = ExtResource("1_wdabl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0, 1, 1)
-animation = &"IdleFront"
+animation = &""
 script = SubResource("GDScript_wdabl")
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy"]]

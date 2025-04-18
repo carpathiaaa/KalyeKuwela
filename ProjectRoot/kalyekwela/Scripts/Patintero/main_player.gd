@@ -6,9 +6,9 @@ extends Player
 @onready var game_scene : BaseGame = get_parent()
 
 var time = 0
+var action_label_time : float = 2
 @export var player_speed = 130# Default speed of player
 # Indicate if player is still alive
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

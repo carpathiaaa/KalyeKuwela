@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://2x231ogj5bfp"]
+[gd_scene load_steps=37 format=3 uid="uid://2x231ogj5bfp"]
 
 [ext_resource type="Script" uid="uid://b1otebmnan3go" path="res://Scripts/TumbangPreso/first_phase.gd" id="1_yq35f"]
 [ext_resource type="PackedScene" uid="uid://dsk12w3h340b6" path="res://Scenes/TumbangPreso/click_bar.tscn" id="2_hylh8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://do8wj7h5iwikx" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Side.png" id="7_ix5ae"]
 [ext_resource type="Texture2D" uid="uid://chvdhipqjndsg" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Back.png" id="8_4uhm8"]
 [ext_resource type="Script" uid="uid://dywksu7v0s606" path="res://Scripts/Patintero/player_sprite_2d.gd" id="9_nx0gl"]
+[ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="10_ix5ae"]
 
 [sub_resource type="Animation" id="Animation_igl2y"]
 
@@ -215,6 +216,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_4uhm8"]
+font = ExtResource("10_ix5ae")
+font_size = 250
+font_color = Color(1, 1, 0.423529, 1)
+outline_size = 35
+outline_color = Color(0.732194, 0, 0.187946, 1)
+shadow_size = 30
+shadow_color = Color(0, 0, 0, 0.545098)
+shadow_offset = Vector2(5, 5)
+
 [node name="first_phase" type="Node2D"]
 position = Vector2(498, 310)
 script = ExtResource("1_yq35f")
@@ -277,3 +288,11 @@ sprite_frames = SubResource("SpriteFrames_3lfcj")
 animation = &"up_animation"
 autoplay = "down_animation"
 script = ExtResource("9_nx0gl")
+
+[node name="phase_label" type="Label" parent="."]
+offset_left = -298.0
+offset_top = -135.0
+offset_right = 565.0
+offset_bottom = 118.0
+text = "THROW!"
+label_settings = SubResource("LabelSettings_4uhm8")

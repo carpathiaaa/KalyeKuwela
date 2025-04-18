@@ -7,8 +7,9 @@ extends TumbangPresoPhase
 @onready var sandal_scale = $sandal/sandal_scale
 @onready var pointer_button = $click_bar/bar_button
 @onready var click_bar = $click_bar
+@onready var throw_label = $phase_label
 
-var initial_countdown_time : int = 3
+var initial_countdown_time : float = 1.5
 var phase_time : int = 15
 
 var difficulty : int = 0
@@ -43,6 +44,7 @@ func initial_stage() -> void:
 
 func main_stage() -> void:
 	print("first countdown")
+	throw_label.visible = false
 	play_sandal_animations()
 	resume_controls() # resume controls after initial countdown
 

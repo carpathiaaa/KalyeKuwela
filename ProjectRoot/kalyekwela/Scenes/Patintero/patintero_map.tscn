@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=4 uid="uid://sax21ek8fo7m"]
+[gd_scene load_steps=65 format=4 uid="uid://sax21ek8fo7m"]
 
 [ext_resource type="Texture2D" uid="uid://bsxcw8e6kni60" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Hana Caraka - Topdown Tileset [sample]/Tileset/Dirt - simplified.png" id="1_2c4g5"]
 [ext_resource type="Script" uid="uid://cbf8gqf8nbphw" path="res://Scripts/Patintero/patintero_map.gd" id="1_opr08"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://d0eyh33jl074a" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Hana Caraka - Topdown Tileset [sample]/Tileset/Tufts and Lumps.png" id="16_02is0"]
 [ext_resource type="Texture2D" uid="uid://baxyf4dq1ut1n" path="res://Assets/Art/Maps/Tilesets/pixel_village/tileset.png" id="20_6wkqp"]
 [ext_resource type="Texture2D" uid="uid://txpkiiskg8ae" path="res://Assets/Art/Maps/Tilesets/SERENE_VILLAGE_REVAMPED/Serene_Village_16x16.png" id="20_v77aj"]
+[ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="21_edcl2"]
 
 [sub_resource type="GDScript" id="GDScript_yug2x"]
 script/source = "extends TileMapLayer
@@ -1705,6 +1706,16 @@ sources/1 = SubResource("TileSetAtlasSource_g5uiu")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhpex"]
 size = Vector2(20, 398)
 
+[sub_resource type="LabelSettings" id="LabelSettings_mk6oh"]
+font = ExtResource("21_edcl2")
+font_size = 70
+font_color = Color(1, 1, 0.423529, 1)
+outline_size = 15
+outline_color = Color(0.732194, 0, 0.187946, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.545098)
+shadow_offset = Vector2(5, 5)
+
 [sub_resource type="Environment" id="Environment_jo1xi"]
 background_mode = 3
 
@@ -1802,6 +1813,17 @@ z_index = 1
 position = Vector2(355, -41)
 shape = SubResource("RectangleShape2D_dhpex")
 
+[node name="return_label" type="Label" parent="end_tile"]
+visible = false
+z_as_relative = false
+offset_left = 333.0
+offset_top = -145.0
+offset_right = 1196.0
+offset_bottom = 204.0
+rotation = 1.5708
+text = "RETURN"
+label_settings = SubResource("LabelSettings_mk6oh")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="left_border" type="CollisionShape2D" parent="StaticBody2D"]
@@ -1816,5 +1838,6 @@ environment = SubResource("Environment_jo1xi")
 z_index = 4
 
 [connection signal="area_entered" from="start_tile/start_area" to="." method="_on_start_area_area_entered"]
+[connection signal="area_exited" from="start_tile/start_area" to="." method="_on_start_area_area_exited"]
 [connection signal="area_entered" from="end_tile/end_area" to="." method="_on_end_area_area_entered"]
 [connection signal="area_exited" from="end_tile/end_area" to="." method="_on_end_area_area_exited"]

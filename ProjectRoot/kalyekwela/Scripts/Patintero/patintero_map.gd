@@ -5,11 +5,13 @@ extends Node2D
 @onready var end_tile = $end_tile
 @onready var end_area = $end_tile/end_area
 @onready var main_patintero = $".."
+@onready var return_label = $end_tile/return_label
 var score_line = preload("res://Scenes/Patintero/score_line.tscn")
 var vertical_bot = preload("res://Scenes/Patintero/vertical_bot.tscn")
 var coin = preload("res://Scenes/Patintero/coin.tscn")
 var rock = preload("res://Scenes/Patintero/rock.tscn")
 var random_number = RandomNumberGenerator.new()
+var label_timer : float = 2.0
 
 
 func _ready() -> void:
@@ -94,8 +96,15 @@ func _on_start_area_area_entered(area: Area2D) -> void:
 		preparelevel()
 
 
+
+func _on_end_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("main_player"):
+		return_label.show()
+
+
 func _on_end_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("main_player"):
+		return_label.hide()
 		start_area.position.x = 0
 		
 	

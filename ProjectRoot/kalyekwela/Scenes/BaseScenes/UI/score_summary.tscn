@@ -69,7 +69,7 @@ font = ExtResource("1_k1wj4")
 font_size = 169
 font_color = Color(1, 1, 0.329412, 1)
 outline_size = 25
-outline_color = Color(0.596385, 0, 0.086836, 1)
+outline_color = Color(0.485182, 0.661717, 1, 1)
 shadow_size = 29
 shadow_color = Color(0, 0, 0, 0.772549)
 
@@ -179,9 +179,8 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_06ib7"]
 font = ExtResource("1_x3061")
 font_size = 70
-font_color = Color(0.830149, 1, 0.853077, 1)
 outline_size = 24
-outline_color = Color(0.403054, 0.810686, 0, 1)
+outline_color = Color(0.329241, 0.089236, 0.653316, 1)
 
 [node name="ScoreSummary" type="Node2D"]
 script = SubResource("GDScript_j7p4j")
@@ -268,10 +267,12 @@ label_settings = SubResource("LabelSettings_06ib7")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="background" type="Node2D" parent="."]
+modulate = Color(0.999999, 0.58481, 0.591422, 1)
 z_index = -1
 position = Vector2(493, 309)
 
 [node name="Volcano" type="Sprite2D" parent="background"]
+self_modulate = Color(1, 0.116282, 0.145999, 1)
 position = Vector2(203, -26)
 scale = Vector2(0.447164, 0.496296)
 texture = ExtResource("6_y6i0e")
@@ -290,6 +291,7 @@ position = Vector2(749, 459)
 motion_mirroring = Vector2(1852, 648)
 
 [node name="UiSkyBackground" type="Sprite2D" parent="background/Sky/Parallax2D"]
+self_modulate = Color(0.98081, 0.552023, 0.446533, 1)
 texture_repeat = 2
 position = Vector2(-758, -475)
 scale = Vector2(3, 3)
