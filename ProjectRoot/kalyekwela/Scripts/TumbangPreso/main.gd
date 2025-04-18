@@ -6,6 +6,8 @@ extends BaseGame
 @onready var second_phase = load("res://Scenes/TumbangPreso/second_phase.tscn")
 @onready var info_overlay = $user_interface/InfoOverlay
 
+var location_string : String = "res://Scenes/TumbangPreso/main.tscn"
+
 var first_phase_instance : Node = null
 var second_phase_instance : Node = null
 
@@ -21,6 +23,7 @@ signal second_phase_ended
 var pass_to_next : bool = false
 
 func _ready() -> void:
+	current_game = location_string
 	info_overlay.mouse_filter = Control.MOUSE_FILTER_PASS # Info overlay ignores touch controls
 	# Start event sequence
 	start_events()

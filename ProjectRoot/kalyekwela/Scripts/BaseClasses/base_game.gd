@@ -8,6 +8,7 @@ var exp : int = 0
 @onready var score_summary = preload("res://Scenes/BaseScenes/UI/score_summary.tscn")
 @onready var ui_layer = CanvasLayer.new()
 
+var current_game : String = "res://Scenes/MainMenu/menu.tscn" # default location string
 var game_ended : bool = false
 
 func _ready():
@@ -39,6 +40,7 @@ func end_sequence() -> void:
 func end_game() -> void:
 	game_ended = true
 	GlobalData.add_rewards(coins, exp)
+	GlobalData.previous_game = current_game
 	Engine.time_scale = 1
 	show_summary()
 	get_tree().change_scene_to_packed(score_summary)

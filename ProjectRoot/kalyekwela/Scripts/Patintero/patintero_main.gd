@@ -15,6 +15,8 @@ extends BaseGame
 @onready var random_float_enemy = load("res://Scenes/Patintero/random_float_enemy.tscn")
 @onready var loop_float_enemy = load("res://Scenes/Patintero/loop_float_enemy.tscn")
 
+var location_string = "res://Scenes/Patintero/main.tscn"
+
 var random_generator = RandomNumberGenerator.new()
 var object_spawner = null
 var enemy_spawner = null
@@ -27,6 +29,7 @@ var fences = [short_fence, long_fence]
  
 func _ready() -> void:
 	# Override default level
+	current_game = location_string
 	level = 0
 	background_music.attenuation = 0.0 # Disable distance-based volume drop
 	set_object_spawner()

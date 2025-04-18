@@ -20,6 +20,7 @@ extends Node2D
 
 @onready var hearts_container = $UI/HeartsContainer
 
+var current_game : String = "res://Scenes/BenteUno/main.tscn"
 
 var paused = false
 var first_chaser_assigned = false  # Prevents multiple assignments
@@ -203,7 +204,8 @@ func game_over(message):
 	
 	# Wait a few seconds before quitting
 	await get_tree().create_timer(3).timeout
-	get_tree().change_scene_to_file("res://Scenes/MainMenu/menu.tscn")
+	GlobalData.previous_game = current_game
+	get_tree().change_scene_to_file("res://Scenes/BaseScenes/UI/score_summary.tscn")
 
 func _on_resume_button_pressed() -> void:
 	print("Resuming game")

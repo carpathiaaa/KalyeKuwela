@@ -17,6 +17,7 @@ var equipped_accessory = ""  # Currently equipped accessory
 
 var PlayerSelect = 0
 
+var previous_game : String
 
 func get_xp_required(level) -> int:
 	return int(base_xp * pow(level, growth_rate))
