@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://8f6l8gtfy5wu" path="res://Scripts/TumbangPreso/pointer.gd" id="2_aly46"]
 [ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="2_c6gpa"]
 [ext_resource type="Texture2D" uid="uid://dld4riyl33ce5" path="res://addons/TimedClickBar2/pointer.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://48xudjdf76ac" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Icons/All Icons.png" id="3_o1hbr"]
 [ext_resource type="Texture2D" uid="uid://8hgnmufovfx2" path="res://addons/progress_bar/most rounded/progress bar most rounded progress red.png" id="3_vdhmb"]
+[ext_resource type="Texture2D" uid="uid://dmnrysb85fg45" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/UI/hand_open_02.png" id="4_1s610"]
 [ext_resource type="Texture2D" uid="uid://bv6p4ldwsdoj2" path="res://addons/progress_bar/least rounded/progress bar least rounded progress green.png" id="4_c6gpa"]
 
 [sub_resource type="Animation" id="Animation_vdhmb"]
@@ -119,12 +119,10 @@ animation = &"brown_animation"
 wait_time = 0.16
 
 [node name="button_icon" type="Sprite2D" parent="bar_button"]
-position = Vector2(55.5555, 57.7778)
-scale = Vector2(6, 6)
-texture = ExtResource("3_o1hbr")
-hframes = 18
-vframes = 3
-frame = 45
+self_modulate = Color(0.884108, 0.75761, 0.588944, 1)
+position = Vector2(57.7778, 55.5556)
+scale = Vector2(6.1627, 5.52778)
+texture = ExtResource("4_1s610")
 
 [node name="pointer" type="AnimatableBody2D" parent="."]
 position = Vector2(-4.98, 0)

@@ -5,12 +5,11 @@ extends Player
 @onready var timer = $Timer
 
 var time = 0
-var speed = 200
-@export var player_speed = 200 # Default speed of player
+@export var speed = 200 # Default speed of player
 # Indicate if player is still alive
 
 signal touched_sandal
-
+signal in_safe_area
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,7 +31,7 @@ func _physics_process(delta):
 		direction = direction.normalized()
 		update_animation(direction)
 
-	velocity = direction * speed 
+	velocity = direction * speed
 	move_and_slide()
 
 # 🔄 Update animation based on movement direction

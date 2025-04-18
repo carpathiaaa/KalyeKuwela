@@ -7,14 +7,15 @@ extends TumbangPresoPhase
 @onready var game_scene : = get_parent()
 @onready var sandal = $Sandal
 @onready var sandal_body = $Sandal/SandalSprite
-@onready var action_label = $player/action_label
-@onready var action_label_timer = $player/action_label/ActionLabelTimer
+@onready var action_label = $user_interface/action_label
+@onready var action_label_timer = $user_interface/action_label/ActionLabelTimer
 var random_number = RandomNumberGenerator.new()
 
 var retrieved_sandal : bool = false 
 var phase_time : int = 15
 var difficulty : int = 1 # Default difficulty
-var action_label_time : float = 1.2
+var action_label_time : float = 1.5
+
 signal sandal_touched
 
 func _ready() -> void:
@@ -41,12 +42,11 @@ func _on_sandal_area_area_entered(area: Area2D) -> void:
 		print("Player touched a sandal")
 		action_label_timer.start(action_label_time)
 		action_label.text = "Return"
-		action_label.add_theme_font_size_override("font_size", 190)
-		action_label.set_position(Vector2(-100, -90))
 		action_label.show()
 		sandal.queue_free()
 		player.self_modulate = Color(0.75, 1, 0.75)  # Light green using normalized values (0-1)
 		retrieved_sandal = true
+
 
 func _on_safe_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player") and retrieved_sandal:
@@ -54,8 +54,8 @@ func _on_safe_area_area_entered(area: Area2D) -> void:
 		self.queue_free()
 
 func randomize_sandal_position() -> void:
-	var random_x = random_number.randf_range(-300, 300)
-	var random_y = random_number.randf_range(-300, 300)
+	var random_x = random_number.randf_range(175, 750)
+	var random_y = random_number.randf_range(600, 40)
 	sandal_body.position = Vector2(random_x, random_y)
 	print("Sandal position: " + str(sandal.position))
 

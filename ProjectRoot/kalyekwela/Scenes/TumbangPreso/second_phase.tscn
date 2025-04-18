@@ -10,12 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://d0t1cy3pmeqp3" path="res://Scenes/BaseScenes/player.tscn" id="6_wkaxu"]
 [ext_resource type="Texture2D" uid="uid://cogow715ntm2v" path="res://Assets/Art/Props/sandal by adityasusant938.png" id="8_pqhor"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo024"]
-size = Vector2(777.5, 635)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqhor"]
-size = Vector2(823.75, 191.25)
-
 [sub_resource type="LabelSettings" id="LabelSettings_va8pc"]
 font = ExtResource("3_pqhor")
 font_size = 70
@@ -26,6 +20,12 @@ shadow_size = 5
 shadow_color = Color(0, 0, 0, 0.545098)
 shadow_offset = Vector2(5, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo024"]
+size = Vector2(777.5, 635)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqhor"]
+size = Vector2(823.75, 274.375)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_va8pc"]
 radius = 165.48
 height = 697.631
@@ -34,6 +34,20 @@ height = 697.631
 script = ExtResource("1_44lcm")
 
 [node name="user_interface" type="CanvasLayer" parent="."]
+
+[node name="action_label" type="Label" parent="user_interface"]
+z_index = 3
+z_as_relative = false
+offset_left = 125.0
+offset_top = 254.0
+offset_right = 988.0
+offset_bottom = 603.0
+scale = Vector2(1.2, 1.2)
+text = "Retrieve 
+Slipper"
+label_settings = SubResource("LabelSettings_va8pc")
+
+[node name="ActionLabelTimer" type="Timer" parent="user_interface/action_label"]
 
 [node name="Virtual Joystick" parent="user_interface" instance=ExtResource("3_bogkp")]
 z_index = 3
@@ -59,26 +73,14 @@ shape = SubResource("RectangleShape2D_vo024")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="map/Areas/safe_area" groups=["safe_area"]]
 z_index = 1
-position = Vector2(574.375, 773.125)
+position = Vector2(580, 1200.94)
 shape = SubResource("RectangleShape2D_pqhor")
 
 [node name="player" parent="." instance=ExtResource("6_wkaxu")]
-position = Vector2(452, 437)
+position = Vector2(505, 987)
 scale = Vector2(2.4, 2.4)
 script = ExtResource("5_vo024")
-
-[node name="action_label" type="Label" parent="player"]
-z_index = 3
-z_as_relative = false
-offset_left = -136.25
-offset_top = -76.25
-offset_right = 726.75
-offset_bottom = 272.75
-text = "Retrieve 
-Slipper"
-label_settings = SubResource("LabelSettings_va8pc")
-
-[node name="ActionLabelTimer" type="Timer" parent="player/action_label"]
+speed = 200
 
 [node name="floating_enemy" parent="." groups=["enemy"] instance=ExtResource("6_l3f0v")]
 z_index = 2
@@ -101,8 +103,8 @@ position = Vector2(-19.9997, 0.000156403)
 rotation = 2.03505
 shape = SubResource("CapsuleShape2D_va8pc")
 
+[connection signal="timeout" from="user_interface/action_label/ActionLabelTimer" to="." method="_on_action_label_timer_timeout"]
 [connection signal="area_entered" from="map/Areas/safe_area" to="." method="_on_safe_area_area_entered"]
 [connection signal="touched_enemy" from="player" to="." method="_on_player_touched_enemy"]
 [connection signal="touched_sandal" from="player" to="." method="_on_player_touched_sandal"]
-[connection signal="timeout" from="player/action_label/ActionLabelTimer" to="." method="_on_action_label_timer_timeout"]
 [connection signal="area_entered" from="Sandal/SandalSprite/SandalArea" to="." method="_on_sandal_area_area_entered"]
