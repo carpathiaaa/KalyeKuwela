@@ -84,7 +84,7 @@ func _on_yes_button_pressed() -> void:
 	GlobalData.reset_data()  # Clears all saved data
 	reset_confirmation_popup.visible = false  
 	print("Game data reset successfully!")
-	
+	$"../CharacterSelect".refresh_avatar()
 	# Restart the game by reloading the current scene
 	get_tree().change_scene_to_file("res://Scenes/MainMenu/menu.tscn")
 
