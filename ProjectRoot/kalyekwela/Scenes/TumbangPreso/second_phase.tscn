@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://vrd65x3lj01l"]
+[gd_scene load_steps=15 format=3 uid="uid://vrd65x3lj01l"]
 
 [ext_resource type="Script" uid="uid://d30wg5123n5cp" path="res://Scripts/TumbangPreso/second_phase.gd" id="1_44lcm"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_bogkp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cspaovmnwroe7" path="res://Scripts/TumbangPreso/player.gd" id="5_vo024"]
 [ext_resource type="PackedScene" uid="uid://bf1kla43smhyi" path="res://Scenes/BaseScenes/enemy_body.tscn" id="6_l3f0v"]
 [ext_resource type="PackedScene" uid="uid://d0t1cy3pmeqp3" path="res://Scenes/BaseScenes/player.tscn" id="6_wkaxu"]
+[ext_resource type="AudioStream" uid="uid://ma502f712nei" path="res://Assets/Audio/SFX/Audio_Patintero_Chase.mp3" id="7_va8pc"]
 [ext_resource type="Texture2D" uid="uid://cogow715ntm2v" path="res://Assets/Art/Props/sandal by adityasusant938.png" id="8_pqhor"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_va8pc"]
@@ -81,6 +82,11 @@ position = Vector2(469, 1563)
 scale = Vector2(2.4, 2.4)
 script = ExtResource("5_vo024")
 speed = 200
+
+[node name="AudioPatinteroChase" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("7_va8pc")
+autoplay = true
+parameters/looping = true
 
 [node name="floating_enemy" parent="." groups=["enemy"] instance=ExtResource("6_l3f0v")]
 z_index = 2

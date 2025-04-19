@@ -19134,7 +19134,6 @@ shape = SubResource("RectangleShape2D_w1is3")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="boundary"]
 position = Vector2(562.5, 2075)
 rotation = 1.5708
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ypoi3")
 
 [node name="ground" type="TileMapLayer" parent="."]
