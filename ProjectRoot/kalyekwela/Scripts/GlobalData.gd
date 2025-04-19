@@ -120,9 +120,13 @@ func reset_data():
 	coins = 0
 	xp = 0
 	level = 1
-	owned_characters = []
+
+	# Reset owned characters and equipped character to Juan
+	owned_characters = ["Juan", 'Maria']
+	equipped_character = "Juan"
+
+	# Clear accessories
 	owned_accessories = []
-	equipped_character = ""
 	equipped_accessory = ""
+
 	save_data()
-	

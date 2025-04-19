@@ -34,3 +34,12 @@ func _on_left_arrow_pressed() -> void:
 
 func is_character_unlocked(character_name: String) -> bool:
 	return character_name in default_characters or character_name in GlobalData.owned_characters
+	
+func refresh_avatar():
+	# Set PlayerSelect to the index of the equipped character, if unlocked
+	if is_character_unlocked(GlobalData.equipped_character):
+		GlobalData.PlayerSelect = all_characters.find(GlobalData.equipped_character)
+	else:
+		GlobalData.PlayerSelect = 0  # fallback to first character (Juan)
+
+	get_node("AvatarIcon").play(all_characters[GlobalData.PlayerSelect])
