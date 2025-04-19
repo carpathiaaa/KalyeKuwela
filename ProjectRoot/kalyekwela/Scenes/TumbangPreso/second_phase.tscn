@@ -38,10 +38,10 @@ script = ExtResource("1_44lcm")
 [node name="action_label" type="Label" parent="user_interface"]
 z_index = 3
 z_as_relative = false
-offset_left = 125.0
-offset_top = 254.0
-offset_right = 988.0
-offset_bottom = 603.0
+offset_left = 141.0
+offset_top = 177.0
+offset_right = 1004.0
+offset_bottom = 526.0
 scale = Vector2(1.2, 1.2)
 text = "Retrieve 
 Slipper"

@@ -17,12 +17,17 @@ var equipped_accessory = ""  # Currently equipped accessory
 
 var PlayerSelect = 0
 
+# Previously played game data
 var previous_game : String
+var coins_earned : int
+var exp_earned : int
 
 func get_xp_required(level) -> int:
 	return int(base_xp * pow(level, growth_rate))
 
 func add_rewards(coin_reward, xp_reward):
+	coins_earned = coin_reward
+	exp_earned = xp_reward
 	coins += coin_reward
 	xp += xp_reward
 	check_level_up()

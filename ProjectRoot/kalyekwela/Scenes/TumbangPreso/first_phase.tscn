@@ -273,7 +273,7 @@ texture = ExtResource("4_5om84")
 
 [node name="UiHousesBackground" type="Sprite2D" parent="background"]
 position = Vector2(82.4999, 56.25)
-scale = Vector2(1.80781, 1.5625)
+scale = Vector2(1.82, 1.573)
 texture = ExtResource("5_fqyx3")
 
 [node name="player" type="Node2D" parent="."]

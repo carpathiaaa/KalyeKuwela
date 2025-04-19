@@ -17,15 +17,23 @@ script/source = "extends Node2D
 @onready var coins_label = $VBoxContainer/coins_label
 @onready var exp_label = $VBoxContainer/exp_label
 
-var added_coins = GlobalData.coins
-var added_exp = GlobalData.base_xp
+@onready var play_again_button = $HBoxContainer/MarginContainer/PlayAgainButton
+@onready var quit_button =$HBoxContainer/MarginContainer3/QuitButton
+
+var added_coins = GlobalData.coins_earned
+var added_exp = GlobalData.exp_earned
 
 func _ready() -> void:
 	print(\"Starting summary\")
+	change_button_text()
 	var str_coins : String = add_comma(added_coins)
 	var str_exp : String = add_comma(added_exp)
 	update_coins_label(str_coins)
 	update_exp_label(str_exp)
+
+func change_button_text() -> void:
+	play_again_button.add_theme_font_size_override(\"font_size\", 50)
+	quit_button.add_theme_font_size_override(\"font_size\", 60)
 
 func format_number(value: int) -> String:
 	var str_value = str(value)

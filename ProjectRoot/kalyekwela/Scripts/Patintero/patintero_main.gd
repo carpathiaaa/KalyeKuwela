@@ -82,7 +82,7 @@ func spawn_enemy(current_level : int) -> void:
 	enemy_spawner.set_enemy_spawner(main_player, map, 3)
 	for i in (current_level * 2) + 2:
 		random_y = random_generator.randi_range(-max_y, max_y)
-		match randi_range(0, 1):
+		match randi_range(0, 2):
 			0:
 				enemy_spawner.spawn_enemy(vertical_float_enemy, Vector2(235 * i, random_y), 50 * level)
 			1:

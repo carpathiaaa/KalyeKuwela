@@ -1,27 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2xanq4d5j6ph"]
+[gd_scene load_steps=4 format=3 uid="uid://d2xanq4d5j6ph"]
 
 [ext_resource type="Script" uid="uid://dmnykvx0pbwv5" path="res://Scripts/Patintero/random_float_enemy.gd" id="1_wdabl"]
-
-[sub_resource type="GDScript" id="GDScript_wdabl"]
-script/source = "extends SpriteSelection
-
-func _process(delta: float) -> void:
-	update_side_character(GlobalData.PlayerSelect)
-"
+[ext_resource type="SpriteFrames" uid="uid://bxod2wchcr2g1" path="res://Assets/Art/Characters/Frames/Antionio_Frames.tres" id="2_wdabl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dsg0c"]
 height = 34.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wdabl"]
-
 [node name="RandomFloatEnemy" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_wdabl")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
-animation = &""
-script = SubResource("GDScript_wdabl")
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 modulate = Color(1, 0, 1, 1)
@@ -30,5 +17,6 @@ modulate = Color(1, 0, 1, 1)
 modulate = Color(1, 0, 1, 1)
 shape = SubResource("CapsuleShape2D_dsg0c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_wdabl")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_wdabl")
+animation = &"IdleBack"

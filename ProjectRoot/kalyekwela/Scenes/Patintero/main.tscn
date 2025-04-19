@@ -16,7 +16,7 @@ script = ExtResource("1_q6fdc")
 
 [node name="main_player" parent="." instance=ExtResource("3_p53ya")]
 z_as_relative = false
-position = Vector2(-288, -34)
+position = Vector2(-280, 133)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="main_player"]
 position = Vector2(118, 29)
