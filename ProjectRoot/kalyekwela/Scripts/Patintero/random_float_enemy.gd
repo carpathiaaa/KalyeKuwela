@@ -19,10 +19,12 @@ var enemy_direction := 0
 func _physics_process(delta: float) -> void:
 	# Vertical movement logic
 	if position.y >= current_max:
+		float_speed = randf_range(100.0, 150.0)
 		enemy_direction = -1  # Move down
 		current_min = generate_min_y()
 		update_animation(velocity)
 	elif position.y <= current_min:
+		float_speed = randf_range(100.0, 150.0)
 		enemy_direction = 1   # Move up
 		current_max = generate_max_y()
 		update_animation(velocity)

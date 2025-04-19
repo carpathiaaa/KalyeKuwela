@@ -54,8 +54,8 @@ func _on_safe_area_area_entered(area: Area2D) -> void:
 		self.queue_free()
 
 func randomize_sandal_position() -> void:
-	var random_x = random_number.randf_range(175, 750)
-	var random_y = random_number.randf_range(600, 40)
+	var random_x = random_number.randf_range(190, 720)
+	var random_y = random_number.randf_range(150, 800)
 	sandal_body.position = Vector2(random_x, random_y)
 	print("Sandal position: " + str(sandal.position))
 
