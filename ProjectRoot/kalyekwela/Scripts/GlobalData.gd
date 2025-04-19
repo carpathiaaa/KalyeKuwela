@@ -117,7 +117,7 @@ func load_data():
 
 # Reset data if save file is corrupted or missing
 func reset_data():
-	coins = 1000000
+	coins = 0
 	xp = 0
 	level = 1
 	owned_characters = []
