@@ -36,6 +36,9 @@ func add_time(seconds : float) -> void:
 func timer_finished() -> void:
 	print("timer finished")
 
+func hide_timer_label() -> void:
+	timer_label.hide()
+
 func _on_label_timer_timeout() -> void:
 	remaining_seconds -= 1
 	update_timer_label()

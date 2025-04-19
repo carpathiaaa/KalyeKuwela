@@ -31,7 +31,7 @@ func _ready() -> void:
 	# Override default level
 	current_game = location_string
 	level = 0
-	background_music.attenuation = 0.0 # Disable distance-based volume drop
+	info_overlay.hide_timer_label() 
 	set_object_spawner()
 	set_enemy_spawner()
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlfl1t03pqbc"
-path="res://.godot/imported/tree1_green.png-d8441ae4b0abbeba9471934076a0c8a3.ctex"
+uid="uid://bwv3f6r3udoel"
+path="res://.godot/imported/Bush.png-f9a412bc84b2788563cdc8564ad39d37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Maps/Tilesets/pixel_village/trees/tree1_green.png"
-dest_files=["res://.godot/imported/tree1_green.png-d8441ae4b0abbeba9471934076a0c8a3.ctex"]
+source_file="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Hana Caraka - Topdown Tileset [sample]/Bush.png"
+dest_files=["res://.godot/imported/Bush.png-f9a412bc84b2788563cdc8564ad39d37.ctex"]
 
 [params]
 

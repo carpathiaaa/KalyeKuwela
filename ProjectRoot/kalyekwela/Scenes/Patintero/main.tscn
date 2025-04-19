@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccj5fi8xp7xsd"]
+[gd_scene load_steps=12 format=3 uid="uid://ccj5fi8xp7xsd"]
 
 [ext_resource type="Script" uid="uid://q5pqc80n1t5r" path="res://Scripts/Patintero/patintero_main.gd" id="1_q6fdc"]
 [ext_resource type="PackedScene" uid="uid://dja4w5pgnhm58" path="res://Scenes/Patintero/main_player.tscn" id="3_p53ya"]
@@ -9,14 +9,16 @@
 [ext_resource type="AudioStream" uid="uid://bnpf1b4egv74g" path="res://Assets/Audio/Music/Fishball Fight.mp3" id="9_a0e8k"]
 [ext_resource type="PackedScene" uid="uid://dwt51bujv2mhx" path="res://Scenes/BaseScenes/UI/user_interface.tscn" id="9_i0cr5"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="9_jqj7b"]
+[ext_resource type="Texture2D" uid="uid://dbnpoqg0knc5k" path="res://Assets/Art/Maps/Tilesets/kylefeliciano/volcano.png" id="10_jqj7b"]
+[ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="11_a0e8k"]
 
 [node name="Patintero" type="Node2D"]
 position = Vector2(1, 0)
 script = ExtResource("1_q6fdc")
 
 [node name="main_player" parent="." instance=ExtResource("3_p53ya")]
-z_as_relative = false
-position = Vector2(-280, 133)
+z_index = 4
+position = Vector2(-271, -34)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="main_player"]
 position = Vector2(118, 29)
@@ -45,5 +47,30 @@ offset_left = 7.0
 offset_top = -309.0
 offset_right = 307.0
 offset_bottom = -9.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 1
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(43, 16)
+motion_scale = Vector2(0.1, 1)
+motion_offset = Vector2(300, 0)
+
+[node name="Volcano" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(-210, -237)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_jqj7b")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 1)
+motion_offset = Vector2(400, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="UiSkyBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+z_index = -1
+position = Vector2(-193, -269)
+texture = ExtResource("11_a0e8k")
 
 [connection signal="touched_enemy" from="main_player" to="." method="_on_main_player_touched_enemy"]

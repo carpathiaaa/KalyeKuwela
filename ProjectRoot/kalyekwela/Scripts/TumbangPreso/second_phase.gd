@@ -50,7 +50,9 @@ func _on_sandal_area_area_entered(area: Area2D) -> void:
 
 func _on_safe_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player") and retrieved_sandal:
+		action_label_timer.start(3)
 		emit_signal('sandal_touched')
+		await action_label_timer.timeout
 		self.queue_free()
 
 func randomize_sandal_position() -> void:

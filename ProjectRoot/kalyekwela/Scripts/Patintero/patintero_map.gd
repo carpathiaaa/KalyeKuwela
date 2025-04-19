@@ -75,6 +75,7 @@ func add_vertical_bot(enemy_position) -> void:
 
 func add_rock(min_position, max_position) -> void:
 	var rock_instance = rock.instantiate()
+	rock_instance.z_index = 4
 	rock_instance.position.y = random_number.randf_range(-200, 80)
 	rock_instance.position.x = random_number.randf_range(min_position, max_position)
 	add_child(rock_instance)
