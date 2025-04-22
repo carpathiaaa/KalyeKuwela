@@ -462,9 +462,9 @@ animation = &"Antonio"
 [node name="XPBar" type="ProgressBar" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 216.0
+offset_left = 236.0
 offset_top = 16.0
-offset_right = 688.0
+offset_right = 708.0
 offset_bottom = 45.0
 theme_override_colors/font_color = Color(0.176471, 0.0745098, 0.0156863, 1)
 theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
@@ -474,9 +474,9 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_jil2v")
 
 [node name="XPBarIcon" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 182.0
+offset_left = 202.0
 offset_top = 10.0
-offset_right = 222.0
+offset_right = 242.0
 offset_bottom = 50.0
 texture = ExtResource("6_hddgj")
 region_rect = Rect2(1, 1, 64, 64)
@@ -500,6 +500,20 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_shxnd")
 theme_override_font_sizes/font_size = 30
 text = "Currency"
+
+[node name="LevelDisplay" type="Label" parent="."]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 7.0
+offset_right = 160.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 35
+text = "10"
+horizontal_alignment = 2
 
 [node name="ModalOverlay" type="ColorRect" parent="."]
 visible = false

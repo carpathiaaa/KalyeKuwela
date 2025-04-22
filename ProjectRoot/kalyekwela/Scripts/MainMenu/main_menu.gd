@@ -4,6 +4,7 @@ extends Control
 @onready var tumbang_preso_button = $MarginContainer/GameButtonsContainer/TumbangPreso
 @onready var bente_uno_button = $MarginContainer/GameButtonsContainer/BenteUno
 @onready var currency_display = $CurrencyDisplay
+@onready var level_display = $LevelDisplay
 @onready var xp_bar = $XPBar
 @onready var modal_overlay = $ModalOverlay
 @onready var brightness_overlay = $ColorRect
@@ -61,6 +62,7 @@ func update_ui():
 	currency_display.text = "Coins: " + format_number(GlobalData.coins)
 	var xp_required = GlobalData.get_xp_required(GlobalData.level)
 	xp_bar.value = float(GlobalData.xp) / xp_required * 100  # Set bar percentage
+	level_display.text  = "LVL " + format_number(GlobalData.level)
 
 func format_number(value: int) -> String:
 	var str_value = str(value)
