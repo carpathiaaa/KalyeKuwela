@@ -78,12 +78,6 @@ func update_runner_behavior():
 		# ✅ SMOOTH the target flee direction
 		flee_target_direction = flee_target_direction.lerp(flee_vector.normalized(), 0.1)
 
-		# ✅ Ensure we're still moving away from the chaser
-		var to_chaser = (nearby_chaser.global_position - global_position).normalized()
-		if flee_target_direction.dot(to_chaser) > -0.2:
-			# Not fleeing enough — force a more valid escape direction
-			flee_target_direction = (global_position - nearby_chaser.global_position).normalized()
-
 		var distance = global_position.distance_to(nearby_chaser.global_position)
 		var dynamic_speed = flee_speed + (200 - distance) * 0.5
 		velocity = flee_target_direction * clamp(dynamic_speed, flee_speed, flee_speed + 50)

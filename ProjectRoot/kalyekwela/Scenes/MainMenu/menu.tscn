@@ -1,7 +1,6 @@
-[gd_scene load_steps=84 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=83 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="2_nbuy7"]
-[ext_resource type="Script" uid="uid://bjxoxd7hu3w3v" path="res://Scripts/MainMenu/parallax_background.gd" id="2_pemtm"]
 [ext_resource type="Texture2D" uid="uid://cj24rdfxxjaxj" path="res://Assets/Art/UI/UI_ChooseCharacter_Arrow.png" id="3_ttohg"]
 [ext_resource type="Texture2D" uid="uid://ca3vw7mq0njkd" path="res://Assets/Art/UI/UI_Houses_Background.png" id="4_3vppp"]
 [ext_resource type="Script" uid="uid://m4v1ttc3m7pb" path="res://Scripts/MainMenu/character_selection.gd" id="4_8xus2"]
@@ -264,7 +263,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(376, -300), Vector2(376, 175)]
+"values": [Vector2(376, -300), Vector2(376, 150)]
 }
 
 [sub_resource type="Animation" id="Animation_klp8m"]
@@ -310,7 +309,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(326, 124)]
+"values": [Vector2(326, 90)]
 }
 
 [sub_resource type="Animation" id="Animation_cg4j6"]
@@ -325,7 +324,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(326, -400), Vector2(326, 124)]
+"values": [Vector2(326, -400), Vector2(326, 100)]
 }
 
 [sub_resource type="Animation" id="Animation_j4tmx"]
@@ -369,7 +368,7 @@ region_rect = Rect2(275, 178, 90, 27)
 
 [sub_resource type="LabelSettings" id="LabelSettings_407dx"]
 font = ExtResource("10_mu1tv")
-font_size = 14
+font_size = 23
 font_color = Color(0.0627451, 0.223529, 0.278431, 1)
 outline_size = 3
 outline_color = Color(0.780392, 0.886275, 0.929412, 1)
@@ -388,37 +387,27 @@ settings_popup = NodePath("SettingsPopUp")
 inventory_popup = NodePath("InventoryPopUp")
 shop_popup = NodePath("ShopPopup")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("2_pemtm")
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(30, 0)
+repeat_times = 2
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1152, 648)
-
-[node name="Background" type="NinePatchRect" parent="ParallaxBackground/ParallaxLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 1152.0
-offset_bottom = 648.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="Parallax2D"]
+custom_minimum_size = Vector2(1280, 648)
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("2_nbuy7")
-metadata/_edit_use_anchors_ = true
 
-[node name="Houses" type="NinePatchRect" parent="ParallaxBackground/ParallaxLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 1152.0
-offset_bottom = 648.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(50, 0)
+repeat_times = 2
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D2"]
+custom_minimum_size = Vector2(1280, 648)
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("4_3vppp")
-metadata/_edit_use_anchors_ = true
 
 [node name="CharacterSelect" type="Control" parent="."]
 layout_mode = 3
@@ -429,10 +418,11 @@ script = ExtResource("4_8xus2")
 
 [node name="LeftArrow" type="Button" parent="CharacterSelect"]
 layout_mode = 0
-offset_left = 128.0
+offset_left = 119.0
 offset_top = 312.0
-offset_right = 200.0
+offset_right = 191.0
 offset_bottom = 384.0
+scale = Vector2(1.5, 1.5)
 focus_mode = 0
 mouse_filter = 1
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ws4gy")
@@ -442,10 +432,11 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_qhoib")
 
 [node name="RightArrow" type="Button" parent="CharacterSelect"]
 layout_mode = 0
-offset_left = 560.0
+offset_left = 569.0
 offset_top = 312.0
-offset_right = 632.0
+offset_right = 641.0
 offset_bottom = 384.0
+scale = Vector2(1.5, 1.5)
 focus_mode = 0
 mouse_filter = 1
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_eb7er")
@@ -454,18 +445,19 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_eb7er")
 theme_override_styles/normal = SubResource("StyleBoxTexture_4iwnx")
 
 [node name="AvatarIcon" type="AnimatedSprite2D" parent="CharacterSelect"]
-position = Vector2(385, 343)
-scale = Vector2(12, 12)
+position = Vector2(395, 343)
+scale = Vector2(13, 13)
 sprite_frames = SubResource("SpriteFrames_ie1de")
 animation = &"Antonio"
 
 [node name="XPBar" type="ProgressBar" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 236.0
+offset_left = 278.0
 offset_top = 16.0
-offset_right = 708.0
+offset_right = 750.0
 offset_bottom = 45.0
+scale = Vector2(1.1, 1.1)
 theme_override_colors/font_color = Color(0.176471, 0.0745098, 0.0156863, 1)
 theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_fonts/font = ExtResource("5_shxnd")
@@ -474,10 +466,11 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_jil2v")
 
 [node name="XPBarIcon" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 202.0
+offset_left = 244.0
 offset_top = 10.0
-offset_right = 242.0
+offset_right = 284.0
 offset_bottom = 50.0
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("6_hddgj")
 region_rect = Rect2(1, 1, 64, 64)
 patch_margin_left = 6
@@ -488,10 +481,11 @@ patch_margin_bottom = 6
 [node name="CurrencyDisplay" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 753.0
+offset_left = 830.0
 offset_top = 6.0
-offset_right = 1073.0
+offset_right = 1150.0
 offset_bottom = 37.0
+scale = Vector2(1.1, 1.1)
 theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_outline_color = Color(0.243452, 0.20382, 0.00965789, 1)
 theme_override_constants/shadow_offset_x = 3
@@ -503,10 +497,11 @@ text = "Currency"
 
 [node name="LevelDisplay" type="Label" parent="."]
 layout_mode = 0
-offset_left = 113.0
+offset_left = 145.0
 offset_top = 7.0
-offset_right = 156.0
+offset_right = 188.0
 offset_bottom = 53.0
+scale = Vector2(1.1, 1.1)
 theme_override_colors/font_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_colors/font_outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
 theme_override_constants/outline_size = 10
@@ -526,7 +521,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.462745)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(450, 400)
+custom_minimum_size = Vector2(550, 450)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -544,11 +539,11 @@ theme_override_constants/margin_right = 60
 texture_filter = 1
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Patintero" type="Button" parent="MarginContainer/GameButtonsContainer"]
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ywgya")
@@ -557,7 +552,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ywgya")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rdmqm")
 
 [node name="TumbangPreso" type="Button" parent="MarginContainer/GameButtonsContainer"]
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_iya4e")
@@ -567,7 +562,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_5wx4e")
 expand_icon = true
 
 [node name="BenteUno" type="Button" parent="MarginContainer/GameButtonsContainer"]
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_apg3e")
@@ -586,6 +581,7 @@ offset_right = 82.0
 offset_bottom = 234.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.3, 1.3)
 mouse_filter = 2
 
 [node name="LeftSideBarContainer" type="MarginContainer" parent="PopupMenu"]
@@ -629,12 +625,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
+offset_left = -264.0
 offset_top = -624.0
-offset_right = 200.0
+offset_right = 136.0
 offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.1, 1.1)
 script = ExtResource("14_d1xcb")
 
 [node name="SettingsBackground" type="NinePatchRect" parent="SettingsPopUp"]
@@ -869,12 +866,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -200.0
-offset_right = 250.0
-offset_bottom = 200.0
+offset_left = -314.0
+offset_top = -234.0
+offset_right = 186.0
+offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.1, 1.1)
 mouse_filter = 2
 script = ExtResource("22_ldc7a")
 
@@ -985,17 +983,18 @@ text = "Accessories"
 [node name="MarginItems" type="MarginContainer" parent="InventoryPopUp"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/margin_top = 40
 
 [node name="ItemsContainer" type="GridContainer" parent="InventoryPopUp/MarginItems"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/v_separation = 20
+theme_override_constants/v_separation = 25
 columns = 4
 
 [node name="InventorySlot" type="NinePatchRect" parent="InventoryPopUp/MarginItems/ItemsContainer"]
 visible = false
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("6_20xsy")
 region_rect = Rect2(85, 253, 22, 23)
@@ -1012,9 +1011,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 85
+theme_override_constants/margin_top = 120
 
 [node name="ItemName" type="Label" parent="InventoryPopUp/MarginItems/ItemsContainer/InventorySlot/MarginContainer"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Name"
@@ -1054,19 +1054,19 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ShopPopup" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -200.0
-offset_right = 250.0
-offset_bottom = 200.0
+offset_left = -314.0
+offset_top = -234.0
+offset_right = 186.0
+offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.1, 1.1)
 script = ExtResource("22_stcao")
 
 [node name="ShopBackground" type="NinePatchRect" parent="ShopPopup"]
@@ -1158,20 +1158,17 @@ text = "Accessories"
 [node name="MarginItems" type="MarginContainer" parent="ShopPopup"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 28
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_top = 0
 
 [node name="ItemsContainer" type="GridContainer" parent="ShopPopup/MarginItems"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
+theme_override_constants/v_separation = 25
 columns = 4
 
 [node name="ShopSlot" type="NinePatchRect" parent="ShopPopup/MarginItems/ItemsContainer"]
-visible = false
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("6_20xsy")
 region_rect = Rect2(85, 253, 22, 23)
@@ -1198,7 +1195,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 85
+theme_override_constants/margin_top = 120
 
 [node name="ItemName" type="Label" parent="ShopPopup/MarginItems/ItemsContainer/ShopSlot/MarginContainer"]
 layout_mode = 2
@@ -1451,7 +1448,7 @@ position = Vector2(551, 316)
 stream = ExtResource("34_16qih")
 volume_db = -4.333
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 
 [node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("34_v5hh6")

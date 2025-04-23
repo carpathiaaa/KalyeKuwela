@@ -2755,13 +2755,13 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 region_rect = Rect2(11, 102, 26, 19)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tk5w4"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gkp3d"]
 texture = ExtResource("16_4phyk")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_can8u"]
 texture = ExtResource("8_ld64f")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tk5w4"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("settings_popup")]
 y_sort_enabled = true
@@ -3234,17 +3234,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_503dp")
 text = "no
 "
 
-[node name="ColorRect" type="ColorRect" parent="UI"]
-material = SubResource("CanvasItemMaterial_tk5w4")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
-metadata/_edit_use_anchors_ = true
-
 [node name="PauseButton" type="Button" parent="UI"]
 anchors_preset = 5
 anchor_left = 0.5
@@ -3273,6 +3262,17 @@ offset_bottom = 66.0
 scale = Vector2(1.7, 1.7)
 theme_override_constants/separation = 13
 script = ExtResource("19_v5c5a")
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+material = SubResource("CanvasItemMaterial_tk5w4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
 
 [node name="GameTimer" type="Timer" parent="."]
 
