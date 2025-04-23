@@ -188,8 +188,12 @@ func _on_toggle_settings_button_pressed():
 	toggle_popup(settings_popup)
 
 func _on_toggle_inventory_button_pressed():
+	GlobalData.load_data()  # Load saved data
+	update_ui()  # Ensure UI reflects loaded data
 	play_click_sound()
 	toggle_popup(inventory_popup)
+	
+	inventory_popup._on_characters_button_pressed()
 
 func _on_toggle_shop_button_pressed():
 	play_click_sound()

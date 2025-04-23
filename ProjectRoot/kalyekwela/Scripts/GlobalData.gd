@@ -68,6 +68,11 @@ func purchase_item(item_id: String, item_type: String, cost: int) -> bool:
 				owned_accessories.append(item_id)
 
 	save_data()
+	
+	var main_menu = get_node_or_null("/root/MainMenu")
+	if main_menu:
+		main_menu.update_ui()
+	
 	return true  # Purchase successful
 
 # 💾 Save game data
@@ -122,7 +127,7 @@ func load_data():
 
 # Reset data if save file is corrupted or missing
 func reset_data():
-	coins = 0
+	coins = 10000
 	xp = 0
 	level = 1
 
