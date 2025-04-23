@@ -503,9 +503,9 @@ text = "Currency"
 
 [node name="LevelDisplay" type="Label" parent="."]
 layout_mode = 0
-offset_left = 117.0
+offset_left = 113.0
 offset_top = 7.0
-offset_right = 160.0
+offset_right = 156.0
 offset_bottom = 53.0
 theme_override_colors/font_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_colors/font_outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
