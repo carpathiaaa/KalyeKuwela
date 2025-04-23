@@ -43,6 +43,9 @@ func _physics_process(delta):
 
 	velocity = direction * speed
 	move_and_slide()
+	
+	if not is_chaser and not invincible:
+		check_for_overlapping_chasers()
 
 # 🔄 Update animation based on movement direction
 func update_animation(direction):
@@ -126,3 +129,16 @@ func _on_player_tagged_area_body_entered(body: Node2D) -> void:
 			modulate = Color.WHITE
 		
 		tag_sfx.play()
+
+func _on_tag_area_body_entered(body: Node2D) -> void:
+	if is_chaser and body is CharacterBody2D and not body.is_chaser:
+		print("Tagged NPC:", body.name)
+		tag_sfx.play()
+		body.become_chaser()  # Call their chaser logic
+		
+func check_for_overlapping_chasers():
+	for body in $PlayerTaggedArea.get_overlapping_bodies():
+		if body is CharacterBody2D and body.is_chaser:
+			print("Tagged while standing still!")
+			_on_player_tagged_area_body_entered(body)
+			break

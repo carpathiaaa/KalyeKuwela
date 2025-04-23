@@ -14,6 +14,8 @@ var flee_speed: float = 200  # Increased flee speed to make runners harder to ca
 @onready var flee_area = $FleeArea  # Detect chasers if runner
 @onready var animated_sprite = $AnimatedSprite2D  # Reference to AnimatedSprite2D
 
+var flee_target_direction: Vector2 = Vector2.ZERO
+
 func _ready():
 	add_to_group("npc")
 	randomize()
@@ -61,29 +63,35 @@ func update_chaser_behavior():
 func update_runner_behavior():
 	if nearby_chaser:
 		var flee_vector = global_position - nearby_chaser.global_position
-		
-		# Predictive fleeing: anticipate chaser's future position
 		var predicted_chaser_pos = nearby_chaser.global_position + nearby_chaser.velocity * 0.3
 		var predicted_flee_vector = global_position - predicted_chaser_pos
-		
-		# If the predicted position is closer, prioritize it
+
 		if predicted_flee_vector.length() < flee_vector.length():
 			flee_vector = predicted_flee_vector
 
-		# Check for walls in the flee direction
 		if is_path_blocked(flee_vector.normalized()):
 			flee_vector = find_alternate_escape_route(flee_vector)
-		
-		# Apply smart dodging (slight random angle)
+
+		# Slight dodge
 		flee_vector = add_random_dodge(flee_vector)
 
-		# Dynamic speed boost when very close to a chaser
+		# ✅ SMOOTH the target flee direction
+		flee_target_direction = flee_target_direction.lerp(flee_vector.normalized(), 0.1)
+
+		# ✅ Ensure we're still moving away from the chaser
+		var to_chaser = (nearby_chaser.global_position - global_position).normalized()
+		if flee_target_direction.dot(to_chaser) > -0.2:
+			# Not fleeing enough — force a more valid escape direction
+			flee_target_direction = (global_position - nearby_chaser.global_position).normalized()
+
 		var distance = global_position.distance_to(nearby_chaser.global_position)
-		var dynamic_speed = flee_speed + (200 - distance) * 0.5  
-		velocity = flee_vector.normalized() * clamp(dynamic_speed, flee_speed, flee_speed + 50)
+		var dynamic_speed = flee_speed + (200 - distance) * 0.5
+		velocity = flee_target_direction * clamp(dynamic_speed, flee_speed, flee_speed + 50)
 	else:
-		# Default wandering movement
+		# Default random wandering
+		flee_target_direction = target_direction
 		velocity = target_direction * speed
+
 
 func find_closest_runner():
 	var closest_runner = null
