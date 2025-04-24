@@ -43,7 +43,7 @@ script = ExtResource("1_f4j7u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC1"]
 texture_filter = 1
 sprite_frames = ExtResource("2_mowhh")
-animation = &"WalkBack"
+animation = &"IdleBack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC1"]
 shape = SubResource("CapsuleShape2D_bsr7a")
@@ -81,7 +81,7 @@ script = ExtResource("1_f4j7u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC2"]
 texture_filter = 1
 sprite_frames = ExtResource("3_c7i4g")
-animation = &"WalkFront"
+animation = &"WalkBack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC2"]
 shape = SubResource("CapsuleShape2D_bsr7a")
@@ -122,7 +122,7 @@ shape = SubResource("CapsuleShape2D_bsr7a")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC3"]
 texture_filter = 1
 sprite_frames = ExtResource("4_12w4l")
-animation = &"WalkFront"
+animation = &"WalkBack"
 
 [node name="Timer" type="Timer" parent="NPC3"]
 
@@ -160,7 +160,7 @@ shape = SubResource("CapsuleShape2D_bsr7a")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC4"]
 texture_filter = 1
 sprite_frames = ExtResource("5_y5qq7")
-animation = &"WalkFront"
+animation = &"WalkBack"
 
 [node name="Timer" type="Timer" parent="NPC4"]
 

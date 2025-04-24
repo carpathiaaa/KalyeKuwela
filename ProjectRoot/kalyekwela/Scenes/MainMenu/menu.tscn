@@ -703,6 +703,7 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="AudioSlider" type="HSlider" parent="SettingsPopUp/SettingsFunctionContainer/SettingsContents"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 5
 max_value = 1.0

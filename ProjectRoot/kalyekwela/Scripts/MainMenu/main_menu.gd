@@ -93,36 +93,53 @@ func get_random_fact(facts: Array) -> String:
 		return fact
 	return "Enjoy the game!"
 
-func fade_out_music(player: AudioStreamPlayer2D, duration := 1.0):
+func fade_out_music(player: AudioStreamPlayer2D, duration := 3.0):
 	var tween = get_tree().create_tween()
 	tween.tween_property(player, "volume_db", -80, duration)  # -80 dB is silence
 
 func start_patintero():
 	play_click_sound()
 	fade_out_music($AudioStreamPlayer2D)
-	var loading_scene = LOADING_SCREEN.instantiate()
-	loading_scene.next_scene = "res://Scenes/Patintero/main.tscn"
-	add_child(loading_scene)
-	loading_scene.set_trivia_text(get_random_fact(patintero_facts))
-	loading_scene.play_audio(PATINTERO_AUDIO)
+	
+	var random_fact = get_random_fact(patintero_facts)
+	
+	# Use the new method
+	CompactTransition.transition_to_loading_screen(
+		"res://Scenes/LoadingScreen/loading_screen.tscn",
+		random_fact,
+		PATINTERO_AUDIO,
+		"res://Scenes/Patintero/main.tscn"
+	)
+	
 
 func start_tumbang_preso():
 	play_click_sound()
 	fade_out_music($AudioStreamPlayer2D)
-	var loading_scene = LOADING_SCREEN.instantiate()
-	loading_scene.next_scene = "res://Scenes/TumbangPreso/main.tscn"
-	add_child(loading_scene)
-	loading_scene.set_trivia_text(get_random_fact(tumbang_preso_facts))
-	loading_scene.play_audio(TUMBANG_PRESO_AUDIO)
+	# Get random fact
+	var random_fact = get_random_fact(tumbang_preso_facts)
+	
+	# Use the new method
+	CompactTransition.transition_to_loading_screen(
+		"res://Scenes/LoadingScreen/loading_screen.tscn",
+		random_fact,
+		TUMBANG_PRESO_AUDIO,
+		"res://Scenes/TumbangPreso/main.tscn"
+	)
 
 func start_bente_uno():
 	play_click_sound()
 	fade_out_music($AudioStreamPlayer2D)
-	var loading_scene = LOADING_SCREEN.instantiate()
-	loading_scene.next_scene = "res://Scenes/BenteUno/main.tscn"
-	add_child(loading_scene)
-	loading_scene.set_trivia_text(get_random_fact(bente_uno_facts))
-	loading_scene.play_audio(BENTE_UNO_AUDIO)
+	
+	# Get random fact
+	var random_fact = get_random_fact(bente_uno_facts)
+	
+	# Use the new method
+	CompactTransition.transition_to_loading_screen(
+		"res://Scenes/LoadingScreen/loading_screen.tscn",
+		random_fact,
+		BENTE_UNO_AUDIO,
+		"res://Scenes/BenteUno/main.tscn"
+	)
 
 
 # Function to manage popups (ensuring only one is open at a time)

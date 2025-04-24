@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed: float = 200
 var is_chaser: bool = false
 var chasers_nearby: int = 0  # Keep track of nearby chasers
+var last_direction: Vector2 = Vector2.DOWN  # Default facing direction
 
 @onready var status_label = $StatusLabel
 @onready var tag_area = $TagArea  # Reference to Area2D
@@ -25,6 +26,8 @@ func is_player():
 func _ready():
 	status_label.position.y = -20
 	update_status()
+	# Set initial idle animation
+	play_idle_animation()
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -39,7 +42,11 @@ func _physics_process(delta):
 	
 	if direction.length() > 0:
 		direction = direction.normalized()
+		last_direction = direction  # Store the last direction
 		update_animation(direction)
+	else:
+		# No movement, play idle animation based on last direction
+		play_idle_animation()
 
 	velocity = direction * speed
 	move_and_slide()
@@ -56,6 +63,16 @@ func update_animation(direction):
 		animated_sprite.play("WalkFront")
 	else:
 		animated_sprite.play("WalkBack")
+
+# 🧍 Play idle animation based on last facing direction
+func play_idle_animation():
+	if abs(last_direction.x) > abs(last_direction.y):
+		animated_sprite.play("IdleSide")
+		animated_sprite.flip_h = last_direction.x < 0  # Maintain flip direction
+	elif last_direction.y > 0:
+		animated_sprite.play("IdleFront")
+	else:
+		animated_sprite.play("IdleBack")
 
 # 👹 Convert to a chaser
 func become_chaser():
