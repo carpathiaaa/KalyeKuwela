@@ -7,8 +7,9 @@ extends Player
 
 var time = 0
 var action_label_time : float = 2
-@export var player_speed = 130# Default speed of player
-# Indicate if player is still alive
+@export var player_speed = 130 # Default player running speed
+
+var slowed : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,11 +57,17 @@ func _on_area_2d_area_entered(area):
 		game_scene.add_points(1)
 	if area.is_in_group("rock"):
 		timer.start()
+		slow_down()
+
+
+func slow_down() -> void:
+	if not slowed:
+		print("I hate rocks")
+		slowed = true
 		player_animation.modulate = Color(1, 0, 0, 1) # add a red tint to player sprite
-		player_speed -= 30 
-
-
-func _on_timer_timeout() -> void:
-	timer.stop()
-	player_animation.modulate = Color(1, 1, 1, 1) # add a red tint to player sprite
-	player_speed += 30 
+		player_speed /= 3
+		await get_tree().create_timer(1.5).timeout
+		player_animation.modulate = Color(1, 1, 1, 1) # add a red tint to player sprite
+		player_speed *= 3
+		slowed = false
+	

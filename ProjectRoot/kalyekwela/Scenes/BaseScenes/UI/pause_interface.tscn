@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cxw31vtfsc65e"]
+[gd_scene load_steps=37 format=3 uid="uid://cxw31vtfsc65e"]
 
 [ext_resource type="Texture2D" uid="uid://cye62mcciymtr" path="res://Assets/Art/UI/UI_Resume_Button.png" id="1_jlbr2"]
 [ext_resource type="Texture2D" uid="uid://psw4jh7jxdpg" path="res://Assets/Art/UI/UI_Pause_Button.png" id="2_qsgcq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="9_pors6"]
 [ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="10_im4et"]
 [ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="11_ecmk3"]
+[ext_resource type="AudioStream" uid="uid://x3o7x3mq3olm" path="res://Assets/Audio/SFX/Audio_Click.mp3" id="12_52hjn"]
 [ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="12_p2htw"]
 
 [sub_resource type="GDScript" id="GDScript_egltt"]
@@ -18,7 +19,7 @@ script/source = "extends Control
 
 @onready var pause_menu = $PauseMenu
 @onready var settings_menu = $PauseMenu/SettingsPopUp
-
+@onready var audio_click = $AudioClick
 signal pause_state_changed(paused)
 
 var is_paused : bool = false
@@ -46,26 +47,34 @@ func update_settings_menu() -> void:
 
 func _on_pause_button_pressed(pause_request: bool) -> void:
 	set_pause_state(pause_request)
+	audio_click.play()
 
 func _on_resume_button_pressed(pause_request: bool) -> void:
 	set_pause_state(pause_request)
+	audio_click.play()
+
 
 func _on_settings_button_pressed(settings_request: bool) -> void:
 	if is_paused:
 		settings_visible = settings_request
 		update_settings_menu()
+	audio_click.play()
 
 func _on_quit_settings_pressed(settings_request: bool) -> void:
 	settings_visible = settings_request
+	audio_click.play()
 	update_settings_menu()
 
 func _on_quit_button_pressed() -> void:
+	audio_click.play()
 	Engine.time_scale = 1 # Ensure time scale value before returning to main menu
 	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/menu.tscn\")
 
 
 func _on_reset_button_pressed() -> void:
+	audio_click.play()
 	GlobalData.temporary_reset_mode = true  # Prevent saving on reset
+	Engine.time_scale = 1
 	get_tree().reload_current_scene()
 "
 
@@ -145,7 +154,7 @@ script/source = "extends Control
 @onready var confirm_reset_button = $SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton
 @onready var cancel_reset_button = $SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton
 @onready var brightness_overlay = $\"../../ColorRect\"
-
+@onready var audio_click = $\"../../AudioClick\"
 var previous_volume_db: float = 0.0  
 var is_muted: bool = false  
 
@@ -183,12 +192,15 @@ func _on_mute_toggle_toggled(toggled_on: bool) -> void:
 		AudioServer.set_bus_volume_db(0, previous_volume_db)
 		audio_slider.value = db_to_linear(previous_volume_db)  
 		is_muted = false
+	audio_click.play()
+
 
 func _on_brightness_toggle_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		brightness_slider.value = 0.0  
 	else:
 		brightness_slider.value = 1.0  
+	audio_click.play()
 	_update_brightness()
 
 func _update_brightness() -> void:
@@ -198,17 +210,20 @@ func _update_brightness() -> void:
 
 # ---- RESET DATA FUNCTIONS ----
 func _on_reset_game_data_button_pressed() -> void:
+	audio_click.play()
 	reset_confirmation_popup.visible = true  
 
 func _on_yes_button_pressed() -> void:
+	audio_click.play()
 	GlobalData.reset_data()  # Clears all saved data
 	reset_confirmation_popup.visible = false  
 	print(\"Game data reset successfully!\")
-	
+	Engine.time_scale = 1
 	# Restart the game by reloading the current scene
 	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/menu.tscn\")
 
 func _on_no_button_pressed() -> void:
+	audio_click.play()
 	reset_confirmation_popup.visible = false  
 "
 
@@ -277,8 +292,6 @@ grow_vertical = 2
 script = SubResource("GDScript_egltt")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-z_index = 2
-z_as_relative = false
 material = SubResource("CanvasItemMaterial_givwi")
 layout_mode = 1
 anchors_preset = 15
@@ -287,7 +300,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="PauseButton" type="Button" parent="."]
@@ -911,6 +924,9 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_noju4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_j6hlw")
 text = "no
 "
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_52hjn")
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed" binds= [true]]
 [connection signal="pressed" from="PauseMenu/NinePatchRect/ExitButtonContainer/MarginContainer/ResumeButton" to="." method="_on_resume_button_pressed" binds= [false]]

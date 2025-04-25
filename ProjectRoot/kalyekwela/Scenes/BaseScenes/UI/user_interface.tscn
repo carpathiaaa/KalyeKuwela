@@ -8,6 +8,7 @@ layer = 0
 
 [node name="InfoOverlay" parent="." instance=ExtResource("2_146tn")]
 show_behind_parent = true
+z_index = 1
 custom_minimum_size = Vector2(1000, 1000)
 offset_left = 3.0
 offset_top = 2.0
@@ -18,6 +19,6 @@ offset_bottom = 1002.0
 top_level = true
 z_index = 2
 offset_left = 5.0
-offset_top = -3.0
+offset_top = -4.0
 offset_right = 5.0
-offset_bottom = -3.0
+offset_bottom = -4.0

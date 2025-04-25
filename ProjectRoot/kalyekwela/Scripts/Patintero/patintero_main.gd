@@ -4,12 +4,12 @@ extends BaseGame
 @onready var main_player = $main_player
 @onready var coin_sfx = $sound_effects/coin_sfx
 @onready var map = $map
-@onready var enemy_tile = $enemy_tile
 @onready var background_music = $main_player/Music
 
 @onready var coin = preload("res://Scenes/Patintero/coin.tscn")
 @onready var short_fence = preload("res://Scenes/TumbangPreso/short_fence.tscn")
 @onready var long_fence = preload("res://Scenes/TumbangPreso/long_fence.tscn")
+@onready var rock = preload("res://Scenes/Patintero/rock.tscn")
 
 @onready var vertical_float_enemy = preload("res://Scenes/Patintero/vertical_float_enemy.tscn")
 @onready var random_float_enemy = preload("res://Scenes/Patintero/random_float_enemy.tscn")
@@ -18,14 +18,16 @@ extends BaseGame
 var location_string = "res://Scenes/Patintero/main.tscn"
 
 var random_generator = RandomNumberGenerator.new()
-var object_spawner = null
+var object_spawner : ObjectSpawner = null
 var enemy_spawner = null
 
+
+var min_x = -190
 var max_x = 140
+var min_y = -160
 var max_y = 190
 var object_z_index = 3
 
-var fences = [short_fence, long_fence]
  
 func _ready() -> void:
 	# Override default level
@@ -50,8 +52,9 @@ func next_level() -> void:
 	enemy_spawner.clear_enemies()
 	print("level " + str(level))
 	spawn_enemy(level)
-	spawn_coins(level)
-	spawn_fence(level)
+	spawn_coins(level + 1)
+	spawn_rocks(level + 1)
+	spawn_fence(level + 1)
 
 func spawn_coins(current_level : int) -> void:
 	var random_x = 0
@@ -59,21 +62,32 @@ func spawn_coins(current_level : int) -> void:
 	print("spawning coins")
 	object_spawner.set_spawner(coin, map)
 	for i in current_level:
-		random_x = random_generator.randi_range(0, max_x) * i
-		random_y = random_generator.randi_range(0, max_y) 
+		random_x = random_generator.randi_range(min_x, max_x) * i
+		random_y = random_generator.randi_range(min_y, max_y) 
+		object_spawner.spawn_object(Vector2(random_x, random_y), object_z_index)
+
+func spawn_rocks(current_level : int) -> void:
+	var random_x = 0
+	var random_y = 0
+	print("spawning rocks")
+	object_spawner.set_spawner(rock, map)
+	for i in current_level * 4:
+		random_x = random_generator.randi_range(min_x, max_x * i) 
+		random_y = random_generator.randi_range(min_y, max_y) 
 		object_spawner.spawn_object(Vector2(random_x, random_y), object_z_index)
 
 func spawn_fence(current_level : int) -> void:
 	var fences_num = current_level * 2
 	var fence_type = 0
 	var random_y = 0
-	for i in range(-1, (2 * current_level) + 2):
+	for i in range(-1, (2 * current_level) + 3):
 		random_y = random_generator.randi_range(0 , max_y)
 		if i % 2 == 1:
 			random_y *= -1 
-		fence_type = random_generator.randi_range(0, fences.size() - 1)
-		object_spawner.set_spawner(long_fence, map)
-		object_spawner.spawn_object(Vector2(235 * i, random_y), 4)
+		fence_type = random_generator.randi_range(0, 0)
+		if fence_type == 0:
+			object_spawner.set_spawner(long_fence, map)
+			object_spawner.spawn_object(Vector2(235 * i, random_y), 4)
 
 func spawn_enemy(current_level : int) -> void:
 	print("Spawning enemies")

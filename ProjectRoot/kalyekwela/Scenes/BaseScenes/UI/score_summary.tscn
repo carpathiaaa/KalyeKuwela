@@ -75,15 +75,6 @@ func _on_quit_button_pressed() -> void:
 	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/menu.tscn\")
 "
 
-[sub_resource type="LabelSettings" id="LabelSettings_j7p4j"]
-font = ExtResource("1_k1wj4")
-font_size = 169
-font_color = Color(1, 1, 0.329412, 1)
-outline_size = 25
-outline_color = Color(0.753147, 0, 0.184367, 1)
-shadow_size = 29
-shadow_color = Color(0, 0, 0, 0.772549)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1wj4"]
 texture = ExtResource("2_e6yun")
 texture_margin_left = 4.0
@@ -194,23 +185,26 @@ font_color = Color(0.981617, 1, 0.81377, 1)
 outline_size = 24
 outline_color = Color(0.117913, 0.548815, 0.368535, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_j7p4j"]
+font = ExtResource("1_k1wj4")
+font_size = 200
+font_color = Color(1, 1, 0.329412, 1)
+outline_size = 25
+outline_color = Color(0.753147, 0, 0.184367, 1)
+shadow_size = 29
+shadow_color = Color(0, 0, 0, 0.772549)
+
 [node name="ScoreSummary" type="Node2D"]
 script = SubResource("GDScript_j7p4j")
 
-[node name="NiceTry" type="Label" parent="."]
-offset_left = 202.0
-offset_top = 44.0
-offset_right = 1015.0
-offset_bottom = 216.0
-text = "Nice  Try!"
-label_settings = SubResource("LabelSettings_j7p4j")
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 194.0
-offset_top = 437.0
-offset_right = 1102.0
-offset_bottom = 637.0
-scale = Vector2(0.8, 0.8)
+clip_contents = true
+offset_left = 192.0
+offset_top = 415.0
+offset_right = 1100.0
+offset_bottom = 615.0
+scale = Vector2(0.96, 0.96)
+alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(300, 200)
@@ -248,10 +242,10 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_06ib7")
 text = "Quit"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 395.0
-offset_top = 205.0
-offset_right = 1208.0
-offset_bottom = 377.0
+offset_left = 480.0
+offset_top = 206.0
+offset_right = 1293.0
+offset_bottom = 378.0
 
 [node name="coin_image" type="AnimatedSprite2D" parent="VBoxContainer"]
 z_index = 3
@@ -288,13 +282,13 @@ position = Vector2(493, 309)
 
 [node name="Volcano" type="Sprite2D" parent="background"]
 self_modulate = Color(0.151647, 0.0857847, 0.25478, 1)
-position = Vector2(203, -26)
+position = Vector2(253, -60)
 scale = Vector2(0.447164, 0.496296)
 texture = ExtResource("6_y6i0e")
 
 [node name="UiHousesBackground" type="Sprite2D" parent="background"]
-position = Vector2(82.4999, 56.25)
-scale = Vector2(1.80781, 1.5625)
+position = Vector2(150, 40)
+scale = Vector2(2, 1.728)
 texture = ExtResource("7_w15uv")
 
 [node name="Sky" type="ParallaxBackground" parent="background"]
@@ -318,6 +312,24 @@ offset = Vector2(-3.075, 0)
 position = Vector2(-646, -345)
 scale = Vector2(0.265, 0.229)
 texture = ExtResource("10_w15uv")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 194.0
+offset_top = 19.0
+offset_right = 1156.0
+offset_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NiceTry" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "Nice  Try!"
+label_settings = SubResource("LabelSettings_j7p4j")
 
 [connection signal="pressed" from="HBoxContainer/MarginContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/MarginContainer3/QuitButton" to="." method="_on_quit_button_pressed"]

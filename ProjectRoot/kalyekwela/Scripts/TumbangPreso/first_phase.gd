@@ -3,8 +3,7 @@ extends TumbangPresoPhase
 @onready var countdown_timer = $countdown_timer
 @onready var pointer_animation = $click_bar/pointer_animation
 @onready var sandal = $sandal
-@onready var sandal_spin = $sandal/sandal_spin
-@onready var sandal_scale = $sandal/sandal_scale
+@onready var sandal_animation = $sandal/sandal_animation
 @onready var pointer_button = $click_bar/bar_button
 @onready var click_bar = $click_bar
 @onready var throw_label = $phase_label
@@ -58,10 +57,8 @@ func stop_controls() -> void:
 
 func play_sandal_animations() -> void:
 	sandal.visible = true
-	sandal_spin.play("sandal_spin")
-	sandal_scale.play("sandal_scale")
+	sandal_animation.play("sandal_spin")
 
 func stop_sandal_animations() -> void:
 	sandal.visible = false
-	sandal_spin.stop()
-	sandal_scale.stop()
+	sandal_animation.stop()

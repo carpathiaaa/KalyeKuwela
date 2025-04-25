@@ -32,7 +32,7 @@
 [ext_resource type="Script" uid="uid://puapd4gdn5xs" path="res://Scripts/MainMenu/shop_popup.gd" id="22_stcao"]
 [ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="24_3mfu3"]
 [ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="24_gn6sn"]
-[ext_resource type="Script" uid="uid://bpk407srsywy5" path="res://Scripts/MainMenu/how_to_play_popup.gd" id="33_tuuf6"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/how_to_play_popup.gd" id="33_tuuf6"]
 [ext_resource type="AudioStream" uid="uid://bt65j5uayi503" path="res://Assets/Audio/Music/Audio_MainTheme.mp3" id="34_16qih"]
 [ext_resource type="AudioStream" uid="uid://x3o7x3mq3olm" path="res://Assets/Audio/SFX/Audio_Click.mp3" id="34_v5hh6"]
 [ext_resource type="AudioStream" uid="uid://h1f2kc4xthum" path="res://Assets/Audio/SFX/Audio_Click_2.mp3" id="35_ev0fa"]

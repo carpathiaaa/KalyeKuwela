@@ -1557,6 +1557,7 @@ texture = ExtResource("1_35dbm")
 sources/0 = SubResource("TileSetAtlasSource_8hfem")
 
 [node name="small_fence" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

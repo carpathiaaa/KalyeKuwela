@@ -29,6 +29,7 @@ func show_summary() -> void:
 	score_summary_instance.added_exp = exp
 	ui_layer.add_child(score_summary_instance)
 
+
 func end_sequence() -> void:
 	print("starting end sequence")
 	await get_tree().create_timer(1).timeout
@@ -39,6 +40,8 @@ func end_sequence() -> void:
 
 func end_game() -> void:
 	game_ended = true
+	coins = 0 if coins < 0 else coins
+	exp = 0 if exp < 0 else exp
 	GlobalData.add_rewards(coins, exp)
 	GlobalData.previous_game = current_game
 	Engine.time_scale = 1

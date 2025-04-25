@@ -16,6 +16,8 @@ var phase_time : int = 15
 var difficulty : int = 1 # Default difficulty
 var action_label_time : float = 1.5
 
+
+
 signal sandal_touched
 
 func _ready() -> void:
@@ -57,7 +59,7 @@ func _on_safe_area_area_entered(area: Area2D) -> void:
 
 func randomize_sandal_position() -> void:
 	var random_x = random_number.randf_range(190, 720)
-	var random_y = random_number.randf_range(150, 800)
+	var random_y = random_number.randf_range(130, 600)
 	sandal_body.position = Vector2(random_x, random_y)
 	print("Sandal position: " + str(sandal.position))
 

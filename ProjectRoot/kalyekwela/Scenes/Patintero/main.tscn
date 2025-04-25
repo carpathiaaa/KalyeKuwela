@@ -18,7 +18,7 @@ script = ExtResource("1_q6fdc")
 
 [node name="main_player" parent="." instance=ExtResource("3_p53ya")]
 z_index = 4
-position = Vector2(-271, -34)
+position = Vector2(-266, -15)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="main_player"]
 position = Vector2(118, 29)
@@ -43,6 +43,7 @@ volume_db = 7.0
 [node name="UserInterface" parent="." instance=ExtResource("9_i0cr5")]
 
 [node name="Virtual Joystick" parent="UserInterface" instance=ExtResource("9_jqj7b")]
+z_index = 3
 offset_left = 7.0
 offset_top = -309.0
 offset_right = 307.0

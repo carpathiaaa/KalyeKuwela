@@ -9,7 +9,6 @@ extends Node2D
 var score_line = preload("res://Scenes/Patintero/score_line.tscn")
 var vertical_bot = preload("res://Scenes/Patintero/vertical_bot.tscn")
 var coin = preload("res://Scenes/Patintero/coin.tscn")
-var rock = preload("res://Scenes/Patintero/rock.tscn")
 var random_number = RandomNumberGenerator.new()
 var label_timer : float = 2.0
 
@@ -47,7 +46,6 @@ func preparelevel() -> void:
 	end_tile.position = (Vector2(470 * main_patintero.level, 0))
 	for i in range(-1, (2 * main_patintero.level) + 2):
 		add_coin(140 * i, 250 * i)
-		add_rock(140 * i, 250 * i)
 		add_score_line(Vector2(235 * i, 0))
 		#add_vertical_bot(Vector2(235* i, 0))
 
@@ -73,18 +71,9 @@ func add_vertical_bot(enemy_position) -> void:
 	enemy_instances.append(enemy_instance)
 
 
-func add_rock(min_position, max_position) -> void:
-	var rock_instance = rock.instantiate()
-	rock_instance.z_index = 4
-	rock_instance.position.y = random_number.randf_range(-200, 80)
-	rock_instance.position.x = random_number.randf_range(min_position, max_position)
-	add_child(rock_instance)
-	rock_instances.append(rock_instance)	
-
-
 func add_coin(min_position, max_position) -> void:
 	var coin_instance = coin.instantiate()
-	coin_instance.position.y = random_number.randf_range(-230, 100)
+	coin_instance.position.y = random_number.randf_range(-190, 50)
 	coin_instance.position.x = random_number.randf_range(min_position, max_position)
 	add_child(coin_instance)
 	coin_instances.append(coin_instance)

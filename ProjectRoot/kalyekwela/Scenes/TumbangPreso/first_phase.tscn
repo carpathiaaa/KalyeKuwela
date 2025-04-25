@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://2x231ogj5bfp"]
+[gd_scene load_steps=35 format=3 uid="uid://2x231ogj5bfp"]
 
 [ext_resource type="Script" uid="uid://b1otebmnan3go" path="res://Scripts/TumbangPreso/first_phase.gd" id="1_yq35f"]
 [ext_resource type="PackedScene" uid="uid://dsk12w3h340b6" path="res://Scenes/TumbangPreso/click_bar.tscn" id="2_hylh8"]
@@ -13,31 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://dsq1x1alyelyr" path="res://Assets/Audio/Music/Audio_TumbangPreso_Loading.mp3" id="11_4uhm8"]
 
 [sub_resource type="Animation" id="Animation_igl2y"]
-
-[sub_resource type="Animation" id="Animation_rt06c"]
-resource_name = "sandal_spin"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SandalByAdityasusant938:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.5708, 3.14159, 4.71239, 6.28319]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfbmb"]
-_data = {
-&"RESET": SubResource("Animation_igl2y"),
-&"sandal_spin": SubResource("Animation_rt06c")
-}
-
-[sub_resource type="Animation" id="Animation_5mtbt"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -50,27 +25,76 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(3, 3)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SandalByAdityasusant938:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.23599]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SandalByAdityasusant938:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(233.333, 11.1112)]
+}
 
-[sub_resource type="Animation" id="Animation_c1arp"]
-resource_name = "sandal_scale"
-length = 15.0
+[sub_resource type="Animation" id="Animation_rt06c"]
+resource_name = "sandal_spin"
+length = 7.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SandalByAdityasusant938:scale")
-tracks/0/interp = 1
+tracks/0/path = NodePath("SandalByAdityasusant938:rotation")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
+"times": PackedFloat32Array(0, 7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4, 4), Vector2(0.1, 0.1)]
+"values": [0.0, 62.8319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SandalByAdityasusant938:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.5, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(4, 4), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SandalByAdityasusant938:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.5, 6.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(233.333, 11.1112), Vector2(4466.67, -4901), Vector2(7000, 11.111)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_84ali"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfbmb"]
 _data = {
-&"RESET": SubResource("Animation_5mtbt"),
-&"sandal_scale": SubResource("Animation_c1arp")
+&"RESET": SubResource("Animation_igl2y"),
+&"sandal_spin": SubResource("Animation_rt06c")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vagi"]
@@ -219,7 +243,7 @@ animations = [{
 
 [sub_resource type="LabelSettings" id="LabelSettings_4uhm8"]
 font = ExtResource("10_ix5ae")
-font_size = 250
+font_size = 260
 font_color = Color(1, 1, 0.423529, 1)
 outline_size = 35
 outline_color = Color(0.732194, 0, 0.187946, 1)
@@ -237,28 +261,24 @@ position = Vector2(-216, 211)
 scale = Vector2(0.09, 0.09)
 
 [node name="SandalByAdityasusant938" type="Sprite2D" parent="sandal"]
-position = Vector2(3733.33, -2544.44)
+position = Vector2(233.333, 11.1112)
+rotation = 5.23599
 scale = Vector2(3, 3)
 texture = ExtResource("5_nnk0y")
 
-[node name="sandal_spin" type="AnimationPlayer" parent="sandal"]
+[node name="sandal_animation" type="AnimationPlayer" parent="sandal"]
 libraries = {
 &"": SubResource("AnimationLibrary_nfbmb")
-}
-
-[node name="sandal_scale" type="AnimationPlayer" parent="sandal"]
-libraries = {
-&"": SubResource("AnimationLibrary_84ali")
 }
 
 [node name="click_bar" parent="." instance=ExtResource("2_hylh8")]
 z_index = 5
 z_as_relative = false
-offset_left = 116.0
-offset_top = 166.0
-offset_right = 532.0
-offset_bottom = 315.0
-scale = Vector2(1.3, 1.3)
+offset_left = 93.0
+offset_top = 106.0
+offset_right = 509.0
+offset_bottom = 255.0
+scale = Vector2(1.7, 1.7)
 metadata/_edit_use_anchors_ = true
 
 [node name="countdown_timer" type="Timer" parent="."]
@@ -268,13 +288,13 @@ autostart = true
 [node name="background" type="Node2D" parent="."]
 
 [node name="Volcano" type="Sprite2D" parent="background"]
-position = Vector2(203, -26)
+position = Vector2(203, -83.9)
 scale = Vector2(0.447164, 0.496296)
 texture = ExtResource("4_5om84")
 
 [node name="UiHousesBackground" type="Sprite2D" parent="background"]
-position = Vector2(82.4999, 56.25)
-scale = Vector2(1.82, 1.573)
+position = Vector2(133, 44)
+scale = Vector2(2.0148, 1.74136)
 texture = ExtResource("5_fqyx3")
 
 [node name="player" type="Node2D" parent="."]
@@ -291,10 +311,10 @@ autoplay = "down_animation"
 script = ExtResource("9_nx0gl")
 
 [node name="phase_label" type="Label" parent="."]
-offset_left = -298.0
-offset_top = -135.0
-offset_right = 565.0
-offset_bottom = 118.0
+offset_left = -232.0
+offset_top = -167.0
+offset_right = 665.0
+offset_bottom = 97.0
 text = "THROW!"
 label_settings = SubResource("LabelSettings_4uhm8")
 

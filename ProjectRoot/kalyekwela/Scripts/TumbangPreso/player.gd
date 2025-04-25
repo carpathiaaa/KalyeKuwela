@@ -5,7 +5,7 @@ extends Player
 @onready var timer = $Timer
 
 var time = 0
-@export var speed = 200 # Default speed of player
+@export var speed = 300 # Default speed of player
 # Indicate if player is still alive
 
 signal touched_sandal
