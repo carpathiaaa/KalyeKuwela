@@ -7,13 +7,13 @@ extends BaseGame
 @onready var enemy_tile = $enemy_tile
 @onready var background_music = $main_player/Music
 
-@onready var coin = load("res://Scenes/Patintero/coin.tscn")
-@onready var short_fence = load("res://Scenes/TumbangPreso/short_fence.tscn")
-@onready var long_fence = load("res://Scenes/TumbangPreso/long_fence.tscn")
+@onready var coin = preload("res://Scenes/Patintero/coin.tscn")
+@onready var short_fence = preload("res://Scenes/TumbangPreso/short_fence.tscn")
+@onready var long_fence = preload("res://Scenes/TumbangPreso/long_fence.tscn")
 
-@onready var vertical_float_enemy = load("res://Scenes/Patintero/vertical_float_enemy.tscn")
-@onready var random_float_enemy = load("res://Scenes/Patintero/random_float_enemy.tscn")
-@onready var loop_float_enemy = load("res://Scenes/Patintero/loop_float_enemy.tscn")
+@onready var vertical_float_enemy = preload("res://Scenes/Patintero/vertical_float_enemy.tscn")
+@onready var random_float_enemy = preload("res://Scenes/Patintero/random_float_enemy.tscn")
+@onready var loop_float_enemy = preload("res://Scenes/Patintero/loop_float_enemy.tscn")
 
 var location_string = "res://Scenes/Patintero/main.tscn"
 

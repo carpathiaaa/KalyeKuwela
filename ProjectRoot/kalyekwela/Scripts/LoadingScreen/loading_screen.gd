@@ -41,7 +41,7 @@ func _process(delta):
 	var progress = []
 	var loaded_status = ResourceLoader.load_threaded_get_status(next_scene, progress)
 	var new_progress = progress[0] * 100
-	
+	print(loaded_status)
 	if new_progress > last_progress:
 		last_progress = new_progress
 	
@@ -54,5 +54,5 @@ func _process(delta):
 	if loaded_status == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED and artificial_progress >= 100.0:
 		progress_bar.value = 100.0
 		var packed_next_scene = ResourceLoader.load_threaded_get(next_scene)
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.2).timeout
 		get_tree().change_scene_to_packed(packed_next_scene)

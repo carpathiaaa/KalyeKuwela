@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c17s34iinybv1"
+path="res://.godot/imported/outro music or credits (optional).mp3-b52722d407ce16caeedf062ec4e7b30e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/outro music or credits (optional).mp3"
+dest_files=["res://.godot/imported/outro music or credits (optional).mp3-b52722d407ce16caeedf062ec4e7b30e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

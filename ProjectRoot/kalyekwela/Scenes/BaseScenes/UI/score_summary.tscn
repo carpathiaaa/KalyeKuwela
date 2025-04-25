@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://gxrbfnvdbmay"]
+[gd_scene load_steps=29 format=3 uid="uid://gxrbfnvdbmay"]
 
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="1_k1wj4"]
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="1_x3061"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_e6yun"]
 [ext_resource type="Texture2D" uid="uid://bfsuh3ugmc8ue" path="res://Assets/Art/Props/coin4_16x16.png" id="4_hv3uj"]
 [ext_resource type="Texture2D" uid="uid://cm1gmryjcfhrw" path="res://Assets/Art/UI/UI_XP_Bar.png" id="5_hv3uj"]
+[ext_resource type="AudioStream" uid="uid://c17s34iinybv1" path="res://Assets/Audio/Music/outro music or credits (optional).mp3" id="6_4sw04"]
 [ext_resource type="Texture2D" uid="uid://dbnpoqg0knc5k" path="res://Assets/Art/Maps/Tilesets/kylefeliciano/volcano.png" id="6_y6i0e"]
 [ext_resource type="Texture2D" uid="uid://ca3vw7mq0njkd" path="res://Assets/Art/UI/UI_Houses_Background.png" id="7_w15uv"]
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="9_3ltbs"]
@@ -276,6 +277,9 @@ text = "0"
 label_settings = SubResource("LabelSettings_06ib7")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4sw04")
+autoplay = true
+parameters/looping = true
 
 [node name="background" type="Node2D" parent="."]
 modulate = Color(0.567273, 0.721954, 1, 1)

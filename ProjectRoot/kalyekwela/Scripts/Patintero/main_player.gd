@@ -57,10 +57,10 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group("rock"):
 		timer.start()
 		player_animation.modulate = Color(1, 0, 0, 1) # add a red tint to player sprite
-		player_speed -= 30 * game_scene.level 
+		player_speed -= 30 
 
 
 func _on_timer_timeout() -> void:
 	timer.stop()
 	player_animation.modulate = Color(1, 1, 1, 1) # add a red tint to player sprite
-	player_speed += 30 * game_scene.level 
+	player_speed += 30 

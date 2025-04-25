@@ -2,8 +2,8 @@ extends BaseGame
 
 @onready var main_timer = $main_timer
 
-@onready var first_phase = load("res://Scenes/TumbangPreso/first_phase.tscn")
-@onready var second_phase = load("res://Scenes/TumbangPreso/second_phase.tscn")
+@onready var first_phase = preload("res://Scenes/TumbangPreso/first_phase.tscn")
+@onready var second_phase = preload("res://Scenes/TumbangPreso/second_phase.tscn")
 @onready var info_overlay = $user_interface/InfoOverlay
 
 var location_string : String = "res://Scenes/TumbangPreso/main.tscn"
@@ -24,7 +24,6 @@ var pass_to_next : bool = false
 
 func _ready() -> void:
 	current_game = location_string
-	info_overlay.mouse_filter = Control.MOUSE_FILTER_PASS # Info overlay ignores touch controls
 	# Start event sequence
 	start_events()
 

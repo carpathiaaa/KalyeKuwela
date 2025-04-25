@@ -18178,6 +18178,7 @@ position = Vector2(355, -41)
 shape = SubResource("RectangleShape2D_dhpex")
 
 [node name="return_label" type="Label" parent="end_tile"]
+visible = false
 z_index = 4
 z_as_relative = false
 offset_left = 333.0
