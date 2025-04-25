@@ -14,6 +14,7 @@ var owned_accessories = []  # List of accessory IDs owned
 var equipped_character = ""  # Currently equipped character
 var equipped_accessory = ""  # Currently equipped accessory
 
+var temporary_reset_mode := false
 
 var PlayerSelect = 0
 
@@ -75,8 +76,12 @@ func purchase_item(item_id: String, item_type: String, cost: int) -> bool:
 	
 	return true  # Purchase successful
 
-# 💾 Save game data
+# Save game data
 func save_data():
+	if temporary_reset_mode:
+		print("🛑 Temporary reset mode: skipping save.")
+		return
+
 	var data = {
 		"coins": coins,
 		"xp": xp,
@@ -90,6 +95,7 @@ func save_data():
 	file.store_string(JSON.stringify(data))
 	file.close()
 	print("Game saved:", data)
+
 
 # 📂 Load game data with error handling
 func load_data():

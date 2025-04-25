@@ -80,6 +80,7 @@ func _on_item_selected(item):
 
 	selected_item = item
 	item_name_label.text = item["name"]
+	item_name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	item_price_label.text = "Price: " + str(item["price"])
 	item_icon.texture = item["icon"]
 	purchase_popup.visible = true

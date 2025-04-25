@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://btigs8qepl0d1"]
+[gd_scene load_steps=67 format=4 uid="uid://btigs8qepl0d1"]
 
 [ext_resource type="Script" uid="uid://c4bwpihgbaf1t" path="res://Scripts/BenteUno/main.gd" id="1_5daw8"]
 [ext_resource type="PackedScene" uid="uid://cq5xt52v2s0h1" path="res://Scenes/BenteUno/player.tscn" id="1_ydfnf"]
@@ -2711,6 +2711,60 @@ region_rect = Rect2(869, 134, 22, 22)
 texture = ExtResource("9_eoh28")
 region_rect = Rect2(837, 132, 22, 24)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxias"]
+bg_color = Color(0.176471, 0.0745098, 0.0156863, 1)
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.552941, 0.333333, 0.141176, 1)
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+expand_margin_top = 8.0
+expand_margin_right = 6.0
+expand_margin_bottom = 8.0
+shadow_offset = Vector2(9, 9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27xqw"]
+bg_color = Color(1, 0.878431, 0.741176, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyik7"]
+bg_color = Color(1, 0.878431, 0.741176, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3b1l"]
+bg_color = Color(0.176471, 0.0745098, 0.0156863, 1)
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.552941, 0.333333, 0.141176, 1)
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+expand_margin_top = 8.0
+expand_margin_right = 6.0
+expand_margin_bottom = 8.0
+shadow_offset = Vector2(9, 9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lldy4"]
+bg_color = Color(1, 0.878431, 0.741176, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqwan"]
+bg_color = Color(1, 0.878431, 0.741176, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ld1il"]
 texture = ExtResource("12_7shxt")
 
@@ -2962,6 +3016,9 @@ offset_right = 4.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 5
 
 [node name="PauseButtonContainer" type="VBoxContainer" parent="UI/PauseMenu/NinePatchRect/MarginContainer"]
 layout_mode = 2
@@ -2978,6 +3035,18 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_k0xgl")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_k0xgl")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xpftk")
 text = "Resume"
+
+[node name="ResetButton" type="Button" parent="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.341176, 0.160784, 0.247059, 1)
+theme_override_fonts/font = ExtResource("5_llm1q")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxTexture_o8kbq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_o8kbq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pyaup")
+text = "Reset"
 
 [node name="SettingsButton" type="Button" parent="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer"]
 process_mode = 3
@@ -3029,6 +3098,45 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
+[node name="SettingsBackground2" type="NinePatchRect" parent="UI/SettingsPopUp/SettingsBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_eoh28")
+region_rect = Rect2(293, 101, 38, 38)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/SettingsPopUp"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 11
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/SettingsPopUp/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+
+[node name="Control" type="Control" parent="UI/SettingsPopUp/HBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SettingsText" type="Label" parent="UI/SettingsPopUp/HBoxContainer/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_llm1q")
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
 [node name="ExitButtonContainer" type="VBoxContainer" parent="UI/SettingsPopUp"]
 layout_mode = 2
 mouse_filter = 2
@@ -3052,26 +3160,6 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_h2xe5")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_h2xe5")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qlt2m")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/SettingsPopUp"]
-layout_mode = 2
-size_flags_vertical = 0
-mouse_filter = 2
-theme_override_constants/separation = 11
-
-[node name="Control" type="Control" parent="UI/SettingsPopUp/HBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="SettingsText" type="Label" parent="UI/SettingsPopUp/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
-theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("5_llm1q")
-theme_override_font_sizes/font_size = 30
-text = "SETTINGS"
-
 [node name="SettingsFunctionContainer" type="MarginContainer" parent="UI/SettingsPopUp"]
 layout_mode = 2
 mouse_filter = 2
@@ -3088,12 +3176,20 @@ alignment = 1
 [node name="AudioSlider" type="HSlider" parent="UI/SettingsPopUp/SettingsFunctionContainer/SettingsContents"]
 layout_mode = 2
 size_flags_horizontal = 5
+theme_override_constants/center_grabber = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_nxias")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_27xqw")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_lyik7")
 max_value = 1.0
 step = 0.05
 
 [node name="BrightnessSlider" type="HSlider" parent="UI/SettingsPopUp/SettingsFunctionContainer/SettingsContents"]
 layout_mode = 2
 size_flags_horizontal = 5
+theme_override_constants/center_grabber = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_r3b1l")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lldy4")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fqwan")
 max_value = 1.0
 step = 0.05
 value = 0.5
@@ -3293,15 +3389,19 @@ volume_db = 4.875
 
 [node name="PauseSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_nvqq6")
+volume_db = 1.625
 
 [node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_nxias")
+volume_db = 1.625
 
 [node name="ClickSound2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_27xqw")
+volume_db = 1.625
 
 [connection signal="pressed" from="UI/PauseMenu/NinePatchRect/ExitButtonContainer/MarginContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="UI/SettingsPopUp/ExitButtonContainer/MarginContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

@@ -75,6 +75,8 @@ region_rect = Rect2(352, 43, 48, 61)
 
 [node name="TransitionInSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_t2bpf")
+volume_db = 4.875
 
 [node name="TransitionOutSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_rs18j")
+volume_db = 4.875

@@ -22,6 +22,7 @@ const BENTE_UNO_AUDIO = preload("res://Assets/Audio/Music/Audio_BenteUno_Loading
 @export var settings_popup: MarginContainer
 @export var inventory_popup: MarginContainer
 @export var shop_popup: MarginContainer
+@export var how_to_play_popup: MarginContainer
 
 
 var current_open_popup: Control = null  # Tracks the currently open sidebar
@@ -216,7 +217,16 @@ func _on_toggle_shop_button_pressed():
 	play_click_sound()
 	toggle_popup(shop_popup)
 
+func _on_toggle_how_to_play_button_pressed() -> void:
+	play_click_sound()
+	toggle_popup(how_to_play_popup)
+
 # Connect this function to the exit button inside each popup
 func _on_exit_button_pressed():
 	if current_open_popup:
 		close_popup(current_open_popup)	
+
+func _on_exit_game_button_pressed() -> void:
+	play_click_sound_2()
+	await click_sound_2.finished
+	get_tree().quit()

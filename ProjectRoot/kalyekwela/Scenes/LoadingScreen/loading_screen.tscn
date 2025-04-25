@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cu2gnyusuxxq4" path="res://Scripts/LoadingScreen/loading_screen.gd" id="1_sagvb"]
 [ext_resource type="Texture2D" uid="uid://cm1gmryjcfhrw" path="res://Assets/Art/UI/UI_XP_Bar.png" id="2_51gkw"]
 [ext_resource type="FontFile" uid="uid://50bj2mdrqj4k" path="res://Assets/Art/Fonts/toybox_font/ToyBox Italic.ttf" id="2_pnuiw"]
-[ext_resource type="FontFile" uid="uid://d2wgai6ruks4g" path="res://Assets/Art/Fonts/alanus.ttf" id="3_xxfvu"]
+[ext_resource type="FontFile" uid="uid://dh43qo2jk6ijy" path="res://Assets/Art/Fonts/toybox_font/HammersmithOne-Regular.ttf" id="4_17tju"]
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="5_riiq0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oclw5"]
@@ -16,8 +16,8 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.858824)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7rt27"]
-font = ExtResource("3_xxfvu")
-font_size = 25
+font = ExtResource("4_17tju")
+font_size = 22
 outline_size = 5
 outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
 
@@ -93,7 +93,7 @@ theme_override_constants/margin_top = 18
 [node name="DidYouKnowLabel" type="Label" parent="NinePatchRect/OverlayMargin/BackgroundOverlay/LabelMargin"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_pnuiw")
-text = "DID YOU KNOW?"
+text = "fun fact"
 label_settings = SubResource("LabelSettings_oclw5")
 
 [node name="FactMargin" type="MarginContainer" parent="NinePatchRect/OverlayMargin/BackgroundOverlay"]
@@ -113,7 +113,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="FactLabel" type="Label" parent="NinePatchRect/OverlayMargin/BackgroundOverlay/FactMargin"]
 texture_filter = 1
-custom_minimum_size = Vector2(950, 50)
+custom_minimum_size = Vector2(1000, 50)
 layout_mode = 2
 text = "\"Not Just a Number! 'Bente Uno' means 21, but in this game, it’s also the countdown to your escape—or your doom! Can you outsmart the tagger before the last count?\""
 label_settings = SubResource("LabelSettings_7rt27")

@@ -226,3 +226,10 @@ func toggle_popup(SettingsPopUp : MarginContainer):
 func _on_settings_button_pressed() -> void:
 	play_click_sound()
 	toggle_popup(settings_popup)
+
+
+func _on_reset_button_pressed() -> void:
+	play_click_sound_2()
+	await click_sound_2.finished
+	GlobalData.temporary_reset_mode = true  # Prevent saving on reset
+	get_tree().reload_current_scene()
