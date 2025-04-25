@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed: float = 200
 var is_chaser: bool = false
 var chasers_nearby: int = 0  # Keep track of nearby chasers
+var last_direction: Vector2 = Vector2.DOWN  # Default facing direction
 
 @onready var status_label = $StatusLabel
 @onready var tag_area = $TagArea  # Reference to Area2D
@@ -25,6 +26,8 @@ func is_player():
 func _ready():
 	status_label.position.y = -20
 	update_status()
+	# Set initial idle animation
+	play_idle_animation()
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -39,10 +42,17 @@ func _physics_process(delta):
 	
 	if direction.length() > 0:
 		direction = direction.normalized()
+		last_direction = direction  # Store the last direction
 		update_animation(direction)
+	else:
+		# No movement, play idle animation based on last direction
+		play_idle_animation()
 
 	velocity = direction * speed
 	move_and_slide()
+	
+	if not is_chaser and not invincible:
+		check_for_overlapping_chasers()
 
 # 🔄 Update animation based on movement direction
 func update_animation(direction):
@@ -53,6 +63,16 @@ func update_animation(direction):
 		animated_sprite.play("WalkFront")
 	else:
 		animated_sprite.play("WalkBack")
+
+# 🧍 Play idle animation based on last facing direction
+func play_idle_animation():
+	if abs(last_direction.x) > abs(last_direction.y):
+		animated_sprite.play("IdleSide")
+		animated_sprite.flip_h = last_direction.x < 0  # Maintain flip direction
+	elif last_direction.y > 0:
+		animated_sprite.play("IdleFront")
+	else:
+		animated_sprite.play("IdleBack")
 
 # 👹 Convert to a chaser
 func become_chaser():
@@ -126,3 +146,16 @@ func _on_player_tagged_area_body_entered(body: Node2D) -> void:
 			modulate = Color.WHITE
 		
 		tag_sfx.play()
+
+func _on_tag_area_body_entered(body: Node2D) -> void:
+	if is_chaser and body is CharacterBody2D and not body.is_chaser:
+		print("Tagged NPC:", body.name)
+		tag_sfx.play()
+		body.become_chaser()  # Call their chaser logic
+		
+func check_for_overlapping_chasers():
+	for body in $PlayerTaggedArea.get_overlapping_bodies():
+		if body is CharacterBody2D and body.is_chaser:
+			print("Tagged while standing still!")
+			_on_player_tagged_area_body_entered(body)
+			break

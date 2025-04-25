@@ -1,15 +1,10 @@
 extends Control
-
 var next_scene: String = "res://Scenes/BenteUno/main.tscn"
 @onready var trivia_label = $NinePatchRect/OverlayMargin/BackgroundOverlay/FactMargin/FactLabel
 @onready var progress_bar = $NinePatchRect/ProgressBarMargin/ProgressBar
-
-
-
 var last_progress = 0.0
 var artificial_progress: float = 0.0
 var progress_speed: float = 10.0  # Lower = slower
-
 var pending_trivia_text: String = ""
 
 func set_trivia_text(text: String):
@@ -28,8 +23,29 @@ func play_audio(stream: AudioStream):
 	$AudioPlayer.play()
 
 func _ready():
+	# Check for metadata first
+	if get_tree().has_meta("loading_trivia"):
+		var trivia = get_tree().get_meta("loading_trivia")
+		pending_trivia_text = trivia
+		get_tree().remove_meta("loading_trivia")
+		print("Found trivia from metadata: ", trivia)
+	
+	if get_tree().has_meta("loading_audio"):
+		var audio = get_tree().get_meta("loading_audio") 
+		get_tree().remove_meta("loading_audio")
+		if audio:
+			play_audio(audio)
+			print("Playing audio from metadata")
+	
+	if get_tree().has_meta("loading_next_scene"):
+		next_scene = get_tree().get_meta("loading_next_scene")
+		get_tree().remove_meta("loading_next_scene")
+		print("Found next scene from metadata: ", next_scene)
+	
+	# Start loading the scene
 	ResourceLoader.load_threaded_request(next_scene, "")
-		# Set the trivia text that might have been set before _ready()
+	
+	# Set the trivia text that might have been set before _ready()
 	if pending_trivia_text != "" and trivia_label:
 		trivia_label.text = pending_trivia_text
 		print("Trivia Set in _ready(): ", pending_trivia_text)

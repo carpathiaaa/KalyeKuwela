@@ -51,7 +51,7 @@ script = ExtResource("1_h7xuc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("2_2gme5")
-animation = &"WalkSide"
+animation = &"WalkBack"
 offset = Vector2(0, -7)
 script = SubResource("GDScript_vdoqg")
 
@@ -82,7 +82,7 @@ debug_color = Color(0.925927, 4.09111e-05, 0.67437, 0.42)
 
 [node name="ChaseSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_jye4o")
-volume_db = 8.667
+volume_db = 14.626
 
 [node name="TagSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_uoj3y")

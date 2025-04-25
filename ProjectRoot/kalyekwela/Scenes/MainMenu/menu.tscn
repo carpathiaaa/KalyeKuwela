@@ -1,7 +1,6 @@
-[gd_scene load_steps=84 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=89 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="2_nbuy7"]
-[ext_resource type="Script" uid="uid://bjxoxd7hu3w3v" path="res://Scripts/MainMenu/parallax_background.gd" id="2_pemtm"]
 [ext_resource type="Texture2D" uid="uid://cj24rdfxxjaxj" path="res://Assets/Art/UI/UI_ChooseCharacter_Arrow.png" id="3_ttohg"]
 [ext_resource type="Texture2D" uid="uid://ca3vw7mq0njkd" path="res://Assets/Art/UI/UI_Houses_Background.png" id="4_3vppp"]
 [ext_resource type="Script" uid="uid://m4v1ttc3m7pb" path="res://Scripts/MainMenu/character_selection.gd" id="4_8xus2"]
@@ -27,11 +26,13 @@
 [ext_resource type="Texture2D" uid="uid://b3p5twqw2j3w1" path="res://Assets/Art/UI/UI_AudioON_Icon.png" id="18_8bx3m"]
 [ext_resource type="Texture2D" uid="uid://dc0xc7v1xqyo3" path="res://Assets/Art/UI/UI_BrightnessOff_Icon.png" id="19_ksjjr"]
 [ext_resource type="Texture2D" uid="uid://4ugxvi16ysu3" path="res://Assets/Art/UI/UI_BrightnessOn_Icon.png" id="20_48gs6"]
+[ext_resource type="Texture2D" uid="uid://d2jb1efw03pjn" path="res://Assets/Art/UI/UI_HowToPlay_Button.png" id="21_3bae7"]
 [ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="21_h2p02"]
 [ext_resource type="Script" uid="uid://c6yy11g3icwbr" path="res://Scripts/MainMenu/inventory_pop_up.gd" id="22_ldc7a"]
 [ext_resource type="Script" uid="uid://puapd4gdn5xs" path="res://Scripts/MainMenu/shop_popup.gd" id="22_stcao"]
 [ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="24_3mfu3"]
 [ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="24_gn6sn"]
+[ext_resource type="Script" uid="uid://bpk407srsywy5" path="res://Scripts/MainMenu/how_to_play_popup.gd" id="33_tuuf6"]
 [ext_resource type="AudioStream" uid="uid://bt65j5uayi503" path="res://Assets/Audio/Music/Audio_MainTheme.mp3" id="34_16qih"]
 [ext_resource type="AudioStream" uid="uid://x3o7x3mq3olm" path="res://Assets/Audio/SFX/Audio_Click.mp3" id="34_v5hh6"]
 [ext_resource type="AudioStream" uid="uid://h1f2kc4xthum" path="res://Assets/Audio/SFX/Audio_Click_2.mp3" id="35_ev0fa"]
@@ -181,6 +182,8 @@ bg_color = Color(0.0672571, 0.738141, 0.769152, 0.576471)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em86d"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bae7"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v0q02"]
 texture = ExtResource("6_20xsy")
 region_rect = Rect2(869, 134, 22, 22)
@@ -188,6 +191,33 @@ region_rect = Rect2(869, 134, 22, 22)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2vd56"]
 texture = ExtResource("6_20xsy")
 region_rect = Rect2(837, 132, 22, 24)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuuf6"]
+bg_color = Color(0.176471, 0.0745098, 0.0156863, 1)
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.552941, 0.333333, 0.141176, 1)
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+expand_margin_top = 8.0
+expand_margin_right = 6.0
+expand_margin_bottom = 8.0
+shadow_offset = Vector2(9, 9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc1cd"]
+bg_color = Color(1, 0.878431, 0.741176, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1467t"]
+bg_color = Color(1, 0.878431, 0.741176, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_54d62"]
 texture = ExtResource("18_8bx3m")
@@ -217,25 +247,6 @@ texture_margin_right = 4.0
 texture_margin_bottom = 6.0
 region_rect = Rect2(11, 11, 26, 28)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_keaca"]
-load_path = "res://.godot/imported/Solaria Demo Tiles.png-574d6cbd1daf0e340c174f80c741071e.ctex"
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xn2py"]
-texture = ExtResource("24_3mfu3")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-region_rect = Rect2(59, 103, 26, 18)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h7hxv"]
-texture = ExtResource("24_3mfu3")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-region_rect = Rect2(11, 102, 26, 19)
-
 [sub_resource type="Animation" id="Animation_wkt3w"]
 length = 0.001
 tracks/0/type = "value"
@@ -264,7 +275,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(376, -300), Vector2(376, 175)]
+"values": [Vector2(376, -300), Vector2(376, 150)]
 }
 
 [sub_resource type="Animation" id="Animation_klp8m"]
@@ -290,6 +301,25 @@ _data = {
 &"TransitionOut": SubResource("Animation_klp8m")
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_keaca"]
+load_path = "res://.godot/imported/Solaria Demo Tiles.png-574d6cbd1daf0e340c174f80c741071e.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xn2py"]
+texture = ExtResource("24_3mfu3")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(59, 103, 26, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h7hxv"]
+texture = ExtResource("24_3mfu3")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(11, 102, 26, 19)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_46m0x"]
 texture = ExtResource("6_20xsy")
 region_rect = Rect2(869, 134, 22, 22)
@@ -299,7 +329,7 @@ texture = ExtResource("6_20xsy")
 region_rect = Rect2(837, 132, 22, 24)
 
 [sub_resource type="Animation" id="Animation_v6otd"]
-length = 0.001
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -307,10 +337,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.0333333, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(326, 124)]
+"values": [Vector2(326, -500), Vector2(326, 70)]
 }
 
 [sub_resource type="Animation" id="Animation_cg4j6"]
@@ -325,7 +355,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(326, -400), Vector2(326, 124)]
+"values": [Vector2(326, -400), Vector2(326, 80)]
 }
 
 [sub_resource type="Animation" id="Animation_j4tmx"]
@@ -341,7 +371,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(326, 124), Vector2(326, 650)]
+"values": [Vector2(326, 80), Vector2(326, 650)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3skes"]
@@ -369,14 +399,14 @@ region_rect = Rect2(275, 178, 90, 27)
 
 [sub_resource type="LabelSettings" id="LabelSettings_407dx"]
 font = ExtResource("10_mu1tv")
-font_size = 14
+font_size = 23
 font_color = Color(0.0627451, 0.223529, 0.278431, 1)
 outline_size = 3
 outline_color = Color(0.780392, 0.886275, 0.929412, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v32ii"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("settings_popup", "inventory_popup", "shop_popup")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("settings_popup", "inventory_popup", "shop_popup", "how_to_play_popup")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -387,38 +417,29 @@ script = ExtResource("7_cfydy")
 settings_popup = NodePath("SettingsPopUp")
 inventory_popup = NodePath("InventoryPopUp")
 shop_popup = NodePath("ShopPopup")
+how_to_play_popup = NodePath("HowToPlayPopup")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("2_pemtm")
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(30, 0)
+repeat_times = 2
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1152, 648)
-
-[node name="Background" type="NinePatchRect" parent="ParallaxBackground/ParallaxLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 1152.0
-offset_bottom = 648.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="Parallax2D"]
+custom_minimum_size = Vector2(1280, 648)
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("2_nbuy7")
-metadata/_edit_use_anchors_ = true
 
-[node name="Houses" type="NinePatchRect" parent="ParallaxBackground/ParallaxLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 1152.0
-offset_bottom = 648.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(50, 0)
+repeat_times = 2
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D2"]
+custom_minimum_size = Vector2(1280, 648)
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("4_3vppp")
-metadata/_edit_use_anchors_ = true
 
 [node name="CharacterSelect" type="Control" parent="."]
 layout_mode = 3
@@ -429,10 +450,11 @@ script = ExtResource("4_8xus2")
 
 [node name="LeftArrow" type="Button" parent="CharacterSelect"]
 layout_mode = 0
-offset_left = 128.0
+offset_left = 119.0
 offset_top = 312.0
-offset_right = 200.0
+offset_right = 191.0
 offset_bottom = 384.0
+scale = Vector2(1.5, 1.5)
 focus_mode = 0
 mouse_filter = 1
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ws4gy")
@@ -442,10 +464,11 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_qhoib")
 
 [node name="RightArrow" type="Button" parent="CharacterSelect"]
 layout_mode = 0
-offset_left = 560.0
+offset_left = 569.0
 offset_top = 312.0
-offset_right = 632.0
+offset_right = 641.0
 offset_bottom = 384.0
+scale = Vector2(1.5, 1.5)
 focus_mode = 0
 mouse_filter = 1
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_eb7er")
@@ -454,18 +477,19 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_eb7er")
 theme_override_styles/normal = SubResource("StyleBoxTexture_4iwnx")
 
 [node name="AvatarIcon" type="AnimatedSprite2D" parent="CharacterSelect"]
-position = Vector2(385, 343)
-scale = Vector2(12, 12)
+position = Vector2(395, 343)
+scale = Vector2(13, 13)
 sprite_frames = SubResource("SpriteFrames_ie1de")
 animation = &"Antonio"
 
 [node name="XPBar" type="ProgressBar" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 216.0
+offset_left = 362.0
 offset_top = 16.0
-offset_right = 688.0
+offset_right = 834.0
 offset_bottom = 45.0
+scale = Vector2(1.1, 1.1)
 theme_override_colors/font_color = Color(0.176471, 0.0745098, 0.0156863, 1)
 theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_fonts/font = ExtResource("5_shxnd")
@@ -474,10 +498,11 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_jil2v")
 
 [node name="XPBarIcon" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 182.0
+offset_left = 328.0
 offset_top = 10.0
-offset_right = 222.0
+offset_right = 368.0
 offset_bottom = 50.0
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("6_hddgj")
 region_rect = Rect2(1, 1, 64, 64)
 patch_margin_left = 6
@@ -488,10 +513,11 @@ patch_margin_bottom = 6
 [node name="CurrencyDisplay" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 753.0
+offset_left = 943.0
 offset_top = 6.0
-offset_right = 1073.0
+offset_right = 1263.0
 offset_bottom = 37.0
+scale = Vector2(1.1, 1.1)
 theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_outline_color = Color(0.243452, 0.20382, 0.00965789, 1)
 theme_override_constants/shadow_offset_x = 3
@@ -500,6 +526,21 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_shxnd")
 theme_override_font_sizes/font_size = 30
 text = "Currency"
+
+[node name="LevelDisplay" type="Label" parent="."]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 7.0
+offset_right = 188.0
+offset_bottom = 53.0
+scale = Vector2(1.1, 1.1)
+theme_override_colors/font_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 35
+text = "lvl 1000"
+horizontal_alignment = 2
 
 [node name="ModalOverlay" type="ColorRect" parent="."]
 visible = false
@@ -512,7 +553,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.462745)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(450, 400)
+custom_minimum_size = Vector2(550, 450)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -530,11 +571,11 @@ theme_override_constants/margin_right = 60
 texture_filter = 1
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Patintero" type="Button" parent="MarginContainer/GameButtonsContainer"]
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ywgya")
@@ -543,7 +584,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ywgya")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rdmqm")
 
 [node name="TumbangPreso" type="Button" parent="MarginContainer/GameButtonsContainer"]
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_iya4e")
@@ -553,7 +594,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_5wx4e")
 expand_icon = true
 
 [node name="BenteUno" type="Button" parent="MarginContainer/GameButtonsContainer"]
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_apg3e")
@@ -572,6 +613,7 @@ offset_right = 82.0
 offset_bottom = 234.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.3, 1.3)
 mouse_filter = 2
 
 [node name="LeftSideBarContainer" type="MarginContainer" parent="PopupMenu"]
@@ -607,6 +649,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_em86d")
 icon = ExtResource("6_uouwt")
 flat = true
 
+[node name="ToggleHowToPlayButton" type="Button" parent="PopupMenu/LeftSideBarContainer/LeftSideBar"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3bae7")
+icon = ExtResource("21_3bae7")
+flat = true
+
 [node name="SettingsPopUp" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 1
@@ -615,12 +664,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
+offset_left = -264.0
 offset_top = -624.0
-offset_right = 200.0
+offset_right = 136.0
 offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.1, 1.1)
 script = ExtResource("14_d1xcb")
 
 [node name="SettingsBackground" type="NinePatchRect" parent="SettingsPopUp"]
@@ -634,6 +684,20 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+
+[node name="SettingsBackground2" type="NinePatchRect" parent="SettingsPopUp/SettingsBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(293, 101, 38, 38)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
 [node name="ExitButtonContainer" type="VBoxContainer" parent="SettingsPopUp"]
 layout_mode = 2
@@ -664,11 +728,16 @@ size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 11
 
-[node name="Control" type="Control" parent="SettingsPopUp/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPopUp/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+
+[node name="Control" type="Control" parent="SettingsPopUp/HBoxContainer/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="SettingsText" type="Label" parent="SettingsPopUp/HBoxContainer"]
+[node name="SettingsText" type="Label" parent="SettingsPopUp/HBoxContainer/MarginContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
@@ -692,14 +761,23 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="AudioSlider" type="HSlider" parent="SettingsPopUp/SettingsFunctionContainer/SettingsContents"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 5
+theme_override_constants/center_grabber = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_tuuf6")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gc1cd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_1467t")
 max_value = 1.0
 step = 0.05
 
 [node name="BrightnessSlider" type="HSlider" parent="SettingsPopUp/SettingsFunctionContainer/SettingsContents"]
 layout_mode = 2
 size_flags_horizontal = 5
+theme_override_constants/center_grabber = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_tuuf6")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gc1cd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_1467t")
 max_value = 1.0
 step = 0.05
 value = 0.5
@@ -758,32 +836,37 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_qn5vo")
 theme_override_styles/normal = SubResource("StyleBoxTexture_g5gau")
 text = "RESET GAME DATA"
 
-[node name="ConfirmationMargin" type="MarginContainer" parent="SettingsPopUp/SettingsFunctionContainer"]
+[node name="AnimationInOut" type="AnimationPlayer" parent="SettingsPopUp"]
+libraries = {
+&"": SubResource("AnimationLibrary_42iq2")
+}
+speed_scale = 4.0
+
+[node name="ConfirmationMargin" type="MarginContainer" parent="SettingsPopUp"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_right = 70
 
-[node name="ConfirmationBackground" type="NinePatchRect" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin"]
-custom_minimum_size = Vector2(200, 200)
+[node name="ConfirmationBackground" type="NinePatchRect" parent="SettingsPopUp/ConfirmationMargin"]
+custom_minimum_size = Vector2(270, 250)
 layout_mode = 2
 texture = SubResource("CompressedTexture2D_keaca")
 region_rect = Rect2(160, 192, 48, 48)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPopUp/ConfirmationMargin"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="Control" type="Control" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+[node name="Control" type="Control" parent="SettingsPopUp/ConfirmationMargin/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ConfirmationLabel" type="Label" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+[node name="ConfirmationLabel" type="Label" parent="SettingsPopUp/ConfirmationMargin/VBoxContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -791,21 +874,21 @@ theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
 theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("10_mu1tv")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 18
 text = "Are you sure you want to reset all data? It cannot be recovered"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPopUp/ConfirmationMargin/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 15
+theme_override_constants/separation = 32
 
-[node name="YesButton" type="Button" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(40, 30)
+[node name="YesButton" type="Button" parent="SettingsPopUp/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -822,8 +905,8 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_h7hxv")
 text = "yes
 "
 
-[node name="NoButton" type="Button" parent="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(40, 30)
+[node name="NoButton" type="Button" parent="SettingsPopUp/ConfirmationMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -840,12 +923,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_h7hxv")
 text = "no
 "
 
-[node name="AnimationInOut" type="AnimationPlayer" parent="SettingsPopUp"]
-libraries = {
-&"": SubResource("AnimationLibrary_42iq2")
-}
-speed_scale = 4.0
-
 [node name="InventoryPopUp" type="MarginContainer" parent="."]
 process_mode = 3
 visible = false
@@ -855,12 +932,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -200.0
-offset_right = 250.0
-offset_bottom = 200.0
+offset_left = -314.0
+offset_top = -234.0
+offset_right = 186.0
+offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.1, 1.1)
 mouse_filter = 2
 script = ExtResource("22_ldc7a")
 
@@ -971,16 +1049,18 @@ text = "Accessories"
 [node name="MarginItems" type="MarginContainer" parent="InventoryPopUp"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/margin_top = 40
 
 [node name="ItemsContainer" type="GridContainer" parent="InventoryPopUp/MarginItems"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/v_separation = 25
 columns = 4
 
 [node name="InventorySlot" type="NinePatchRect" parent="InventoryPopUp/MarginItems/ItemsContainer"]
 visible = false
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("6_20xsy")
 region_rect = Rect2(85, 253, 22, 23)
@@ -997,9 +1077,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 85
+theme_override_constants/margin_top = 120
 
 [node name="ItemName" type="Label" parent="InventoryPopUp/MarginItems/ItemsContainer/InventorySlot/MarginContainer"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Name"
@@ -1046,12 +1127,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -200.0
-offset_right = 250.0
-offset_bottom = 200.0
+offset_left = -314.0
+offset_top = -234.0
+offset_right = 186.0
+offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.1, 1.1)
 script = ExtResource("22_stcao")
 
 [node name="ShopBackground" type="NinePatchRect" parent="ShopPopup"]
@@ -1143,20 +1225,17 @@ text = "Accessories"
 [node name="MarginItems" type="MarginContainer" parent="ShopPopup"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 28
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_top = 0
 
 [node name="ItemsContainer" type="GridContainer" parent="ShopPopup/MarginItems"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
+theme_override_constants/v_separation = 25
 columns = 4
 
 [node name="ShopSlot" type="NinePatchRect" parent="ShopPopup/MarginItems/ItemsContainer"]
-visible = false
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("6_20xsy")
 region_rect = Rect2(85, 253, 22, 23)
@@ -1183,13 +1262,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 85
+theme_override_constants/margin_top = 120
 
 [node name="ItemName" type="Label" parent="ShopPopup/MarginItems/ItemsContainer/ShopSlot/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Name"
 label_settings = SubResource("LabelSettings_407dx")
+horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="ShopPopup/MarginItems/ItemsContainer/ShopSlot"]
 layout_mode = 1
@@ -1211,7 +1291,7 @@ texture = ExtResource("6_2mgwq")
 
 [node name="PurchasePopUp" type="MarginContainer" parent="ShopPopup"]
 visible = false
-custom_minimum_size = Vector2(250, 200)
+custom_minimum_size = Vector2(350, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1250,18 +1330,22 @@ theme_override_colors/font_color = Color(0.192157, 0.203922, 0.25098, 1)
 theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("10_mu1tv")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 25
 text = "purchase confirmation"
 
 [node name="ConfimationActionMargin" type="MarginContainer" parent="ShopPopup/PurchasePopUp"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 45
-theme_override_constants/margin_top = 150
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 30
 
 [node name="ConfirmationContainer" type="HBoxContainer" parent="ShopPopup/PurchasePopUp/ConfimationActionMargin"]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 15
 
@@ -1303,7 +1387,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 40
+theme_override_constants/margin_top = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ShopPopup/PurchasePopUp/ItemLabelPriceMargin"]
 layout_mode = 2
@@ -1315,14 +1399,15 @@ mouse_filter = 2
 [node name="ItemName" type="Label" parent="ShopPopup/PurchasePopUp/ItemLabelPriceMargin/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.192157, 0.203922, 0.25098, 1)
 theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("10_mu1tv")
-theme_override_font_sizes/font_size = 15
-text = "ItemName"
+theme_override_font_sizes/font_size = 20
+text = "tala"
+horizontal_alignment = 1
 
 [node name="ItemPrice" type="Label" parent="ShopPopup/PurchasePopUp/ItemLabelPriceMargin/VBoxContainer"]
 texture_filter = 1
@@ -1332,17 +1417,18 @@ theme_override_colors/font_color = Color(0.192157, 0.203922, 0.25098, 1)
 theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("10_mu1tv")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 15
 text = "ItemPrice"
+horizontal_alignment = 1
 
 [node name="IconMargin" type="MarginContainer" parent="ShopPopup/PurchasePopUp"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-theme_override_constants/margin_top = -33
-theme_override_constants/margin_bottom = 33
+theme_override_constants/margin_top = -40
+theme_override_constants/margin_bottom = 40
 
 [node name="Control" type="Control" parent="ShopPopup/PurchasePopUp/IconMargin"]
 layout_mode = 2
@@ -1374,7 +1460,7 @@ visible = false
 layout_mode = 2
 
 [node name="PurchaseNotifBackground" type="NinePatchRect" parent="ShopPopup/PurchaseNotifPopUp"]
-custom_minimum_size = Vector2(150, 100)
+custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1400,11 +1486,11 @@ theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
 theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("10_mu1tv")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 23
 text = "Not enough coins!"
 
 [node name="OKButton" type="Button" parent="ShopPopup/PurchaseNotifPopUp/VBoxContainer"]
-custom_minimum_size = Vector2(40, 30)
+custom_minimum_size = Vector2(50, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1419,6 +1505,287 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_xn2py")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_xn2py")
 theme_override_styles/normal = SubResource("StyleBoxTexture_h7hxv")
 text = "OK"
+
+[node name="HowToPlayPopup" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -244.0
+offset_right = 186.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("33_tuuf6")
+
+[node name="HowToPlayBackground" type="NinePatchRect" parent="HowToPlayPopup"]
+layout_mode = 2
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(275, 212, 90, 25)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="HowToPlayBackground2" type="NinePatchRect" parent="HowToPlayPopup/HowToPlayBackground"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(293, 101, 38, 38)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="HowToPlayPopup/HowToPlayBackground/HowToPlayBackground2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 115
+theme_override_constants/margin_right = 20
+
+[node name="HowToPlayBackground3" type="NinePatchRect" parent="HowToPlayPopup/HowToPlayBackground/HowToPlayBackground2/MarginContainer"]
+custom_minimum_size = Vector2(460, 365)
+layout_mode = 2
+texture = ExtResource("6_20xsy")
+region_rect = Rect2(275, 178, 90, 27)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 6
+
+[node name="RichTextLabel1" type="RichTextLabel" parent="HowToPlayPopup/HowToPlayBackground/HowToPlayBackground2/MarginContainer/HowToPlayBackground3"]
+visible = false
+custom_minimum_size = Vector2(430, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -175.0
+offset_right = 215.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_fonts/normal_font = ExtResource("10_mu1tv")
+bbcode_enabled = true
+text = "[outline_color=#103947,outline_thickness=3][color=#1B4D3E]1. Dodge the Chasers![/color][/outline_color]
+Run across the lines without getting tagged by the patrollers guarding each lane. Use your movement keys to dodge and time your runs.
+
+[outline_color=#103947,outline_thickness=3][color=#D65F2F]2. Reach the End and Return![/color][/outline_color]
+Make it to the far end of the court and return to score a point. The more laps you complete without being tagged, the higher your score!
+
+[outline_color=#103947,outline_thickness=3][color=#3A7CA5]3. AVOID ROCKS![/color][/outline_color]
+Avoid rocks throughout the course; they slow you down!
+"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HowToPlayPopup/HowToPlayBackground/HowToPlayBackground2/MarginContainer/HowToPlayBackground3"]
+visible = false
+custom_minimum_size = Vector2(430, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -175.0
+offset_right = 215.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_fonts/normal_font = ExtResource("10_mu1tv")
+bbcode_enabled = true
+text = "[outline_color=#103947,outline_thickness=6][color=#1B4D3E]1. Time Your Throw![/color][/outline_color]
+Wait for the bar to reach the green zone, then click Throw to launch your slipper. The better the timing, the better the shot!
+
+[outline_color=#103947,outline_thickness=3][color=#D65F2F]2. Retrieve Your Slipper![/color][/outline_color]
+Run and collect your slipper after throwing — but don't get too close to the preso guarding the can.
+
+[outline_color=#103947,outline_thickness=3][color=#3A7CA5]3. Dodge and Survive![/color][/outline_color]
+Avoid getting tagged while retrieving your slipper. Make it back to safety and prepare for your next throw!
+"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HowToPlayPopup/HowToPlayBackground/HowToPlayBackground2/MarginContainer/HowToPlayBackground3"]
+visible = false
+custom_minimum_size = Vector2(430, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -175.0
+offset_right = 215.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_fonts/normal_font = ExtResource("10_mu1tv")
+bbcode_enabled = true
+text = "If you spawn as a [color=#3A7CA5]Runner[/color]:
+
+1. Survive for 1 minute and 30 seconds without losing all your lives.  
+2. You have 3 lives — each tag removes one. After 3 tags, you become a [color=#C94C4C]Chaser[/color]!  
+3. Use speed and smart movement to stay safe.
+
+If you spawn as a [color=#C94C4C]Chaser[/color]:
+
+1. Tag the [color=#3A7CA5]Runners[/color] to convert them into [color=#C94C4C]Chasers[/color].  
+2. Turn everyone before time runs out to win!
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="HowToPlayPopup"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HowToPlayPopup/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="HowToPlayPopup/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HowToPlayText" type="Label" parent="HowToPlayPopup/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 35
+text = "how to play?"
+
+[node name="Category" type="MarginContainer" parent="HowToPlayPopup"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 27
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 400
+
+[node name="CategoryContainer" type="HBoxContainer" parent="HowToPlayPopup/Category"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Patintero" type="Button" parent="HowToPlayPopup/Category/CategoryContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nmp4r")
+text = " patintero "
+
+[node name="TumbangPreso" type="Button" parent="HowToPlayPopup/Category/CategoryContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nmp4r")
+text = " Tumbang Preso "
+
+[node name="BenteUno" type="Button" parent="HowToPlayPopup/Category/CategoryContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lcy2y")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nmp4r")
+text = " Bente Uno "
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="HowToPlayPopup"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HowToPlayPopup/ExitButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="ToggleHowToPlayButton" type="Button" parent="HowToPlayPopup/ExitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_46m0x")
+theme_override_styles/normal = SubResource("StyleBoxTexture_oqk48")
+
+[node name="AnimationInOut" type="AnimationPlayer" parent="HowToPlayPopup"]
+libraries = {
+&"": SubResource("AnimationLibrary_3skes")
+}
+speed_scale = 4.0
+
+[node name="ExitGameButton" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1248.0
+offset_top = 560.0
+offset_right = -1084.0
+offset_bottom = 620.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_pressed_color = Color(0.882353, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_mu1tv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_qn5vo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qn5vo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_g5gau")
+text = "╰➤🚪 EXIT GAME  "
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("CanvasItemMaterial_v32ii")
@@ -1436,30 +1803,34 @@ position = Vector2(551, 316)
 stream = ExtResource("34_16qih")
 volume_db = -4.333
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 
 [node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("34_v5hh6")
+volume_db = 3.171
 
 [node name="ClickSound2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("35_ev0fa")
+volume_db = 3.171
 
 [node name="PurchaseSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("36_3bae7")
+volume_db = 3.171
 
 [connection signal="pressed" from="CharacterSelect/LeftArrow" to="CharacterSelect" method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="CharacterSelect/RightArrow" to="CharacterSelect" method="_on_right_arrow_pressed"]
 [connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleSettingsButton" to="." method="_on_toggle_settings_button_pressed"]
 [connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleInventoryButton" to="." method="_on_toggle_inventory_button_pressed"]
 [connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleShopButton" to="." method="_on_toggle_shop_button_pressed"]
+[connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleHowToPlayButton" to="." method="_on_toggle_how_to_play_button_pressed"]
 [connection signal="pressed" from="SettingsPopUp/ExitButtonContainer/MarginContainer/ToggleSettingsButton" to="." method="_on_toggle_settings_button_pressed"]
 [connection signal="value_changed" from="SettingsPopUp/SettingsFunctionContainer/SettingsContents/AudioSlider" to="SettingsPopUp" method="_on_audio_slider_value_changed"]
 [connection signal="value_changed" from="SettingsPopUp/SettingsFunctionContainer/SettingsContents/BrightnessSlider" to="SettingsPopUp" method="_on_brightness_slider_value_changed"]
 [connection signal="toggled" from="SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle" to="SettingsPopUp" method="_on_mute_toggle_toggled"]
 [connection signal="toggled" from="SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/BrightnessToggle" to="SettingsPopUp" method="_on_brightness_toggle_toggled"]
 [connection signal="pressed" from="SettingsPopUp/SettingsFunctionContainer/ResetDataMargin/ResetGameDataButton" to="SettingsPopUp" method="_on_reset_game_data_button_pressed"]
-[connection signal="pressed" from="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton" to="SettingsPopUp" method="_on_yes_button_pressed"]
-[connection signal="pressed" from="SettingsPopUp/SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton" to="SettingsPopUp" method="_on_no_button_pressed"]
+[connection signal="pressed" from="SettingsPopUp/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton" to="SettingsPopUp" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="SettingsPopUp/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton" to="SettingsPopUp" method="_on_no_button_pressed"]
 [connection signal="pressed" from="InventoryPopUp/ExitButtonContainer/MarginContainer/ToggleInventoryButton" to="." method="_on_toggle_inventory_button_pressed"]
 [connection signal="pressed" from="InventoryPopUp/Category/CategoryContainer/CharactersButton" to="InventoryPopUp" method="_on_characters_button_pressed"]
 [connection signal="pressed" from="InventoryPopUp/Category/CategoryContainer/AccessoriesButton" to="InventoryPopUp" method="_on_accessories_button_pressed"]
@@ -1469,3 +1840,8 @@ stream = ExtResource("36_3bae7")
 [connection signal="pressed" from="ShopPopup/PurchasePopUp/ConfimationActionMargin/ConfirmationContainer/CancelButton" to="ShopPopup" method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="ShopPopup/ExitButtonContainer/MarginContainer/ToggleShopButton" to="." method="_on_toggle_shop_button_pressed"]
 [connection signal="pressed" from="ShopPopup/PurchaseNotifPopUp/VBoxContainer/OKButton" to="ShopPopup" method="_on_ok_button_pressed"]
+[connection signal="pressed" from="HowToPlayPopup/Category/CategoryContainer/Patintero" to="HowToPlayPopup" method="_on_patintero_pressed"]
+[connection signal="pressed" from="HowToPlayPopup/Category/CategoryContainer/TumbangPreso" to="HowToPlayPopup" method="_on_tumbang_preso_pressed"]
+[connection signal="pressed" from="HowToPlayPopup/Category/CategoryContainer/BenteUno" to="HowToPlayPopup" method="_on_bente_uno_pressed"]
+[connection signal="pressed" from="HowToPlayPopup/ExitButtonContainer/MarginContainer/ToggleHowToPlayButton" to="." method="_on_toggle_how_to_play_button_pressed"]
+[connection signal="pressed" from="ExitGameButton" to="." method="_on_exit_game_button_pressed"]

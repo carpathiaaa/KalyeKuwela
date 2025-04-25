@@ -4,6 +4,7 @@ extends Control
 @onready var tumbang_preso_button = $MarginContainer/GameButtonsContainer/TumbangPreso
 @onready var bente_uno_button = $MarginContainer/GameButtonsContainer/BenteUno
 @onready var currency_display = $CurrencyDisplay
+@onready var level_display = $LevelDisplay
 @onready var xp_bar = $XPBar
 @onready var modal_overlay = $ModalOverlay
 @onready var brightness_overlay = $ColorRect
@@ -21,6 +22,7 @@ const BENTE_UNO_AUDIO = preload("res://Assets/Audio/Music/Audio_BenteUno_Loading
 @export var settings_popup: MarginContainer
 @export var inventory_popup: MarginContainer
 @export var shop_popup: MarginContainer
+@export var how_to_play_popup: MarginContainer
 
 
 var current_open_popup: Control = null  # Tracks the currently open sidebar
@@ -61,6 +63,7 @@ func update_ui():
 	currency_display.text = "Coins: " + format_number(GlobalData.coins)
 	var xp_required = GlobalData.get_xp_required(GlobalData.level)
 	xp_bar.value = float(GlobalData.xp) / xp_required * 100  # Set bar percentage
+	level_display.text  = "LVL " + format_number(GlobalData.level)
 
 func format_number(value: int) -> String:
 	var str_value = str(value)
@@ -91,36 +94,53 @@ func get_random_fact(facts: Array) -> String:
 		return fact
 	return "Enjoy the game!"
 
-func fade_out_music(player: AudioStreamPlayer2D, duration := 1.0):
+func fade_out_music(player: AudioStreamPlayer2D, duration := 3.0):
 	var tween = get_tree().create_tween()
 	tween.tween_property(player, "volume_db", -80, duration)  # -80 dB is silence
 
 func start_patintero():
 	play_click_sound()
 	fade_out_music($AudioStreamPlayer2D)
-	var loading_scene = LOADING_SCREEN.instantiate()
-	loading_scene.next_scene = "res://Scenes/Patintero/main.tscn"
-	add_child(loading_scene)
-	loading_scene.set_trivia_text(get_random_fact(patintero_facts))
-	loading_scene.play_audio(PATINTERO_AUDIO)
+	
+	var random_fact = get_random_fact(patintero_facts)
+	
+	# Use the new method
+	CompactTransition.transition_to_loading_screen(
+		"res://Scenes/LoadingScreen/loading_screen.tscn",
+		random_fact,
+		PATINTERO_AUDIO,
+		"res://Scenes/Patintero/main.tscn"
+	)
+	
 
 func start_tumbang_preso():
 	play_click_sound()
 	fade_out_music($AudioStreamPlayer2D)
-	var loading_scene = LOADING_SCREEN.instantiate()
-	loading_scene.next_scene = "res://Scenes/TumbangPreso/main.tscn"
-	add_child(loading_scene)
-	loading_scene.set_trivia_text(get_random_fact(tumbang_preso_facts))
-	loading_scene.play_audio(TUMBANG_PRESO_AUDIO)
+	# Get random fact
+	var random_fact = get_random_fact(tumbang_preso_facts)
+	
+	# Use the new method
+	CompactTransition.transition_to_loading_screen(
+		"res://Scenes/LoadingScreen/loading_screen.tscn",
+		random_fact,
+		TUMBANG_PRESO_AUDIO,
+		"res://Scenes/TumbangPreso/main.tscn"
+	)
 
 func start_bente_uno():
 	play_click_sound()
 	fade_out_music($AudioStreamPlayer2D)
-	var loading_scene = LOADING_SCREEN.instantiate()
-	loading_scene.next_scene = "res://Scenes/BenteUno/main.tscn"
-	add_child(loading_scene)
-	loading_scene.set_trivia_text(get_random_fact(bente_uno_facts))
-	loading_scene.play_audio(BENTE_UNO_AUDIO)
+	
+	# Get random fact
+	var random_fact = get_random_fact(bente_uno_facts)
+	
+	# Use the new method
+	CompactTransition.transition_to_loading_screen(
+		"res://Scenes/LoadingScreen/loading_screen.tscn",
+		random_fact,
+		BENTE_UNO_AUDIO,
+		"res://Scenes/BenteUno/main.tscn"
+	)
 
 
 # Function to manage popups (ensuring only one is open at a time)
@@ -186,14 +206,27 @@ func _on_toggle_settings_button_pressed():
 	toggle_popup(settings_popup)
 
 func _on_toggle_inventory_button_pressed():
+	GlobalData.load_data()  # Load saved data
+	update_ui()  # Ensure UI reflects loaded data
 	play_click_sound()
 	toggle_popup(inventory_popup)
+	
+	inventory_popup._on_characters_button_pressed()
 
 func _on_toggle_shop_button_pressed():
 	play_click_sound()
 	toggle_popup(shop_popup)
 
+func _on_toggle_how_to_play_button_pressed() -> void:
+	play_click_sound()
+	toggle_popup(how_to_play_popup)
+
 # Connect this function to the exit button inside each popup
 func _on_exit_button_pressed():
 	if current_open_popup:
 		close_popup(current_open_popup)	
+
+func _on_exit_game_button_pressed() -> void:
+	play_click_sound_2()
+	await click_sound_2.finished
+	get_tree().quit()

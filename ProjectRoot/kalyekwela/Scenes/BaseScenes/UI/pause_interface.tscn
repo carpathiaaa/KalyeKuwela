@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cxw31vtfsc65e"]
+[gd_scene load_steps=36 format=3 uid="uid://cxw31vtfsc65e"]
 
 [ext_resource type="Texture2D" uid="uid://cye62mcciymtr" path="res://Assets/Art/UI/UI_Resume_Button.png" id="1_jlbr2"]
 [ext_resource type="Texture2D" uid="uid://psw4jh7jxdpg" path="res://Assets/Art/UI/UI_Pause_Button.png" id="2_qsgcq"]
@@ -62,6 +62,11 @@ func _on_quit_settings_pressed(settings_request: bool) -> void:
 func _on_quit_button_pressed() -> void:
 	Engine.time_scale = 1 # Ensure time scale value before returning to main menu
 	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/menu.tscn\")
+
+
+func _on_reset_button_pressed() -> void:
+	GlobalData.temporary_reset_mode = true  # Prevent saving on reset
+	get_tree().reload_current_scene()
 "
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_givwi"]
@@ -89,6 +94,22 @@ texture_margin_bottom = 4.0
 region_rect = Rect2(275, 212, 90, 25)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_44be7"]
+texture = ExtResource("3_ywdou")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 178, 90, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40ykt"]
+texture = ExtResource("3_ywdou")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_52hjn"]
 texture = ExtResource("3_ywdou")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
@@ -389,6 +410,18 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_tpw4p")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_tpw4p")
 theme_override_styles/normal = SubResource("StyleBoxTexture_44be7")
 text = "Resume"
+
+[node name="ResetButton" type="Button" parent="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.341176, 0.160784, 0.247059, 1)
+theme_override_fonts/font = ExtResource("4_fgipj")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxTexture_40ykt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_40ykt")
+theme_override_styles/normal = SubResource("StyleBoxTexture_52hjn")
+text = "Reset"
 
 [node name="SettingsButton" type="Button" parent="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer"]
 process_mode = 3
@@ -882,6 +915,7 @@ text = "no
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed" binds= [true]]
 [connection signal="pressed" from="PauseMenu/NinePatchRect/ExitButtonContainer/MarginContainer/ResumeButton" to="." method="_on_resume_button_pressed" binds= [false]]
 [connection signal="pressed" from="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/ResumeButton" to="." method="_on_resume_button_pressed" binds= [false]]
+[connection signal="pressed" from="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed" binds= [true]]
 [connection signal="pressed" from="PauseMenu/NinePatchRect/MarginContainer/PauseButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="PauseMenu/SettingsPopUp/ExitButtonContainer/MarginContainer/QuitSettings" to="." method="_on_quit_settings_pressed" binds= [false]]

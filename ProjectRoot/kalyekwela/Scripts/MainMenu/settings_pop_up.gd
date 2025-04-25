@@ -4,7 +4,7 @@ extends Control
 @onready var brightness_slider = $SettingsFunctionContainer/SettingsContents/BrightnessSlider
 @onready var mute_button = $SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle
 @onready var reset_button = $SettingsFunctionContainer/ResetDataMargin/ResetGameDataButton
-@onready var reset_confirmation_popup = $SettingsFunctionContainer/ConfirmationMargin
+@onready var reset_confirmation_popup = $ConfirmationMargin
 @onready var confirm_reset_button = $SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/YesButton
 @onready var cancel_reset_button = $SettingsFunctionContainer/ConfirmationMargin/VBoxContainer/HBoxContainer/NoButton
 @onready var brightness_overlay = $"../ColorRect"

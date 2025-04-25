@@ -80,6 +80,7 @@ func _on_item_selected(item):
 
 	selected_item = item
 	item_name_label.text = item["name"]
+	item_name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	item_price_label.text = "Price: " + str(item["price"])
 	item_icon.texture = item["icon"]
 	purchase_popup.visible = true
@@ -146,4 +147,17 @@ func _on_ok_button_pressed():
 
 func _update_coin_display():
 	if coin_label:
-		coin_label.text = "Coins: " + str(GlobalData.coins)
+		coin_label.text = "Coins: " + format_number(GlobalData.coins)
+
+func format_number(value: int) -> String:
+	var str_value = str(value)
+	var formatted = ""
+	var count = 0
+
+	for i in range(str_value.length() - 1, -1, -1):
+		formatted = str_value[i] + formatted
+		count += 1
+		if count % 3 == 0 and i != 0:
+			formatted = "," + formatted
+
+	return formatted
