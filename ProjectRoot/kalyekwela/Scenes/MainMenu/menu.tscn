@@ -13,11 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://bbh1ap3j6kj5v" path="res://Assets/Art/UI/UI_Shop-1_Button.png" id="6_uouwt"]
 [ext_resource type="Texture2D" uid="uid://cptpm8ckka6vx" path="res://Assets/Art/UI/UI_Patintero_Button.png" id="7_bvt3d"]
 [ext_resource type="Script" uid="uid://cle5wwqrs30bl" path="res://Scripts/MainMenu/main_menu.gd" id="7_cfydy"]
-[ext_resource type="Texture2D" uid="uid://cwm2g8wbxok52" path="res://Assets/Art/CharacterIcons/Character_Carlo_Icon.png" id="7_lk4q3"]
+[ext_resource type="Texture2D" uid="uid://dcq0bintxgjj7" path="res://Assets/Art/CharacterIcons/Character_Carlo_Selection.png" id="7_tuuf6"]
 [ext_resource type="Texture2D" uid="uid://cr3olt3nawu3m" path="res://Assets/Art/UI/UI_BenteUno_Button.png" id="8_4ar3s"]
 [ext_resource type="Texture2D" uid="uid://cn2lpmiiv104s" path="res://Assets/Art/UI/UI_TumbangPreso_Button.png" id="8_b25sv"]
-[ext_resource type="Texture2D" uid="uid://bjsv2ijkxidd7" path="res://Assets/Art/CharacterIcons/Character_Juan_Icon.png" id="8_k17vo"]
-[ext_resource type="Texture2D" uid="uid://b2p3jmwivoygo" path="res://Assets/Art/CharacterIcons/Character_Maria_Icon.png" id="9_axral"]
+[ext_resource type="Texture2D" uid="uid://cwj67n3asinea" path="res://Assets/Art/CharacterIcons/Character_Juan_Selection.png" id="8_gc1cd"]
+[ext_resource type="Texture2D" uid="uid://crluq0sd81j0s" path="res://Assets/Art/CharacterIcons/Character_Maria_Selection.png" id="9_1467t"]
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="10_mu1tv"]
 [ext_resource type="Texture2D" uid="uid://bjyojuhy3pcfc" path="res://Assets/Art/CharacterIcons/Character_Reyna_Icon.png" id="10_vdku4"]
 [ext_resource type="Texture2D" uid="uid://mubq3qc5lsdy" path="res://Assets/Art/CharacterIcons/Character_Tala_Icon.png" id="11_r1rvp"]
@@ -32,7 +32,7 @@
 [ext_resource type="Script" uid="uid://puapd4gdn5xs" path="res://Scripts/MainMenu/shop_popup.gd" id="22_stcao"]
 [ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="24_3mfu3"]
 [ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="24_gn6sn"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/how_to_play_popup.gd" id="33_tuuf6"]
+[ext_resource type="Script" uid="uid://bpk407srsywy5" path="res://Scripts/MainMenu/how_to_play_popup.gd" id="33_tuuf6"]
 [ext_resource type="AudioStream" uid="uid://bt65j5uayi503" path="res://Assets/Audio/Music/Audio_MainTheme.mp3" id="34_16qih"]
 [ext_resource type="AudioStream" uid="uid://x3o7x3mq3olm" path="res://Assets/Audio/SFX/Audio_Click.mp3" id="34_v5hh6"]
 [ext_resource type="AudioStream" uid="uid://h1f2kc4xthum" path="res://Assets/Audio/SFX/Audio_Click_2.mp3" id="35_ev0fa"]
@@ -58,17 +58,17 @@ region_rect = Rect2(131, 9, 58, 46)
 atlas = ExtResource("6_2mgwq")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iu7va"]
-atlas = ExtResource("7_lk4q3")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_787tj"]
+atlas = ExtResource("7_tuuf6")
+region = Rect2(0, 0, 300, 400)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_edv1n"]
-atlas = ExtResource("8_k17vo")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1nm5"]
+atlas = ExtResource("8_gc1cd")
+region = Rect2(0, 0, 300, 400)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8whu8"]
-atlas = ExtResource("9_axral")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfs3q"]
+atlas = ExtResource("9_1467t")
+region = Rect2(0, 0, 300, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sn2oj"]
 atlas = ExtResource("10_vdku4")
@@ -90,7 +90,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iu7va")
+"texture": SubResource("AtlasTexture_787tj")
 }],
 "loop": true,
 "name": &"Carlo",
@@ -98,7 +98,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_edv1n")
+"texture": SubResource("AtlasTexture_t1nm5")
 }],
 "loop": true,
 "name": &"Juan",
@@ -106,7 +106,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8whu8")
+"texture": SubResource("AtlasTexture_pfs3q")
 }],
 "loop": true,
 "name": &"Maria",
@@ -477,10 +477,10 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_eb7er")
 theme_override_styles/normal = SubResource("StyleBoxTexture_4iwnx")
 
 [node name="AvatarIcon" type="AnimatedSprite2D" parent="CharacterSelect"]
-position = Vector2(395, 343)
-scale = Vector2(13, 13)
+position = Vector2(412, 313)
+scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_ie1de")
-animation = &"Antonio"
+animation = &"Carlo"
 
 [node name="XPBar" type="ProgressBar" parent="."]
 texture_filter = 1
@@ -933,9 +933,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -314.0
-offset_top = -234.0
+offset_top = -824.0
 offset_right = 186.0
-offset_bottom = 166.0
+offset_bottom = -424.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.1, 1.1)
@@ -1128,9 +1128,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -314.0
-offset_top = -234.0
+offset_top = -824.0
 offset_right = 186.0
-offset_bottom = 166.0
+offset_bottom = -424.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.1, 1.1)
@@ -1515,9 +1515,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -314.0
-offset_top = -244.0
+offset_top = -824.0
 offset_right = 186.0
-offset_bottom = 256.0
+offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("33_tuuf6")
