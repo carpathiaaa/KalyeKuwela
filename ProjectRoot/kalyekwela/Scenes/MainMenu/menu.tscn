@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=90 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="2_nbuy7"]
 [ext_resource type="Texture2D" uid="uid://cj24rdfxxjaxj" path="res://Assets/Art/UI/UI_ChooseCharacter_Arrow.png" id="3_ttohg"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="5_shxnd"]
 [ext_resource type="Texture2D" uid="uid://b0qk7y5g5k0hg" path="res://Assets/Art/CharacterIcons/Character_Antonio_Icon.png" id="6_2mgwq"]
 [ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="6_20xsy"]
+[ext_resource type="Texture2D" uid="uid://dnc1k670qbk5q" path="res://Assets/Art/CharacterIcons/Character_Antonio_Selection.png" id="6_gc1cd"]
 [ext_resource type="Texture2D" uid="uid://cm1gmryjcfhrw" path="res://Assets/Art/UI/UI_XP_Bar.png" id="6_hddgj"]
 [ext_resource type="Texture2D" uid="uid://bbh1ap3j6kj5v" path="res://Assets/Art/UI/UI_Shop-1_Button.png" id="6_uouwt"]
 [ext_resource type="Texture2D" uid="uid://cptpm8ckka6vx" path="res://Assets/Art/UI/UI_Patintero_Button.png" id="7_bvt3d"]
@@ -20,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://crluq0sd81j0s" path="res://Assets/Art/CharacterIcons/Character_Maria_Selection.png" id="9_1467t"]
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="10_mu1tv"]
 [ext_resource type="Texture2D" uid="uid://bjyojuhy3pcfc" path="res://Assets/Art/CharacterIcons/Character_Reyna_Icon.png" id="10_vdku4"]
-[ext_resource type="Texture2D" uid="uid://mubq3qc5lsdy" path="res://Assets/Art/CharacterIcons/Character_Tala_Icon.png" id="11_r1rvp"]
+[ext_resource type="Texture2D" uid="uid://c4j1y8yj1g8i6" path="res://Assets/Art/CharacterIcons/Character_Tala_Selection.png" id="11_1467t"]
 [ext_resource type="Script" uid="uid://bo0065m700j0r" path="res://Scripts/MainMenu/settings_pop_up.gd" id="14_d1xcb"]
 [ext_resource type="Texture2D" uid="uid://nf1rbka8apmk" path="res://Assets/Art/UI/UI_AudioOff_Icon.png" id="17_3haoq"]
 [ext_resource type="Texture2D" uid="uid://b3p5twqw2j3w1" path="res://Assets/Art/UI/UI_AudioON_Icon.png" id="18_8bx3m"]
@@ -54,9 +55,9 @@ region_rect = Rect2(194, 10, 58, 44)
 texture = ExtResource("3_ttohg")
 region_rect = Rect2(131, 9, 58, 46)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cfkgt"]
-atlas = ExtResource("6_2mgwq")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sokul"]
+atlas = ExtResource("6_gc1cd")
+region = Rect2(0, 0, 300, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_787tj"]
 atlas = ExtResource("7_tuuf6")
@@ -74,15 +75,15 @@ region = Rect2(0, 0, 300, 400)
 atlas = ExtResource("10_vdku4")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_arlp6"]
-atlas = ExtResource("11_r1rvp")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_makqd"]
+atlas = ExtResource("11_1467t")
+region = Rect2(0, 0, 300, 400)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ie1de"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cfkgt")
+"texture": SubResource("AtlasTexture_sokul")
 }],
 "loop": true,
 "name": &"Antonio",
@@ -122,7 +123,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_arlp6")
+"texture": SubResource("AtlasTexture_makqd")
 }],
 "loop": true,
 "name": &"Tala",
@@ -480,7 +481,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_4iwnx")
 position = Vector2(412, 313)
 scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_ie1de")
-animation = &"Carlo"
+animation = &"Antonio"
 
 [node name="XPBar" type="ProgressBar" parent="."]
 texture_filter = 1
