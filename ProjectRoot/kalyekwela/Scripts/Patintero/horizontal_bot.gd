@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var target_player = get_parent().get_node("main_player")
 @onready var main_patintero = $"../"
 @onready var enemy_animation = $AnimatedSprite2D
-var base_speed : float = 50.0 # base speed of horizontal enemy (scales with game level)
+var base_speed : float = 40.0 # base speed of horizontal enemy (scales with game level)
 var game_level = 1
 
 func _ready() -> void:

@@ -23,6 +23,7 @@ animation = &"IdleFront"
 script = SubResource("GDScript_86n65")
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+modulate = Color(0, 1, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemy"]]
 shape = SubResource("CapsuleShape2D_n5alp")

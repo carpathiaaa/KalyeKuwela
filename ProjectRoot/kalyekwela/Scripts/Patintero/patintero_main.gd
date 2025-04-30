@@ -27,7 +27,7 @@ var min_x = -190
 var max_x = 140
 var min_y = -180
 var max_y = 150
-var object_z_index = 3
+var object_z_index = 2
 
  
 func _ready() -> void:
@@ -83,7 +83,7 @@ func spawn_fence(current_level : int) -> void:
 	var fences_num = current_level * 2
 	var fence_type = 0
 	var random_y = 0
-	for i in range(-1, (2 * current_level) + 3):
+	for i in range(-1, (2 * current_level) + 2):
 		random_y = random_generator.randi_range(min_y , max_y - 50)
 		if i % 2 == 1:
 			random_y *= -1 
@@ -101,17 +101,20 @@ func spawn_enemy(current_level : int) -> void:
 	var random_y = 0
 	var enemy_type = 0
 	enemy_spawner.set_enemy_spawner(main_player, map, level, 3)
-	for i in (current_level * 2) + 2:
+	for i in range(-1, current_level * 2 + 2):
 		random_y = random_generator.randi_range(-max_y, max_y)
-		match randi_range(0, 2):
+		match random_generator.randi_range(0, 3):
 			0:
-				enemy_spawner.spawn_enemy(vertical_float_enemy, Vector2(235 * i, random_y), 50 * level)
+				enemy_spawner.spawn_enemy(vertical_float_enemy, Vector2(235 * i, 0), level)
 			1:
-				enemy_spawner.spawn_enemy(loop_float_enemy, Vector2(235 * i, random_y), level)
+				enemy_spawner.spawn_enemy(vertical_float_enemy, Vector2(235 * i, 0), level)
 			2:
+				enemy_spawner.spawn_enemy(loop_float_enemy, Vector2(235 * i, 0), level)
+			3:
 				object_spawner.set_spawner(random_float_enemy, map)
-				object_spawner.spawn_object(Vector2(235 * i, random_y), 4)
-				
+				object_spawner.spawn_object(Vector2(235 * i, 0), 4)
+			_:    # Optional: Default case (handles unexpected values)
+				push_error("Invalid enemy type")
 
 func player_death() -> void:
 	info_overlay.hide()

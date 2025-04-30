@@ -16,7 +16,6 @@ height = 34.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvpo7"]
 
 [node name="LoopFloatEnemy" type="CharacterBody2D"]
-modulate = Color(1, 1, 0, 1)
 position = Vector2(0, -190)
 motion_mode = 1
 up_direction = Vector2(0, 1)
@@ -28,6 +27,7 @@ animation = &"IdleFront"
 script = SubResource("GDScript_wvpo7")
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+modulate = Color(1, 1, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemy"]]
 shape = SubResource("CapsuleShape2D_b3bvl")

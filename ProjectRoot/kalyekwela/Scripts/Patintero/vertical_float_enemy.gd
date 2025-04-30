@@ -5,7 +5,8 @@ extends BaseEnemy
 var direction = Vector2.ZERO
 
 @export var target_player : Player = null
-var speed : float = 100.0 # Default enemy speed
+var base_speed : float = 50 # Default enemy speed
+var level_speed
 var tracker = TrackingModule.new(self)
 var random_number = RandomNumberGenerator.new()
 
@@ -23,13 +24,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func vertical_float() -> Vector2:
-	return Vector2(self.position.x, tracker.find_target_position().y) * speed * 0.6
+	return Vector2(self.position.x, tracker.find_target_position().y) * base_speed * (1 + (level_speed * 0.5))
 
 func set_target(new_target : Player, new_speed : float) -> void:
 	if new_target is Player:
 		target_player = new_target
 		tracker.track_target(target_player)
-		speed = new_speed / 5
+		level_speed = new_speed 
 	else:
 		push_error("Invalid target node")
 
