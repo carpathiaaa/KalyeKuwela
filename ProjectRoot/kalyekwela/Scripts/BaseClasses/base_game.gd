@@ -45,4 +45,5 @@ func end_game() -> void:
 	GlobalData.previous_game = current_game
 	Engine.time_scale = 1
 	show_summary()
-	get_tree().change_scene_to_packed(score_summary)
+	CompactTransition.load_scene("res://Scenes/BaseScenes/UI/score_summary.tscn")
+	#get_tree().change_scene_to_packed(score_summary)
