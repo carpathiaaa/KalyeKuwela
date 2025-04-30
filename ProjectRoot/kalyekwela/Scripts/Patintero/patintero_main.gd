@@ -101,7 +101,7 @@ func spawn_enemy(current_level : int) -> void:
 	var random_y = 0
 	var enemy_type = 0
 	enemy_spawner.set_enemy_spawner(main_player, map, level, 3)
-	for i in range(-1, current_level * 2 + 2):
+	for i in range(-1, (2 * current_level) + 2):
 		random_y = random_generator.randi_range(-max_y, max_y)
 		match random_generator.randi_range(0, 3):
 			0:
