@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://2x231ogj5bfp"]
+[gd_scene load_steps=36 format=3 uid="uid://2x231ogj5bfp"]
 
 [ext_resource type="Script" uid="uid://b1otebmnan3go" path="res://Scripts/TumbangPreso/first_phase.gd" id="1_yq35f"]
 [ext_resource type="PackedScene" uid="uid://dsk12w3h340b6" path="res://Scenes/TumbangPreso/click_bar.tscn" id="2_hylh8"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dywksu7v0s606" path="res://Scripts/Patintero/player_sprite_2d.gd" id="9_nx0gl"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="10_ix5ae"]
 [ext_resource type="AudioStream" uid="uid://dsq1x1alyelyr" path="res://Assets/Audio/Music/Audio_TumbangPreso_Loading.mp3" id="11_4uhm8"]
+[ext_resource type="Texture2D" uid="uid://didddfv388xtr" path="res://Assets/Art/Props/TumbangPreso_Can_2.png" id="12_nx0gl"]
 
 [sub_resource type="Animation" id="Animation_igl2y"]
 tracks/0/type = "value"
@@ -88,7 +89,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 3.5, 6.96667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(233.333, 11.1112), Vector2(4466.67, -4901), Vector2(7000, 11.111)]
+"values": [Vector2(233.333, 11.1112), Vector2(5366.67, -4901), Vector2(10000, 11.111)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nfbmb"]
@@ -322,3 +323,9 @@ label_settings = SubResource("LabelSettings_4uhm8")
 stream = ExtResource("11_4uhm8")
 autoplay = true
 parameters/looping = true
+
+[node name="TumbangPresoCan2" type="Sprite2D" parent="."]
+z_index = 9
+position = Vector2(667, 294)
+scale = Vector2(1.5625, 1.5625)
+texture = ExtResource("12_nx0gl")

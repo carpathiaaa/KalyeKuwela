@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://rpf4bbeq8kcm"]
+[gd_scene load_steps=59 format=4 uid="uid://rpf4bbeq8kcm"]
 
 [ext_resource type="Texture2D" uid="uid://baxyf4dq1ut1n" path="res://Assets/Art/Maps/Tilesets/pixel_village/tileset.png" id="1_e3lxa"]
 [ext_resource type="Texture2D" uid="uid://chyjptqjd3gsw" path="res://Assets/Art/Maps/Tilesets/Outside_Stuff_TILESET_B-C-D-E.png" id="2_hl0b2"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://qtm2kt55b45j" path="res://Assets/Art/Maps/Tilesets/pixel_village/houses/house5.png" id="22_nfkob"]
 [ext_resource type="Texture2D" uid="uid://7bwkdsq43q1w" path="res://Assets/Art/Maps/Tilesets/pixel_village/houses/house6.png" id="23_jjxi0"]
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="24_ajboa"]
+[ext_resource type="Texture2D" uid="uid://didddfv388xtr" path="res://Assets/Art/Props/TumbangPreso_Can_2.png" id="25_xt2ot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypoi3"]
 size = Vector2(26.25, 1086.25)
@@ -19115,6 +19116,7 @@ position = Vector2(982.5, 1742.5)
 shape = SubResource("RectangleShape2D_ypoi3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="boundary"]
+visible = false
 position = Vector2(987.5, 518.75)
 shape = SubResource("RectangleShape2D_ypoi3")
 
@@ -19263,3 +19265,9 @@ texture = ExtResource("9_hl0b2")
 position = Vector2(1362.5, -111)
 scale = Vector2(0.899305, 0.899305)
 texture = ExtResource("9_hl0b2")
+
+[node name="TumbangPresoCan2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(562.5, 705)
+scale = Vector2(1.04688, 1.04688)
+texture = ExtResource("25_xt2ot")
