@@ -4,6 +4,7 @@ extends BaseGame
 
 @onready var first_phase = preload("res://Scenes/TumbangPreso/first_phase.tscn")
 @onready var second_phase = preload("res://Scenes/TumbangPreso/second_phase.tscn")
+@onready var win_screen = preload("res://Scenes/TumbangPreso/win_screen.tscn")
 @onready var info_overlay = $user_interface/InfoOverlay
 
 var location_string : String = "res://Scenes/TumbangPreso/main.tscn"
@@ -11,7 +12,7 @@ var location_string : String = "res://Scenes/TumbangPreso/main.tscn"
 var first_phase_instance : Node = null
 var second_phase_instance : Node = null
 
-var threshold_score : int = 10000
+var threshold_score : int = 2500
 var current_score : int  = 0
 
 var first_phase_time : int = 7
@@ -34,8 +35,9 @@ func start_events() -> void:
 	await first_phase_ended
 	if (current_score >= threshold_score):
 		player_wins()
-	info_overlay.set_timer(second_phase_time)
-	start_second_phase()
+	else:
+		info_overlay.set_timer(second_phase_time)
+		start_second_phase()
 	await second_phase_ended
 	if pass_to_next:
 		next_level()
@@ -45,6 +47,10 @@ func start_events() -> void:
 func player_wins() -> void:
 	print("Player wins")
 	add_rewards(coins, exp)
+	var win_screen_instance = win_screen.instantiate()
+	add_child(win_screen_instance)
+	await get_tree().create_timer(3.5).timeout
+	end_sequence()
 	
 
 func player_loses() -> void:
@@ -54,7 +60,7 @@ func player_loses() -> void:
 
 func next_level() -> void:
 	print("Game not finished")
-	threshold_score += 400
+	threshold_score += 100
 	level += 1
 	start_events() # restart event sequence
 

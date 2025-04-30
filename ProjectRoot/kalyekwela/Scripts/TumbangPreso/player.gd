@@ -3,10 +3,11 @@ extends Player
 @onready var player_animation = $AnimatedSprite2D
 @onready var player_name_label = $player_name
 @onready var timer = $Timer
-
+@onready var ouch_sfx = $ouch_effect
+@onready var laugh_sfx = $laugh_effect
 var time = 0
 @export var speed = 300 # Default speed of player
-# Indicate if player is still alive
+var slowed : bool = false
 
 signal touched_sandal
 signal in_safe_area
@@ -47,7 +48,22 @@ func update_animation(direction):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("enemy"): 	# detect if player collided with enemy bot
+		laugh_sfx.play()
 		emit_signal("touched_enemy")
 	if area.is_in_group("safe_area"):
 		emit_signal("in_safe_area")
+	if area.is_in_group("rock"):
+		ouch_sfx.play()
+		slow_down()
+
+func slow_down() -> void:
+	if not slowed:
+		print("I hate rocks")
+		slowed = true
+		player_animation.modulate = Color(1, 0, 0, 1) # add a red tint to player sprite
+		speed /= 1.5
+		await get_tree().create_timer(0.5).timeout
+		player_animation.modulate = Color(1, 1, 1, 1) # add a red tint to player sprite
+		speed *= 1.5
+		slowed = false
 		

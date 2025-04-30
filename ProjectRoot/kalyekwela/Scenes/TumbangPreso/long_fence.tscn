@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyr3e"]
 size = Vector2(12, 205)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6bj5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b6ukd"]
 texture = ExtResource("1_b6ukd")
 12:0/0 = 0
 13:0/0 = 0
@@ -1750,7 +1750,7 @@ texture = ExtResource("1_b6ukd")
 35:44/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_uk5e6"]
-sources/0 = SubResource("TileSetAtlasSource_c6bj5")
+sources/0 = SubResource("TileSetAtlasSource_b6ukd")
 
 [node name="LongFence" type="Node2D"]
 

@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=3 uid="uid://besno70ppy7qy"]
+
+[ext_resource type="Texture2D" uid="uid://didddfv388xtr" path="res://Assets/Art/Props/TumbangPreso_Can_2.png" id="2_stx5x"]
+[ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="3_lyoig"]
+[ext_resource type="Texture2D" uid="uid://b5lt1ikpq2nla" path="res://Assets/Art/Imported/Canva/win_background.jpg" id="4_4s6pd"]
+[ext_resource type="AudioStream" uid="uid://dsq1x1alyelyr" path="res://Assets/Audio/Music/Audio_TumbangPreso_Loading.mp3" id="4_stx5x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fnmbn"]
+font = ExtResource("3_lyoig")
+font_size = 360
+font_color = Color(0.890196, 0.266667, 0.423529, 1)
+outline_size = 35
+outline_color = Color(0.341176, 0, 0.764706, 1)
+shadow_size = 30
+shadow_color = Color(0, 0, 0, 0.545098)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="Animation" id="Animation_stx5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TumbangPresoCan2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TumbangPresoCan2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(643, 467)]
+}
+
+[sub_resource type="Animation" id="Animation_bwkob"]
+resource_name = "can"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TumbangPresoCan2:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TumbangPresoCan2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(643, 490.105), Vector2(643, 552.85)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_stx5x"]
+_data = {
+&"RESET": SubResource("Animation_stx5x"),
+&"can": SubResource("Animation_bwkob")
+}
+
+[node name="WinScreen" type="Node2D"]
+
+[node name="TumbangPresoCan2" type="Sprite2D" parent="."]
+z_index = 4
+position = Vector2(643, 467)
+scale = Vector2(5.28478, 5.88789)
+texture = ExtResource("2_stx5x")
+
+[node name="phase_label" type="Label" parent="."]
+z_index = 3
+offset_left = 80.0
+offset_top = 143.0
+offset_right = 1322.0
+offset_bottom = 508.0
+text = "TUmba!"
+label_settings = SubResource("LabelSettings_fnmbn")
+
+[node name="background" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(495, 296)
+
+[node name="WinBackground" type="Sprite2D" parent="."]
+position = Vector2(620, 270)
+scale = Vector2(0.752083, 0.713889)
+texture = ExtResource("4_4s6pd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_stx5x")
+}
+autoplay = "can"
+speed_scale = 1.5
+
+[node name="AudioTumbangPresoLoading" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_stx5x")
+volume_db = -2.0
+pitch_scale = 1.5
+autoplay = true

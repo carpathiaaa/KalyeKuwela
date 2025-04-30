@@ -1,10 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://dja4w5pgnhm58"]
+[gd_scene load_steps=30 format=3 uid="uid://dja4w5pgnhm58"]
 
 [ext_resource type="Script" uid="uid://bavr6lbofkx4w" path="res://Scripts/Patintero/main_player.gd" id="1_41ri7"]
 [ext_resource type="Texture2D" uid="uid://cvqh1xhd5de3h" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Front.png" id="2_ywd02"]
 [ext_resource type="Texture2D" uid="uid://do8wj7h5iwikx" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Side.png" id="3_31e64"]
 [ext_resource type="Texture2D" uid="uid://chvdhipqjndsg" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Back.png" id="4_bmw06"]
 [ext_resource type="Script" uid="uid://dywksu7v0s606" path="res://Scripts/Patintero/player_sprite_2d.gd" id="5_k37kf"]
+[ext_resource type="FontFile" uid="uid://criaoifxls3nh" path="res://Assets/Art/Fonts/toybox_font/ToyBox.otf" id="6_k37kf"]
+[ext_resource type="AudioStream" uid="uid://dmwv4n772c45r" path="res://Assets/Audio/SFX/ROBLOX Oof Sound Effect.mp3" id="7_gbkba"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vagi"]
 atlas = ExtResource("2_ywd02")
@@ -154,6 +156,15 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ch51q"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_gbkba"]
+font = ExtResource("6_k37kf")
+font_size = 11
+font_color = Color(1, 1, 0.741176, 1)
+outline_size = 7
+outline_color = Color(0.194349, 0.194349, 0.194349, 1)
+shadow_size = 7
+shadow_color = Color(0.140447, 0.140447, 0.140447, 0)
+
 [node name="player" type="CharacterBody2D"]
 texture_filter = 2
 position = Vector2(-309, -37)
@@ -190,15 +201,19 @@ shape = SubResource("CircleShape2D_ch51q")
 [node name="player_name" type="Label" parent="."]
 z_index = 5
 texture_filter = 1
-offset_left = -19.0
-offset_top = -27.0
-offset_right = 61.0
-offset_bottom = -10.0
+offset_left = -18.0
+offset_top = -30.0
+offset_right = 62.0
+offset_bottom = -11.0
 theme_override_font_sizes/font_size = 8
 text = "Player"
+label_settings = SubResource("LabelSettings_gbkba")
 metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="oof_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gbkba")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

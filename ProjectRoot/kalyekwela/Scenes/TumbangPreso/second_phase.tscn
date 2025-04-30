@@ -13,7 +13,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_va8pc"]
 font = ExtResource("3_pqhor")
-font_size = 70
+font_size = 80
 font_color = Color(1, 1, 0.423529, 1)
 outline_size = 15
 outline_color = Color(0.732194, 0, 0.187946, 1)
@@ -78,7 +78,7 @@ position = Vector2(573.75, 1920)
 shape = SubResource("RectangleShape2D_pqhor")
 
 [node name="player" parent="." instance=ExtResource("6_wkaxu")]
-position = Vector2(469, 1563)
+position = Vector2(425, 1494)
 scale = Vector2(2.4, 2.4)
 script = ExtResource("5_vo024")
 speed = 300
@@ -94,13 +94,13 @@ position = Vector2(442, 175)
 scale = Vector2(2.4, 2.4)
 script = ExtResource("5_tl8jk")
 
-[node name="Sandal" type="Node2D" parent="."]
+[node name="Sandal" type="CharacterBody2D" parent="."]
 z_index = 5
-position = Vector2(150, -236)
+position = Vector2(449, 274)
 
 [node name="SandalSprite" type="Sprite2D" parent="Sandal"]
 z_index = 2
-position = Vector2(377, 623)
+position = Vector2(0.999985, 7.99999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("8_pqhor")
 

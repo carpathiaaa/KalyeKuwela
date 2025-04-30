@@ -32,7 +32,6 @@ func show_summary() -> void:
 
 func end_sequence() -> void:
 	print("starting end sequence")
-	await get_tree().create_timer(1).timeout
 	if !game_ended:
 		end_game()
 

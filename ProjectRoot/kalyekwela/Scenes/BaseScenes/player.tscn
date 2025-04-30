@@ -1,10 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://d0t1cy3pmeqp3"]
+[gd_scene load_steps=31 format=3 uid="uid://d0t1cy3pmeqp3"]
 
 [ext_resource type="Script" uid="uid://bavr6lbofkx4w" path="res://Scripts/Patintero/main_player.gd" id="1_33vdq"]
 [ext_resource type="Texture2D" uid="uid://cvqh1xhd5de3h" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Front.png" id="2_7ahd1"]
+[ext_resource type="AudioStream" uid="uid://dmwv4n772c45r" path="res://Assets/Audio/SFX/ROBLOX Oof Sound Effect.mp3" id="2_uhewj"]
 [ext_resource type="Texture2D" uid="uid://do8wj7h5iwikx" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Side.png" id="3_wj0af"]
 [ext_resource type="Texture2D" uid="uid://chvdhipqjndsg" path="res://Scenes/Patintero/Assets/Art/Characters/Character_Antonio_Idle-Back.png" id="4_30th0"]
 [ext_resource type="Script" uid="uid://dywksu7v0s606" path="res://Scripts/Patintero/player_sprite_2d.gd" id="5_x2sky"]
+[ext_resource type="AudioStream" uid="uid://k0d5swma1ps0" path="res://Assets/Audio/SFX/Duck Hunt Music _ 6 - Dog Laugh.mp3" id="6_8n40q"]
+[ext_resource type="FontFile" uid="uid://criaoifxls3nh" path="res://Assets/Art/Fonts/toybox_font/ToyBox.otf" id="6_n4hbo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vagi"]
 atlas = ExtResource("2_7ahd1")
@@ -154,6 +157,15 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4pldg"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_1nd2g"]
+font = ExtResource("6_n4hbo")
+font_size = 12
+font_color = Color(0.623529, 1, 0.741176, 1)
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.203922, 0.203922, 0.203922, 0.741176)
+
 [node name="player" type="CharacterBody2D"]
 texture_filter = 2
 collision_layer = 5
@@ -181,17 +193,28 @@ shape = SubResource("CircleShape2D_4pldg")
 [node name="player_name" type="Label" parent="."]
 z_index = 5
 texture_filter = 1
-offset_left = -11.0
-offset_top = -28.0
-offset_right = 69.0
-offset_bottom = -11.0
+offset_left = -19.0
+offset_top = -31.0
+offset_right = 61.0
+offset_bottom = -14.0
 theme_override_font_sizes/font_size = 8
 text = "Player"
+label_settings = SubResource("LabelSettings_1nd2g")
 metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 1770
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="laugh_effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8n40q")
+
+[node name="ouch_effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_uhewj")
+mix_target = 1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

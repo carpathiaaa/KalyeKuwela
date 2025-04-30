@@ -57,7 +57,6 @@ func _process(delta):
 	var progress = []
 	var loaded_status = ResourceLoader.load_threaded_get_status(next_scene, progress)
 	var new_progress = progress[0] * 100
-	print(loaded_status)
 	if new_progress > last_progress:
 		last_progress = new_progress
 	

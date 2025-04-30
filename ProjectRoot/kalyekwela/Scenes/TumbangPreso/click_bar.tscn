@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsk12w3h340b6"]
+[gd_scene load_steps=18 format=3 uid="uid://dsk12w3h340b6"]
 
 [ext_resource type="Script" uid="uid://b10t38x7cwg6" path="res://addons/TimedClickBar2/TimedClickBar.gd" id="2"]
 [ext_resource type="Script" uid="uid://8f6l8gtfy5wu" path="res://Scripts/TumbangPreso/pointer.gd" id="2_aly46"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://8hgnmufovfx2" path="res://addons/progress_bar/most rounded/progress bar most rounded progress red.png" id="3_vdhmb"]
 [ext_resource type="Texture2D" uid="uid://dmnrysb85fg45" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/UI/hand_open_02.png" id="4_1s610"]
 [ext_resource type="Texture2D" uid="uid://bv6p4ldwsdoj2" path="res://addons/progress_bar/least rounded/progress bar least rounded progress green.png" id="4_c6gpa"]
+[ext_resource type="AudioStream" uid="uid://x3o7x3mq3olm" path="res://Assets/Audio/SFX/Audio_Click.mp3" id="8_srnvl"]
+[ext_resource type="AudioStream" uid="uid://h1f2kc4xthum" path="res://Assets/Audio/SFX/Audio_Click_2.mp3" id="9_14if5"]
 
 [sub_resource type="Animation" id="Animation_vdhmb"]
 loop_mode = 1
@@ -80,7 +82,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hny3"]
-size = Vector2(2, 14)
+size = Vector2(8, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh8pc"]
 size = Vector2(109, 61)
@@ -143,7 +145,7 @@ centered = false
 z_index = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pointer/pointer_area" groups=["pointer"]]
-position = Vector2(24.98, 70)
+position = Vector2(24.98, 69.5)
 shape = SubResource("RectangleShape2D_6hny3")
 
 [node name="acceptance_region" type="Node2D" parent="."]
@@ -174,6 +176,12 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(202.5, 64)
 scale = Vector2(12.869, 11.968)
 texture = ExtResource("3_vdhmb")
+
+[node name="hit_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_srnvl")
+
+[node name="miss_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_14if5")
 
 [connection signal="button_down" from="bar_button" to="." method="_on_bar_button_button_down"]
 [connection signal="timeout" from="bar_button/button_timer" to="." method="_on_button_timer_timeout"]

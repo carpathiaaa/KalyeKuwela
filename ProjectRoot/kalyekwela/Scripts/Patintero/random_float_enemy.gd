@@ -18,13 +18,12 @@ var enemy_direction := 0
 
 func _physics_process(delta: float) -> void:
 	# Vertical movement logic
+	float_speed = randf_range(60.0, 200.0)
 	if position.y >= current_max:
-		float_speed = randf_range(100.0, 150.0)
 		enemy_direction = -1  # Move down
 		current_min = generate_min_y()
 		update_animation(velocity)
 	elif position.y <= current_min:
-		float_speed = randf_range(100.0, 150.0)
 		enemy_direction = 1   # Move up
 		current_max = generate_max_y()
 		update_animation(velocity)
@@ -35,10 +34,10 @@ func _physics_process(delta: float) -> void:
 	# Update animation with actual velocity
 
 func generate_min_y() -> int:
-	return random_number.randi_range(min_y, mid_y - 20)  # Low to high
+	return random_number.randi_range(min_y, mid_y + 20)  # Low to high
 
 func generate_max_y() -> int:
-	return random_number.randi_range(mid_y + 20, max_y)  # Already correct
+	return random_number.randi_range(mid_y - 20, max_y)  # Already correct
 
 # 🔄 Update animation based on movement direction
 func update_animation(direction: Vector2):

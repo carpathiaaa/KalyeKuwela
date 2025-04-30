@@ -1,17 +1,37 @@
 class_name VerticalFloatEnemy
-extends MovingEnemy
+extends BaseEnemy
 
 @onready var enemy_sprite = $Sprite2D
 var direction = Vector2.ZERO
 
+@export var target_player : Player = null
+var speed : float = 100.0 # Default enemy speed
+var tracker = TrackingModule.new(self)
+var random_number = RandomNumberGenerator.new()
+
+func update_velocity(new_velocity : Vector2, delta: float) -> void:
+	velocity.y = new_velocity.y  # float towards the target
+	move_and_slide()
+
 func _physics_process(delta: float) -> void:
-	update_velocity(simple_float(), delta)
+	velocity = vertical_float()
 	direction = velocity
 	
 	if direction.length() > 0:
 		direction = direction.normalized()
 		update_animation(direction)
 	move_and_slide()
+
+func vertical_float() -> Vector2:
+	return Vector2(self.position.x, tracker.find_target_position().y) * speed * 0.6
+
+func set_target(new_target : Player, new_speed : float) -> void:
+	if new_target is Player:
+		target_player = new_target
+		tracker.track_target(target_player)
+		speed = new_speed / 5
+	else:
+		push_error("Invalid target node")
 
 # 🔄 Update animation based on movement direction
 func update_animation(direction):

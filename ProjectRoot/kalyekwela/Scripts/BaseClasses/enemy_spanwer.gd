@@ -9,14 +9,15 @@ var default_z_index : int = 0
 var enemy_speed : int = 100
 var enemies = [] # Array of spawned enemies
 
-func set_enemy_spawner(new_target : Player, new_spawn_node : Node, new_z : int) -> void:
+func set_enemy_spawner(new_target : Player, new_spawn_node : Node, game_level : int, new_z : int) -> void:
 	if ! (new_spawn_node == null || new_target != Player):
 		push_error("invalid enemy spawner parameters")
 		print("bruh")
 	else: 
 		print("Updated enemy spawner")
-		spawn_node = new_spawn_node
 		target = new_target
+		spawn_node = new_spawn_node
+		enemy_speed = 100 + (5 * game_level)
 		default_z_index = new_z
 
 func spawn_enemy(enemy_class : PackedScene, spawn_position : Vector2, new_speed) -> void:

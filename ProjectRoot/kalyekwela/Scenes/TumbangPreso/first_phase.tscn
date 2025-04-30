@@ -288,13 +288,13 @@ autostart = true
 [node name="background" type="Node2D" parent="."]
 
 [node name="Volcano" type="Sprite2D" parent="background"]
-position = Vector2(203, -83.9)
+position = Vector2(142, -62)
 scale = Vector2(0.447164, 0.496296)
 texture = ExtResource("4_5om84")
 
 [node name="UiHousesBackground" type="Sprite2D" parent="background"]
-position = Vector2(133, 44)
-scale = Vector2(2.0148, 1.74136)
+position = Vector2(139.132, 44)
+scale = Vector2(2.03396, 1.74136)
 texture = ExtResource("5_fqyx3")
 
 [node name="player" type="Node2D" parent="."]

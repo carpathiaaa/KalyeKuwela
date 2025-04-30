@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg8cwvfbunwkj"]
+
+[ext_resource type="Texture2D" uid="uid://yvi68tog0tjy" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Hana Caraka - Topdown Tileset [sample]/Props/Stone and Rock.png" id="1_rad0e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8hn0"]
+size = Vector2(20, 15)
+
+[node name="rock" type="Node2D"]
+scale = Vector2(2.5, 2.5)
+
+[node name="StoneAndRock" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_rad0e")
+hframes = 6
+frame = 1
+
+[node name="Area2D" type="Area2D" parent="." groups=["rock"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["rock"]]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_t8hn0")

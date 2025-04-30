@@ -21,11 +21,12 @@ var random_generator = RandomNumberGenerator.new()
 var object_spawner : ObjectSpawner = null
 var enemy_spawner = null
 
+signal change_level(current_level)
 
 var min_x = -190
 var max_x = 140
-var min_y = -160
-var max_y = 190
+var min_y = -180
+var max_y = 150
 var object_z_index = 3
 
  
@@ -34,6 +35,7 @@ func _ready() -> void:
 	current_game = location_string
 	level = 0
 	info_overlay.hide_timer_label() 
+	info_overlay.hide_score_label()
 	set_object_spawner()
 	set_enemy_spawner()
 
@@ -47,6 +49,7 @@ func set_enemy_spawner() -> void:
 
 func next_level() -> void:
 	level += 1
+	emit_signal("change_level", level)
 	info_overlay.update_level_label(level)
 	object_spawner.clear_objects()
 	enemy_spawner.clear_enemies()
@@ -81,30 +84,33 @@ func spawn_fence(current_level : int) -> void:
 	var fence_type = 0
 	var random_y = 0
 	for i in range(-1, (2 * current_level) + 3):
-		random_y = random_generator.randi_range(0 , max_y)
+		random_y = random_generator.randi_range(min_y , max_y - 50)
 		if i % 2 == 1:
 			random_y *= -1 
-		fence_type = random_generator.randi_range(0, 0)
-		if fence_type == 0:
-			object_spawner.set_spawner(long_fence, map)
-			object_spawner.spawn_object(Vector2(235 * i, random_y), 4)
-
+		fence_type = random_generator.randi_range(0, 1)
+		match fence_type:
+			0:
+				object_spawner.set_spawner(long_fence, map)
+				object_spawner.spawn_object(Vector2(235 * i, random_y), 4)
+			1:
+				object_spawner.set_spawner(short_fence, map)
+				object_spawner.spawn_object(Vector2(235 * i, 96), 4)
+				object_spawner.spawn_object(Vector2(235 * i, -170), 4)
 func spawn_enemy(current_level : int) -> void:
 	print("Spawning enemies")
 	var random_y = 0
 	var enemy_type = 0
-	enemy_spawner.set_enemy_spawner(main_player, map, 3)
+	enemy_spawner.set_enemy_spawner(main_player, map, level, 3)
 	for i in (current_level * 2) + 2:
 		random_y = random_generator.randi_range(-max_y, max_y)
 		match randi_range(0, 2):
 			0:
 				enemy_spawner.spawn_enemy(vertical_float_enemy, Vector2(235 * i, random_y), 50 * level)
 			1:
-				object_spawner.set_spawner(loop_float_enemy, map)
-				object_spawner.spawn_object(Vector2(235 * i, random_y), 4)
+				enemy_spawner.spawn_enemy(loop_float_enemy, Vector2(235 * i, random_y), level)
 			2:
 				object_spawner.set_spawner(random_float_enemy, map)
-				object_spawner.spawn_object(Vector2(235 * i, random_y), 4)				
+				object_spawner.spawn_object(Vector2(235 * i, random_y), 4)
 				
 
 func player_death() -> void:
@@ -124,3 +130,7 @@ func add_level_coins(coins_gained : int) -> void:
 func _on_main_player_touched_enemy() -> void:
 	print("Player touched enemy")
 	player_death()
+
+
+func _on_change_level(extra_arg_0: int) -> void:
+	pass # Replace with function body.
