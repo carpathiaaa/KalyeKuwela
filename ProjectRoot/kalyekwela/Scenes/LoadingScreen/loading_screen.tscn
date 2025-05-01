@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://u6lfn4o21wax"]
+[gd_scene load_steps=12 format=3 uid="uid://u6lfn4o21wax"]
 
 [ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_fq5ng"]
 [ext_resource type="Script" uid="uid://cu2gnyusuxxq4" path="res://Scripts/LoadingScreen/loading_screen.gd" id="1_sagvb"]
+[ext_resource type="Texture2D" uid="uid://bw5rkeykj7exc" path="res://Assets/Art/UI/UI_Loading-Screen_TP.png" id="2_6j67e"]
 [ext_resource type="Texture2D" uid="uid://cm1gmryjcfhrw" path="res://Assets/Art/UI/UI_XP_Bar.png" id="2_51gkw"]
 [ext_resource type="FontFile" uid="uid://50bj2mdrqj4k" path="res://Assets/Art/Fonts/toybox_font/ToyBox Italic.ttf" id="2_pnuiw"]
 [ext_resource type="FontFile" uid="uid://dh43qo2jk6ijy" path="res://Assets/Art/Fonts/toybox_font/HammersmithOne-Regular.ttf" id="4_17tju"]
@@ -46,29 +47,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sagvb")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -142.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6j67e")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="OverlayMargin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_fq5ng")
-region_rect = Rect2(275, 178, 90, 27)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 6
 
-[node name="OverlayMargin" type="MarginContainer" parent="NinePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BackgroundOverlay" type="NinePatchRect" parent="NinePatchRect/OverlayMargin"]
+[node name="BackgroundOverlay" type="NinePatchRect" parent="OverlayMargin"]
 custom_minimum_size = Vector2(0, 190)
 layout_mode = 2
 size_flags_vertical = 8
@@ -79,7 +79,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="LabelMargin" type="MarginContainer" parent="NinePatchRect/OverlayMargin/BackgroundOverlay"]
+[node name="LabelMargin" type="MarginContainer" parent="OverlayMargin/BackgroundOverlay"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -90,13 +90,13 @@ offset_bottom = 40.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 18
 
-[node name="DidYouKnowLabel" type="Label" parent="NinePatchRect/OverlayMargin/BackgroundOverlay/LabelMargin"]
+[node name="DidYouKnowLabel" type="Label" parent="OverlayMargin/BackgroundOverlay/LabelMargin"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_pnuiw")
 text = "fun fact"
 label_settings = SubResource("LabelSettings_oclw5")
 
-[node name="FactMargin" type="MarginContainer" parent="NinePatchRect/OverlayMargin/BackgroundOverlay"]
+[node name="FactMargin" type="MarginContainer" parent="OverlayMargin/BackgroundOverlay"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -111,7 +111,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_bottom = 4
 
-[node name="FactLabel" type="Label" parent="NinePatchRect/OverlayMargin/BackgroundOverlay/FactMargin"]
+[node name="FactLabel" type="Label" parent="OverlayMargin/BackgroundOverlay/FactMargin"]
 texture_filter = 1
 custom_minimum_size = Vector2(1000, 50)
 layout_mode = 2
@@ -121,7 +121,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="ProgressBarMargin" type="MarginContainer" parent="NinePatchRect"]
+[node name="ProgressBarMargin" type="MarginContainer" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -133,7 +133,7 @@ theme_override_constants/margin_left = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="ProgressBar" type="ProgressBar" parent="NinePatchRect/ProgressBarMargin"]
+[node name="ProgressBar" type="ProgressBar" parent="ProgressBarMargin"]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 8
@@ -143,5 +143,3 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_riiq0")
 theme_override_styles/background = SubResource("StyleBoxTexture_gdswo")
 theme_override_styles/fill = SubResource("StyleBoxTexture_jxknb")
-
-[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]

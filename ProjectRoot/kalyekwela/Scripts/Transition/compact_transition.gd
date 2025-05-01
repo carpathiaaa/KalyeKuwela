@@ -21,7 +21,7 @@ func load_scene(target_scene: String):
 	transition_in_sound.play() 
 	$AnimationPlayer.play_backwards('RESET')
 
-func transition_to_loading_screen(loading_screen_path: String, trivia_text: String, audio: AudioStream, next_scene: String):
+func transition_to_loading_screen(loading_screen_path: String, trivia_text: String, audio: AudioStream, next_scene: String, background: Texture):
 	# Play closing animation with sound
 	transition_out_sound.play()
 	$AnimationPlayer.play('RESET')
@@ -31,7 +31,7 @@ func transition_to_loading_screen(loading_screen_path: String, trivia_text: Stri
 	get_tree().set_meta("loading_trivia", trivia_text)
 	get_tree().set_meta("loading_audio", audio)
 	get_tree().set_meta("loading_next_scene", next_scene)
-	
+	get_tree().set_meta("loading_background", background)
 	# Change to the loading screen scene
 	get_tree().change_scene_to_file(loading_screen_path)
 	

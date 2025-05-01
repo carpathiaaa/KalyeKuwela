@@ -19,6 +19,11 @@ const PATINTERO_AUDIO = preload("res://Assets/Audio/Music/Audio_Patintero_Loadin
 const TUMBANG_PRESO_AUDIO = preload("res://Assets/Audio/Music/Audio_TumbangPreso_Loading.mp3")
 const BENTE_UNO_AUDIO = preload("res://Assets/Audio/Music/Audio_BenteUno_Loading.mp3")
 
+const PATINTERO_BG = preload("res://Assets/Art/UI/UI_Sky_Background.png")
+const TUMBANG_PRESO_BG = preload('res://Assets/Art/UI/UI_Loading-Screen_TP.png')
+const BENTE_UNO_BG = preload("res://Assets/Art/UI/UI_Sky_Background.png")
+
+
 
 @export var settings_popup: MarginContainer
 @export var inventory_popup: MarginContainer
@@ -110,7 +115,8 @@ func start_patintero():
 		"res://Scenes/LoadingScreen/loading_screen.tscn",
 		random_fact,
 		PATINTERO_AUDIO,
-		"res://Scenes/Patintero/main.tscn"
+		"res://Scenes/Patintero/main.tscn",
+		PATINTERO_BG
 	)
 	
 
@@ -125,7 +131,8 @@ func start_tumbang_preso():
 		"res://Scenes/LoadingScreen/loading_screen.tscn",
 		random_fact,
 		TUMBANG_PRESO_AUDIO,
-		"res://Scenes/TumbangPreso/main.tscn"
+		"res://Scenes/TumbangPreso/main.tscn",
+		TUMBANG_PRESO_BG
 	)
 
 func start_bente_uno():
@@ -141,7 +148,8 @@ func start_bente_uno():
 		"res://Scenes/LoadingScreen/loading_screen.tscn",
 		random_fact,
 		BENTE_UNO_AUDIO,
-		"res://Scenes/BenteUno/main.tscn"
+		"res://Scenes/BenteUno/main.tscn",
+		BENTE_UNO_BG
 	)
 
 
