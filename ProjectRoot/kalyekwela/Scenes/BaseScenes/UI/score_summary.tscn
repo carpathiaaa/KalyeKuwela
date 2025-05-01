@@ -191,8 +191,9 @@ font_size = 200
 font_color = Color(1, 1, 0.329412, 1)
 outline_size = 25
 outline_color = Color(0.753147, 0, 0.184367, 1)
-shadow_size = 29
-shadow_color = Color(0, 0, 0, 0.772549)
+shadow_size = 35
+shadow_color = Color(0, 0, 0, 0.87451)
+shadow_offset = Vector2(2, 2)
 
 [node name="ScoreSummary" type="Node2D"]
 script = SubResource("GDScript_j7p4j")
