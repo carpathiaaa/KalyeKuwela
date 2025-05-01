@@ -24,6 +24,7 @@ func is_player():
 	return true
 	
 func _ready():
+	velocity = Vector2.ZERO
 	status_label.position.y = -20
 	update_status()
 	# Set initial idle animation
@@ -47,6 +48,7 @@ func _physics_process(delta):
 	else:
 		# No movement, play idle animation based on last direction
 		play_idle_animation()
+		velocity = Vector2.ZERO
 
 	velocity = direction * speed
 	move_and_slide()

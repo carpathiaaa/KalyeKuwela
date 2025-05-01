@@ -12,7 +12,7 @@ var location_string : String = "res://Scenes/TumbangPreso/main.tscn"
 var first_phase_instance : Node = null
 var second_phase_instance : Node = null
 
-var threshold_score : int = 2500
+var threshold_score : int = 5000
 var current_score : int  = 0
 
 var first_phase_time : int = 7
@@ -35,6 +35,8 @@ func start_events() -> void:
 	await first_phase_ended
 	if (current_score >= threshold_score):
 		player_wins()
+	elif(current_score <= -500):
+		player_loses()
 	else:
 		info_overlay.set_timer(second_phase_time)
 		start_second_phase()
