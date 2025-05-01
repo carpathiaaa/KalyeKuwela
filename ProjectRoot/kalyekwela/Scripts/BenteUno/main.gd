@@ -205,7 +205,8 @@ func game_over(message):
 	# Wait a few seconds before quitting
 	await get_tree().create_timer(3).timeout
 	GlobalData.previous_game = current_game
-	get_tree().change_scene_to_file("res://Scenes/BaseScenes/UI/score_summary.tscn")
+	CompactTransition.load_scene("res://Scenes/BaseScenes/UI/score_summary.tscn")
+	#get_tree().change_scene_to_file("res://Scenes/BaseScenes/UI/score_summary.tscn")
 
 func _on_resume_button_pressed() -> void:
 	print("Resuming game")

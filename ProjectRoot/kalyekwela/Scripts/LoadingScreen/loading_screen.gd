@@ -1,7 +1,9 @@
 extends Control
 var next_scene: String = "res://Scenes/BenteUno/main.tscn"
-@onready var trivia_label = $NinePatchRect/OverlayMargin/BackgroundOverlay/FactMargin/FactLabel
-@onready var progress_bar = $NinePatchRect/ProgressBarMargin/ProgressBar
+@onready var trivia_label = $OverlayMargin/BackgroundOverlay/FactMargin/FactLabel
+@onready var progress_bar = $ProgressBarMargin/ProgressBar
+@onready var background_texture_rect = $TextureRect
+
 var last_progress = 0.0
 var artificial_progress: float = 0.0
 var progress_speed: float = 10.0  # Lower = slower
@@ -41,6 +43,14 @@ func _ready():
 		next_scene = get_tree().get_meta("loading_next_scene")
 		get_tree().remove_meta("loading_next_scene")
 		print("Found next scene from metadata: ", next_scene)
+	
+	if get_tree().has_meta("loading_background"):
+		var bg_texture = get_tree().get_meta("loading_background")
+		get_tree().remove_meta("loading_background")
+		if bg_texture and background_texture_rect:
+			background_texture_rect.texture = bg_texture
+			print("Background texture set from metadata")
+
 	
 	# Start loading the scene
 	ResourceLoader.load_threaded_request(next_scene, "")

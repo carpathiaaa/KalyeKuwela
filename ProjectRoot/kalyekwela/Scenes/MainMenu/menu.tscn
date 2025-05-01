@@ -19,9 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://cn2lpmiiv104s" path="res://Assets/Art/UI/UI_TumbangPreso_Button.png" id="8_b25sv"]
 [ext_resource type="Texture2D" uid="uid://cwj67n3asinea" path="res://Assets/Art/CharacterIcons/Character_Juan_Selection.png" id="8_gc1cd"]
 [ext_resource type="Texture2D" uid="uid://crluq0sd81j0s" path="res://Assets/Art/CharacterIcons/Character_Maria_Selection.png" id="9_1467t"]
+[ext_resource type="Texture2D" uid="uid://cmg2kpux01rus" path="res://Assets/Art/CharacterIcons/Character_Reyna_Selection.png" id="10_gc1cd"]
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="10_mu1tv"]
-[ext_resource type="Texture2D" uid="uid://bjyojuhy3pcfc" path="res://Assets/Art/CharacterIcons/Character_Reyna_Icon.png" id="10_vdku4"]
-[ext_resource type="Texture2D" uid="uid://c4j1y8yj1g8i6" path="res://Assets/Art/CharacterIcons/Character_Tala_Selection.png" id="11_1467t"]
+[ext_resource type="Texture2D" uid="uid://c4m8kykfituth" path="res://Assets/Art/CharacterIcons/Character_Tala_Selection2.png" id="11_1467t"]
 [ext_resource type="Script" uid="uid://bo0065m700j0r" path="res://Scripts/MainMenu/settings_pop_up.gd" id="14_d1xcb"]
 [ext_resource type="Texture2D" uid="uid://nf1rbka8apmk" path="res://Assets/Art/UI/UI_AudioOff_Icon.png" id="17_3haoq"]
 [ext_resource type="Texture2D" uid="uid://b3p5twqw2j3w1" path="res://Assets/Art/UI/UI_AudioON_Icon.png" id="18_8bx3m"]
@@ -71,11 +71,11 @@ region = Rect2(0, 0, 300, 400)
 atlas = ExtResource("9_1467t")
 region = Rect2(0, 0, 300, 400)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sn2oj"]
-atlas = ExtResource("10_vdku4")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_makqd"]
+atlas = ExtResource("10_gc1cd")
+region = Rect2(0, 0, 300, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g81c"]
 atlas = ExtResource("11_1467t")
 region = Rect2(0, 0, 300, 400)
 
@@ -115,7 +115,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sn2oj")
+"texture": SubResource("AtlasTexture_makqd")
 }],
 "loop": true,
 "name": &"Reyna",
@@ -123,7 +123,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_makqd")
+"texture": SubResource("AtlasTexture_3g81c")
 }],
 "loop": true,
 "name": &"Tala",
@@ -481,7 +481,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_4iwnx")
 position = Vector2(412, 313)
 scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_ie1de")
-animation = &"Antonio"
+animation = &"Carlo"
 
 [node name="XPBar" type="ProgressBar" parent="."]
 texture_filter = 1
@@ -1817,6 +1817,16 @@ volume_db = 3.171
 [node name="PurchaseSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("36_3bae7")
 volume_db = 3.171
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [connection signal="pressed" from="CharacterSelect/LeftArrow" to="CharacterSelect" method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="CharacterSelect/RightArrow" to="CharacterSelect" method="_on_right_arrow_pressed"]

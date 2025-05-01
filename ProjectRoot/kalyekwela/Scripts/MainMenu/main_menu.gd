@@ -8,6 +8,7 @@ extends Control
 @onready var xp_bar = $XPBar
 @onready var modal_overlay = $ModalOverlay
 @onready var brightness_overlay = $ColorRect
+@onready var secure_overlay = $ColorRect2
 
 @onready var click_sound = $ClickSound
 @onready var click_sound_2 = $ClickSound2
@@ -17,6 +18,11 @@ const LOADING_SCREEN = preload("res://Scenes/LoadingScreen/loading_screen.tscn")
 const PATINTERO_AUDIO = preload("res://Assets/Audio/Music/Audio_Patintero_Loading.mp3")
 const TUMBANG_PRESO_AUDIO = preload("res://Assets/Audio/Music/Audio_TumbangPreso_Loading.mp3")
 const BENTE_UNO_AUDIO = preload("res://Assets/Audio/Music/Audio_BenteUno_Loading.mp3")
+
+const PATINTERO_BG = preload("res://Assets/Art/UI/UI_Sky_Background.png")
+const TUMBANG_PRESO_BG = preload('res://Assets/Art/UI/UI_Loading-Screen_TP.png')
+const BENTE_UNO_BG = preload("res://Assets/Art/UI/UI_Sky_Background.png")
+
 
 
 @export var settings_popup: MarginContainer
@@ -103,13 +109,14 @@ func start_patintero():
 	fade_out_music($AudioStreamPlayer2D)
 	
 	var random_fact = get_random_fact(patintero_facts)
-	
+	secure_overlay.visible = true
 	# Use the new method
 	CompactTransition.transition_to_loading_screen(
 		"res://Scenes/LoadingScreen/loading_screen.tscn",
 		random_fact,
 		PATINTERO_AUDIO,
-		"res://Scenes/Patintero/main.tscn"
+		"res://Scenes/Patintero/main.tscn",
+		PATINTERO_BG
 	)
 	
 
@@ -118,13 +125,14 @@ func start_tumbang_preso():
 	fade_out_music($AudioStreamPlayer2D)
 	# Get random fact
 	var random_fact = get_random_fact(tumbang_preso_facts)
-	
+	secure_overlay.visible = true
 	# Use the new method
 	CompactTransition.transition_to_loading_screen(
 		"res://Scenes/LoadingScreen/loading_screen.tscn",
 		random_fact,
 		TUMBANG_PRESO_AUDIO,
-		"res://Scenes/TumbangPreso/main.tscn"
+		"res://Scenes/TumbangPreso/main.tscn",
+		TUMBANG_PRESO_BG
 	)
 
 func start_bente_uno():
@@ -134,12 +142,14 @@ func start_bente_uno():
 	# Get random fact
 	var random_fact = get_random_fact(bente_uno_facts)
 	
+	secure_overlay.visible = true
 	# Use the new method
 	CompactTransition.transition_to_loading_screen(
 		"res://Scenes/LoadingScreen/loading_screen.tscn",
 		random_fact,
 		BENTE_UNO_AUDIO,
-		"res://Scenes/BenteUno/main.tscn"
+		"res://Scenes/BenteUno/main.tscn",
+		BENTE_UNO_BG
 	)
 
 

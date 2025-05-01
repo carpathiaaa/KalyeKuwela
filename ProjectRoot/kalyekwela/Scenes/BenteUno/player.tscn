@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq5xt52v2s0h1"]
+[gd_scene load_steps=13 format=3 uid="uid://cq5xt52v2s0h1"]
 
 [ext_resource type="Script" uid="uid://b8a7dsw2ecmfc" path="res://Scripts/BenteUno/player.gd" id="1_h7xuc"]
 [ext_resource type="SpriteFrames" uid="uid://bxod2wchcr2g1" path="res://Assets/Art/Characters/Frames/Antionio_Frames.tres" id="2_2gme5"]
 [ext_resource type="AudioStream" uid="uid://bfr8jiffbnf4p" path="res://Assets/Audio/SFX/Audio_BenteUno_Chase.mp3" id="3_jye4o"]
 [ext_resource type="AudioStream" uid="uid://cjq3fmqtne8r2" path="res://Assets/Audio/SFX/Audio_BenteUno_Tagged.mp3" id="4_uoj3y"]
 [ext_resource type="AudioStream" uid="uid://b4hwoklga5p23" path="res://Assets/Audio/Music/Audio_BenteUno_Idle.mp3" id="5_m24r8"]
+[ext_resource type="FontFile" uid="uid://criaoifxls3nh" path="res://Assets/Art/Fonts/toybox_font/ToyBox.otf" id="6_rih2y"]
 
 [sub_resource type="GDScript" id="GDScript_vdoqg"]
 script/source = "extends AnimatedSprite2D
@@ -42,6 +43,15 @@ height = 36.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hknrg"]
 radius = 87.0057
+
+[sub_resource type="LabelSettings" id="LabelSettings_i434d"]
+font = ExtResource("6_rih2y")
+font_size = 11
+font_color = Color(1, 1, 0.741176, 1)
+outline_size = 7
+outline_color = Color(0.194349, 0.194349, 0.194349, 1)
+shadow_size = 7
+shadow_color = Color(0.140447, 0.140447, 0.140447, 0)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -82,7 +92,7 @@ debug_color = Color(0.925927, 4.09111e-05, 0.67437, 0.42)
 
 [node name="ChaseSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_jye4o")
-volume_db = 14.626
+volume_db = 24.0
 
 [node name="TagSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_uoj3y")
@@ -100,6 +110,18 @@ shape = SubResource("CircleShape2D_hknrg")
 stream = ExtResource("5_m24r8")
 volume_db = -2.798
 autoplay = true
+
+[node name="player_name" type="Label" parent="."]
+z_index = 5
+texture_filter = 1
+offset_left = -19.0
+offset_top = -37.0
+offset_right = 61.0
+offset_bottom = -18.0
+theme_override_font_sizes/font_size = 8
+text = "Player"
+label_settings = SubResource("LabelSettings_i434d")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="PlayerTaggedArea" to="." method="_on_player_tagged_area_body_entered"]
 [connection signal="body_entered" from="TagArea" to="." method="_on_tag_area_body_entered"]
