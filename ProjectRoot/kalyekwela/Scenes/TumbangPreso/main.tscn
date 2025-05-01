@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ta2t5abrbfae"]
+[gd_scene load_steps=6 format=3 uid="uid://ta2t5abrbfae"]
 
 [ext_resource type="Script" uid="uid://ddesi7jsl6qfb" path="res://Scripts/TumbangPreso/main.gd" id="1_rt06c"]
 [ext_resource type="Script" uid="uid://mqa1gbehoo48" path="res://Scripts/TumbangPreso/background.gd" id="2_847p7"]
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="3_nnk0y"]
 [ext_resource type="PackedScene" uid="uid://dwt51bujv2mhx" path="res://Scenes/BaseScenes/UI/user_interface.tscn" id="4_847p7"]
+
+[sub_resource type="Environment" id="Environment_847p7"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_rt06c")
@@ -28,3 +30,6 @@ offset = Vector2(-3.075, 0)
 [node name="main_timer" type="Timer" parent="."]
 
 [node name="user_interface" parent="." instance=ExtResource("4_847p7")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_847p7")

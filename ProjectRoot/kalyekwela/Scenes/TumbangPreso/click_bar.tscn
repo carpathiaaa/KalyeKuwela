@@ -121,7 +121,9 @@ sprite_frames = SubResource("SpriteFrames_fh8pc")
 animation = &"brown_animation"
 
 [node name="button_timer" type="Timer" parent="bar_button"]
-wait_time = 0.16
+wait_time = 0.1
+one_shot = true
+ignore_time_scale = true
 
 [node name="button_icon" type="Sprite2D" parent="bar_button"]
 self_modulate = Color(0.884108, 0.75761, 0.588944, 1)

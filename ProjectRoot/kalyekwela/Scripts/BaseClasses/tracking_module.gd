@@ -15,6 +15,7 @@ func track_target(new_target : Player) -> void:
 
 func find_target_position() -> Vector2:
 	if not target_player or not is_instance_valid(target_player):
+		print("Invalid target")
 		push_error("No valid target detected")
 		return tracking_body.global_position # Returns current position if no valid target exists
 	# Returns target position relative to current position

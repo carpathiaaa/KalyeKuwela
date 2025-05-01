@@ -27,4 +27,4 @@ func horizontal_float() -> Vector2:
 	return Vector2(tracker.find_target_position().x, self.position.y) * (base_speed + (0.5 * level_speed))
 
 func vertical_float() -> Vector2:
-	return Vector2(self.position.x, tracker.find_target_position().y) * (base_speed + (0.5 * level_speed))
+	return Vector2(self.position.x, tracker.find_target_position().y) * (base_speed + (1 + 0.5 * level_speed))

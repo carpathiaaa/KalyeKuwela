@@ -64,13 +64,6 @@ func add_score_line(line_position) -> void:
 	add_child(line_instance)
 
 
-func add_vertical_bot(enemy_position) -> void:
-	var enemy_instance = vertical_bot.instantiate()
-	enemy_instance.position = enemy_position
-	add_child(enemy_instance)
-	enemy_instances.append(enemy_instance)
-
-
 func add_coin(min_position, max_position) -> void:
 	var coin_instance = coin.instantiate()
 	coin_instance.position.y = random_number.randf_range(-190, 50)

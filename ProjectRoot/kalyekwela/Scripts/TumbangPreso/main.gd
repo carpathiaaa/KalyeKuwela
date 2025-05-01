@@ -12,12 +12,13 @@ var location_string : String = "res://Scenes/TumbangPreso/main.tscn"
 var first_phase_instance : Node = null
 var second_phase_instance : Node = null
 
-var threshold_score : int = 2500
+var threshold_score : int = 30
 var current_score : int  = 0
 
 var first_phase_time : int = 7
 var second_phase_time : int = 15
 const countdown_time : int = 3
+
 
 signal first_phase_ended 
 signal second_phase_ended
@@ -60,7 +61,7 @@ func player_loses() -> void:
 
 func next_level() -> void:
 	print("Game not finished")
-	threshold_score += 100
+	threshold_score += 10
 	level += 1
 	start_events() # restart event sequence
 
@@ -102,7 +103,7 @@ func add_rewards(new_coins : int, new_exp : int) -> void:
 	add_coins(new_coins)
 	info_overlay.update_coins_label(coins)
 	add_exp(new_exp)
-	update_score(exp * 10)
+	update_score(new_exp)
 
 func update_score(new_score: int) -> void:
 	current_score += new_score

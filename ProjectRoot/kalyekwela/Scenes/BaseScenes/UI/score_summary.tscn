@@ -328,7 +328,7 @@ grow_vertical = 2
 
 [node name="NiceTry" type="Label" parent="CenterContainer"]
 layout_mode = 2
-text = "Nice  Try!"
+text = "Tulog  na!"
 label_settings = SubResource("LabelSettings_j7p4j")
 
 [connection signal="pressed" from="HBoxContainer/MarginContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]

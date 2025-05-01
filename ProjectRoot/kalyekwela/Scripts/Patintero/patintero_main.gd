@@ -19,7 +19,7 @@ var location_string = "res://Scenes/Patintero/main.tscn"
 
 var random_generator = RandomNumberGenerator.new()
 var object_spawner : ObjectSpawner = null
-var enemy_spawner = null
+var enemy_spawner : EnemySpawner = null
 
 signal change_level(current_level)
 
@@ -65,7 +65,7 @@ func spawn_coins(current_level : int) -> void:
 	print("spawning coins")
 	object_spawner.set_spawner(coin, map)
 	for i in current_level:
-		random_x = random_generator.randi_range(min_x, max_x) * i
+		random_x = random_generator.randi_range(min_x - 20, max_x) * i
 		random_y = random_generator.randi_range(min_y, max_y) 
 		object_spawner.spawn_object(Vector2(random_x, random_y), object_z_index)
 
@@ -76,7 +76,7 @@ func spawn_rocks(current_level : int) -> void:
 	object_spawner.set_spawner(rock, map)
 	for i in current_level * 4:
 		random_x = random_generator.randi_range(min_x, max_x * i) 
-		random_y = random_generator.randi_range(min_y, max_y) 
+		random_y = random_generator.randi_range(min_y - 10, max_y - 40) 
 		object_spawner.spawn_object(Vector2(random_x, random_y), object_z_index)
 
 func spawn_fence(current_level : int) -> void:
@@ -100,8 +100,8 @@ func spawn_enemy(current_level : int) -> void:
 	print("Spawning enemies")
 	var random_y = 0
 	var enemy_type = 0
-	enemy_spawner.set_enemy_spawner(main_player, map, level, 3)
-	for i in range(-1, (2 * current_level) + 2):
+	enemy_spawner.set_enemy_spawner(main_player, map, level, 5)
+	for i in range(0, (2 * current_level) + 2):
 		random_y = random_generator.randi_range(-max_y, max_y)
 		match random_generator.randi_range(0, 3):
 			0:
@@ -109,7 +109,7 @@ func spawn_enemy(current_level : int) -> void:
 			1:
 				enemy_spawner.spawn_enemy(vertical_float_enemy, Vector2(235 * i, 0), level)
 			2:
-				enemy_spawner.spawn_enemy(loop_float_enemy, Vector2(235 * i, 0), level)
+				enemy_spawner.spawn_enemy(loop_float_enemy, Vector2(235* i, 0), level)
 			3:
 				object_spawner.set_spawner(random_float_enemy, map)
 				object_spawner.spawn_object(Vector2(235 * i, 0), 4)
