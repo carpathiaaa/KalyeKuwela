@@ -19,9 +19,9 @@ const PATINTERO_AUDIO = preload("res://Assets/Audio/Music/Audio_Patintero_Loadin
 const TUMBANG_PRESO_AUDIO = preload("res://Assets/Audio/Music/Audio_TumbangPreso_Loading.mp3")
 const BENTE_UNO_AUDIO = preload("res://Assets/Audio/Music/Audio_BenteUno_Loading.mp3")
 
-const PATINTERO_BG = preload("res://Assets/Art/UI/UI_Sky_Background.png")
+const PATINTERO_BG = preload("res://Assets/Art/UI/UI_Loading-Screen_Patintero.png")
 const TUMBANG_PRESO_BG = preload('res://Assets/Art/UI/UI_Loading-Screen_TP.png')
-const BENTE_UNO_BG = preload("res://Assets/Art/UI/UI_Sky_Background.png")
+const BENTE_UNO_BG = preload("res://Assets/Art/UI/UI_Loading-Screen_21_NEW.png")
 
 
 
