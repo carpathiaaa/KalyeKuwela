@@ -52,10 +52,10 @@ label_settings = SubResource("LabelSettings_va8pc")
 
 [node name="Virtual Joystick" parent="user_interface" instance=ExtResource("3_bogkp")]
 z_index = 3
-offset_left = -3.0
-offset_top = -293.0
-offset_right = 297.0
-offset_bottom = 7.0
+offset_left = -18.0
+offset_top = -364.0
+offset_right = 282.0
+offset_bottom = -64.0
 
 [node name="countdown_timer" type="Timer" parent="."]
 
@@ -96,7 +96,7 @@ script = ExtResource("5_tl8jk")
 
 [node name="Sandal" type="CharacterBody2D" parent="."]
 z_index = 5
-position = Vector2(449, 274)
+position = Vector2(453, 279)
 
 [node name="SandalSprite" type="Sprite2D" parent="Sandal"]
 z_index = 2

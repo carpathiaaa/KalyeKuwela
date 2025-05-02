@@ -76,7 +76,7 @@ func spawn_rocks(current_level : int) -> void:
 	print("spawning rocks")
 	object_spawner.set_spawner(rock, map)
 	for i in current_level * 2:
-		random_x = random_number.randi_range(100, 900) 
+		random_x = random_number.randi_range(150, 750) 
 		random_y = random_number.randi_range(500, 900) 
 		object_spawner.spawn_object(Vector2(random_x, random_y), 1)
 
