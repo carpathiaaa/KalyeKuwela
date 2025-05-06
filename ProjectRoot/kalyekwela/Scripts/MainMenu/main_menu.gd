@@ -230,6 +230,10 @@ func _on_exit_button_pressed():
 	if current_open_popup:
 		close_popup(current_open_popup)	
 
+func _on_about_section_button_pressed() -> void:
+	play_click_sound()
+	CompactTransition.load_scene('res://Scenes/AboutSection/about_section.tscn')
+
 func _on_exit_game_button_pressed() -> void:
 	play_click_sound_2()
 	await click_sound_2.finished

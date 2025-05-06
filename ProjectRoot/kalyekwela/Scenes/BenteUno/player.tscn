@@ -26,7 +26,7 @@ func _ready() -> void:
 func update_character(selected_index: int):
 	if selected_index in players:
 		self.sprite_frames = players[selected_index]
-		self.play(\"IdleFront\")  # Ensure animation starts (adjust to your animation names)
+		self.play(\"IdleFront\")  # Ensure animation starts
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eswg5"]
@@ -61,7 +61,7 @@ script = ExtResource("1_h7xuc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("2_2gme5")
-animation = &"WalkBack"
+animation = &"IdleSide"
 offset = Vector2(0, -7)
 script = SubResource("GDScript_vdoqg")
 

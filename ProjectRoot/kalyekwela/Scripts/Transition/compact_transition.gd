@@ -11,10 +11,11 @@ func _ready():
 
 func load_scene(target_scene: String):
 	# Play closing animation and sound
+	secure_overlay.visible = true
 	transition_out_sound.play()
 	$AnimationPlayer.play('RESET')
 	await $AnimationPlayer.animation_finished
-	
+	secure_overlay.visible = false
 	# Change scene
 	get_tree().change_scene_to_file(target_scene)
 	

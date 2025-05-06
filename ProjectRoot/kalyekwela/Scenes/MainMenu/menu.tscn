@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://vskqvsc6imec"]
+[gd_scene load_steps=91 format=3 uid="uid://vskqvsc6imec"]
 
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="2_nbuy7"]
 [ext_resource type="Texture2D" uid="uid://cj24rdfxxjaxj" path="res://Assets/Art/UI/UI_ChooseCharacter_Arrow.png" id="3_ttohg"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://4ugxvi16ysu3" path="res://Assets/Art/UI/UI_BrightnessOn_Icon.png" id="20_48gs6"]
 [ext_resource type="Texture2D" uid="uid://d2jb1efw03pjn" path="res://Assets/Art/UI/UI_HowToPlay_Button.png" id="21_3bae7"]
 [ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="21_h2p02"]
+[ext_resource type="Texture2D" uid="uid://g3cgs8m1tit6" path="res://Assets/Art/UI/UI_AboutUs_Button.png" id="22_1467t"]
 [ext_resource type="Script" uid="uid://c6yy11g3icwbr" path="res://Scripts/MainMenu/inventory_pop_up.gd" id="22_ldc7a"]
 [ext_resource type="Script" uid="uid://puapd4gdn5xs" path="res://Scripts/MainMenu/shop_popup.gd" id="22_stcao"]
 [ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="24_3mfu3"]
@@ -655,6 +656,38 @@ layout_mode = 2
 focus_mode = 0
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3bae7")
 icon = ExtResource("21_3bae7")
+flat = true
+
+[node name="AboutSectionContainer" type="MarginContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 82.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+mouse_filter = 2
+
+[node name="RightSideBarContainer" type="MarginContainer" parent="AboutSectionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 870
+theme_override_constants/margin_top = 10
+
+[node name="RightSideBar" type="VBoxContainer" parent="AboutSectionContainer/RightSideBarContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="AboutSectionButton" type="Button" parent="AboutSectionContainer/RightSideBarContainer/RightSideBar"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qetup")
+icon = ExtResource("22_1467t")
 flat = true
 
 [node name="SettingsPopUp" type="MarginContainer" parent="."]
@@ -1834,6 +1867,7 @@ color = Color(1, 1, 1, 0)
 [connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleInventoryButton" to="." method="_on_toggle_inventory_button_pressed"]
 [connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleShopButton" to="." method="_on_toggle_shop_button_pressed"]
 [connection signal="pressed" from="PopupMenu/LeftSideBarContainer/LeftSideBar/ToggleHowToPlayButton" to="." method="_on_toggle_how_to_play_button_pressed"]
+[connection signal="pressed" from="AboutSectionContainer/RightSideBarContainer/RightSideBar/AboutSectionButton" to="." method="_on_about_section_button_pressed"]
 [connection signal="pressed" from="SettingsPopUp/ExitButtonContainer/MarginContainer/ToggleSettingsButton" to="." method="_on_toggle_settings_button_pressed"]
 [connection signal="value_changed" from="SettingsPopUp/SettingsFunctionContainer/SettingsContents/AudioSlider" to="SettingsPopUp" method="_on_audio_slider_value_changed"]
 [connection signal="value_changed" from="SettingsPopUp/SettingsFunctionContainer/SettingsContents/BrightnessSlider" to="SettingsPopUp" method="_on_brightness_slider_value_changed"]

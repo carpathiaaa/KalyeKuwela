@@ -1,0 +1,237 @@
+[gd_scene load_steps=22 format=3 uid="uid://c82v024stngc8"]
+
+[ext_resource type="Texture2D" uid="uid://dks81u6af6lc3" path="res://Assets/Art/UI/UI_AboutBG_3.png" id="1_02i5l"]
+[ext_resource type="Script" uid="uid://jilkcvdddx2r" path="res://Scripts/AboutSection/about_section.gd" id="1_pjx3x"]
+[ext_resource type="SpriteFrames" uid="uid://bxod2wchcr2g1" path="res://Assets/Art/Characters/Frames/Antionio_Frames.tres" id="2_7xobo"]
+[ext_resource type="Script" uid="uid://h4kwbcvax82x" path="res://Scripts/AboutSection/scroll_container.gd" id="2_d7e3t"]
+[ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="2_k1lj4"]
+[ext_resource type="Texture2D" uid="uid://bv6l2282fk7pe" path="res://Assets/Art/UI/UI_KalyeKuwelaLogo (2).png" id="2_k47ta"]
+[ext_resource type="SpriteFrames" uid="uid://dp5ol0c0hg8og" path="res://Assets/Art/Characters/Frames/Juan_Frames.tres" id="3_7doq0"]
+[ext_resource type="Script" uid="uid://dw8fisgnklef5" path="res://Scripts/AboutSection/animated_sprite_2d.gd" id="3_uy7o0"]
+[ext_resource type="SpriteFrames" uid="uid://cr6onwakxrxau" path="res://Assets/Art/Characters/Frames/Maria_Frames.tres" id="4_q3340"]
+[ext_resource type="Script" uid="uid://deqd2psix1e03" path="res://Scripts/AboutSection/animated_sprite_2d_2.gd" id="5_02i5l"]
+[ext_resource type="SpriteFrames" uid="uid://be4gj5kt2lcs7" path="res://Assets/Art/Characters/Frames/Reyna_Frames.tres" id="5_2mn83"]
+[ext_resource type="Script" uid="uid://c2wwvs84hv8te" path="res://Scripts/AboutSection/animated_sprite_2d_3.gd" id="7_k1lj4"]
+[ext_resource type="Script" uid="uid://cqm77sd334uqw" path="res://Scripts/AboutSection/animated_sprite_2d_4.gd" id="9_d7e3t"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="13_dd006"]
+[ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="14_pjx3x"]
+[ext_resource type="AudioStream" uid="uid://x3o7x3mq3olm" path="res://Assets/Audio/SFX/Audio_Click.mp3" id="16_smgnw"]
+[ext_resource type="AudioStream" uid="uid://h1f2kc4xthum" path="res://Assets/Audio/SFX/Audio_Click_2.mp3" id="17_0xq2t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_02i5l"]
+font = ExtResource("2_k1lj4")
+font_size = 50
+font_color = Color(0.992157, 0.960784, 0.901961, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.721569)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k1lj4"]
+font = ExtResource("2_k1lj4")
+font_size = 40
+font_color = Color(0.992157, 0.960784, 0.901961, 1)
+outline_color = Color(0.992157, 0.960784, 0.901961, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.721569)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jg232"]
+texture = ExtResource("14_pjx3x")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(59, 13, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_smgnw"]
+texture = ExtResource("14_pjx3x")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(11, 11, 26, 28)
+
+[node name="AboutSection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pjx3x")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 648.0
+texture = ExtResource("1_02i5l")
+expand_mode = 2
+
+[node name="Logo" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 25.0
+offset_top = -20.0
+offset_right = 1525.0
+offset_bottom = 1480.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_k47ta")
+stretch_mode = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(854, 447)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("5_2mn83")
+animation = &"WalkSide"
+flip_h = true
+script = ExtResource("9_d7e3t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(81, 497)
+scale = Vector2(5, 5)
+sprite_frames = ExtResource("2_7xobo")
+animation = &"IdleFront"
+frame_progress = 0.321963
+script = ExtResource("3_uy7o0")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(287, 460)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("3_7doq0")
+animation = &"WalkSide"
+script = ExtResource("5_02i5l")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(405, 460)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("4_q3340")
+animation = &"WalkSide"
+script = ExtResource("7_k1lj4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1582.0
+offset_top = -324.0
+offset_bottom = 324.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 0
+horizontal_scroll_mode = 0
+script = ExtResource("2_d7e3t")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 900
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 2000)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 648)
+layout_mode = 2
+
+[node name="Team" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Team:"
+label_settings = SubResource("LabelSettings_02i5l")
+
+[node name="Developer1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "DEVELOPER - CHARLES JUNG"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Developer2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "DEVELOPER - BRIAN JARDIEL"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="GraphicArtist" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "GRAPHIC ARTIST - ALLYSON LAUS"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="QA Tester" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "QA TESTER - DIVINE DE JESUS"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="TechnicalWriter" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "TECHNICAL WRITER - BENEDICT BIGAEL"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="SystemsAnalyst" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SYSTEMS ANALYST - JORGE SOLIVERES"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music:"
+label_settings = SubResource("LabelSettings_02i5l")
+
+[node name="Music1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music 1"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Music2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music2"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Music3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music 3"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="ReturnButton" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1248.0
+offset_top = 560.0
+offset_right = -1084.0
+offset_bottom = 620.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/font_color = Color(0.545098, 0.152941, 0.152941, 1)
+theme_override_colors/font_pressed_color = Color(0.882353, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_dd006")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_jg232")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jg232")
+theme_override_styles/normal = SubResource("StyleBoxTexture_smgnw")
+text = "╰➤RETURN"
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_smgnw")
+volume_db = 3.171
+
+[node name="ClickSound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_0xq2t")
+volume_db = 3.171
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

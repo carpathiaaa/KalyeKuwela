@@ -79,6 +79,8 @@ func _process(delta):
 	# End game if all players become chasers before time runs out
 	if not game_has_ended and all_are_chasers():
 		game_over("Game Over. Chasers Won!")
+		pause_button.visible = false
+		how_to_play_button.visible = false
 
 func play_pause_sound():
 	if pause_sound:
@@ -162,8 +164,12 @@ func update_game_timer_label():
 
 func _on_game_timer_timeout():
 	if count_runners() > 0:
+		pause_button.visible = false
+		how_to_play_button.visible = false
 		game_over("Game Over. Runners Won!")  # Runners survived
 	else:
+		pause_button.visible = false
+		how_to_play_button.visible = false
 		game_over("Game Over. Chasers Won!")  # All got tagged last second
 
 func all_are_chasers() -> bool:
@@ -211,7 +217,10 @@ func game_over(message):
 	if message == "Game Over. Chasers Won!":
 		GlobalData.add_rewards(10, 10)
 	elif message == "Game Over. Runners Won!":
-		GlobalData.add_rewards(50, 50)
+		if player.is_chaser:
+			GlobalData.add_rewards(10, 10)
+		else:
+			GlobalData.add_rewards(50, 50)
 
 	print("Coins:", GlobalData.coins, "XP:", GlobalData.xp)  # Debugging
 	
