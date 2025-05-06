@@ -6,7 +6,7 @@ extends Player
 @onready var ouch_sfx = $ouch_effect
 @onready var laugh_sfx = $laugh_effect
 var time = 0
-@export var speed = 300 # Default speed of player
+@export var speed : float = 300.0 # Default speed of player
 var slowed : bool = false
 
 var can_move: bool = false

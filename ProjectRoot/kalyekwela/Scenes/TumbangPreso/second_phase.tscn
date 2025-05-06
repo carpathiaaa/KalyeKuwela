@@ -81,7 +81,7 @@ shape = SubResource("RectangleShape2D_pqhor")
 position = Vector2(425, 1494)
 scale = Vector2(2.4, 2.4)
 script = ExtResource("5_vo024")
-speed = 300
+speed = 300.0
 
 [node name="AudioPatinteroChase" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("7_va8pc")

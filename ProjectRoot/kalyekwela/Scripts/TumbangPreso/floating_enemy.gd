@@ -2,7 +2,7 @@ extends BaseEnemy
 
 @onready var player = $"../player"
 @onready var enemy_animation = $AnimatedSprite2D  # Renamed for clarity
-@onready var new_speed: float =  230
+@onready var speed: float = 230.0
 
 var direction: Vector2 = Vector2.ZERO
 
@@ -11,7 +11,7 @@ func _physics_process(delta: float) -> void:
 		# Calculate direction TOWARDS player (was moving away before)
 		direction = (player.position - position).normalized()
 		# Set velocity towards player
-		velocity = direction * new_speed
+		velocity = direction * speed
 		# Update animations based on movement direction
 		update_animation(direction)
 		move_and_slide()
