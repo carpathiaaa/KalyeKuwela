@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var transition_in_sound = $TransitionInSound
 @onready var transition_out_sound = $TransitionOutSound
+@onready var secure_overlay = $ColorRect
 
 func _ready():
 	transition_in_sound.stream = load("res://Assets/Audio/SFX/SFX_TransitionIn.mp3")
@@ -20,6 +21,11 @@ func load_scene(target_scene: String):
 	# Play opening animation and sound
 	transition_in_sound.play() 
 	$AnimationPlayer.play_backwards('RESET')
+	secure_overlay.visible = true
+	
+	await get_tree().create_timer(1.5).timeout
+	
+	secure_overlay.visible = false
 
 func transition_to_loading_screen(loading_screen_path: String, trivia_text: String, audio: AudioStream, next_scene: String, background: Texture):
 	# Play closing animation with sound

@@ -63,7 +63,7 @@ var bente_uno_facts = [
 
 
 func _init():
-	GlobalData.load_data()  # ✅ Load data early to avoid null values
+	GlobalData.load_data()
 
 func update_ui():
 	currency_display.text = "Coins: " + format_number(GlobalData.coins)
@@ -96,7 +96,7 @@ func _ready():
 func get_random_fact(facts: Array) -> String:
 	if facts.size() > 0:
 		var fact = facts[randi() % facts.size()]
-		print("Selected Trivia: ", fact)  # ✅ Debugging: Check if trivia is being selected
+		print("Selected Trivia: ", fact)  # Check if trivia is being selected
 		return fact
 	return "Enjoy the game!"
 
@@ -151,12 +151,6 @@ func start_bente_uno():
 		"res://Scenes/BenteUno/main.tscn",
 		BENTE_UNO_BG
 	)
-
-
-# Function to manage popups (ensuring only one is open at a time)
-#func toggle_popup(popup: Control):
-#	if current_open_popup and current_open_popup != popup:
-#		current_open_popup.visible = false  # Close previous popup
 
 # Function to toggle popups properly
 func toggle_popup(new_popup: Control):

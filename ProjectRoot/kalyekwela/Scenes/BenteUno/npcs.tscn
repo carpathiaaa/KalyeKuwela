@@ -1,26 +1,33 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvsd26v8oyj3e"]
+[gd_scene load_steps=19 format=3 uid="uid://dvsd26v8oyj3e"]
 
 [ext_resource type="Script" uid="uid://dfwksbp3g71ho" path="res://Scripts/BenteUno/npc.gd" id="1_f4j7u"]
 [ext_resource type="SpriteFrames" uid="uid://dp5ol0c0hg8og" path="res://Assets/Art/Characters/Frames/Juan_Frames.tres" id="2_mowhh"]
 [ext_resource type="SpriteFrames" uid="uid://cr6onwakxrxau" path="res://Assets/Art/Characters/Frames/Maria_Frames.tres" id="3_c7i4g"]
+[ext_resource type="Script" uid="uid://ed5crcwae8p3" path="res://Scripts/BenteUno/npc_2.gd" id="3_q2yde"]
 [ext_resource type="SpriteFrames" uid="uid://be4gj5kt2lcs7" path="res://Assets/Art/Characters/Frames/Reyna_Frames.tres" id="4_12w4l"]
+[ext_resource type="Script" uid="uid://c8da6a23it3qk" path="res://Scripts/BenteUno/npc_3.gd" id="5_hxdbi"]
 [ext_resource type="SpriteFrames" uid="uid://c1gg4n6lcd58t" path="res://Assets/Art/Characters/Frames/Tala_Frames.tres" id="5_y5qq7"]
+[ext_resource type="Script" uid="uid://bgr0teqewnnrr" path="res://Scripts/BenteUno/npc_4.gd" id="6_hxdbi"]
 [ext_resource type="SpriteFrames" uid="uid://s82bxwoyvakj" path="res://Assets/Art/Characters/Frames/Carlo_Frames.tres" id="6_nr4t5"]
+[ext_resource type="Script" uid="uid://chpjtnmcf5xer" path="res://Scripts/BenteUno/npc_5.gd" id="9_lq3yp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsr7a"]
-radius = 11.0
-height = 34.0
+radius = 5.0
+height = 10.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aw3px"]
 radius = 12.0
 height = 36.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8nvml"]
-radius = 71.0
+radius = 82.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_va4ao"]
 radius = 12.0
 height = 36.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q2yde"]
+radius = 125.004
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vq3ad"]
 radius = 12.0
@@ -37,6 +44,7 @@ height = 36.0
 [node name="NPCs" type="Node2D"]
 
 [node name="NPC1" type="CharacterBody2D" parent="."]
+position = Vector2(19, 0)
 collision_mask = 3
 script = ExtResource("1_f4j7u")
 
@@ -46,6 +54,7 @@ sprite_frames = ExtResource("2_mowhh")
 animation = &"IdleBack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC1"]
+position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_bsr7a")
 
 [node name="Timer" type="Timer" parent="NPC1"]
@@ -76,8 +85,9 @@ collision_mask = 3
 shape = SubResource("CircleShape2D_8nvml")
 
 [node name="NPC2" type="CharacterBody2D" parent="."]
+position = Vector2(-25, 0)
 collision_mask = 3
-script = ExtResource("1_f4j7u")
+script = ExtResource("3_q2yde")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC2"]
 texture_filter = 1
@@ -85,6 +95,7 @@ sprite_frames = ExtResource("3_c7i4g")
 animation = &"WalkBack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC2"]
+position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_bsr7a")
 
 [node name="Timer" type="Timer" parent="NPC2"]
@@ -105,26 +116,28 @@ collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC2/DetectionArea"]
-shape = SubResource("CircleShape2D_8nvml")
+shape = SubResource("CircleShape2D_q2yde")
 
 [node name="FleeArea" type="Area2D" parent="NPC2"]
 collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC2/FleeArea"]
-shape = SubResource("CircleShape2D_8nvml")
+shape = SubResource("CircleShape2D_q2yde")
 
 [node name="NPC3" type="CharacterBody2D" parent="."]
+position = Vector2(0, 22)
 collision_mask = 3
-script = ExtResource("1_f4j7u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC3"]
-shape = SubResource("CapsuleShape2D_bsr7a")
+script = ExtResource("5_hxdbi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC3"]
 texture_filter = 1
 sprite_frames = ExtResource("4_12w4l")
 animation = &"WalkBack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC3"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_bsr7a")
 
 [node name="Timer" type="Timer" parent="NPC3"]
 
@@ -154,16 +167,18 @@ collision_mask = 3
 shape = SubResource("CircleShape2D_8nvml")
 
 [node name="NPC4" type="CharacterBody2D" parent="."]
+position = Vector2(0, -26)
 collision_mask = 3
-script = ExtResource("1_f4j7u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC4"]
-shape = SubResource("CapsuleShape2D_bsr7a")
+script = ExtResource("6_hxdbi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC4"]
 texture_filter = 1
 sprite_frames = ExtResource("5_y5qq7")
 animation = &"WalkBack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC4"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_bsr7a")
 
 [node name="Timer" type="Timer" parent="NPC4"]
 
@@ -193,16 +208,18 @@ collision_mask = 3
 shape = SubResource("CircleShape2D_8nvml")
 
 [node name="NPC5" type="CharacterBody2D" parent="."]
+position = Vector2(20, 17)
 collision_mask = 3
-script = ExtResource("1_f4j7u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC5"]
-shape = SubResource("CapsuleShape2D_bsr7a")
+script = ExtResource("9_lq3yp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC5"]
 texture_filter = 1
 sprite_frames = ExtResource("6_nr4t5")
 animation = &"WalkFront"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC5"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_bsr7a")
 
 [node name="Timer" type="Timer" parent="NPC5"]
 

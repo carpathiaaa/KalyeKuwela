@@ -11,6 +11,8 @@ extends Node2D
 
 @onready var pause_button = $UI/PauseButton
 @onready var pause_menu = $UI/PauseMenu
+@onready var how_to_play_button = $UI/HowToPlayButton
+@onready var how_to_play_popup = $UI/HowToPlayMargin
 
 @onready var pause_sound = $PauseSound
 @onready var click_sound = $ClickSound
@@ -89,6 +91,17 @@ func play_click_sound():
 func play_click_sound_2():
 	if click_sound_2:
 		click_sound_2.play()
+
+func howToPlay():
+	play_pause_sound()
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+		
+	paused = !paused
 
 func pauseMenu():
 	play_pause_sound()
@@ -206,7 +219,6 @@ func game_over(message):
 	await get_tree().create_timer(3).timeout
 	GlobalData.previous_game = current_game
 	CompactTransition.load_scene("res://Scenes/BaseScenes/UI/score_summary.tscn")
-	#get_tree().change_scene_to_file("res://Scenes/BaseScenes/UI/score_summary.tscn")
 
 func _on_resume_button_pressed() -> void:
 	print("Resuming game")
@@ -228,9 +240,23 @@ func _on_settings_button_pressed() -> void:
 	play_click_sound()
 	toggle_popup(settings_popup)
 
-
 func _on_reset_button_pressed() -> void:
 	play_click_sound_2()
 	await click_sound_2.finished
 	GlobalData.temporary_reset_mode = true  # Prevent saving on reset
 	get_tree().reload_current_scene()
+	
+func toggle_how_to_play():
+	play_pause_sound()
+	
+	if how_to_play_popup.visible:
+		how_to_play_popup.visible = false
+		Engine.time_scale = 1
+		paused = false
+	else:
+		how_to_play_popup.visible = true
+		Engine.time_scale = 0
+		paused = true
+
+func _on_how_to_play_button_pressed() -> void:
+	toggle_how_to_play()

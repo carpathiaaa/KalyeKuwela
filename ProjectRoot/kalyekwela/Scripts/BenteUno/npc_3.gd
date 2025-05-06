@@ -15,9 +15,20 @@ var pathfinding_timer: float = 0
 var pathfinding_update_time: float = 0.5  # Update path every 0.5 seconds
 var flee_pathfinding_update_time: float = 0.3  # Update flee path more frequently
 
-# Safe points for runners to flee toward
-var safe_points: Array = []
-var current_safe_point: Vector2 = Vector2.ZERO
+# New variables for circular movement and juking
+var spawn_position: Vector2
+var circle_radius: float = 100.0
+var circle_angle: float = 0.0
+var circle_speed: float = 1.5
+var juke_timer: float = 0.0
+var juke_interval: float = 0.7
+var juke_direction: Vector2 = Vector2.ZERO
+var is_juking: bool = false
+
+# New variables for erratic chaser movement
+var erratic_timer: float = 0.0
+var erratic_interval: float = 0.4
+var erratic_direction: Vector2 = Vector2.ZERO
 
 @onready var timer = $Timer
 @onready var status_label = $StatusLabel
@@ -29,10 +40,14 @@ var current_safe_point: Vector2 = Vector2.ZERO
 func _ready():
 	add_to_group("npc")
 	randomize()
+	spawn_position = global_position  # Store initial spawn position
 	pick_new_direction()
 	timer.wait_time = randf_range(1.5, 3)
 	timer.start()
 	update_status()
+	
+	# Set random circle radius
+	circle_radius = randf_range(80.0, 150.0)
 	
 	# Connect detection signals
 	detection_area.body_entered.connect(_on_detection_area_body_entered)
@@ -70,15 +85,56 @@ func update_chaser_behavior(delta):
 			pathfinding_timer = 0
 			calculate_path_to_target(target_runner.global_position)
 		
+		# Update erratic movement
+		erratic_timer += delta
+		if erratic_timer >= erratic_interval:
+			erratic_timer = 0
+			erratic_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+		
 		if pathfinding_enabled and path.size() > 0:
-			follow_path()
+			follow_path_with_erratic_movement()
 		else:
 			# Fallback to direct movement if pathfinding fails
 			target_direction = (target_runner.global_position - global_position).normalized()
+			
+			# Apply erratic movement
+			target_direction = (target_direction + erratic_direction * 0.5).normalized()
 			velocity = target_direction * chase_speed
 	else:
 		# No runner detected, move randomly
 		velocity = target_direction * speed
+
+# Modified path following with erratic movement
+func follow_path_with_erratic_movement():
+	if path_index < path.size():
+		# Move to the next point in the path
+		var next_point = path[path_index]
+		var distance_to_point = global_position.distance_to(next_point)
+		
+		# If we're close enough to the current point, move to the next one
+		if distance_to_point < 5:
+			path_index += 1
+			
+		if path_index < path.size():
+			# Calculate direction to the next point
+			target_direction = (path[path_index] - global_position).normalized()
+			
+			# Apply erratic movement by adding random vector
+			target_direction = (target_direction + erratic_direction * 0.5).normalized()
+			velocity = target_direction * chase_speed
+		else:
+			# We've reached the end of the path
+			if target_runner:
+				# Direct movement when we're close
+				target_direction = (target_runner.global_position - global_position).normalized()
+				
+				# Apply erratic movement
+				target_direction = (target_direction + erratic_direction * 0.5).normalized()
+				velocity = target_direction * chase_speed
+	else:
+		# Path is finished, calculate a new one
+		if target_runner:
+			calculate_path_to_target(target_runner.global_position)
 
 # --- RUNNER BEHAVIOR ---
 func update_runner_behavior(delta):
@@ -89,14 +145,30 @@ func update_runner_behavior(delta):
 			pathfinding_timer = 0
 			calculate_flee_path()
 		
-		if pathfinding_enabled and path.size() > 0:
+		# Update juke timer
+		juke_timer += delta
+		if juke_timer >= juke_interval:
+			juke_timer = 0
+			is_juking = true
+			juke_direction = create_juke_vector(nearby_chaser.global_position)
+		
+		if is_juking:
+			# Continue juking for a short time
+			velocity = juke_direction * flee_speed * 1.2
+			is_juking = juke_timer < 0.3  # Juke for 0.3 seconds
+		elif pathfinding_enabled and path.size() > 0:
 			follow_flee_path()
 		else:
 			# Fallback to direct fleeing if pathfinding fails
 			direct_flee_behavior()
 	else:
-		# No chaser nearby, move randomly
-		velocity = target_direction * speed
+		# No chaser nearby, perform circular movement around spawn point
+		var distance_from_spawn = global_position.distance_to(spawn_position)
+		if distance_from_spawn > circle_radius * 0.5:
+			perform_circular_movement(delta)
+		else:
+			# Default wandering movement when close to spawn
+			velocity = target_direction * speed
 
 # Calculate a path to a safe point away from chaser
 func calculate_flee_path():
@@ -190,6 +262,32 @@ func follow_flee_path():
 		# Path is empty, calculate a new one
 		calculate_flee_path()
 
+# Create a juke vector for quick direction changes to dodge chasers
+func create_juke_vector(chaser_position: Vector2) -> Vector2:
+	var to_chaser = chaser_position - global_position
+	var perpendicular = Vector2(-to_chaser.y, to_chaser.x).normalized()
+	
+	# Randomly choose left or right perpendicular direction
+	if randf() > 0.5:
+		perpendicular = -perpendicular
+	
+	# Add a small forward or backward component for more complex jukes
+	var forward_back = randf_range(-0.5, 0.5)
+	return (perpendicular + to_chaser.normalized() * forward_back).normalized()
+
+# Function to make NPCs run in circles when far from spawn
+func perform_circular_movement(delta):
+	# Update circle angle
+	circle_angle += circle_speed * delta
+	
+	# Calculate target position on the circle
+	var circle_center = spawn_position + Vector2(circle_radius, 0).rotated(circle_angle * 0.2)
+	var target_pos = circle_center + Vector2(circle_radius, 0).rotated(circle_angle)
+	
+	# Move toward the next position on the circle
+	target_direction = (target_pos - global_position).normalized()
+	velocity = target_direction * speed
+
 # Fallback direct flee behavior (used if pathfinding fails)
 func direct_flee_behavior():
 	var flee_vector = global_position - nearby_chaser.global_position
@@ -202,6 +300,10 @@ func direct_flee_behavior():
 	if predicted_flee_vector.length() < flee_vector.length():
 		flee_vector = predicted_flee_vector
 
+	# Check for walls in the flee direction
+	if is_path_blocked(flee_vector.normalized()):
+		flee_vector = find_alternate_escape_route(flee_vector)
+	
 	# Apply smart dodging (slight random angle)
 	flee_vector = add_random_dodge(flee_vector)
 
@@ -221,31 +323,6 @@ func calculate_path_to_target(target_pos: Vector2):
 		# Fallback if navigation is not available
 		path = [global_position, target_pos]
 		path_index = 0
-
-func follow_path():
-	if path_index < path.size():
-		# Move to the next point in the path
-		var next_point = path[path_index]
-		var distance_to_point = global_position.distance_to(next_point)
-		
-		# If we're close enough to the current point, move to the next one
-		if distance_to_point < 5:
-			path_index += 1
-			
-		if path_index < path.size():
-			# Calculate direction to the next point
-			target_direction = (path[path_index] - global_position).normalized()
-			velocity = target_direction * chase_speed
-		else:
-			# We've reached the end of the path
-			if target_runner:
-				# Direct movement when we're close
-				target_direction = (target_runner.global_position - global_position).normalized()
-				velocity = target_direction * chase_speed
-	else:
-		# Path is finished, calculate a new one
-		if target_runner:
-			calculate_path_to_target(target_runner.global_position)
 
 func clear_path():
 	path = []
@@ -341,10 +418,14 @@ func _on_flee_area_body_entered(body):
 	if body is CharacterBody2D and body.is_chaser and not is_chaser:
 		nearby_chaser = body  # Start fleeing
 		calculate_flee_path()  # Calculate initial flee path when first seeing a chaser
+		# Reset juke timer to allow for immediate juking
+		juke_timer = juke_interval
+		is_juking = false
 
 func _on_flee_area_body_exited(body):
 	if body == nearby_chaser:
 		nearby_chaser = null  # Stop fleeing if chaser leaves radius
+		is_juking = false    # Stop juking
 		clear_path()  # Clear the flee path
 
 func become_chaser():
@@ -366,28 +447,3 @@ func update_status():
 	else:
 		status_label.text = "Runner"
 		status_label.add_theme_color_override("font_color", Color.BLUE)
-
-
-#func _draw():
-#	if pathfinding_enabled and path.size() > 1:
-#		if is_chaser:
-#			# Draw chaser path in red
-#			for i in range(path.size() - 1):
-#				draw_line(path[i] - global_position, path[i + 1] - global_position, Color(1, 0, 0, 0.5), 2.0)
-#			
-#			# Draw a circle at the current target point
-#			if path_index < path.size():
-#				draw_circle(path[path_index] - global_position, 5, Color(1, 0, 0, 0.7))
-#		else:
-#			# Draw runner path in blue
-#			for i in range(path.size() - 1):
-#				draw_line(path[i] - global_position, path[i + 1] - global_position, Color(0, 0, 1, 0.5), 2.0)
-#			
-#			# Draw a circle at the current target point
-#			if path_index < path.size():
-#				draw_circle(path[path_index] - global_position, 5, Color(0, 0, 1, 0.7))
-#
-
-#func _process(_delta):
-#	if pathfinding_enabled and path.size() > 1:
-#		queue_redraw()

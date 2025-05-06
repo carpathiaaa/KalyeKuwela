@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://btigs8qepl0d1"]
+[gd_scene load_steps=77 format=4 uid="uid://btigs8qepl0d1"]
 
 [ext_resource type="Script" uid="uid://c4bwpihgbaf1t" path="res://Scripts/BenteUno/main.gd" id="1_5daw8"]
 [ext_resource type="PackedScene" uid="uid://cq5xt52v2s0h1" path="res://Scenes/BenteUno/player.tscn" id="1_ydfnf"]
@@ -20,10 +20,16 @@
 [ext_resource type="FontFile" uid="uid://bkx15q3yu12b6" path="res://Assets/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="16_asycb"]
 [ext_resource type="Texture2D" uid="uid://dqqxfpiw0irva" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x19.png" id="17_agl3i"]
 [ext_resource type="AudioStream" uid="uid://d4eiggkyybd43" path="res://Assets/Audio/SFX/Audio_GameOver.mp3" id="18_raa6b"]
+[ext_resource type="Texture2D" uid="uid://d2jb1efw03pjn" path="res://Assets/Art/UI/UI_HowToPlay_Button.png" id="19_lyik7"]
 [ext_resource type="Script" uid="uid://cvm1xbhkf651v" path="res://Scripts/BenteUno/hearts_container.gd" id="19_v5c5a"]
 [ext_resource type="AudioStream" uid="uid://b0kw6bvbqt8nj" path="res://Assets/Audio/SFX/Audio_Pause.mp3" id="22_nvqq6"]
 [ext_resource type="AudioStream" uid="uid://x3o7x3mq3olm" path="res://Assets/Audio/SFX/Audio_Click.mp3" id="23_nxias"]
 [ext_resource type="AudioStream" uid="uid://h1f2kc4xthum" path="res://Assets/Audio/SFX/Audio_Click_2.mp3" id="24_27xqw"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_nxias"]
+vertices = PackedVector2Array(361, 237, 298, 237, 17, 236.406, 212, 234, 257.797, 234, 277, 233, 314.594, 233, -129.953, -5, -89.5313, -6.35938, -48, -4.5625, -202.57, 9.32813, 17, 188, -29.3828, 188, -298, 175, -298, 149, -104.188, 166.938, -335.367, -83.3672, 120, -111, 153.047, -111, 144.68, -28.8125, 131.906, -29.1797, -48, -44, 344.742, 103.398, 326.172, 206, 277, 206, -72, 156.211, -72, 136.109, 361, 269.242, 462, 286.906, 357.039, 286, 298, 267.773, -164.32, -130.688, -165.398, -141.57, -163.641, -135.883, 462, -266.023, 395, 31, 395, -5.21094, 314, 49.6875, 284, 57.1875, 235.07, 48.1094, 231.531, 16.2578, 328.641, 31, -427, 271, -305.961, 266.563, -284.492, 273.711, -457.258, 281.75, 129.43, -0.242188, 202, 27, 309.672, 80, 310.102, 76.9375, 311.82, 82.0938, 108.969, -259.063, 102.391, -266.938, 274.672, -164.969, 227.203, -161.172, -348.172, 143, -344.672, 115, 328.547, 90.4531, -82.2969, 130.398, 362.328, 85.8125, 284, 80, 269.672, -130, 326.328, -3.78125, 354.961, 61.8672, 334.398, 56, 122.352, -10.0625, -105.508, -266.07, -0.53125, -266.852, -9.35938, -254.5, -104.828, -251.75, -148, -169.102, -152.109, -161.844, -166.18, -149.32, -167.656, -164.117, -147.383, -231, -377, 36, -377, 8, -255.992, 12.5625, 21.7109, 33.6016, 5.09375, 60.1797, -371.328, 115, 155.906, -139.633, 188.773, -161.5, 197.359, -130, 155.328, -3.95313, 313.102, 56, -27.6484, 234.617, -54.7891, 286, -58.4688, 274.969, -490.977, -266, -162.977, -266, -165.727, -250.883, -188.141, -172, -206.727, -172, -95.7969, -44, -132.953, -35, -89.1563, 285.008, -457.891, 286.781, -310.523, 236.859, -427, 247, 227.289, -160.07, 91.7422, -238, 120, -144.422, -103.18, -138.797, 9.20313, -238, -112.508, -129.227, -109.797, -154.242, -121.141, -231, -116.883, -159.906, -125.094, -166.07, -137.148, -174.68, -272.047, 233.898, -76.5391, 272.391, -319.469, 175, -323.797, 149, -367.828, 143, -149.688, -134.133, -137.469, -131.703, 42.4922, 54.2266, 202, 50.8672, 35.6484, 63.5781, -450, 271, 33.7031, 34.4531, 253.531, 208.359, 212, 206.563, -450, 247, -490.008, 262.289, -424.258, -61.2578, -410.43, 8, -352.758, -74, -204.773, -35, -365.703, -59.8984, -148, -163.211, -227.953, -164.422, -232.977, -132.578, -340.906, -137.422, -362.219, -152.273, -357.633, -138.531, -133.063, -140.523, -131.961, -140.82, -125.617, -134.477, -399.93, 36, -205.43, -139.453, -201.883, -142.406, -193.344, -143.422, -188.703, -137.617, -220.563, -125.844, -177.82, -124.922, -388.961, -147.813, -392.656, -134.242, -417.367, -117.773, -98.9609, 140.813, -192.773, -5, -206.289, -16.7422, -259.078, -18.3438)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(4, 5, 6, 0), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19, 20, 21), PackedInt32Array(22, 23, 24, 25, 26), PackedInt32Array(27, 28, 29, 30), PackedInt32Array(31, 32, 33), PackedInt32Array(34, 28, 35, 36), PackedInt32Array(37, 38, 39, 40, 41), PackedInt32Array(42, 43, 44, 45), PackedInt32Array(46, 40, 47, 10, 9), PackedInt32Array(48, 49, 50), PackedInt32Array(51, 52, 34, 53, 54), PackedInt32Array(55, 56, 50, 57, 22, 58), PackedInt32Array(35, 28, 0, 23, 59), PackedInt32Array(22, 59, 23), PackedInt32Array(48, 50, 56, 60), PackedInt32Array(61, 53, 34, 36, 62), PackedInt32Array(35, 59, 63), PackedInt32Array(41, 35, 63, 64), PackedInt32Array(65, 46, 9, 21), PackedInt32Array(66, 67, 68, 69), PackedInt32Array(70, 71, 72, 73, 74), PackedInt32Array(75, 76, 77, 78, 79, 56, 80), PackedInt32Array(81, 82, 83, 18), PackedInt32Array(83, 61, 62, 41, 40, 84, 19, 18), PackedInt32Array(41, 64, 85, 37), PackedInt32Array(86, 2, 30, 29, 87, 88), PackedInt32Array(89, 90, 91, 92, 93), PackedInt32Array(94, 8, 7, 95), PackedInt32Array(96, 97, 45, 44), PackedInt32Array(98, 43, 42, 99), PackedInt32Array(51, 54, 100, 82, 101), PackedInt32Array(101, 82, 81, 102), PackedInt32Array(103, 104, 101, 102, 17, 105), PackedInt32Array(69, 68, 104, 103, 106, 107), PackedInt32Array(107, 106, 108), PackedInt32Array(107, 108, 109), PackedInt32Array(107, 109, 110, 74), PackedInt32Array(111, 13, 12, 86, 88, 112), PackedInt32Array(13, 111, 98, 113), PackedInt32Array(114, 113, 98, 99, 115, 55), PackedInt32Array(2, 1, 30), PackedInt32Array(111, 112, 96, 44), PackedInt32Array(31, 33, 116, 117), PackedInt32Array(118, 119, 38, 60, 120), PackedInt32Array(121, 42, 45), PackedInt32Array(10, 47, 119, 122), PackedInt32Array(24, 5, 4, 123), PackedInt32Array(25, 24, 123, 124), PackedInt32Array(125, 121, 45, 126, 89), PackedInt32Array(99, 125, 89, 127, 128), PackedInt32Array(28, 27, 0), PackedInt32Array(6, 23, 0), PackedInt32Array(25, 124, 3, 11), PackedInt32Array(20, 65, 21), PackedInt32Array(16, 21, 94), PackedInt32Array(129, 16, 94, 95, 130, 131), PackedInt32Array(74, 110, 70), PackedInt32Array(70, 132, 71), PackedInt32Array(74, 73, 92, 91), PackedInt32Array(89, 93, 133), PackedInt32Array(89, 133, 134, 135, 136), PackedInt32Array(135, 137, 136), PackedInt32Array(138, 139, 140, 117), PackedInt32Array(120, 60, 56), PackedInt32Array(79, 120, 56), PackedInt32Array(141, 75, 80), PackedInt32Array(142, 143, 144, 145, 146), PackedInt32Array(105, 17, 16), PackedInt32Array(140, 105, 16, 117), PackedInt32Array(146, 145, 147, 16), PackedInt32Array(148, 149, 150, 89), PackedInt32Array(22, 26, 58), PackedInt32Array(55, 58, 151), PackedInt32Array(55, 151, 15, 14), PackedInt32Array(46, 84, 40), PackedInt32Array(152, 7, 10), PackedInt32Array(152, 10, 153, 130), PackedInt32Array(130, 153, 154, 131), PackedInt32Array(127, 131, 154, 77, 76), PackedInt32Array(147, 31, 117), PackedInt32Array(147, 117, 16), PackedInt32Array(134, 146, 16, 135), PackedInt32Array(89, 136, 148), PackedInt32Array(89, 150, 127), PackedInt32Array(119, 39, 38), PackedInt32Array(119, 118, 122), PackedInt32Array(10, 122, 78, 77), PackedInt32Array(141, 80, 115, 99, 128), PackedInt32Array(127, 76, 128), PackedInt32Array(14, 114, 55), PackedInt32Array(11, 15, 25), PackedInt32Array(2, 11, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-501, -276, -151, -276, -155, -254, -143, -241, -126, -241, -115, -255, -116, -276, 19, -277, 4, -256, 13, -248, 87, -248, 96, -259, 81, -277, 472, -276, 472, 297, 357, 296, 351, 296, 343, 296, 333, 296, 326, 296, 320, 296, 315, 296, 310, 296, -62, 296, -66, 284, -73, 283, -85, 295, -502, 297, -468, 287, -500, 268), PackedVector2Array(-19, 198, -18, 225, 7, 226, 7, 198), PackedVector2Array(-299, 246, -297, 259, -291, 261, -286, 245), PackedVector2Array(-396, 18, -393, 26, -387, 26, -387, 18), PackedVector2Array(-408, -112, -413, -71, -370, -70, -359, -82, -346, -89, -350, -128, -365, -129, -369, -141, -381, -139, -384, -128), PackedVector2Array(-247, 2, -214, 0, -215, -7, -248, -8), PackedVector2Array(-170, -15, -141, -15, -142, -25, -190, -25, -186, -15), PackedVector2Array(-81, -16, -58, -15, -58, -34, -84, -34), PackedVector2Array(-222, -138, -212, -147, -206, -152, -189, -154, -181, -144, -175, -137, -177, -157, -190, -162, -205, -162, -219, -157), PackedVector2Array(-148, -144, -143, -143, -140, -149, -129, -152, -120, -143, -115, -141, -118, -148, -123, -152, -131, -158, -138, -163, -138, -156, -147, -153, -156, -145), PackedVector2Array(130, -121, 144, -121, 145, -131, 130, -133), PackedVector2Array(205, -140, 230, -140, 229, -150, 202, -151), PackedVector2Array(239, -140, 261, -140, 263, -154, 238, -152), PackedVector2Array(337, 6, 338, 21, 385, 21, 385, 5), PackedVector2Array(320, 75, 334, 82, 344, 90, 351, 83, 347, 70, 333, 66, 317, 66), PackedVector2Array(294, 70, 301, 70, 302, 63, 294, 65), PackedVector2Array(212, 40, 224, 39, 223, 30, 212, 34), PackedVector2Array(134, -11, 141, -12, 138, -19), PackedVector2Array(22, 52, 31, 53, 27, 44), PackedVector2Array(-91, 152, -82, 149, -82, 142, -90, 147), PackedVector2Array(-359, 133, -357, 133, -356, 125, -360, 125), PackedVector2Array(-311, 165, -308, 165, -308, 159, -312, 159), PackedVector2Array(222, 224, 246, 224, 245, 218, 222, 217), PackedVector2Array(287, 216, 287, 223, 308, 223, 311, 216), PackedVector2Array(308, 247, 308, 258, 351, 259, 351, 247), PackedVector2Array(-440, 257, -440, 261, -437, 261, -437, 257)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbsem"]
 texture = ExtResource("2_cbr78")
@@ -2604,37 +2610,6 @@ texture = SubResource("CompressedTexture2D_keaca")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_2snqg")
 
-[sub_resource type="GDScript" id="GDScript_rrhka"]
-script/source = "extends CanvasLayer
-
-@onready var pause_button = $PauseButton
-@onready var pause_menu = $PauseMenu
-
-@onready var pause_sound = $\"../PauseSound\"
-
-var paused = false
-
-func _ready():
-	if Input.is_action_just_pressed('pause'):
-		play_pause_sound()
-		pauseMenu()
-
-func play_pause_sound():
-	if pause_sound:
-		pause_sound.play()
-		
-
-func pauseMenu():
-	if paused:
-		pause_menu.hide()
-		Engine.time_scale = 1
-	else:
-		pause_menu.show()
-		Engine.time_scale = 0
-		
-	paused = !paused
-"
-
 [sub_resource type="LabelSettings" id="LabelSettings_jfyph"]
 font = ExtResource("5_llm1q")
 font_size = 55
@@ -2818,12 +2793,52 @@ texture = ExtResource("16_4phyk")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_can8u"]
 texture = ExtResource("8_ld64f")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bu30v"]
+texture = ExtResource("19_lyik7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_auff0"]
+texture = ExtResource("19_lyik7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_va2oh"]
+texture = ExtResource("19_lyik7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ktkk7"]
+texture = ExtResource("19_lyik7")
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tk5w4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxias"]
+texture = ExtResource("9_eoh28")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3b1l"]
+texture = ExtResource("9_eoh28")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 178, 90, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lldy4"]
+texture = ExtResource("9_eoh28")
+region_rect = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fqwan"]
+texture = ExtResource("9_eoh28")
+region_rect = Rect2(837, 132, 22, 24)
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("settings_popup")]
 y_sort_enabled = true
 script = ExtResource("1_5daw8")
 settings_popup = NodePath("UI/SettingsPopUp")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_nxias")
 
 [node name="TileNode" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -2874,7 +2889,6 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="UI" type="CanvasLayer" parent="."]
-script = SubResource("GDScript_rrhka")
 
 [node name="GameTimerLabel" type="Label" parent="UI"]
 texture_filter = 1
@@ -3339,9 +3353,9 @@ text = "no
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -36.0
+offset_left = -78.0
 offset_top = 13.0
-offset_right = 54.0
+offset_right = 12.0
 offset_bottom = 103.0
 grow_horizontal = 2
 size_flags_horizontal = 4
@@ -3351,6 +3365,24 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_gkp3d")
 theme_override_styles/hover = SubResource("StyleBoxTexture_gkp3d")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_gkp3d")
 theme_override_styles/normal = SubResource("StyleBoxTexture_can8u")
+action_mode = 0
+
+[node name="HowToPlayButton" type="Button" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 20.0
+offset_top = 13.0
+offset_right = 110.0
+offset_bottom = 103.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_bu30v")
+theme_override_styles/hover = SubResource("StyleBoxTexture_auff0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_va2oh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ktkk7")
 action_mode = 0
 
 [node name="HeartsContainer" type="HBoxContainer" parent="UI"]
@@ -3374,6 +3406,162 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="HowToPlayMargin" type="MarginContainer" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HowToPlayBackground" type="NinePatchRect" parent="UI/HowToPlayMargin"]
+layout_mode = 2
+texture = ExtResource("9_eoh28")
+region_rect = Rect2(275, 212, 90, 25)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="HowToPlayBackground2" type="NinePatchRect" parent="UI/HowToPlayMargin/HowToPlayBackground"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_eoh28")
+region_rect = Rect2(293, 101, 38, 38)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HowToPlayMargin/HowToPlayBackground/HowToPlayBackground2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 115
+theme_override_constants/margin_right = 20
+
+[node name="HowToPlayBackground3" type="NinePatchRect" parent="UI/HowToPlayMargin/HowToPlayBackground/HowToPlayBackground2/MarginContainer"]
+custom_minimum_size = Vector2(460, 365)
+layout_mode = 2
+texture = ExtResource("9_eoh28")
+region_rect = Rect2(275, 178, 90, 27)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 6
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="UI/HowToPlayMargin/HowToPlayBackground/HowToPlayBackground2/MarginContainer/HowToPlayBackground3"]
+custom_minimum_size = Vector2(430, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -175.0
+offset_right = 215.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_fonts/normal_font = ExtResource("5_llm1q")
+bbcode_enabled = true
+text = "If you spawn as a [color=#3A7CA5]Runner[/color]:
+
+1. Survive for 1 minute and 30 seconds without losing all your lives.  
+2. You have 3 lives — each tag removes one. After 3 tags, you become a [color=#C94C4C]Chaser[/color]!  
+3. Use speed and smart movement to stay safe.
+
+If you spawn as a [color=#C94C4C]Chaser[/color]:
+
+1. Tag the [color=#3A7CA5]Runners[/color] to convert them into [color=#C94C4C]Chasers[/color].  
+2. Turn everyone before time runs out to win!
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HowToPlayMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HowToPlayMargin/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="UI/HowToPlayMargin/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HowToPlayText" type="Label" parent="UI/HowToPlayMargin/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_llm1q")
+theme_override_font_sizes/font_size = 35
+text = "how to play?"
+
+[node name="Category" type="MarginContainer" parent="UI/HowToPlayMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 27
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 400
+
+[node name="CategoryContainer" type="HBoxContainer" parent="UI/HowToPlayMargin/Category"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="BenteUno" type="Button" parent="UI/HowToPlayMargin/Category/CategoryContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_llm1q")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxTexture_nxias")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nxias")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nxias")
+theme_override_styles/normal = SubResource("StyleBoxTexture_r3b1l")
+text = " Bente Uno "
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="UI/HowToPlayMargin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HowToPlayMargin/ExitButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="HowToPlayButton" type="Button" parent="UI/HowToPlayMargin/ExitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_lldy4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lldy4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_fqwan")
 
 [node name="GameTimer" type="Timer" parent="."]
 
@@ -3415,3 +3603,5 @@ volume_db = 1.625
 [connection signal="toggled" from="UI/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/MuteToggle" to="UI/SettingsPopUp" method="_on_mute_toggle_toggled"]
 [connection signal="toggled" from="UI/SettingsPopUp/SettingsFunctionContainer/SettingsButtonsCanvas/SettingsButtonsContainer/BrightnessToggle" to="UI/SettingsPopUp" method="_on_brightness_toggle_toggled"]
 [connection signal="pressed" from="UI/SettingsPopUp/SettingsFunctionContainer/ResetDataMargin/ResetGameDataButton" to="UI/SettingsPopUp" method="_on_reset_game_data_button_pressed"]
+[connection signal="pressed" from="UI/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="UI/HowToPlayMargin/ExitButtonContainer/MarginContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]

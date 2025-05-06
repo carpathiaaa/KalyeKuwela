@@ -5,8 +5,8 @@ var is_chaser: bool = false
 var target_direction: Vector2
 var target_runner: CharacterBody2D = null  # Chasers will chase this
 var nearby_chaser: CharacterBody2D = null  # Runners will flee from this
-var chase_speed: float = 80  # Further reduced chaser speed
-var flee_speed: float = 140  # Increased flee speed to make runners harder to catch
+var chase_speed: float = 60  # Further reduced chaser speed
+var flee_speed: float = 120  # Increased flee speed to make runners harder to catch
 
 var path: Array = []
 var path_index: int = 0
@@ -366,28 +366,3 @@ func update_status():
 	else:
 		status_label.text = "Runner"
 		status_label.add_theme_color_override("font_color", Color.BLUE)
-
-
-#func _draw():
-#	if pathfinding_enabled and path.size() > 1:
-#		if is_chaser:
-#			# Draw chaser path in red
-#			for i in range(path.size() - 1):
-#				draw_line(path[i] - global_position, path[i + 1] - global_position, Color(1, 0, 0, 0.5), 2.0)
-#			
-#			# Draw a circle at the current target point
-#			if path_index < path.size():
-#				draw_circle(path[path_index] - global_position, 5, Color(1, 0, 0, 0.7))
-#		else:
-#			# Draw runner path in blue
-#			for i in range(path.size() - 1):
-#				draw_line(path[i] - global_position, path[i + 1] - global_position, Color(0, 0, 1, 0.5), 2.0)
-#			
-#			# Draw a circle at the current target point
-#			if path_index < path.size():
-#				draw_circle(path[path_index] - global_position, 5, Color(0, 0, 1, 0.7))
-#
-
-#func _process(_delta):
-#	if pathfinding_enabled and path.size() > 1:
-#		queue_redraw()

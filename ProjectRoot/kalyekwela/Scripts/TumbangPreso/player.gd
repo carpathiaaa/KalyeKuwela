@@ -9,12 +9,16 @@ var time = 0
 @export var speed = 300 # Default speed of player
 var slowed : bool = false
 
+var can_move: bool = false
+
 signal touched_sandal
 signal in_safe_area
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	can_move = false
+	await get_tree().create_timer(0.01).timeout
+	can_move = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

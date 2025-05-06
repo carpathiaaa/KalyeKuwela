@@ -5,6 +5,8 @@ var is_chaser: bool = false
 var chasers_nearby: int = 0  # Keep track of nearby chasers
 var last_direction: Vector2 = Vector2.DOWN  # Default facing direction
 
+var can_move: bool = false  # Prevents movement until enabled
+
 @onready var status_label = $StatusLabel
 @onready var tag_area = $TagArea  # Reference to Area2D
 @onready var animated_sprite = $AnimatedSprite2D  # Reference to AnimatedSprite2D
@@ -29,6 +31,10 @@ func _ready():
 	update_status()
 	# Set initial idle animation
 	play_idle_animation()
+	
+	can_move = false
+	await get_tree().create_timer(0.01).timeout
+	can_move = true
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO

@@ -5,6 +5,9 @@ extends Player
 @onready var timer = $Timer
 @onready var game_scene : BaseGame = get_parent()
 @onready var oof_sfx = $oof_sfx
+
+var can_move: bool = false
+
 var time = 0
 var action_label_time : float = 2
 
@@ -17,8 +20,12 @@ var slowed : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_name_label.text = "Player"
+	
 	if game_scene is not BaseGame:
 		print("game scene error")
+	can_move = false
+	await get_tree().create_timer(0.01).timeout
+	can_move = true
 	update_speed()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
