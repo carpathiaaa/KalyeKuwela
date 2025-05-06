@@ -1762,6 +1762,7 @@ position = Vector2(14, 40)
 shape = SubResource("RectangleShape2D_u42w4")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+modulate = Color(1, 1, 0.384314, 1)
 position = Vector2(-2, 40)
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAAAP//AAAoAAMAAAAAAAAAAAAoAAMAAAAAAP7/AAAoAAMAAAAAAP3/AAAoAAEAAAAAAAEAAAAoAAMAAAAAAAIAAAAoAAQAAAA=")

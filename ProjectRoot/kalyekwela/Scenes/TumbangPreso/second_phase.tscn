@@ -74,11 +74,11 @@ shape = SubResource("RectangleShape2D_vo024")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="map/Areas/safe_area" groups=["safe_area"]]
 z_index = 1
-position = Vector2(573.75, 1920)
+position = Vector2(530, 1548.75)
 shape = SubResource("RectangleShape2D_pqhor")
 
 [node name="player" parent="." instance=ExtResource("6_wkaxu")]
-position = Vector2(425, 1494)
+position = Vector2(448, 1291)
 scale = Vector2(2.4, 2.4)
 script = ExtResource("5_vo024")
 speed = 300.0

@@ -7,6 +7,7 @@ var base_speed : float = 40.0 # base speed of horizontal enemy (scales with game
 var game_level = 1
 
 func _ready() -> void:
+	velocity = Vector2.ZERO
 	get_parent().change_level.connect(update_level)
 	position.y = clamp(position.y, -30, -30)
 

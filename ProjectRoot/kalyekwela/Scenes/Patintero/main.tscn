@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccj5fi8xp7xsd"]
+[gd_scene load_steps=14 format=3 uid="uid://ccj5fi8xp7xsd"]
 
 [ext_resource type="Script" uid="uid://q5pqc80n1t5r" path="res://Scripts/Patintero/patintero_main.gd" id="1_q6fdc"]
 [ext_resource type="PackedScene" uid="uid://dja4w5pgnhm58" path="res://Scenes/Patintero/main_player.tscn" id="3_p53ya"]
@@ -11,6 +11,21 @@
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="9_jqj7b"]
 [ext_resource type="Texture2D" uid="uid://dbnpoqg0knc5k" path="res://Assets/Art/Maps/Tilesets/kylefeliciano/volcano.png" id="10_jqj7b"]
 [ext_resource type="Texture2D" uid="uid://dnqy7kbgxl003" path="res://Assets/Art/UI/UI_Sky_Background.png" id="11_a0e8k"]
+
+[sub_resource type="GDScript" id="GDScript_a0e8k"]
+script/source = "extends CanvasLayer
+
+@onready var player = $\"../main_player\"
+@onready var info_board = $InfoOverlay
+
+func _ready() -> void:
+	player.health_change.connect(changing_health)
+
+func changing_health(health: int) -> void:
+	print(\"updating hearts/.//\")
+	info_board.update_hearts_label(health)
+	
+"
 
 [sub_resource type="Environment" id="Environment_a0e8k"]
 background_mode = 3
@@ -55,6 +70,7 @@ stream = ExtResource("7_r7t3u")
 volume_db = 7.0
 
 [node name="UserInterface" parent="." instance=ExtResource("9_i0cr5")]
+script = SubResource("GDScript_a0e8k")
 
 [node name="Virtual Joystick" parent="UserInterface" instance=ExtResource("9_jqj7b")]
 z_index = 15

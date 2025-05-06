@@ -4,23 +4,32 @@ extends Control
 @onready var coins_label = $Container/LeftContainer/CoinsLabel
 @onready var timer_label = $Container/RightContainer/TimerLabel
 @onready var score_label = $Container/RightContainer/ScoreLabel
+@onready var hearts_label = $Container/RightContainer/HeartsLabel
 
 @onready var label_timer = $LabelTimer # optional timer 
 
-var remaining_seconds : float = 15 # Store elpased time in seconds
+var remaining_seconds : float = 30 # Store elpased time in seconds
 
 
 func update_level_label(new_level : int) -> void:
+	print("updated level label: " + str(new_level))
 	level_label.text = " Level " + format_with_commas(new_level)
 
 func update_coins_label(new_coins : int) -> void:
+	print("updated coins label: " + str(new_coins))
 	coins_label.text = "           " + format_with_commas(new_coins)
 
 func update_score_label(new_score : int) ->void:
+	print("updated score label: " + str(new_score))
 	score_label.text = format_with_commas(new_score) + " "
 
 func update_timer_label() -> void:
+	print("updated timer label: " + str(remaining_seconds))
 	timer_label.text = str(int(remaining_seconds)) + " "
+
+func update_hearts_label(new_health : int) ->void:
+	print("updated level label: " + str(new_health))
+	hearts_label.update_hearts(new_health)
 
 func set_timer(seconds : float) -> void:
 	label_timer.stop() 

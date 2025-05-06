@@ -17,7 +17,7 @@ height = 34.0
 script = ExtResource("1_86n65")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0, 1, 1, 1)
+z_index = 2
 sprite_frames = ExtResource("2_tlica")
 animation = &"IdleFront"
 script = SubResource("GDScript_86n65")

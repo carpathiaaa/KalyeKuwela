@@ -10,6 +10,8 @@ extends BaseGame
 @onready var short_fence = preload("res://Scenes/TumbangPreso/short_fence.tscn")
 @onready var long_fence = preload("res://Scenes/TumbangPreso/long_fence.tscn")
 @onready var rock = preload("res://Scenes/Patintero/rock.tscn")
+@onready var right_arrow = preload("res://Scenes/BaseScenes/right_arrow.tscn")
+@onready var left_arrow = preload("res://Scenes/BaseScenes/left_arrow.tscn")
 
 @onready var vertical_float_enemy = preload("res://Scenes/Patintero/vertical_float_enemy.tscn")
 @onready var random_float_enemy = preload("res://Scenes/Patintero/random_float_enemy.tscn")
@@ -34,6 +36,7 @@ func _ready() -> void:
 	# Override default level
 	current_game = location_string
 	level = 0
+	map.player_returning.connect(reverse_arrow)
 	info_overlay.hide_timer_label() 
 	info_overlay.hide_score_label()
 	set_object_spawner()
@@ -58,6 +61,7 @@ func next_level() -> void:
 	spawn_coins(level + 1)
 	spawn_rocks(level + 1)
 	spawn_fence(level + 1)
+	spawn_right_arrow(level + 1)
 
 func spawn_coins(current_level : int) -> void:
 	var random_x = 0
@@ -96,6 +100,7 @@ func spawn_fence(current_level : int) -> void:
 				object_spawner.set_spawner(short_fence, map)
 				object_spawner.spawn_object(Vector2(235 * i, 96), 4)
 				object_spawner.spawn_object(Vector2(235 * i, -170), 4)
+
 func spawn_enemy(current_level : int) -> void:
 	print("Spawning enemies")
 	var random_y = 0
@@ -115,6 +120,31 @@ func spawn_enemy(current_level : int) -> void:
 				object_spawner.spawn_object(Vector2(235 * i, 0), 4)
 			_:    # Optional: Default case (handles unexpected values)
 				push_error("Invalid enemy type")
+
+func spawn_right_arrow(current_level: int) -> void:
+	print("Spawning right arrows")
+	object_spawner.set_spawner(right_arrow, map)
+	for i in range(-1, (2 * current_level) - 1):
+		object_spawner.spawn_object(Vector2(235 * i + 50, 60), 3)
+		object_spawner.spawn_object(Vector2(235 * i + 50, -105), 3)
+
+func spawn_left_arrow(current_level: int) -> void:
+	print("Spawning left arrows")
+	object_spawner.set_spawner(left_arrow, map)
+	for i in range(-1, (2 * current_level) - 1):
+		object_spawner.spawn_object(Vector2(235 * i + 180, 60), 3)
+		object_spawner.spawn_object(Vector2(235 * i + 180, -105), 3)
+
+
+func reverse_arrow() -> void:
+	print("reversing arrows")
+	clear_right_arrow()
+	spawn_left_arrow(level + 1)
+
+func clear_right_arrow() -> void:
+	print("clearing")
+	object_spawner.clear_type(right_arrow)
+
 
 func player_death() -> void:
 	info_overlay.hide()

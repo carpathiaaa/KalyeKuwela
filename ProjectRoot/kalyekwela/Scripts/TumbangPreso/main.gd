@@ -6,25 +6,25 @@ extends BaseGame
 @onready var second_phase = preload("res://Scenes/TumbangPreso/second_phase.tscn")
 @onready var win_screen = preload("res://Scenes/TumbangPreso/win_screen.tscn")
 @onready var info_overlay = $user_interface/InfoOverlay
-
+@onready var hearts_label = $user_interface/InfoOverlay/Container/RightContainer/HeartsLabel
 var location_string : String = "res://Scenes/TumbangPreso/main.tscn"
 
 var first_phase_instance : Node = null
 var second_phase_instance : Node = null
 
-var threshold_score : int = 50
+var threshold_score : int = 40
 var current_score : int  = 0
 
 var first_phase_time : int = 7
-var second_phase_time : int = 15
+var second_phase_time : int = 30
 const countdown_time : int = 3
-
 
 signal first_phase_ended 
 signal second_phase_ended
 var pass_to_next : bool = false
 
 func _ready() -> void:
+	hearts_label.hide()
 	current_game = location_string
 	# Start event sequence
 	start_events()
@@ -63,7 +63,7 @@ func player_loses() -> void:
 
 func next_level() -> void:
 	print("Game not finished")
-	threshold_score += 15
+	threshold_score += 10
 	level += 1
 	start_events() # restart event sequence
 

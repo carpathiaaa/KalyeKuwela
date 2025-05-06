@@ -153,8 +153,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4uur"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ch51q"]
+radius = 9.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_gbkba"]
 font = ExtResource("6_k37kf")

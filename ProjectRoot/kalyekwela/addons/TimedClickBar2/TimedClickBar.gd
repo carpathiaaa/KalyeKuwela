@@ -35,11 +35,11 @@ func _on_bar_button_button_down() -> void:
 		get_parent().update_phase_rewards(0, -2)
 		button_icon.modulate = Color(1.8, 0.7, 0.7) # Reddish tint if miss
 	randomize_bar() # reset acceptance region length and position
-	pointer_animation.speed_scale = random_number.randf_range(0.5, 0.75) # increase pointer speed after every button click
+	pointer_animation.speed_scale = random_number.randf_range(0.4, 0.65) # increase pointer speed after every button click
 
 
 func randomize_bar() -> void:
-	acceptance_region.scale.x = random_number.randf_range(0.25, 0.6) * (1 + (0.2 * pointer_animation.speed_scale))
+	acceptance_region.scale.x = random_number.randf_range(0.35, 0.6) * (1 + (0.2 * pointer_animation.speed_scale))
 	acceptance_region.position.x = random_number.randf_range(10, 360) * (1 - acceptance_region.scale.x)
 
 # return button sprite to normal state

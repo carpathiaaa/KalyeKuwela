@@ -31,6 +31,17 @@ func spawn_object(spawn_position : Vector2, z_index : int) -> void:
 	target_node.add_child(new_object_instance)
 	print( str(object) + " spawned at " + str(new_object_instance.position))
 
+func clear_type(selected_object : PackedScene) -> void:
+	var i = objects.size() - 1
+	var path = selected_object.resource_path
+	while i >= 0:
+		var obj = objects[i]
+		if obj and obj.scene_file_path == path:
+			print("clearing...")
+			objects[i].queue_free()
+			objects.remove_at(i)
+		i -= 1
+
 func clear_objects() -> void:
 	for spawned_object in objects:
 		if spawned_object != null:

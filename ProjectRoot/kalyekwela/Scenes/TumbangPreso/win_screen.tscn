@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://besno70ppy7qy"]
+[gd_scene load_steps=13 format=3 uid="uid://besno70ppy7qy"]
 
 [ext_resource type="Texture2D" uid="uid://didddfv388xtr" path="res://Assets/Art/Props/TumbangPreso_Can_2.png" id="2_stx5x"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="3_lyoig"]
 [ext_resource type="Texture2D" uid="uid://b5lt1ikpq2nla" path="res://Assets/Art/Imported/Canva/win_background.jpg" id="4_4s6pd"]
 [ext_resource type="AudioStream" uid="uid://dsq1x1alyelyr" path="res://Assets/Audio/Music/Audio_TumbangPreso_Loading.mp3" id="4_stx5x"]
+[ext_resource type="Texture2D" uid="uid://cogow715ntm2v" path="res://Assets/Art/Props/sandal by adityasusant938.png" id="5_lyoig"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fnmbn"]
 font = ExtResource("3_lyoig")
@@ -41,6 +42,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(643, 467)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SandalByAdityasusant938:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(815, 299)]
+}
 
 [sub_resource type="Animation" id="Animation_bwkob"]
 resource_name = "can"
@@ -49,10 +62,10 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("TumbangPresoCan2:rotation")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0.266667, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.5708]
@@ -64,16 +77,65 @@ tracks/1/path = NodePath("TumbangPresoCan2:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0.2, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(643, 490.105), Vector2(643, 552.85)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SandalByAdityasusant938:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-100, 299), Vector2(815, 500), Vector2(1500, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_stx5x"]
 _data = {
 &"RESET": SubResource("Animation_stx5x"),
 &"can": SubResource("Animation_bwkob")
+}
+
+[sub_resource type="Animation" id="Animation_4s6pd"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SandalByAdityasusant938:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_fnmbn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SandalByAdityasusant938:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_808hd"]
+_data = {
+&"RESET": SubResource("Animation_fnmbn"),
+&"spin": SubResource("Animation_4s6pd")
 }
 
 [node name="WinScreen" type="Node2D"]
@@ -111,6 +173,18 @@ speed_scale = 1.5
 
 [node name="AudioTumbangPresoLoading" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_stx5x")
-volume_db = -2.0
+volume_db = 5.0
 pitch_scale = 1.5
 autoplay = true
+
+[node name="SandalByAdityasusant938" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(815, 299)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_lyoig")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_808hd")
+}
+autoplay = "spin"

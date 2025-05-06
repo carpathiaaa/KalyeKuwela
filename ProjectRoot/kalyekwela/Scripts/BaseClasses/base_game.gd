@@ -29,16 +29,23 @@ func show_summary() -> void:
 	score_summary_instance.added_exp = exp
 	ui_layer.add_child(score_summary_instance)
 
+# Add this to your scene change logic (before changing scenes)
+func disconnect_input_signals():
+	print("Releasing input signals")
+	# Release all movement actions
+	Input.action_release("ui_up")
+	Input.action_release("ui_down")
+	Input.action_release("ui_left")
+	Input.action_release("ui_right")
 
 func end_sequence() -> void:
 	print("starting end sequence")
 	if !game_ended:
 		end_game()
 
-
-
 func end_game() -> void:
 	game_ended = true
+	disconnect_input_signals()
 	coins = 0 if coins < 0 else coins
 	exp = 0 if exp < 0 else exp
 	GlobalData.add_rewards(coins, exp)

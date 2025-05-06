@@ -11,12 +11,14 @@ extends TumbangPresoPhase
 @onready var action_label = $user_interface/action_label
 @onready var action_label_timer = $user_interface/action_label/ActionLabelTimer
 @onready var rock = preload("res://Scenes/TumbangPreso/large_rock.tscn")
-
+@onready var up_arrow = $map/UpArrow
+@onready var down_arrow = $map/DownArrow
+@onready var down_arrow_animation = $map/DownArrow/AnimationPlayer
 var random_number = RandomNumberGenerator.new()
 var object_spawner = ObjectSpawner.new()
 
 var retrieved_sandal : bool = false 
-var phase_time : int = 15
+var phase_time : int = 20
 var difficulty : int = 1 # Default difficulty
 var action_label_time : float = 1.5
 
@@ -42,7 +44,6 @@ func _on_player_touched_enemy() -> void:
 	print("Player touched an enemy")
 	if movement_joystick:
 		movement_joystick.queue_free()
-	await get_tree().create_timer(1.0).timeout
 	game_scene.end_sequence()
 
 func _on_sandal_area_area_entered(area: Area2D) -> void:
@@ -54,6 +55,10 @@ func _on_sandal_area_area_entered(area: Area2D) -> void:
 		sandal.queue_free()
 		player.self_modulate = Color(0.75, 1, 0.75)  # Light green using normalized values (0-1)
 		retrieved_sandal = true
+		up_arrow.hide()
+		down_arrow.show()
+		down_arrow_animation.play("down_arrow")
+
 
 
 func _on_safe_area_area_entered(area: Area2D) -> void:
@@ -75,7 +80,7 @@ func spawn_rocks(current_level : int) -> void:
 	var random_y = 0
 	print("spawning rocks")
 	object_spawner.set_spawner(rock, map)
-	for i in current_level * 2:
+	for i in current_level * 4:
 		random_x = random_number.randi_range(150, 750) 
 		random_y = random_number.randi_range(500, 900) 
 		object_spawner.spawn_object(Vector2(random_x, random_y), 1)

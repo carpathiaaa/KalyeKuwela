@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://da7ys748kevs"]
+
+[ext_resource type="Texture2D" uid="uid://dt2gdd1vgcfy0" path="res://Assets/Art/Maps/Tilesets/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/UI/arrow_left.png" id="1_3vx2i"]
+
+[node name="LeftArrow" type="AnimatableBody2D"]
+self_modulate = Color(1, 1, 1, 0.407843)
+sync_to_physics = false
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.313726)
+position = Vector2(12, -8.59999)
+scale = Vector2(4, 4)
+texture = ExtResource("1_3vx2i")

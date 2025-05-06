@@ -54,6 +54,7 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group("enemy"): 	# detect if player collided with enemy bot
 		laugh_sfx.play()
 		emit_signal("touched_enemy")
+		modulate = Color(1, 0, 0)
 	if area.is_in_group("safe_area"):
 		emit_signal("in_safe_area")
 	if area.is_in_group("rock"):

@@ -12,6 +12,8 @@ var coin = preload("res://Scenes/Patintero/coin.tscn")
 var random_number = RandomNumberGenerator.new()
 var label_timer : float = 2.0
 
+signal player_returning
+var player_returned : bool = true
 
 func _ready() -> void:
 	random_number.randomize() # random number generator seed
@@ -50,8 +52,6 @@ func preparelevel() -> void:
 		#add_vertical_bot(Vector2(235* i, 0))
 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func extend_map(main_tile_position) -> void:
 	var map_instance = main_tile.duplicate()
 	map_instance.position = main_tile_position
@@ -75,19 +75,20 @@ func add_coin(min_position, max_position) -> void:
 func _on_start_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("main_player"):
 		start_area.position.x = -500  
+		player_returned = true
 		main_patintero.next_level()
 		preparelevel()
 
 
-
 func _on_end_area_area_entered(area: Area2D) -> void:
-	if area.is_in_group("main_player"):
+	if area.is_in_group("main_player") and player_returned:
+		emit_signal("player_returning")
+		player_returned = false
 		return_label.show()
 
 
 func _on_end_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("main_player"):
-		return_label.hide()
 		start_area.position.x = 0
-		
-	
+		await get_tree().create_timer(5).timeout
+		return_label.hide()

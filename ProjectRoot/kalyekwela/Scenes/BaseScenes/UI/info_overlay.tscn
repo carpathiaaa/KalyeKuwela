@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cbk1ghm6qyjns"]
+[gd_scene load_steps=18 format=3 uid="uid://cbk1ghm6qyjns"]
 
 [ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="1_cwk0t"]
 [ext_resource type="Script" uid="uid://cg6qyd2fofot2" path="res://Scripts/BaseClasses/info_overlay.gd" id="1_m3d6f"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="2_m3d6f"]
 [ext_resource type="Texture2D" uid="uid://bfsuh3ugmc8ue" path="res://Assets/Art/Props/coin4_16x16.png" id="4_m3d6f"]
+[ext_resource type="PackedScene" uid="uid://0orwvll0fx65" path="res://Scenes/BaseScenes/UI/hearts_label.tscn" id="5_pefkk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6ig2"]
 atlas = ExtResource("4_m3d6f")
@@ -78,7 +79,7 @@ animations = [{
 
 [sub_resource type="LabelSettings" id="LabelSettings_pefkk"]
 font = ExtResource("1_cwk0t")
-font_size = 59
+font_size = 70
 font_color = Color(1, 0.768627, 0.368627, 1)
 outline_size = 21
 outline_color = Color(0.641664, 0.239669, 0, 1)
@@ -86,7 +87,7 @@ outline_color = Color(0.641664, 0.239669, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_pxmb6"]
 line_spacing = 0.0
 font = ExtResource("2_m3d6f")
-font_size = 65
+font_size = 80
 font_color = Color(0.779767, 0, 0.19888, 1)
 outline_size = 15
 outline_color = Color(0.545098, 0, 0, 1)
@@ -102,7 +103,7 @@ script = ExtResource("1_m3d6f")
 
 [node name="coin_image" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(39.9, 105.9)
+position = Vector2(65, 125)
 scale = Vector2(4.2625, 4.2625)
 sprite_frames = SubResource("SpriteFrames_8823b")
 autoplay = "default"
@@ -148,5 +149,8 @@ text = "Score "
 label_settings = SubResource("LabelSettings_pxmb6")
 horizontal_alignment = 2
 autowrap_mode = 2
+
+[node name="HeartsLabel" parent="Container/RightContainer" instance=ExtResource("5_pefkk")]
+position = Vector2(-329, 10)
 
 [connection signal="timeout" from="LabelTimer" to="." method="_on_label_timer_timeout"]
