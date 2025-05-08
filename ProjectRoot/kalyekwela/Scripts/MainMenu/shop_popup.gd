@@ -107,7 +107,7 @@ func _on_confirm_button_pressed():
 		GlobalData.save_data()
 		_update_coin_display()
 		purchase_popup.hide()
-		populate_shop()  # ✅ Refresh the shop to remove purchased item
+		populate_shop()  # Refresh the shop to remove purchased item
 	else:
 		_show_not_enough_coins_popup()
 

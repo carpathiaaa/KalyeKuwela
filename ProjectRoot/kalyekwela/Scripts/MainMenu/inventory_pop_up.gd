@@ -49,7 +49,7 @@ func populate_inventory():
 		items_container.add_child(inventory_slot)
 
 
-# 🎭 Equip selected character or accessory
+# Equip selected character or accessory
 func equip_item(item_name: String, item_type: String):
 	if item_type == "character":
 		GlobalData.equipped_character = item_name
@@ -58,7 +58,7 @@ func equip_item(item_name: String, item_type: String):
 	GlobalData.save_data()
 	print(item_type.capitalize() + " equipped:", item_name)
 
-# 🔍 Get icon path dynamically
+# Get icon path dynamically
 func get_item_icon_path(name: String, item_type: String) -> String:
 	var icons = {
 		"character": {
@@ -76,7 +76,7 @@ func get_item_icon_path(name: String, item_type: String) -> String:
 	}
 	return icons.get(item_type, {}).get(name, "res://Assets/Art/AccessoriesIcons/default_icon.png")
 
-# 🔄 Change category
+# Change category
 func _on_characters_button_pressed():
 	current_category = "character"
 	populate_inventory()

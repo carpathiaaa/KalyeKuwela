@@ -155,6 +155,7 @@ func assign_chaser():
 
 	chaser.become_chaser()
 	print("First chaser assigned:", chaser.name)
+	var first_chaser = chaser.name
 
 func update_game_timer_label():
 	var time_left = int(game_timer.time_left)

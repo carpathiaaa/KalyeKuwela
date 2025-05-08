@@ -62,7 +62,7 @@ func _physics_process(delta):
 	if not is_chaser and not invincible:
 		check_for_overlapping_chasers()
 
-# 🔄 Update animation based on movement direction
+# Update animation based on movement direction
 func update_animation(direction):
 	if abs(direction.x) > abs(direction.y):
 		animated_sprite.play("WalkSide")
@@ -82,7 +82,7 @@ func play_idle_animation():
 	else:
 		animated_sprite.play("IdleBack")
 
-# 👹 Convert to a chaser
+# Convert to a chaser
 func become_chaser():
 	if not is_chaser:
 		is_chaser = true
@@ -91,7 +91,7 @@ func become_chaser():
 		tag_sfx.play()  # 🔊 Play sound for getting tagged
 		print(name, " has become a CHASER!")
 
-# 🔴 Updates player status (Runner/Chaser)
+# Updates player status (Runner/Chaser)
 func update_status():
 	if is_chaser:
 		modulate = Color.RED
@@ -112,7 +112,7 @@ func update_chase_sfx():
 		fade_music(background_music, -20, 0.5)  # 🌟 Fade in background music
 		fade_music(chase_sfx, -30.0, 0.5)  # 🚫 Fade out chase music
 
-# 🚀 Smoothly fades audio using a Tween
+# Smoothly fades audio using a Tween
 func fade_music(audio: AudioStreamPlayer2D, target_db: float, duration: float):
 	if tween.is_valid():
 		tween.kill()  # ✅ Only kill if necessary

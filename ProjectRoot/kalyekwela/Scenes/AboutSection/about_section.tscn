@@ -130,7 +130,7 @@ layout_mode = 2
 theme_override_constants/margin_left = 900
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
-custom_minimum_size = Vector2(0, 2000)
+custom_minimum_size = Vector2(0, 4000)
 layout_mode = 2
 size_flags_horizontal = 8
 
@@ -189,17 +189,80 @@ label_settings = SubResource("LabelSettings_02i5l")
 
 [node name="Music1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Music 1"
+text = "A Night of Dizzy Spells - Eric Skiff"
 label_settings = SubResource("LabelSettings_k1lj4")
 
 [node name="Music2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Music2"
+text = "8 Bit Fun! - HeatlyBros"
 label_settings = SubResource("LabelSettings_k1lj4")
 
 [node name="Music3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Music 3"
+text = "Clouds Castle - Flippo Vicarelli"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Music4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fishball Fight - Kyle Patrick Naval"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Music5" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "8 Bit Menu - David Renda"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Music6" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "8 Bit Adventure - David Renda"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label6" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TilesetTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tilesets:"
+label_settings = SubResource("LabelSettings_02i5l")
+
+[node name="Tileset1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Solaria Demo Tiles - Jamie Brownhill"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Tileset2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sprout Lands UI Pack - Cup Nooble"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Label7" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label8" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label9" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FontTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fonts:"
+label_settings = SubResource("LabelSettings_02i5l")
+
+[node name="Font1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Toybox Font - Darrell Flood"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Font2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Arcade Classic Font - Pizzadude"
 label_settings = SubResource("LabelSettings_k1lj4")
 
 [node name="ReturnButton" type="Button" parent="."]

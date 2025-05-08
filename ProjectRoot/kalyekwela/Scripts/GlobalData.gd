@@ -97,7 +97,7 @@ func save_data():
 	print("Game saved:", data)
 
 
-# 📂 Load game data with error handling
+# Load game data with error handling
 func load_data():
 	if FileAccess.file_exists(SAVE_PATH):
 		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
@@ -112,7 +112,7 @@ func load_data():
 		var data = JSON.parse_string(content)
 		
 		if data is Dictionary:
-			# ✅ Use get() with defaults to prevent null values
+			# Use get() with defaults to prevent null values
 			coins = data.get("coins", 0)
 			xp = data.get("xp", 0)
 			level = data.get("level", 1)
@@ -122,12 +122,12 @@ func load_data():
 			equipped_accessory = data.get("equipped_accessory", "")
 
 			check_level_up()
-			print("✅ Game loaded successfully:", data)
+			print("Game loaded successfully:", data)
 		else:
-			print("❌ Error: Invalid save data. Resetting to defaults.")
+			print("Invalid save data. Resetting to defaults.")
 			reset_data()
 	else:
-		print("📂 No save file found. Initializing new save.")
+		print("No save file found. Initializing new save.")
 		reset_data()
 
 

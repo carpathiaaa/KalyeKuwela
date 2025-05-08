@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cg6qyd2fofot2" path="res://Scripts/BaseClasses/info_overlay.gd" id="1_m3d6f"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="2_m3d6f"]
 [ext_resource type="Texture2D" uid="uid://bfsuh3ugmc8ue" path="res://Assets/Art/Props/coin4_16x16.png" id="4_m3d6f"]
-[ext_resource type="PackedScene" uid="uid://0orwvll0fx65" path="res://Scenes/BaseScenes/UI/hearts_label.tscn" id="5_pefkk"]
+[ext_resource type="PackedScene" uid="uid://bb1uk40pm2de5" path="res://Scenes/BaseScenes/UI/hearts_label.tscn" id="5_pefkk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6ig2"]
 atlas = ExtResource("4_m3d6f")
