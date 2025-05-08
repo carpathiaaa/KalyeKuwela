@@ -26,6 +26,7 @@ var current_game : String = "res://Scenes/BenteUno/main.tscn"
 
 var paused = false
 var first_chaser_assigned = false  # Prevents multiple assignments
+var player_was_first_chaser = false
 var game_has_ended = false  # Prevents duplicate game-over calls
 
 func _ready():
@@ -156,6 +157,11 @@ func assign_chaser():
 	chaser.become_chaser()
 	print("First chaser assigned:", chaser.name)
 	var first_chaser = chaser.name
+	
+	if chaser == player:
+		player_was_first_chaser = true
+	else:
+		player_was_first_chaser = false
 
 func update_game_timer_label():
 	var time_left = int(game_timer.time_left)
@@ -216,7 +222,10 @@ func game_over(message):
 
 	# Give rewards based on outcome
 	if message == "Game Over. Chasers Won!":
-		GlobalData.add_rewards(10, 10)
+		if player_was_first_chaser:
+			GlobalData.add_rewards(30, 30)
+		else:	
+			GlobalData.add_rewards(10, 10)
 	elif message == "Game Over. Runners Won!":
 		if player.is_chaser:
 			GlobalData.add_rewards(10, 10)
