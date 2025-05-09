@@ -2,7 +2,7 @@ extends BaseEnemy
 
 @onready var player = $"../player"
 @onready var enemy_animation = $AnimatedSprite2D  # Renamed for clarity
-@onready var speed: float = 230.0
+@onready var speed: float = 200.0
 
 var direction: Vector2 = Vector2.ZERO
 

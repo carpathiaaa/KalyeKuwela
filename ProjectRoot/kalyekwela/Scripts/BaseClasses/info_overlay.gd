@@ -24,8 +24,11 @@ func update_score_label(new_score : int) ->void:
 	score_label.text = format_with_commas(new_score) + " "
 
 func update_timer_label() -> void:
-	print("updated timer label: " + str(remaining_seconds))
-	timer_label.text = str(int(remaining_seconds)) + " "
+	var total_seconds := int(remaining_seconds)
+	var minutes := total_seconds / 60
+	var seconds := total_seconds % 60
+	timer_label.text = "%d:%02d" % [minutes, seconds]
+	print("Updated timer label: ", timer_label.text)
 
 func update_hearts_label(new_health : int) ->void:
 	print("updated level label: " + str(new_health))

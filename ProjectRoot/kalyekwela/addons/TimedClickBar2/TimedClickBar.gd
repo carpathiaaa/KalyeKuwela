@@ -8,10 +8,13 @@ extends Control
 @onready var button_sprite = $bar_button/SmallSquareButtons
 @onready var button_icon = $bar_button/button_icon
 @onready var sandal_sprite = $"../sandal/SandalByAdityasusant938"
+@onready var guide_label = $Container/GuideLabel
+@onready var green_outline = $Container/GreenOutline
 @onready var hit_sfx = $hit_sfx
 @onready var miss_sfx = $miss_sfx
 
 @export var pointer_is_over_target : bool = false
+signal change_pointer_state(pointer_is_over_target)
 
 var random_number = RandomNumberGenerator.new() # create a random number generator
 
@@ -37,6 +40,15 @@ func _on_bar_button_button_down() -> void:
 	randomize_bar() # reset acceptance region length and position
 	pointer_animation.speed_scale = random_number.randf_range(0.4, 0.65) # increase pointer speed after every button click
 
+func change_state(new_state: bool) -> void:
+	pointer_is_over_target = new_state
+	if new_state:
+		guide_label.show()
+		green_outline.show()
+	else:
+		guide_label.hide()
+		green_outline.hide()
+	emit_signal("change_pointer_state", pointer_is_over_target)
 
 func randomize_bar() -> void:
 	acceptance_region.scale.x = random_number.randf_range(0.35, 0.6) * (1 + (0.2 * pointer_animation.speed_scale))

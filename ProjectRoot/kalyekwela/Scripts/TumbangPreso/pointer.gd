@@ -4,8 +4,8 @@ extends AnimatableBody2D
 
 func _on_pointer_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("acceptance_region"):
-		timed_click_bar.pointer_is_over_target = true
+		timed_click_bar.change_state(true)
 
 func _on_pointer_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("acceptance_region"):
-		timed_click_bar.pointer_is_over_target = false
+		timed_click_bar.change_state(false)

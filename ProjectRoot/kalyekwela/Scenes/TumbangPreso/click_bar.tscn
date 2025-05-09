@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dsk12w3h340b6"]
+[gd_scene load_steps=20 format=3 uid="uid://dsk12w3h340b6"]
 
 [ext_resource type="Script" uid="uid://b10t38x7cwg6" path="res://addons/TimedClickBar2/TimedClickBar.gd" id="2"]
 [ext_resource type="Script" uid="uid://8f6l8gtfy5wu" path="res://Scripts/TumbangPreso/pointer.gd" id="2_aly46"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bv6p4ldwsdoj2" path="res://addons/progress_bar/least rounded/progress bar least rounded progress green.png" id="4_c6gpa"]
 [ext_resource type="AudioStream" uid="uid://x3o7x3mq3olm" path="res://Assets/Audio/SFX/Audio_Click.mp3" id="8_srnvl"]
 [ext_resource type="AudioStream" uid="uid://h1f2kc4xthum" path="res://Assets/Audio/SFX/Audio_Click_2.mp3" id="9_14if5"]
+[ext_resource type="FontFile" uid="uid://d2wgai6ruks4g" path="res://Assets/Art/Fonts/alanus.ttf" id="10_14if5"]
 
 [sub_resource type="Animation" id="Animation_vdhmb"]
 loop_mode = 1
@@ -86,6 +87,16 @@ size = Vector2(8, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh8pc"]
 size = Vector2(109, 61)
+
+[sub_resource type="LabelSettings" id="LabelSettings_06rfc"]
+font = ExtResource("10_14if5")
+font_size = 70
+font_color = Color(0.701961, 1, 0.380392, 1)
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0.336608, 0.336608, 0.336608, 0.537255)
+shadow_offset = Vector2(2, 2)
 
 [node name="click_bar" type="Control"]
 layout_mode = 3
@@ -184,6 +195,28 @@ stream = ExtResource("8_srnvl")
 
 [node name="miss_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_14if5")
+
+[node name="Container" type="Container" parent="."]
+layout_mode = 0
+offset_left = -102.0
+offset_top = -65.0
+offset_right = -62.0
+offset_bottom = -25.0
+
+[node name="GuideLabel" type="Label" parent="Container"]
+visible = false
+layout_mode = 2
+text = "Click"
+label_settings = SubResource("LabelSettings_06rfc")
+horizontal_alignment = 1
+
+[node name="GreenOutline" type="AnimatedSprite2D" parent="Container"]
+visible = false
+self_modulate = Color(0.542172, 0.963655, 0, 1)
+position = Vector2(36, 124)
+scale = Vector2(4.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_fh8pc")
+animation = &"brown_animation"
 
 [connection signal="button_down" from="bar_button" to="." method="_on_bar_button_button_down"]
 [connection signal="timeout" from="bar_button/button_timer" to="." method="_on_button_timer_timeout"]

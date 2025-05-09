@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c82v024stngc8"]
+[gd_scene load_steps=23 format=3 uid="uid://c82v024stngc8"]
 
 [ext_resource type="Texture2D" uid="uid://dks81u6af6lc3" path="res://Assets/Art/UI/UI_AboutBG_3.png" id="1_02i5l"]
 [ext_resource type="Script" uid="uid://jilkcvdddx2r" path="res://Scripts/AboutSection/about_section.gd" id="1_pjx3x"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://btgdpar4jwoip" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="14_pjx3x"]
 [ext_resource type="AudioStream" uid="uid://x3o7x3mq3olm" path="res://Assets/Audio/SFX/Audio_Click.mp3" id="16_smgnw"]
 [ext_resource type="AudioStream" uid="uid://h1f2kc4xthum" path="res://Assets/Audio/SFX/Audio_Click_2.mp3" id="17_0xq2t"]
+[ext_resource type="AudioStream" uid="uid://bt65j5uayi503" path="res://Assets/Audio/Music/Audio_MainTheme.mp3" id="18_0xq2t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_02i5l"]
 font = ExtResource("2_k1lj4")
@@ -179,9 +180,6 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="MusicTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Music:"
@@ -215,6 +213,16 @@ label_settings = SubResource("LabelSettings_k1lj4")
 [node name="Music6" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "8 Bit Adventure - David Renda"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Music7" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Roblox \"Oof\" sound - Tommy Tallarico"
+label_settings = SubResource("LabelSettings_k1lj4")
+
+[node name="Music8" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Duck Hunt laughing sound - Hirokazu Tanaka"
 label_settings = SubResource("LabelSettings_k1lj4")
 
 [node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
@@ -296,5 +304,11 @@ volume_db = 3.171
 [node name="ClickSound2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_0xq2t")
 volume_db = 3.171
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_0xq2t")
+pitch_scale = 0.7
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

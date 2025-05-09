@@ -6,6 +6,10 @@ extends BaseGame
 @onready var map = $map
 @onready var background_music = $main_player/Music
 
+@onready var player_guide = $UserInterface/PlayerGuide
+@onready var guide_left = $UserInterface/PlayerGuide/ArrowLeft
+@onready var guide_right = $UserInterface/PlayerGuide/ArrowRight
+
 @onready var coin = preload("res://Scenes/Patintero/coin.tscn")
 @onready var short_fence = preload("res://Scenes/TumbangPreso/short_fence.tscn")
 @onready var long_fence = preload("res://Scenes/TumbangPreso/long_fence.tscn")
@@ -36,11 +40,12 @@ func _ready() -> void:
 	# Override default level
 	current_game = location_string
 	level = 0
-	map.player_returning.connect(reverse_arrow)
+	map.player_returning.connect(guide_returning_player)
 	info_overlay.hide_timer_label() 
 	info_overlay.hide_score_label()
 	set_object_spawner()
 	set_enemy_spawner()
+	guide_player_left()
 
 func set_object_spawner() -> void:
 	object_spawner = ObjectSpawner.new()
@@ -62,6 +67,8 @@ func next_level() -> void:
 	spawn_rocks(level + 1)
 	spawn_fence(level + 1)
 	spawn_right_arrow(level + 1)
+	guide_player_left()
+
 
 func spawn_coins(current_level : int) -> void:
 	var random_x = 0
@@ -164,6 +171,27 @@ func _on_main_player_touched_enemy() -> void:
 	print("Player touched enemy")
 	player_death()
 
+func guide_returning_player() -> void:
+	reverse_arrow()
+	guide_player_right()
+
+func guide_player_left() -> void:
+	show_directional_guide(true)
+	await get_tree().create_timer(3).timeout
+	hide_guide()
+
+func guide_player_right() -> void:
+	show_directional_guide(false)
+	await get_tree().create_timer(3).timeout
+	hide_guide()
+
+func show_directional_guide(is_left : bool) -> void:
+	guide_left.visible = is_left
+	guide_right.visible = not is_left
+	player_guide.show()
+
+func hide_guide() -> void:
+	player_guide.hide()
 
 func _on_change_level(extra_arg_0: int) -> void:
 	pass # Replace with function body.
