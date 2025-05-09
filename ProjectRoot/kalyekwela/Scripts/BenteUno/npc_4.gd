@@ -5,8 +5,8 @@ var is_chaser: bool = false
 var target_direction: Vector2
 var target_runner: CharacterBody2D = null  # Chasers will chase this
 var nearby_chaser: CharacterBody2D = null  # Runners will flee from this
-var chase_speed: float = 80  # Further reduced chaser speed
-var flee_speed: float = 140  # Increased flee speed to make runners harder to catch
+var chase_speed: float = 80 
+var flee_speed: float = 140 
 
 # Rest system variables
 var is_resting: bool = false

@@ -5,8 +5,8 @@ var is_chaser: bool = false
 var target_direction: Vector2
 var target_runner: CharacterBody2D = null  # Chasers will chase this
 var nearby_chaser: CharacterBody2D = null  # Runners will flee from this
-var chase_speed: float = 80  # Further reduced chaser speed
-var flee_speed: float = 140  # Increased flee speed to make runners harder to catch
+var chase_speed: float = 80  
+var flee_speed: float = 140 
 
 var path: Array = []
 var path_index: int = 0
@@ -23,7 +23,7 @@ var current_safe_point: Vector2 = Vector2.ZERO
 @onready var status_label = $StatusLabel
 @onready var detection_area = $DetectionArea  # Detect runners if chaser
 @onready var flee_area = $FleeArea  # Detect chasers if runner
-@onready var animated_sprite = $AnimatedSprite2D  # Reference to AnimatedSprite2D
+@onready var animated_sprite = $AnimatedSprite2D
 
 
 func _ready():
@@ -34,7 +34,7 @@ func _ready():
 	timer.start()
 	update_status()
 	
-	# Connect detection signals
+	# Connect detection signals manually just in case
 	detection_area.body_entered.connect(_on_detection_area_body_entered)
 	detection_area.body_exited.connect(_on_detection_area_body_exited)
 	flee_area.body_entered.connect(_on_flee_area_body_entered)
@@ -64,7 +64,6 @@ func update_chaser_behavior(delta):
 		clear_path()  # Clear path when changing targets
 	
 	if target_runner:
-		# Update pathfinding periodically
 		pathfinding_timer += delta
 		if pathfinding_timer >= pathfinding_update_time:
 			pathfinding_timer = 0
@@ -73,7 +72,7 @@ func update_chaser_behavior(delta):
 		if pathfinding_enabled and path.size() > 0:
 			follow_path()
 		else:
-			# Fallback to direct movement if pathfinding fails
+			# Direct movement if pathfinding fails
 			target_direction = (target_runner.global_position - global_position).normalized()
 			velocity = target_direction * chase_speed
 	else:
@@ -92,7 +91,7 @@ func update_runner_behavior(delta):
 		if pathfinding_enabled and path.size() > 0:
 			follow_flee_path()
 		else:
-			# Fallback to direct fleeing if pathfinding fails
+			# Direct fleeing if pathfinding fails
 			direct_flee_behavior()
 	else:
 		# No chaser nearby, move randomly
@@ -265,7 +264,7 @@ func find_closest_runner():
 	return closest_runner
 
 func add_random_dodge(direction: Vector2) -> Vector2:
-	# Dodge intelligently instead of randomly
+	# Dodge at random angle behind
 	var dodge_angle = randf_range(-PI / 8, PI / 8)
 	return direction.rotated(dodge_angle).normalized()
 
@@ -289,7 +288,7 @@ func find_alternate_escape_route(original_flee_vector: Vector2) -> Vector2:
 func update_animation(direction):
 	if abs(direction.x) > abs(direction.y):
 		animated_sprite.play("WalkSide")
-		animated_sprite.flip_h = direction.x < 0  # Flip sprite if moving left
+		animated_sprite.flip_h = direction.x < 0
 	elif direction.y > 0:
 		animated_sprite.play("WalkFront")
 	else:

@@ -11,14 +11,13 @@ var pending_trivia_text: String = ""
 
 func set_trivia_text(text: String):
 	print("set_trivia_text() CALLED")
-	pending_trivia_text = text  # Store the text
+	pending_trivia_text = text
 	print("Trivia Text Stored: ", text)
 	
-	# If the node is already initialized, set it right away
 	if trivia_label:
 		trivia_label.text = text
 		print("Trivia Set Immediately: ", text)
-	# Otherwise it will be set in _ready()
+
 	
 func play_audio(stream: AudioStream):
 	$AudioPlayer.stream = stream
@@ -30,26 +29,26 @@ func _ready():
 		var trivia = get_tree().get_meta("loading_trivia")
 		pending_trivia_text = trivia
 		get_tree().remove_meta("loading_trivia")
-		print("Found trivia from metadata: ", trivia)
+		#print("Found trivia from metadata: ", trivia)
 	
 	if get_tree().has_meta("loading_audio"):
 		var audio = get_tree().get_meta("loading_audio") 
 		get_tree().remove_meta("loading_audio")
 		if audio:
 			play_audio(audio)
-			print("Playing audio from metadata")
+			#print("Playing audio from metadata")
 	
 	if get_tree().has_meta("loading_next_scene"):
 		next_scene = get_tree().get_meta("loading_next_scene")
 		get_tree().remove_meta("loading_next_scene")
-		print("Found next scene from metadata: ", next_scene)
+		#print("Found next scene from metadata: ", next_scene)
 	
 	if get_tree().has_meta("loading_background"):
 		var bg_texture = get_tree().get_meta("loading_background")
 		get_tree().remove_meta("loading_background")
 		if bg_texture and background_texture_rect:
 			background_texture_rect.texture = bg_texture
-			print("Background texture set from metadata")
+			#print("Background texture set from metadata")
 
 	
 	# Start loading the scene
@@ -58,10 +57,8 @@ func _ready():
 	# Set the trivia text that might have been set before _ready()
 	if pending_trivia_text != "" and trivia_label:
 		trivia_label.text = pending_trivia_text
-		print("Trivia Set in _ready(): ", pending_trivia_text)
-	
-	if trivia_label:
-		print("Trivia Label Exists")
+		#print("Trivia Set in _ready(): ", pending_trivia_text)
+
 	
 func _process(delta):
 	var progress = []

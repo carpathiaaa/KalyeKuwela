@@ -8,13 +8,13 @@ var last_direction: Vector2 = Vector2.DOWN  # Default facing direction
 var can_move: bool = false  # Prevents movement until enabled
 
 @onready var status_label = $StatusLabel
-@onready var tag_area = $TagArea  # Reference to Area2D
-@onready var animated_sprite = $AnimatedSprite2D  # Reference to AnimatedSprite2D
-@onready var chase_sfx = $ChaseSFX  # Sound when being chased
-@onready var tag_sfx = $TagSFX  # Sound for tagging or being tagged
-@onready var chase_detection_area = $ChaseDetectionArea  # New detection area
-@onready var background_music = $BackgroundMusic  # 🌟 Reference to background music
-@onready var tween = get_tree().create_tween()  # ✅ Properly create Tween
+@onready var tag_area = $TagArea 
+@onready var animated_sprite = $AnimatedSprite2D 
+@onready var chase_sfx = $ChaseSFX 
+@onready var tag_sfx = $TagSFX  
+@onready var chase_detection_area = $ChaseDetectionArea  
+@onready var background_music = $BackgroundMusic  
+@onready var tween = get_tree().create_tween()
 
 signal health_changed
 
@@ -29,7 +29,6 @@ func _ready():
 	velocity = Vector2.ZERO
 	status_label.position.y = -20
 	update_status()
-	# Set initial idle animation
 	play_idle_animation()
 	
 	can_move = false
@@ -38,27 +37,31 @@ func _ready():
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
-	if Input.is_action_pressed("ui_up"):
-		direction.y -= 1
-	if Input.is_action_pressed("ui_down"):
-		direction.y += 1
-	if Input.is_action_pressed("ui_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("ui_right"):
-		direction.x += 1
-	
-	if direction.length() > 0:
-		direction = direction.normalized()
-		last_direction = direction  # Store the last direction
-		update_animation(direction)
+	if can_move:
+		if Input.is_action_pressed("ui_up"):
+			direction.y -= 1
+		if Input.is_action_pressed("ui_down"):
+			direction.y += 1
+		if Input.is_action_pressed("ui_left"):
+			direction.x -= 1
+		if Input.is_action_pressed("ui_right"):
+			direction.x += 1
+		
+		if direction.length() > 0:
+			direction = direction.normalized()
+			last_direction = direction  # Store the last direction
+			update_animation(direction)
+		else:
+			# No movement, play idle animation based on last direction
+			play_idle_animation()
+			velocity = Vector2.ZERO
+
+		velocity = direction * speed
+		move_and_slide()
+		
 	else:
-		# No movement, play idle animation based on last direction
-		play_idle_animation()
 		velocity = Vector2.ZERO
 
-	velocity = direction * speed
-	move_and_slide()
-	
 	if not is_chaser and not invincible:
 		check_for_overlapping_chasers()
 
@@ -72,23 +75,22 @@ func update_animation(direction):
 	else:
 		animated_sprite.play("WalkBack")
 
-# 🧍 Play idle animation based on last facing direction
+# Play idle animation based on last facing direction
 func play_idle_animation():
 	if abs(last_direction.x) > abs(last_direction.y):
 		animated_sprite.play("IdleSide")
-		animated_sprite.flip_h = last_direction.x < 0  # Maintain flip direction
+		animated_sprite.flip_h = last_direction.x < 0 
 	elif last_direction.y > 0:
 		animated_sprite.play("IdleFront")
 	else:
 		animated_sprite.play("IdleBack")
 
-# Convert to a chaser
 func become_chaser():
 	if not is_chaser:
 		is_chaser = true
 		speed = 220  # Slight boost for chasers
 		update_status()
-		tag_sfx.play()  # 🔊 Play sound for getting tagged
+		tag_sfx.play()
 		print(name, " has become a CHASER!")
 
 # Updates player status (Runner/Chaser)
@@ -99,49 +101,48 @@ func update_status():
 	else:
 		modulate = Color.WHITE
 	
-	update_chase_sfx()  # 🔊 Ensure chase music updates properly
+	update_chase_sfx()
 
-# 🎵 Handles music fading based on chase state
 func update_chase_sfx():
 	if not is_chaser and chasers_nearby > 0:
-		fade_music(background_music, -30.0, 0.5)  # 🌟 Fade out background music
-		fade_music(chase_sfx, 0.0, 0.5)  # 🔊 Fade in chase music
+		fade_music(background_music, -30.0, 0.5)
+		fade_music(chase_sfx, 0.0, 0.5) 
 		if not chase_sfx.playing:
 			chase_sfx.play()
 	else:
-		fade_music(background_music, -20, 0.5)  # 🌟 Fade in background music
-		fade_music(chase_sfx, -30.0, 0.5)  # 🚫 Fade out chase music
+		fade_music(background_music, -20, 0.5)
+		fade_music(chase_sfx, -30.0, 0.5)
 
 # Smoothly fades audio using a Tween
 func fade_music(audio: AudioStreamPlayer2D, target_db: float, duration: float):
 	if tween.is_valid():
-		tween.kill()  # ✅ Only kill if necessary
-	tween = get_tree().create_tween()  # ✅ Correctly create a new Tween
+		tween.kill()
+	tween = get_tree().create_tween()
 	tween.tween_property(audio, "volume_db", target_db, duration)
 
-# 📡 Detect chasers nearby
+# Detect chasers nearby
 func _on_chase_detection_area_body_entered(body):
 	if body is CharacterBody2D and body.is_chaser:
 		chasers_nearby += 1
-		update_chase_sfx()  # 🔊 Update chase sound based on conditions
+		update_chase_sfx()
 
 func _on_chase_detection_area_body_exited(body):
 	if body is CharacterBody2D and body.is_chaser:
 		chasers_nearby -= 1
-		update_chase_sfx()  # 🔊 Update chase sound based on conditions
+		update_chase_sfx()
 
 func _on_player_tagged_area_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and body.is_chaser and not is_chaser and not invincible:
-		print("Player was tagged! Health decreased!")
+		#print("Player was tagged! Health decreased!")
 		current_health -= 1
-		print("Player health now: ", current_health)
+		#print("Player health now: ", current_health)
 		
 		health_changed.emit(current_health)
-		# Check health immediately
+
 		if current_health <= 0:
 			become_chaser()
 			tag_sfx.play()
-			return  # Exit early since becoming a chaser handles everything else
+			return # Exit logic here since we're a chaser already
 		
 		# Only add invincibility if we didn't become a chaser
 		invincible = true
@@ -150,6 +151,7 @@ func _on_player_tagged_area_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(1.5).timeout
 		
 		invincible = false
+		
 		if not is_chaser:  # Only reset color if not turned into chaser
 			modulate = Color.WHITE
 		
@@ -157,13 +159,13 @@ func _on_player_tagged_area_body_entered(body: Node2D) -> void:
 
 func _on_tag_area_body_entered(body: Node2D) -> void:
 	if is_chaser and body is CharacterBody2D and not body.is_chaser:
-		print("Tagged NPC:", body.name)
+		#print("Tagged NPC:", body.name)
 		tag_sfx.play()
-		body.become_chaser()  # Call their chaser logic
+		body.become_chaser()
 		
 func check_for_overlapping_chasers():
 	for body in $PlayerTaggedArea.get_overlapping_bodies():
 		if body is CharacterBody2D and body.is_chaser:
-			print("Tagged while standing still!")
+			#print("Tagged while standing still!")
 			_on_player_tagged_area_body_entered(body)
 			break

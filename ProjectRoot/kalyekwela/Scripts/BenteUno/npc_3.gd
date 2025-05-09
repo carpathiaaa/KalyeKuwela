@@ -15,7 +15,6 @@ var pathfinding_timer: float = 0
 var pathfinding_update_time: float = 0.5  # Update path every 0.5 seconds
 var flee_pathfinding_update_time: float = 0.3  # Update flee path more frequently
 
-# New variables for circular movement and juking
 var spawn_position: Vector2
 var circle_radius: float = 100.0
 var circle_angle: float = 0.0
@@ -25,7 +24,6 @@ var juke_interval: float = 0.7
 var juke_direction: Vector2 = Vector2.ZERO
 var is_juking: bool = false
 
-# New variables for erratic chaser movement
 var erratic_timer: float = 0.0
 var erratic_interval: float = 0.4
 var erratic_direction: Vector2 = Vector2.ZERO
@@ -34,7 +32,7 @@ var erratic_direction: Vector2 = Vector2.ZERO
 @onready var status_label = $StatusLabel
 @onready var detection_area = $DetectionArea  # Detect runners if chaser
 @onready var flee_area = $FleeArea  # Detect chasers if runner
-@onready var animated_sprite = $AnimatedSprite2D  # Reference to AnimatedSprite2D
+@onready var animated_sprite = $AnimatedSprite2D 
 
 
 func _ready():
@@ -49,7 +47,6 @@ func _ready():
 	# Set random circle radius
 	circle_radius = randf_range(80.0, 150.0)
 	
-	# Connect detection signals
 	detection_area.body_entered.connect(_on_detection_area_body_entered)
 	detection_area.body_exited.connect(_on_detection_area_body_exited)
 	flee_area.body_entered.connect(_on_flee_area_body_entered)

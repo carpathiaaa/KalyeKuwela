@@ -3,11 +3,11 @@ extends Node2D
 @onready var start_timer = $StartTimer
 @onready var game_timer = $GameTimer
 @onready var countdown_label = $UI/CountdownLabel
-@onready var game_over_label = $UI/GameOverLabel  # Label for game over message
-@onready var game_timer_label = $UI/GameTimerLabel  # Label for game countdown
+@onready var game_over_label = $UI/GameOverLabel
+@onready var game_timer_label = $UI/GameTimerLabel
 @onready var player = $Player
 @onready var npcs = $NPCs.get_children()
-@onready var game_over_music = $GameOverMusic  # 🎵 Game Over Music
+@onready var game_over_music = $GameOverMusic
 
 @onready var pause_button = $UI/PauseButton
 @onready var pause_menu = $UI/PauseMenu
@@ -51,7 +51,6 @@ func _ready():
 	pause_menu.hide()  # Ensure pause menu is hidden
 	Engine.time_scale = 1  # Unpause the game
 
-	# Reset player and NPC states
 	player.is_chaser = false  # Ensure player is a runner at the start
 	for npc in npcs:
 		npc.is_chaser = false  # Reset NPC chasers
@@ -138,7 +137,7 @@ func _on_start_timer_timeout():
 func assign_chaser():
 	var all_entities = [player] + npcs
 	if all_entities.is_empty():
-		print("No entities found to assign as chaser!")
+		#print("No entities found to assign as chaser")
 		return
 	
 	# Select a random entity to become the first chaser
@@ -150,13 +149,8 @@ func assign_chaser():
 			break
 		chaser = all_entities[randi() % all_entities.size()]
 
-	if chaser.is_chaser:
-		print("Failed to assign a new chaser after multiple attempts!")
-		return
-
 	chaser.become_chaser()
 	print("First chaser assigned:", chaser.name)
-	var first_chaser = chaser.name
 	
 	if chaser == player:
 		player_was_first_chaser = true
@@ -167,17 +161,17 @@ func update_game_timer_label():
 	var time_left = int(game_timer.time_left)
 	var minutes = time_left / 60
 	var seconds = time_left % 60
-	game_timer_label.text = "Time: %02d:%02d" % [minutes, seconds]  # Format MM:SS
+	game_timer_label.text = "Time: %02d:%02d" % [minutes, seconds]
 
 func _on_game_timer_timeout():
 	if count_runners() > 0:
 		pause_button.visible = false
 		how_to_play_button.visible = false
-		game_over("Game Over. Runners Won!")  # Runners survived
+		game_over("Game Over. Runners Won!") 
 	else:
 		pause_button.visible = false
 		how_to_play_button.visible = false
-		game_over("Game Over. Chasers Won!")  # All got tagged last second
+		game_over("Game Over. Chasers Won!")
 
 func all_are_chasers() -> bool:
 	# Check if player and all NPCs are chasers
@@ -206,18 +200,16 @@ func game_over(message):
 		return  # Prevent multiple game-over calls
 
 	game_has_ended = true
-	game_over_label.visible = true  # Show game over label
-	game_over_label.text = message  # Set message
-	game_timer_label.visible = false  # Hide timer when game ends
-	print(message)  # Debug print
+	game_over_label.visible = true
+	game_over_label.text = message
+	game_timer_label.visible = false
 	
-	# 🎵 Stop existing background/chase music
+	# Stop existing background/chase music
 	if player.background_music and player.background_music.playing:
 		player.background_music.stop()
 	if player.chase_sfx and player.chase_sfx.playing:
 		player.chase_sfx.stop()
 
-	# 🎵 Play Game Over Music
 	game_over_music.play()
 
 	# Give rewards based on outcome
@@ -232,7 +224,7 @@ func game_over(message):
 		else:
 			GlobalData.add_rewards(50, 50)
 
-	print("Coins:", GlobalData.coins, "XP:", GlobalData.xp)  # Debugging
+	#print("Coins:", GlobalData.coins, "XP:", GlobalData.xp)  # Debugging
 	
 	# Wait a few seconds before quitting
 	await get_tree().create_timer(3).timeout
