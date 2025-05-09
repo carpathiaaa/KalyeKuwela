@@ -12,6 +12,9 @@ func play_click_sound():
 	if click_sound:
 		click_sound.play()
 
+func is_character_unlocked(character_name: String) -> bool:
+	return character_name in default_characters or character_name in GlobalData.owned_characters
+
 func _on_right_arrow_pressed() -> void:
 	play_click_sound()
 	var new_index = (GlobalData.PlayerSelect + 1) % all_characters.size()
@@ -31,9 +34,6 @@ func _on_left_arrow_pressed() -> void:
 		new_index = (new_index - 1 + all_characters.size()) % all_characters.size()
 	
 	GlobalData.PlayerSelect = new_index
-
-func is_character_unlocked(character_name: String) -> bool:
-	return character_name in default_characters or character_name in GlobalData.owned_characters
 	
 func refresh_avatar():
 	# Set PlayerSelect to the index of the equipped character, if unlocked

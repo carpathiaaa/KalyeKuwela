@@ -31,7 +31,7 @@ var accessories = [
 var current_category = characters  # Default to Characters
 var selected_item = null
 
-@onready var shop_slot_template = $MarginItems/ItemsContainer/ShopSlot  # Template reference
+@onready var shop_slot_template = $MarginItems/ItemsContainer/ShopSlot  # Template
 
 func _ready():
 	not_enough_coins_popup.visible = false
@@ -44,6 +44,7 @@ func populate_shop():
 		return
 	
 	# Remove previous items but keep the template
+	# Just an extra for accessories category
 	for child in items_container.get_children():
 		if child != shop_slot_template:
 			child.queue_free()
@@ -60,7 +61,6 @@ func populate_shop():
 		var shop_slot = shop_slot_template.duplicate()
 		shop_slot.visible = true
 
-		# Assign values
 		var clickable_button = shop_slot.get_node("ClickableSlot")
 		var item_name_label = shop_slot.get_node("MarginContainer/ItemName")
 		var character_icon = shop_slot.get_node("MarginContainer2/CharacterIcon")
@@ -86,10 +86,6 @@ func _on_item_selected(item):
 	purchase_popup.visible = true
 
 func _on_confirm_button_pressed():
-	if not selected_item:
-		print("No item selected!")
-		return
-
 	# Prevent duplicate purchases
 	if selected_item["name"] in GlobalData.owned_characters or selected_item["name"] in GlobalData.owned_accessories:
 		print("Item already owned!")

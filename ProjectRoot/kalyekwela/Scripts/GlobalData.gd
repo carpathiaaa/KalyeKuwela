@@ -6,11 +6,11 @@ var xp = 0
 var level = 1
 var base_xp = 100
 var growth_rate = 1.5
-var max_level = 10
+var max_level = 50
 
 # Shop Data
-var owned_characters = []  # List of character IDs owned
-var owned_accessories = []  # List of accessory IDs owned
+var owned_characters = ['Juan', 'Maria'] 
+var owned_accessories = [] 
 var equipped_character = ""  # Currently equipped character
 var equipped_accessory = ""  # Currently equipped accessory
 
@@ -26,6 +26,20 @@ var exp_earned : int
 func get_xp_required(level) -> int:
 	return int(base_xp * pow(level, growth_rate))
 
+func check_level_up():
+	while level < max_level and xp >= get_xp_required(level):
+		xp -= get_xp_required(level)
+		level += 1
+		print("Leveled up! Now Level:", level)
+
+	# Ensure XP does not exceed max level
+	if level >= max_level:
+		xp = min(xp, get_xp_required(max_level))
+
+	var main_menu = get_node_or_null("/root/MainMenu")
+	if main_menu:
+		main_menu.update_ui()
+
 func add_rewards(coin_reward, xp_reward):
 	coins_earned = coin_reward
 	exp_earned = xp_reward
@@ -39,21 +53,7 @@ func add_rewards(coin_reward, xp_reward):
 
 	save_data()
 
-func check_level_up():
-	while level < max_level and xp >= get_xp_required(level):
-		xp -= get_xp_required(level)
-		level += 1
-		print("Leveled up! Now Level:", level)
 
-	# Ensure XP does not go negative at max level
-	if level >= max_level:
-		xp = min(xp, get_xp_required(max_level))
-
-	var main_menu = get_node_or_null("/root/MainMenu")
-	if main_menu:
-		main_menu.update_ui()
-
-# 🛒 Purchase an item (Character or Accessory)
 func purchase_item(item_id: String, item_type: String, cost: int) -> bool:
 	if coins < cost:
 		return false  # Not enough coins
@@ -79,7 +79,7 @@ func purchase_item(item_id: String, item_type: String, cost: int) -> bool:
 # Save game data
 func save_data():
 	if temporary_reset_mode:
-		print("🛑 Temporary reset mode: skipping save.")
+		print("Temporary reset mode: skipping save.")
 		return
 
 	var data = {
@@ -105,7 +105,7 @@ func load_data():
 		file.close()
 
 		if content.is_empty():
-			print("⚠️ Save file exists but is empty. Resetting data.")
+			print("Save file exists but is empty. Resetting data.")
 			reset_data()
 			return
 
@@ -137,7 +137,7 @@ func reset_data():
 	xp = 0
 	level = 1
 
-	# Reset owned characters and equipped character to Juan
+	# Reset owned characters to Juan and Maria and equipped character to Juan
 	owned_characters = ["Juan", 'Maria']
 	equipped_character = "Juan"
 

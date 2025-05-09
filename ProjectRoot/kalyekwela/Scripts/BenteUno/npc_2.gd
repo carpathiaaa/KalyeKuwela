@@ -5,8 +5,8 @@ var is_chaser: bool = false
 var target_direction: Vector2
 var target_runner: CharacterBody2D = null  # Chasers will chase this
 var nearby_chaser: CharacterBody2D = null  # Runners will flee from this
-var chase_speed: float = 60  # Further reduced chaser speed
-var flee_speed: float = 120  # Increased flee speed to make runners harder to catch
+var chase_speed: float = 60  
+var flee_speed: float = 120  
 
 var path: Array = []
 var path_index: int = 0
@@ -23,7 +23,7 @@ var current_safe_point: Vector2 = Vector2.ZERO
 @onready var status_label = $StatusLabel
 @onready var detection_area = $DetectionArea  # Detect runners if chaser
 @onready var flee_area = $FleeArea  # Detect chasers if runner
-@onready var animated_sprite = $AnimatedSprite2D  # Reference to AnimatedSprite2D
+@onready var animated_sprite = $AnimatedSprite2D 
 
 
 func _ready():
@@ -140,8 +140,7 @@ func determine_flee_target() -> Vector2:
 	# If we found a better direction with fewer obstacles, use that
 	flee_target = global_position + (best_direction * base_flee_distance)
 	
-	# Make sure the target is within navigable area
-	# This would ideally check against the navigation mesh
+	# Make sure the target is within navigateable area
 	var viewport_size = get_viewport_rect().size
 	flee_target.x = clamp(flee_target.x, 20, viewport_size.x - 20)
 	flee_target.y = clamp(flee_target.y, 20, viewport_size.y - 20)
@@ -190,11 +189,11 @@ func follow_flee_path():
 		# Path is empty, calculate a new one
 		calculate_flee_path()
 
-# Fallback direct flee behavior (used if pathfinding fails)
+# Direct flee behavior if pathfinding fails
 func direct_flee_behavior():
 	var flee_vector = global_position - nearby_chaser.global_position
 	
-	# Predictive fleeing: anticipate chaser's future position
+	# Anticipate chaser's future position
 	var predicted_chaser_pos = nearby_chaser.global_position + nearby_chaser.velocity * 0.3
 	var predicted_flee_vector = global_position - predicted_chaser_pos
 	
@@ -202,10 +201,10 @@ func direct_flee_behavior():
 	if predicted_flee_vector.length() < flee_vector.length():
 		flee_vector = predicted_flee_vector
 
-	# Apply smart dodging (slight random angle)
+	# Apply dodging in a slightly random angle
 	flee_vector = add_random_dodge(flee_vector)
 
-	# Dynamic speed boost when very close to a chaser
+	# Speed boost when very close to a chaser
 	var distance = global_position.distance_to(nearby_chaser.global_position)
 	var dynamic_speed = flee_speed + (200 - distance) * 0.5  
 	velocity = flee_vector.normalized() * clamp(dynamic_speed, flee_speed, flee_speed + 50)
@@ -265,7 +264,6 @@ func find_closest_runner():
 	return closest_runner
 
 func add_random_dodge(direction: Vector2) -> Vector2:
-	# Dodge intelligently instead of randomly
 	var dodge_angle = randf_range(-PI / 8, PI / 8)
 	return direction.rotated(dodge_angle).normalized()
 
@@ -289,7 +287,7 @@ func find_alternate_escape_route(original_flee_vector: Vector2) -> Vector2:
 func update_animation(direction):
 	if abs(direction.x) > abs(direction.y):
 		animated_sprite.play("WalkSide")
-		animated_sprite.flip_h = direction.x < 0  # Flip sprite if moving left
+		animated_sprite.flip_h = direction.x < 0
 	elif direction.y > 0:
 		animated_sprite.play("WalkFront")
 	else:
