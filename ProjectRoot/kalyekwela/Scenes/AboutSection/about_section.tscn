@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://c82v024stngc8"]
+[gd_scene load_steps=22 format=3 uid="uid://c82v024stngc8"]
 
 [ext_resource type="Texture2D" uid="uid://dks81u6af6lc3" path="res://Assets/Art/UI/UI_AboutBG_3.png" id="1_02i5l"]
 [ext_resource type="Script" uid="uid://jilkcvdddx2r" path="res://Scripts/AboutSection/about_section.gd" id="1_pjx3x"]
 [ext_resource type="SpriteFrames" uid="uid://bxod2wchcr2g1" path="res://Assets/Art/Characters/Frames/Antionio_Frames.tres" id="2_7xobo"]
-[ext_resource type="Script" uid="uid://h4kwbcvax82x" path="res://Scripts/AboutSection/scroll_container.gd" id="2_d7e3t"]
 [ext_resource type="FontFile" uid="uid://nhxhhtxmd3qs" path="res://Assets/Art/Fonts/ARCADECLASSIC.TTF" id="2_k1lj4"]
 [ext_resource type="Texture2D" uid="uid://bv6l2282fk7pe" path="res://Assets/Art/UI/UI_KalyeKuwelaLogo (2).png" id="2_k47ta"]
 [ext_resource type="SpriteFrames" uid="uid://dp5ol0c0hg8og" path="res://Assets/Art/Characters/Frames/Juan_Frames.tres" id="3_7doq0"]
@@ -69,11 +68,11 @@ expand_mode = 2
 [node name="Logo" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
-offset_left = 25.0
-offset_top = -20.0
-offset_right = 1525.0
-offset_bottom = 1480.0
-scale = Vector2(0.3, 0.3)
+offset_left = 20.0
+offset_top = 27.0
+offset_right = 1520.0
+offset_bottom = 1527.0
+scale = Vector2(0.26, 0.26)
 texture = ExtResource("2_k47ta")
 stretch_mode = 1
 
@@ -109,166 +108,155 @@ sprite_frames = ExtResource("4_q3340")
 animation = &"WalkSide"
 script = ExtResource("7_k1lj4")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_direction = 2
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -1582.0
-offset_top = -324.0
-offset_bottom = 324.0
-grow_horizontal = 0
-grow_vertical = 2
-mouse_filter = 0
-horizontal_scroll_mode = 0
-script = ExtResource("2_d7e3t")
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(0, 4000)
+autoscroll = Vector2(0, -50)
+repeat_times = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 900
+[node name="MarginContainer" type="MarginContainer" parent="Parallax2D"]
+offset_right = 1716.0
+offset_bottom = 4000.0
+theme_override_constants/margin_right = 450
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Parallax2D/MarginContainer"]
 custom_minimum_size = Vector2(0, 4000)
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="Parallax2D/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 648)
 layout_mode = 2
 
-[node name="Team" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Team" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Team:"
 label_settings = SubResource("LabelSettings_02i5l")
 
-[node name="Developer1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Developer1" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "DEVELOPER - CHARLES JUNG"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Developer2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Developer2" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "DEVELOPER - BRIAN JARDIEL"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="GraphicArtist" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="GraphicArtist" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "GRAPHIC ARTIST - ALLYSON LAUS"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="QA Tester" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="QA Tester" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "QA TESTER - DIVINE DE JESUS"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="TechnicalWriter" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="TechnicalWriter" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "TECHNICAL WRITER - BENEDICT BIGAEL"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="SystemsAnalyst" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="SystemsAnalyst" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "SYSTEMS ANALYST - JORGE SOLIVERES"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MusicTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="MusicTitle" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Music:"
 label_settings = SubResource("LabelSettings_02i5l")
 
-[node name="Music1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Music1" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "A Night of Dizzy Spells - Eric Skiff"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Music2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Music2" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "8 Bit Fun! - HeatlyBros"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Music3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Music3" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Clouds Castle - Flippo Vicarelli"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Music4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Music4" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Fishball Fight - Kyle Patrick Naval"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Music5" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Music5" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "8 Bit Menu - David Renda"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Music6" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Music6" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "8 Bit Adventure - David Renda"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Music7" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Music7" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Roblox \"Oof\" sound - Tommy Tallarico"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Music8" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Music8" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Duck Hunt laughing sound - Hirokazu Tanaka"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label5" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label5" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label6" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label6" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TilesetTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="TilesetTitle" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Tilesets:"
 label_settings = SubResource("LabelSettings_02i5l")
 
-[node name="Tileset1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Tileset1" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Solaria Demo Tiles - Jamie Brownhill"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Tileset2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Tileset2" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sprout Lands UI Pack - Cup Nooble"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Label7" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label7" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label8" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label8" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label9" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label9" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="FontTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="FontTitle" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Fonts:"
 label_settings = SubResource("LabelSettings_02i5l")
 
-[node name="Font1" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Font1" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Toybox Font - Darrell Flood"
 label_settings = SubResource("LabelSettings_k1lj4")
 
-[node name="Font2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Font2" type="Label" parent="Parallax2D/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Arcade Classic Font - Pizzadude"
 label_settings = SubResource("LabelSettings_k1lj4")

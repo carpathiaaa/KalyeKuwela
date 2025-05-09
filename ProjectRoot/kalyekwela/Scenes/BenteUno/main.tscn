@@ -3431,7 +3431,6 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="HowToPlayBackground2" type="NinePatchRect" parent="UI/HowToPlayMargin/HowToPlayBackground"]
-visible = false
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 0
 offset_right = 40.0
