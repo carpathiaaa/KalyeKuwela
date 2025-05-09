@@ -20,6 +20,8 @@ script/source = "extends Control
 @onready var pause_menu = $PauseMenu
 @onready var settings_menu = $PauseMenu/SettingsPopUp
 @onready var audio_click = $AudioClick
+@onready var tutorial_menu = $\"../Tutorial\"
+
 signal pause_state_changed(paused)
 
 var is_paused : bool = false
@@ -46,6 +48,7 @@ func update_settings_menu() -> void:
 		settings_menu.hide()
 
 func _on_pause_button_pressed(pause_request: bool) -> void:
+	tutorial_menu.exit_tutorial()
 	set_pause_state(pause_request)
 	audio_click.play()
 

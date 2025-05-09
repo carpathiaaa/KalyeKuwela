@@ -65,15 +65,7 @@ func update_speed() -> void:
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("enemy") and not invulnerable: # detect if player collided with enemy bot
-		invulnerable = true
-		modulate = Color(0.8, 0.5, 0.5)
-		update_health(health - 1)
-		emit_signal("health_change", health)
-		oof_sfx.volume_db = 5
-		oof_sfx.play()
-		await get_tree().create_timer(1, CONNECT_ONE_SHOT).timeout
-		modulate = Color(1, 1, 1)
-		invulnerable = false
+		take_damage()
 	if area.is_in_group("score_line"): # add coin if player passed a vertical line
 		game_scene.add_points(1)
 	if area.is_in_group("rock"):
@@ -81,6 +73,16 @@ func _on_area_2d_area_entered(area):
 		oof_sfx.play()
 		slow_down()
 
+func take_damage() -> void:
+	invulnerable = true
+	modulate = Color(0.8, 0.5, 0.5)
+	update_health(health - 1)
+	emit_signal("health_change", health)
+	oof_sfx.volume_db = 5
+	oof_sfx.play()
+	await get_tree().create_timer(1, CONNECT_ONE_SHOT).timeout
+	modulate = Color(1, 1, 1)
+	invulnerable = false
 func update_health(new_health : int) -> void:
 	health = new_health
 	emit_signal("health_change")

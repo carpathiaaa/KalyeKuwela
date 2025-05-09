@@ -1651,7 +1651,8 @@ Run and collect your slipper after throwing — but don't get too close to the p
 
 [outline_color=#103947,outline_thickness=3][color=#3A7CA5]3. Dodge and Survive![/color][/outline_color]
 Avoid getting tagged while retrieving your slipper. Make it back to safety and prepare for your next throw!
-"
+
+ If your score is high enough, you might get a surprise! 🎉"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HowToPlayPopup/HowToPlayBackground/HowToPlayBackground2/MarginContainer/HowToPlayBackground3"]
 visible = false

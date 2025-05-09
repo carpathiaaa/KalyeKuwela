@@ -1,7 +1,72 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwt51bujv2mhx"]
+[gd_scene load_steps=12 format=3 uid="uid://dwt51bujv2mhx"]
 
 [ext_resource type="PackedScene" uid="uid://cxw31vtfsc65e" path="res://Scenes/BaseScenes/UI/pause_interface.tscn" id="1_w2wft"]
 [ext_resource type="PackedScene" uid="uid://cbk1ghm6qyjns" path="res://Scenes/BaseScenes/UI/info_overlay.tscn" id="2_146tn"]
+[ext_resource type="Texture2D" uid="uid://bkxnsls6400qs" path="res://Assets/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="3_lslvo"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://Assets/Art/Fonts/toybox_font/ToyBox.ttf" id="4_jka0b"]
+[ext_resource type="Texture2D" uid="uid://d2jb1efw03pjn" path="res://Assets/Art/UI/UI_HowToPlay_Button.png" id="5_jka0b"]
+[ext_resource type="AudioStream" uid="uid://x3o7x3mq3olm" path="res://Assets/Audio/SFX/Audio_Click.mp3" id="6_np4ul"]
+
+[sub_resource type="GDScript" id="GDScript_np4ul"]
+script/source = "extends Control
+
+@onready var tutorial_body = $TutorialBody
+@onready var pause_interface = $\"../PauseInterface\"
+@onready var tutorial_name = $TutorialBody/HowToPlayMargin/Category/CategoryContainer/BenteUno
+@onready var tutorial_text = $TutorialBody/HowToPlayMargin/HowToPlayBackground/HowToPlayBackground2/MarginContainer/HowToPlayBackground3/RichTextLabel3
+@onready var click_sound = $AudioClick
+
+var on_tutorial : bool = false
+
+func _on_texture_button_pressed() -> void:
+	show_tutorial()
+	click_sound.play()
+
+func _on_exit_tutorial_pressed() -> void:
+	exit_tutorial()
+	click_sound.play()
+
+func show_tutorial() -> void:
+	if not pause_interface.is_paused:
+		on_tutorial = true
+		Engine.time_scale = 0
+		tutorial_body.show()
+
+func change_tutorial(new_tutorial_name : String, new_tutorial_text : String) -> void:
+	print(\"Updating tutorial text\")
+	tutorial_name.text = new_tutorial_name
+	tutorial_text.text = new_tutorial_text
+
+func exit_tutorial() -> void:
+	tutorial_body.hide()
+	on_tutorial = false
+	if not pause_interface.is_paused:
+		Engine.time_scale = 1
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_np4ul"]
+texture = ExtResource("3_lslvo")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lxi1h"]
+texture = ExtResource("3_lslvo")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(275, 178, 90, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0c1x7"]
+texture = ExtResource("3_lslvo")
+region_rect = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lhx4y"]
+texture = ExtResource("3_lslvo")
+region_rect = Rect2(837, 132, 22, 24)
 
 [node name="UserInterface" type="CanvasLayer"]
 layer = 0
@@ -18,3 +83,327 @@ offset_bottom = 1002.0
 [node name="PauseInterface" parent="." instance=ExtResource("1_w2wft")]
 top_level = true
 z_index = 2
+
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_np4ul")
+
+[node name="TutorialBody" type="Container" parent="Tutorial"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 360.0
+offset_top = 127.0
+offset_right = 400.0
+offset_bottom = 167.0
+
+[node name="HowToPlayMargin" type="MarginContainer" parent="Tutorial/TutorialBody"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="HowToPlayBackground" type="NinePatchRect" parent="Tutorial/TutorialBody/HowToPlayMargin"]
+layout_mode = 2
+texture = ExtResource("3_lslvo")
+region_rect = Rect2(275, 212, 90, 25)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="HowToPlayBackground2" type="NinePatchRect" parent="Tutorial/TutorialBody/HowToPlayMargin/HowToPlayBackground"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_lslvo")
+region_rect = Rect2(293, 101, 38, 38)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial/TutorialBody/HowToPlayMargin/HowToPlayBackground/HowToPlayBackground2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 115
+theme_override_constants/margin_right = 20
+
+[node name="HowToPlayBackground3" type="NinePatchRect" parent="Tutorial/TutorialBody/HowToPlayMargin/HowToPlayBackground/HowToPlayBackground2/MarginContainer"]
+custom_minimum_size = Vector2(460, 365)
+layout_mode = 2
+texture = ExtResource("3_lslvo")
+region_rect = Rect2(275, 178, 90, 27)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 6
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Tutorial/TutorialBody/HowToPlayMargin/HowToPlayBackground/HowToPlayBackground2/MarginContainer/HowToPlayBackground3"]
+custom_minimum_size = Vector2(430, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -175.0
+offset_right = 215.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_fonts/normal_font = ExtResource("4_jka0b")
+bbcode_enabled = true
+text = "If you spawn as a [color=#3A7CA5]Runner[/color]:
+
+1. Survive for 1 minute and 30 seconds without losing all your lives.  
+2. You have 3 lives — each tag removes one. After 3 tags, you become a [color=#C94C4C]Chaser[/color]!  
+3. Use speed and smart movement to stay safe.
+
+If you spawn as a [color=#C94C4C]Chaser[/color]:
+
+1. Tag the [color=#3A7CA5]Runners[/color] to convert them into [color=#C94C4C]Chasers[/color].  
+2. Turn everyone before time runs out to win!
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial/TutorialBody/HowToPlayMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial/TutorialBody/HowToPlayMargin/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="Tutorial/TutorialBody/HowToPlayMargin/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HowToPlayText" type="Label" parent="Tutorial/TutorialBody/HowToPlayMargin/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_jka0b")
+theme_override_font_sizes/font_size = 35
+text = "how to play?"
+
+[node name="Category" type="MarginContainer" parent="Tutorial/TutorialBody/HowToPlayMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 27
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 400
+
+[node name="CategoryContainer" type="HBoxContainer" parent="Tutorial/TutorialBody/HowToPlayMargin/Category"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="BenteUno" type="Button" parent="Tutorial/TutorialBody/HowToPlayMargin/Category/CategoryContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_jka0b")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxTexture_np4ul")
+theme_override_styles/hover = SubResource("StyleBoxTexture_np4ul")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_np4ul")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lxi1h")
+text = " Bente Uno "
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="Tutorial/TutorialBody/HowToPlayMargin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial/TutorialBody/HowToPlayMargin/ExitButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="ExitTutorial" type="Button" parent="Tutorial/TutorialBody/HowToPlayMargin/ExitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_0c1x7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0c1x7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lhx4y")
+
+[node name="HowToPlayMargin2" type="MarginContainer" parent="Tutorial/TutorialBody"]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="HowToPlayBackground" type="NinePatchRect" parent="Tutorial/TutorialBody/HowToPlayMargin2"]
+layout_mode = 2
+texture = ExtResource("3_lslvo")
+region_rect = Rect2(275, 212, 90, 25)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="HowToPlayBackground2" type="NinePatchRect" parent="Tutorial/TutorialBody/HowToPlayMargin2/HowToPlayBackground"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_lslvo")
+region_rect = Rect2(293, 101, 38, 38)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial/TutorialBody/HowToPlayMargin2/HowToPlayBackground/HowToPlayBackground2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 115
+theme_override_constants/margin_right = 20
+
+[node name="HowToPlayBackground3" type="NinePatchRect" parent="Tutorial/TutorialBody/HowToPlayMargin2/HowToPlayBackground/HowToPlayBackground2/MarginContainer"]
+custom_minimum_size = Vector2(460, 365)
+layout_mode = 2
+texture = ExtResource("3_lslvo")
+region_rect = Rect2(275, 178, 90, 27)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 6
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Tutorial/TutorialBody/HowToPlayMargin2/HowToPlayBackground/HowToPlayBackground2/MarginContainer/HowToPlayBackground3"]
+custom_minimum_size = Vector2(430, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -175.0
+offset_right = 215.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_fonts/normal_font = ExtResource("4_jka0b")
+bbcode_enabled = true
+text = "If you spawn as a [color=#3A7CA5]Runner[/color]:
+
+1. Survive for 1 minute and 30 seconds without losing all your lives.  
+2. You have 3 lives — each tag removes one. After 3 tags, you become a [color=#C94C4C]Chaser[/color]!  
+3. Use speed and smart movement to stay safe.
+
+If you spawn as a [color=#C94C4C]Chaser[/color]:
+
+1. Tag the [color=#3A7CA5]Runners[/color] to convert them into [color=#C94C4C]Chasers[/color].  
+2. Turn everyone before time runs out to win!
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial/TutorialBody/HowToPlayMargin2"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial/TutorialBody/HowToPlayMargin2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="Tutorial/TutorialBody/HowToPlayMargin2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HowToPlayText" type="Label" parent="Tutorial/TutorialBody/HowToPlayMargin2/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_outline_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_jka0b")
+theme_override_font_sizes/font_size = 35
+text = "how to play?"
+
+[node name="Category" type="MarginContainer" parent="Tutorial/TutorialBody/HowToPlayMargin2"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 27
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 400
+
+[node name="CategoryContainer" type="HBoxContainer" parent="Tutorial/TutorialBody/HowToPlayMargin2/Category"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="BenteUno" type="Button" parent="Tutorial/TutorialBody/HowToPlayMargin2/Category/CategoryContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_outline_color = Color(1, 0.878431, 0.741176, 1)
+theme_override_colors/font_color = Color(0.0627451, 0.223529, 0.278431, 1)
+theme_override_colors/font_focus_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.419608, 0.294118, 0.356863, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_jka0b")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxTexture_np4ul")
+theme_override_styles/hover = SubResource("StyleBoxTexture_np4ul")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_np4ul")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lxi1h")
+text = " Bente Uno "
+
+[node name="ExitButtonContainer" type="VBoxContainer" parent="Tutorial/TutorialBody/HowToPlayMargin2"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial/TutorialBody/HowToPlayMargin2/ExitButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="HowToPlayButton" type="Button" parent="Tutorial/TutorialBody/HowToPlayMargin2/ExitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_0c1x7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0c1x7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lhx4y")
+
+[node name="TextureButton" type="TextureButton" parent="Tutorial"]
+z_index = 1
+layout_mode = 0
+offset_left = 704.0
+offset_top = 13.0
+offset_right = 768.0
+offset_bottom = 77.0
+scale = Vector2(1.4, 1.4)
+texture_normal = ExtResource("5_jka0b")
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="Tutorial"]
+stream = ExtResource("6_np4ul")
+volume_db = -3.0
+
+[connection signal="pressed" from="Tutorial/TutorialBody/HowToPlayMargin/ExitButtonContainer/MarginContainer/ExitTutorial" to="Tutorial" method="_on_exit_tutorial_pressed"]
+[connection signal="pressed" from="Tutorial/TextureButton" to="Tutorial" method="_on_texture_button_pressed"]

@@ -6,6 +6,7 @@ extends BaseGame
 @onready var map = $map
 @onready var background_music = $main_player/Music
 
+@onready var tutorial_menu = $UserInterface/Tutorial
 @onready var player_guide = $UserInterface/PlayerGuide
 @onready var guide_left = $UserInterface/PlayerGuide/ArrowLeft
 @onready var guide_right = $UserInterface/PlayerGuide/ArrowRight
@@ -34,18 +35,30 @@ var max_x = 140
 var min_y = -180
 var max_y = 150
 var object_z_index = 2
-
  
 func _ready() -> void:
 	# Override default level
 	current_game = location_string
 	level = 0
+	set_tutorial()
 	map.player_returning.connect(guide_returning_player)
 	info_overlay.hide_timer_label() 
 	info_overlay.hide_score_label()
 	set_object_spawner()
 	set_enemy_spawner()
 	guide_player_left()
+
+func set_tutorial() -> void:
+	var tutorial_text = "[outline_color=#103947,outline_thickness=3][color=#1B4D3E]1. Dodge the Chasers![/color][/outline_color]
+Run across the lines without getting tagged by the patrollers guarding each lane. Use your movement keys to dodge and time your runs.
+
+[outline_color=#103947,outline_thickness=3][color=#D65F2F]2. Reach the End and Return![/color][/outline_color]
+Make it to the far end of the court and return to score a point. The more laps you complete without being tagged, the higher your score!
+
+[outline_color=#103947,outline_thickness=3][color=#3A7CA5]3. AVOID ROCKS![/color][/outline_color]
+Avoid rocks throughout the course; they slow you down!
+"
+	tutorial_menu.change_tutorial("Patintero", tutorial_text)
 
 func set_object_spawner() -> void:
 	object_spawner = ObjectSpawner.new()

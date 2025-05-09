@@ -18181,6 +18181,7 @@ shape = SubResource("RectangleShape2D_dhpex")
 
 [node name="return_label" type="Label" parent="end_tile"]
 visible = false
+self_modulate = Color(1, 1, 1, 0.309804)
 z_index = 4
 z_as_relative = false
 offset_left = 333.0
