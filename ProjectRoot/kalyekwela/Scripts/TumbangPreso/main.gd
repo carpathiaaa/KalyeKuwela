@@ -8,6 +8,8 @@ extends BaseGame
 @onready var info_overlay = $user_interface/InfoOverlay
 @onready var hearts_label = $user_interface/InfoOverlay/Container/RightContainer/HeartsLabel
 @onready var tutorial_menu = $user_interface/Tutorial
+@onready var joystick = $"user_interface/Virtual Joystick"
+
 var location_string : String = "res://Scenes/TumbangPreso/main.tscn"
 
 var first_phase_instance : Node = null
@@ -86,6 +88,7 @@ func next_level() -> void:
 
 func start_first_phase() -> void:
 	print("Starting first phase")
+	joystick.hide()
 	first_phase_instance = first_phase.instantiate()
 	first_phase_instance.update_phase(level, first_phase_time, countdown_time)
 	first_phase_instance.add_phase_rewards.connect(add_rewards, CONNECT_ONE_SHOT)
@@ -99,6 +102,7 @@ func end_first_phase() -> void:
 
 func start_second_phase() -> void:
 	print("Starting second phase")
+	joystick.show()
 	second_phase_instance = second_phase.instantiate()
 	second_phase_instance.update_phase(level, second_phase_time, countdown_time)
 	second_phase_instance.add_phase_rewards.connect(add_rewards, CONNECT_ONE_SHOT)
