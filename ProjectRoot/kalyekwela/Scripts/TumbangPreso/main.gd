@@ -69,11 +69,11 @@ Avoid getting tagged while retrieving your slipper. Make it back to safety and p
 func player_wins() -> void:
 	print("Player wins")
 	add_rewards(coins, exp)
+	set_end_delay(3.5)
+	end_sequence()
 	var win_screen_instance = win_screen.instantiate()
 	add_child(win_screen_instance)
-	await get_tree().create_timer(3.5).timeout
-	end_sequence()
-	
+
 
 func player_loses() -> void:
 	print("Player loses")
