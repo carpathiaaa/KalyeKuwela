@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalData="*res://Scripts/GlobalData.gd"
+GlobalData="*res://Scripts/BenteUno/GlobalData.gd"
 CompactTransition="*res://Scenes/Transition/CompactTransition.tscn"
 
 [display]
